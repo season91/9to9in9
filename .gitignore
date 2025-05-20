@@ -73,3 +73,24 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# Rider-specific (JetBrains)
+.idea/
+*.sln.iml
+*.ipr
+*.iws
+*.iml
+
+# Rider workspace
+.idea/
+*.sln.iml
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
+.idea/**/contentModel.xml
+.idea/.idea.DotSettings
+
+# Optional: user-specific run configs
+.idea/runConfigurations/
