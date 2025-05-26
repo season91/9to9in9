@@ -1,17 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+
+public enum CanvasType
+{
+    Start,
+    Game,
+    
+}
 
 public class UIManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    
+    // Test
+    public void Awake()
     {
-        
+        Addressables.InstantiateAsync(StringAddressable.Environment, transform)
+            .Completed += OnPopupLoaded;
+    }
+    
+    private void OnPopupLoaded(AsyncOperationHandle<GameObject> handle)
+    {
+        if (handle.Status == AsyncOperationStatus.Succeeded)
+        {
+            Debug.Log("Popup loaded");
+        }
+        else
+        {
+            Debug.LogError("Failed to load popup");
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    void OpenCanvas()
     {
         
     }
