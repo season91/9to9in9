@@ -1,11 +1,80 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Pool;
+
 /// <summary>
 /// PoolManager를 Get. Pool을 활용해 Object 생성 처리 담당
 /// </summary>
+
+public class PoolManager<T> where T : Component
+{
+    private ObjectPool<T> pool;
+    
+    private int defaultCapacity = 50;
+    private int maxCapacity = 500;
+
+    public PoolManager(T prefab, Transform parent = null)
+    {
+        pool = new ObjectPool<T>(
+            createFunc: () => UnityEngine.Object.Instantiate(prefab, parent),
+            actionOnGet: item => item.gameObject.SetActive(true),
+            actionOnRelease: item => item.gameObject.SetActive(false),
+            actionOnDestroy: item => UnityEngine.Object.Destroy(item.gameObject),
+            collectionCheck: false,
+            defaultCapacity: defaultCapacity,
+            maxSize: maxCapacity);
+    }
+
+    public T Get()
+    {
+        return pool.Get();
+    }
+    
+    public void Release(T obj){
+        pool.Release(obj);
+    }
+}
+
 public class SpawnManager : MonoBehaviour
 {
+    private static SpawnManager instance;
+
+    private Dictionary<string, object> pools = new Dictionary<string, object>();
+    
+    public static SpawnManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = new GameObject("SpawnManager").AddComponent<SpawnManager>();
+            }
+            return instance;
+        }
+    }
+
+    private void Awake()
+    {
+        
+    }
+
+    private void CreatePool<T>(string key, T prefab) where T : Component
+    {
+        GameObject poolParent = new GameObject($"{key}Pool");
+        poolParent.transform.SetParent(transform);
+        
+        PoolManager<T> pool = new PoolManager<T>(prefab, poolParent.transform);
+        pools[key] = pool;
+    }
+
+    public PoolManager<T> GetPool<T>(string key) where T : Component
+    {
+        return pools[key] as PoolManager<T>;
+    }
     // 필드
     // ItemPool<Item>
     // EnemyPool<Enemy>
