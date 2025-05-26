@@ -71,10 +71,21 @@ public class SpawnManager : MonoBehaviour
         pools[key] = pool;
     }
 
-    public PoolManager<T> GetPool<T>(string key) where T : Component
+    private PoolManager<T> GetPool<T>(string key) where T : Component
     {
         return pools[key] as PoolManager<T>;
     }
+
+    public T GetObject<T>(string key, T Prefab) where T : Component
+    {
+        return GetPool<T>(key).Get();
+    }
+
+    public void ReleaseObject<T>(string key, T obj) where T : Component
+    {
+        GetPool<T>(key).Release(obj);
+    }
+    
     // 필드
     // ItemPool<Item>
     // EnemyPool<Enemy>
