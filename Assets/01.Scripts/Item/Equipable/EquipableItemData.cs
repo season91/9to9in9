@@ -1,18 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class EquipableItemData : MonoBehaviour
+// 소비 타입
+public enum EquipableType
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    Weapon,
+    Armor,
+}
+public class EquipableItemData : ItemData
+{
+    // Test. 사용하시는 분 바꿔서 쓰셔요
+    public EquipableType equipableType;
+    public int power;
 }
