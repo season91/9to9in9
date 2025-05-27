@@ -4,8 +4,8 @@ using UnityEngine;
 /// </summary>
 public abstract class Entity : MonoBehaviour
 {
-    protected float health;
-    protected float maxHealth;
+    [SerializeField] protected float health;
+    [SerializeField] protected float maxHealth;
 
     public virtual void ChangeHealth(float value)
     {
