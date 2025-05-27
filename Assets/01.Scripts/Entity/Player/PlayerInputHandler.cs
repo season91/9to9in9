@@ -8,11 +8,13 @@ public class PlayerInputHandler : MonoBehaviour
 {
     private InputActionAsset playerInputAsset;
     private PlayerController playerController;
+    private PlayerInteractionHandler playerInteractionHandler;
     
     private void Awake()
     {
         playerInputAsset = GetComponent<PlayerInput>().actions;
         playerController = GetComponent<PlayerController>();
+        playerInteractionHandler = GetComponent<PlayerInteractionHandler>();
     }
 
     private void OnEnable()
@@ -72,8 +74,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void OnInteractInput(InputAction.CallbackContext context)
     {
-        //TODO
-        //IIntercatable 메서드 호출 필요
+        playerInteractionHandler.OnInteract();
     }
 
     private void OnAttackInput(InputAction.CallbackContext context)
