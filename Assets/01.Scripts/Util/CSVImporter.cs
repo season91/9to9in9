@@ -88,8 +88,9 @@ public class CSVImporter
         // 건축아이템 데이터 파싱
         item.previewPrefab = PrefabParse(cols[8], item.type);
         item.buildType = Enum.Parse<BuildType>(cols[9]);
-        item.isStackable = bool.Parse(cols[10]);
-        item.maxStack = int.Parse(cols[11]);
+        item.stationType = Enum.Parse<StationType>(cols[10]);
+        item.isStackable = bool.Parse(cols[11]);
+        item.maxStack = int.Parse(cols[12]);
         return item;
     }
     
@@ -169,7 +170,6 @@ public class CSVImporter
 
     private static TEnum[] ParseEnums<TEnum>(string value) where TEnum : struct
     {
-        Debug.Log(value);
         string[] tokens = value.Split('|');
         // 공백제거한 후 조회
         return tokens.Select(t => t.Trim())

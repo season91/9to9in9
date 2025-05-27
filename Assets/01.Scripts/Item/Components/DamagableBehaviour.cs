@@ -13,7 +13,7 @@ public class DamagableBehaviour : MonoBehaviour, IDamagable, IInitializable<Item
         data = itemData;
     }
     
-    public void TakeDamage()
+    public void TakeDamage(float damage)
     {
         
     }

@@ -4,15 +4,8 @@ using UnityEngine;
 /// </summary>
 public class PlayerInteractionHandler : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void OnInteract()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Debug.Log("인터랙트 활성화 - 작업 필요");
     }
 }
