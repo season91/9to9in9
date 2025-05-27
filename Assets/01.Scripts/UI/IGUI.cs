@@ -2,7 +2,7 @@ using UnityEngine;
 
 public interface IGUI
 {
-    GameObject UIObject { get; }
+    GameObject GUIObject { get; }
     
     public void Initialization();
     

@@ -7,7 +7,7 @@ public class UICanvasStartScene : MonoBehaviour, IGUI
 {
     public Button btnGameStart;
     
-    public GameObject UIObject => gameObject;
+    public GameObject GUIObject => gameObject;
 
     public void Reset()
     {

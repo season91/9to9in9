@@ -1850,10 +1850,10 @@ RectTransform:
   - {fileID: 512634116750813284}
   - {fileID: 5410027762699043731}
   - {fileID: 3184486586267399410}
+  - {fileID: 8443473358123773546}
   - {fileID: 8737714866136163294}
   - {fileID: 1790453583358683084}
   - {fileID: 8454499890530995699}
-  - {fileID: 8443473358123773546}
   - {fileID: 345583395201993553}
   - {fileID: 8481558065791091933}
   m_Father: {fileID: 0}
@@ -4844,6 +4844,7 @@ GameObject:
   - component: {fileID: 8443473358123773546}
   - component: {fileID: 3947050856832213188}
   - component: {fileID: 1954862468153966206}
+  - component: {fileID: 903776210158943187}
   m_Layer: 5
   m_Name: Popup_Inventory
   m_TagString: Untagged
@@ -4913,6 +4914,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &903776210158943187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9132635046679918293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08abaf647f4859a46952f34a9ab43f9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &157145259335037162
 PrefabInstance:
   m_ObjectHideFlags: 0

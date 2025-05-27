@@ -2,9 +2,9 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UICanvasGameScene : MonoBehaviour, IGUI
+public class UICanvasMainScene : MonoBehaviour, IGUI
 {
-    public GameObject UIObject => gameObject;
+    public GameObject GUIObject => gameObject;
     
     public void Initialization()
     {
