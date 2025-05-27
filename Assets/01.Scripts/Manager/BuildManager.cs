@@ -34,28 +34,35 @@ public class BuildManager : MonoBehaviour
     private void Update()
     {
         if (!currentItem || !currentPreview) return;
+        SetPreviewPositionFromView();
 
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         
-        //if (!Physics.Raycast(ray, out RaycastHit hit, 10f, buildableLayer)) return;
-        //Vector3 targetPos = hit.point;
-        
-        //TestCode
-        Vector3 targetPos = playerTransform.position;
-        currentPreview.transform.position = targetPos;
+        if (!Physics.Raycast(ray, out RaycastHit hit, maxBuildDistance, buildableLayer)) return;
+        Vector3 targetPos = hit.point;
 
         bool isValid = IsInBuildRange(targetPos);
 
         SetPreviewColor(isValid ? validColor : invalidColor);
 
         if (Input.GetMouseButtonDown(1) && isValid)
+        {
+            Debug.Log("RMB Clicked");
             PlaceBuildItem(targetPos);
+        }
+            
 
         if (Input.GetKeyDown(KeyCode.R))
-            currentPreview.transform.Rotate(Vector3.up, 90f);
+        {
+            Debug.Log("rotation clicked");
+            currentPreview.transform.Rotate(Vector3.up, 15f);
+        }
 
         if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Debug.Log("build cancled");
             CancelBuild();
+        }
     }
 
 #endregion
@@ -72,6 +79,20 @@ public class BuildManager : MonoBehaviour
         
         currentPreview = Instantiate(item.previewPrefab);
         previewRenderers = currentPreview.GetComponentsInChildren<MeshRenderer>();
+        
+        SetPreviewPositionFromView();
+    }
+    
+    
+    private void SetPreviewPositionFromView()
+    {
+        if (!cam || !currentPreview) return;
+
+        Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        if (Physics.Raycast(ray, out RaycastHit hit, maxBuildDistance, buildableLayer))
+        {
+            currentPreview.transform.position = hit.point + Vector3.up * 0.01f;
+        }
     }
 
 
