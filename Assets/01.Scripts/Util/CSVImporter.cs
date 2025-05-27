@@ -165,7 +165,6 @@ public class CSVImporter
 
     private static TEnum[] ParseEnums<TEnum>(string value) where TEnum : struct
     {
-        Debug.Log(value);
         string[] tokens = value.Split('|');
         // 공백제거한 후 조회
         return tokens.Select(t => t.Trim())

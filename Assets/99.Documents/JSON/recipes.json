@@ -1,0 +1,23 @@
+{
+    "recipes": [
+        {
+            "recipeCode": "rf1",
+            "category": "Food",
+            "resultItemCode": "c3",
+            "resultItemName": "meat-cooked",
+            "resultAmount": 1,
+            "ingredients": [
+                {
+                    "itemCode": "whole-ham",
+                    "amount": 1
+                },
+                {
+                    "itemCode": "apple",
+                    "amount": 1
+                }
+            ],
+            "craftTime": 5.0,
+            "workstationEnumType": "Furnace"
+        }
+    ]
+}
