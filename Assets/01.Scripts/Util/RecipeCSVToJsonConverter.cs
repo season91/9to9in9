@@ -65,7 +65,7 @@ public class RecipeCSVToJsonConverter : EditorWindow
         Debug.Log($"레시피 변환 완료: {recipes.Count}개");
         string json = JsonUtility.ToJson(new SerializableRecipeList { recipes = recipes }, true);
         // string savePath = EditorUtility.SaveFilePanel("JSON 저장", Application.dataPath, "recipes", "json");
-        string savePath = Path.Combine(Application.dataPath, "99.Documents/JSON/recipes.json");
+        string savePath = Path.Combine(Application.dataPath, "Resources/Item/Crafting/recipes.json");
         Directory.CreateDirectory(Path.GetDirectoryName(savePath)); // 경로 없으면 생성
 
         // 덮어쓰기 전에 백업
