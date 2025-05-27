@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
@@ -42,20 +41,19 @@ public class RecipeCSVToJsonConverter : EditorWindow
                 workstationEnumType = cols[8]
             };
             
-            string[] ingredientCodes = cols[5].Split('|');
+            string[] ingredientNames = cols[5].Split('|');
             string[] amountValues = cols[6].Split('|');
 
-            for (int j = 0; j < ingredientCodes.Length; j++)
+            for (int j = 0; j < ingredientNames.Length; j++)
             {
-                if (string.IsNullOrWhiteSpace(ingredientCodes[j])) continue;
+                if (string.IsNullOrWhiteSpace(ingredientNames[j])) continue;
 
-                int amount = int.Parse(amountValues[j]);
+                int amountValue = int.Parse(amountValues[j]);
                 SerializableIngredient ingredient = new SerializableIngredient
                 {
-                    itemCode = ingredientCodes[j],
-                    amount = amount
+                    itemName = ingredientNames[j],
+                    amount = amountValue
                 };
-                Debug.Log("ingredientCodes " + ingredientCodes[j] + amount);
                 recipe.ingredients.Add(ingredient);
             }
             recipes.Add(recipe);
@@ -81,32 +79,5 @@ public class RecipeCSVToJsonConverter : EditorWindow
             Debug.Log("convert complete! " + savePath);
             AssetDatabase.Refresh();
         }
-    }
-    [Serializable] //직렬화 대상임을 표시 
-    public class SerializableRecipeList
-    {
-        public List<SerializableRecipe> recipes;
-    }
-    
-    // 가공 레시피 변수. json key가 될 예정
-    [Serializable]
-    public class SerializableRecipe
-    {
-        public string recipeCode; 
-        public string category; // 가공 레시피 타입 구분값으로 enum 대체 예정
-        public string resultItemCode;
-        public string resultItemName;
-        public int resultAmount;
-        public List<SerializableIngredient> ingredients;
-        public float craftTime;
-        public string workstationEnumType; // 필요한 가공 수단으로 enum 대체 예정
-    }
-
-    // 가공 레시피 필요한 아이템과 개수
-    [Serializable]
-    public class SerializableIngredient
-    {
-        public string itemCode;
-        public int amount;
     }
 }
