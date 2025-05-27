@@ -10,9 +10,14 @@ public static class StringTag
 public static class StringScene
 {
     public const string MainScene = "MainScene";
+    public const string LoadingScene = "LoadingScene";
 }
 
 public static class StringAddressable
 {
     public const string Environment = "Environment";
+    
+    // GUI
+    public const string MainScene = "MainScene";
+    public const string StartScene = "StartScene";
 }
