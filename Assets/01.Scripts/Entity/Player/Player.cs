@@ -1,18 +1,15 @@
 using UnityEngine;
+
 /// <summary>
 /// IDamageble, IMoveable, IJumpable, IAttackable
 /// </summary>
 public class Player : Entity
 {
-    // Start is called before the first frame update
-    void Start()
+    public PlayerController playerController { get; private set; }
+    
+    void Awake()
     {
-        
+        CharacterManager.Register(this);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
