@@ -10,35 +10,6 @@ using UnityEngine.Pool;
 /// PoolManager를 Get. Pool을 활용해 Object 생성 처리 담당
 /// </summary>
 
-public class PoolManager<T> where T : Component
-{
-    private ObjectPool<T> pool;
-    
-    private int defaultCapacity = 50;
-    private int maxCapacity = 500;
-
-    public PoolManager(T prefab, Transform parent = null)
-    {
-        pool = new ObjectPool<T>(
-            createFunc: () => UnityEngine.Object.Instantiate(prefab, parent),
-            actionOnGet: item => item.gameObject.SetActive(true),
-            actionOnRelease: item => item.gameObject.SetActive(false),
-            actionOnDestroy: item => UnityEngine.Object.Destroy(item.gameObject),
-            collectionCheck: false,
-            defaultCapacity: defaultCapacity,
-            maxSize: maxCapacity);
-    }
-
-    public T Get()
-    {
-        return pool.Get();
-    }
-    
-    public void Release(T obj){
-        pool.Release(obj);
-    }
-}
-
 public class SpawnManager : MonoBehaviour
 {
     private static SpawnManager instance;
@@ -59,7 +30,8 @@ public class SpawnManager : MonoBehaviour
 
     private void Awake()
     {
-        
+        //CreatePool<Item>("Item", Item);
+        //CreatePool<Enemy>("Enemy",Enemy);
     }
 
     private void CreatePool<T>(string key, T prefab) where T : Component
