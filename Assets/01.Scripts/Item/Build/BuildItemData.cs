@@ -1,18 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildItemData : MonoBehaviour
+public enum BuildType
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    Wall,
+    Floor,
+}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+[CreateAssetMenu(menuName = "Item/Build Item")]
+public class BuildItemData : ItemData
+{
+    [SerializeField] private BuildType buildType;
+    [SerializeField] private GameObject previewPrefab;
+    public GameObject PreviewPrefab => previewPrefab;
 }
