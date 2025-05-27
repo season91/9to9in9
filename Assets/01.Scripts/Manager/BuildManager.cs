@@ -68,9 +68,9 @@ public class BuildManager : MonoBehaviour
         currentItem = item;
         
         if (currentPreview) Destroy(currentPreview);
-        if (!item.PreviewPrefab) return;
+        if (!item.previewPrefab) return;
         
-        currentPreview = Instantiate(item.PreviewPrefab);
+        currentPreview = Instantiate(item.previewPrefab);
         previewRenderers = currentPreview.GetComponentsInChildren<MeshRenderer>();
     }
 
