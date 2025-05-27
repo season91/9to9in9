@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemCode: b1
   displayName: "\uB098\uBB34 \uBCBD"
-  description: "\uAC00\uBCCD\uACE0 \uBE60\uB974\uAC8C \uC124\uCE58\uD560 \uC218 \uC788\uB294
-    \uAE30\uBCF8 \uBCBD\uC774\uB2E4."
+  description: "\uAC00\uBCBC\uC6B4 \uBCBD"
   type: 3
   icon: {fileID: 21300000, guid: 4d8426dd8e4f57b468acc0d57716fca5, type: 3}
   prefab: {fileID: 8936125078442131013, guid: 2446a94ef94abbc419fe7b54dc9ea1bf, type: 3}
   functions: 0000000002000000
-  previewPrefab: {fileID: 6927473402442453038, guid: 0a0efb634af3b4d43a3a6c204173c056, type: 3}
+  previewPrefab: {fileID: 8936125078442131013, guid: 2446a94ef94abbc419fe7b54dc9ea1bf, type: 3}
   buildType: 0
+  stationType: 4
   isStackable: 1
   maxStack: 30
