@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00cd1437998705a4cb772ca04634fcfd, type: 3}
+  m_Name: apple
+  m_EditorClassIdentifier: 
+  itemCode: c2
+  displayName: "\uC0AC\uACFC"
+  description: "\uC0AC\uACFC\uB098\uBB34\uC5D0\uC11C \uB534 \uC0AC\uACFC\uC774\uB2E4."
+  type: 0
+  icon: {fileID: 21300000, guid: d0c3a85675a163b428c471de91dae155, type: 3}
+  prefab: {fileID: 3263329720415641761, guid: 7c2c3b9356697524d92f7c69c4a782ca, type: 3}
+  functions: 0000000002000000
+  consumableTypes: 02000000
+  amounts:
+  - 5
+  isStackable: 1
+  maxStack: 12
