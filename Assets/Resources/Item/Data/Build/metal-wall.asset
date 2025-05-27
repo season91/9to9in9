@@ -19,7 +19,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 491f641fe064e91438e6f2ed5a1a817e, type: 3}
   prefab: {fileID: 3856265350502986392, guid: 2a22b22e3a65adc4aa64cac17da0510c, type: 3}
   functions: 0000000002000000
-  previewPrefab: {fileID: 3856265350502986392, guid: 2a22b22e3a65adc4aa64cac17da0510c, type: 3}
+  previewPrefab: {fileID: 867616730880761746, guid: 3b73bf251f3de7241b9a63e9d70e5684, type: 3}
   buildType: 0
   stationType: 4
   isStackable: 1
