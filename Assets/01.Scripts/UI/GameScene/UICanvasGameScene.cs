@@ -1,11 +1,11 @@
+using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UICanvasGameScene : MonoBehaviour, IGUI
 {
-    public SceneType sceneType;
-
     public GameObject UIObject => gameObject;
-
+    
     public void Initialization()
     {
     }
@@ -17,4 +17,5 @@ public class UICanvasGameScene : MonoBehaviour, IGUI
     public void Close()
     {
     }
+    
 }
