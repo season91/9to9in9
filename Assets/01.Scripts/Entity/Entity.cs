@@ -2,17 +2,13 @@ using UnityEngine;
 /// <summary>
 /// [공통스탯]
 /// </summary>
-public class Entity : MonoBehaviour
+public abstract class Entity : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    protected float health;
+    protected float maxHealth;
 
-    // Update is called once per frame
-    void Update()
+    public virtual void ChangeHealth(float value)
     {
-        
+        health = Mathf.Min(Mathf.Max(health + value, 0), maxHealth);
     }
 }
