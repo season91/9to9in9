@@ -29,14 +29,16 @@ public class CraftManager : MonoBehaviour
     private void Update()
     {
         // 실시간 테스트용: R 키로 레시피 재로드
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.L))
         {
+            Debug.Log("L key pressed");
             ReloadRecipes();
         }
     }
 
     private void Start()
     {
+        // test code
         string targetRecipeCode = "rf1";
 
         SerializableRecipe recipe = jsonRecipes.recipes.FirstOrDefault(r => r.recipeCode == targetRecipeCode);
@@ -60,10 +62,9 @@ public class CraftManager : MonoBehaviour
             Debug.LogError("recipes.json을 찾을 수 없습니다.");
             return;
         }
-
-        jsonRecipes = JsonUtility.FromJson<SerializableRecipeList>(jsonAsset.text);
         
-        Debug.Log($"레시피 {jsonRecipes.recipes.Count}개 로드됨");
+        Debug.Log("Reloading recipes.json");
+        jsonRecipes = JsonUtility.FromJson<SerializableRecipeList>(jsonAsset.text);
     }
     
     // 제작 조건 확인만 하는 함수
@@ -102,14 +103,18 @@ public class CraftManager : MonoBehaviour
         // test code로 인벤토리 생기면 수정
         // 재료 차감 
         foreach (var ingredient in recipe.ingredients)
+        {
             inventory[ingredient.itemName] -= ingredient.amount;
-
+        }
         // 새로운 결과 아이템 지급
         if (inventory.ContainsKey(recipe.resultItemCode))
+        {
             inventory[recipe.resultItemCode] += recipe.resultAmount;
+        }
         else
+        {
             inventory[recipe.resultItemCode] = recipe.resultAmount;
-
-        Debug.Log($"제작 완료: {recipe.resultItemCode}");
+        }
+            
     }
 }
