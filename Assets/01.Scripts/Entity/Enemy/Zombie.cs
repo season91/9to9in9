@@ -108,7 +108,7 @@ public class Zombie : Enemy, IAttackAble
         return hit.position;
     }
 
-    public override void TakeDamage()
+    public override void TakeDamage(float damage)
     {
         
     }
