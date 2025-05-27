@@ -22,18 +22,20 @@ public class CSVImporter
     public static ConsumableItemData ParseConsumableItem(string[] cols)
     {
         var item = ScriptableObject.CreateInstance<ConsumableItemData>();
-        ParseCommonFields(item, cols);
+        ParseCommonFields(item, cols); // 공통데이터 파싱
         
-        item.isStackable = bool.Parse(cols[7]);
-        item.maxStack = int.Parse(cols[8]);
-        item.consumableTypes = ParseEnums<ConsumableType>(cols[9]);
-        item.amounts = ParseFloats(cols[10]);
+        // 소비아이템 데이터 파싱
+        item.isStackable = bool.Parse(cols[8]);
+        item.maxStack = int.Parse(cols[9]);
+        item.consumableTypes = ParseEnums<ConsumableType>(cols[10]);
+        item.amounts = ParseFloats(cols[11]);
         return item;
     }
     
     #endregion
     
     #region EquipableItemData 생성
+    
     [MenuItem("Tools/Import/Equipable Items")]
     public static void ImportEquipableItems()
     {
@@ -43,11 +45,50 @@ public class CSVImporter
     public static EquipableItemData ParseEquipableItem(string[] cols)
     {
         var item = ScriptableObject.CreateInstance<EquipableItemData>();
-        ParseCommonFields(item, cols);
+        ParseCommonFields(item, cols); // 공통데이터 파싱
         
+        // 장착 아이템 데이터 파싱 작성
         return item;
     }
+    
+    #endregion
 
+    #region ResourceItemData 생성
+
+    [MenuItem("Tools/Import/Resource Items")]
+    public static void ImportResourceItems()
+    {
+        ImportItemData<ResourceItemData>("ResourceItemData", ParseResourceItem);
+    }
+    
+    public static ResourceItemData ParseResourceItem(string[] cols)
+    {
+        var item = ScriptableObject.CreateInstance<ResourceItemData>();
+        ParseCommonFields(item, cols); // 공통데이터 파싱
+        
+        // 자원아이템 데이터 파싱
+        return item;
+    }
+    
+    #endregion
+    
+    #region BuildItemData 생성
+
+    [MenuItem("Tools/Import/Build Items")]
+    public static void ImportBuildItems()
+    {
+        ImportItemData<BuildItemData>("BuildItemData", ParseBuildItem);
+    }
+    
+    public static BuildItemData ParseBuildItem(string[] cols)
+    {
+        var item = ScriptableObject.CreateInstance<BuildItemData>();
+        ParseCommonFields(item, cols); // 공통데이터 파싱
+        
+        // 건축아이템 데이터 파싱
+        return item;
+    }
+    
     #endregion
 
     #region 공통 Parse
@@ -62,7 +103,6 @@ public class CSVImporter
             return;
         }
         
-        // string targetFolder = $"Assets/Resources/Item/{typeof(T).Name}";
         string targetFolder = $"Assets/Resources/Item/Data/";
         if (!Directory.Exists(targetFolder)) {
             Directory.CreateDirectory(targetFolder);
@@ -71,8 +111,10 @@ public class CSVImporter
         for (int i = 1; i < lines.Length; i++) {
             string[] cols = lines[i].Split(',');
             T item = parseFunc(cols);
-
-            string assetPath = $"{targetFolder}/{item.name}.asset";
+            
+            // itemType 기반 경로 분기
+            string typeFolder = item.type.ToString(); 
+            string assetPath = $"{targetFolder}/{typeFolder}/{item.name}.asset";
             var existing = AssetDatabase.LoadAssetAtPath<T>(assetPath);
             if (existing != null)
             {
@@ -83,6 +125,7 @@ public class CSVImporter
             {
                 AssetDatabase.CreateAsset(item, assetPath);
             }
+            Debug.Log($"Imported item: {item.name}");
         }
 
         AssetDatabase.SaveAssets();
@@ -97,24 +140,45 @@ public class CSVImporter
         item.displayName = cols[2];
         item.description = cols[3];
         item.type = (ItemType)Enum.Parse(typeof(ItemType), cols[4]);
-        item.icon = IconParse(cols[5]);
-        item.prefab = PrefabParse(cols[6]);
+        item.icon = IconParse(cols[5], item.type);
+        item.prefab = PrefabParse(cols[6], item.type);
+        item.functions = ParseEnums<ItemFunction>(cols[7]);
     }
-    
-    private static Sprite IconParse(string iconName) => Resources.Load<Sprite>($"Item/Icons/{iconName}");
 
-    private static GameObject PrefabParse(string prefabName) => Resources.Load<GameObject>($"Item/Prefabs/{prefabName}");
+    private static Sprite IconParse(string iconName, ItemType type)
+    {
+        string path = $"Item/Icons/{type}/{iconName.Trim()}";
+        Sprite icon = Resources.Load<Sprite>(path);
+        if (icon == null)
+            Debug.LogWarning($"[IconParse] Icon not found: {path}");
+        return icon;
+    }
+
+    private static GameObject PrefabParse(string prefabName, ItemType type)
+    {
+        string path = $"Item/Prefabs/{type}/{prefabName.Trim()}";
+        GameObject prefab = Resources.Load<GameObject>(path);
+        if (prefab == null)
+            Debug.LogWarning($"[PrefabParse] Prefab not found: {path}");
+        return prefab;
+    }
 
     private static TEnum[] ParseEnums<TEnum>(string value) where TEnum : struct
     {
+        Debug.Log(value);
         string[] tokens = value.Split('|');
-        return tokens.Select(t => (TEnum)Enum.Parse(typeof(TEnum), t)).ToArray();
+        // 공백제거한 후 조회
+        return tokens.Select(t => t.Trim())
+                     .Where(t=> Enum.TryParse<TEnum>(t, out _))
+                     .Select(t => Enum.Parse<TEnum>(t))
+                     .ToArray();
     }
 
     private static float[] ParseFloats(string value)
     {
         return value.Split('|').Select(float.Parse).ToArray();
     }
+ 
     #endregion
 }
 #endif

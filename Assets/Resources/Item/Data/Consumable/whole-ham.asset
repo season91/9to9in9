@@ -18,7 +18,8 @@ MonoBehaviour:
     \uBD88\uC5D0 \uAC00\uACF5\uD574\uBCF4\uC790."
   type: 0
   icon: {fileID: 21300000, guid: 616790708d21e0545bb83a4695b3c0d2, type: 3}
-  prefab: {fileID: 5613381398389858980, guid: 50e2715f58895e240a288dd9cd592da4, type: 3}
+  prefab: {fileID: 3006929802225859455, guid: 50e2715f58895e240a288dd9cd592da4, type: 3}
+  functions: 00000000
   consumableTypes: 0000000001000000
   amounts:
   - 15
