@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7632221052441818108}
   - component: {fileID: 1776802610329931302}
   m_Layer: 0
-  m_Name: stone-wall-preview
+  m_Name: metal-wall-preview
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
