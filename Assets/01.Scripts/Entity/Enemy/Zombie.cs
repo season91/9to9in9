@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.AI;
-using Random = System.Random;
 
 public enum AIState
 {
@@ -11,7 +10,8 @@ public enum AIState
 
 public class Zombie : Enemy, IAttackAble
 {
-    [Header("Info")]
+    [Header("Info")] 
+    [SerializeField] private Stat health;
     public float walkSpeed;
     public float runSpeed;
     
@@ -50,6 +50,7 @@ public class Zombie : Enemy, IAttackAble
 
     private void Start()
     {
+        health.Init(100f, 100f, 0f);
         SetState(AIState.Wandering);
     }
 
@@ -75,7 +76,7 @@ public class Zombie : Enemy, IAttackAble
         if (aiState == AIState.Wandering && agent.remainingDistance < 0.1f)
         {
             SetState(AIState.Idle);
-            Invoke("WanderToNewLocation", UnityEngine.Random.Range(minWanderWaitTime, maxWanderWaitTime));    
+            Invoke("WanderToNewLocation", Random.Range(minWanderWaitTime, maxWanderWaitTime));    
         }
 
         if (playerDistance < detectDistance)
@@ -99,14 +100,14 @@ public class Zombie : Enemy, IAttackAble
 
         do
         {
-            Vector3 randomDirection = UnityEngine.Random.onUnitSphere * UnityEngine.Random.Range(minWanderDistance, maxWanderDistance);
-            NavMesh.SamplePosition(transform.position + randomDirection, out hit, maxWanderDistance, NavMesh.AllAreas);
+            NavMesh.SamplePosition(transform.position + (Random.onUnitSphere * Random.Range(minWanderDistance, maxWanderDistance)), out hit, maxWanderDistance, NavMesh.AllAreas);
             i++;
-        }
-        while (Vector3.Distance(transform.position, hit.position) < detectDistance && i < 30);
+            if (i == 30) break;
+        } while (Vector3.Distance(transform.position, hit.position) < detectDistance);
 
         return hit.position;
     }
+
 
     public override void TakeDamage(float damage)
     {

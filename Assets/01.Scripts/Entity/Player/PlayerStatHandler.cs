@@ -9,10 +9,10 @@ public class PlayerStatHandler : MonoBehaviour
     
     private void Start()
     {
-        health.Init(100f);
-        stamina.Init(100f);
+        health.Init(100f, 100f, 0f);
+        stamina.Init(100f, 100f, 1f);
     }
-        
+    
     private void Update()
     {
         RegenerateStamina();
