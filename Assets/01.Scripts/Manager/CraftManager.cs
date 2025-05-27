@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -84,7 +85,6 @@ public class CraftManager : MonoBehaviour
     }
     
     // 제작 조건 검사 확인결과에 따라 실행 결정
-    // 제작경과시간 추가 구현 필요
     private bool TryCraft(SerializableRecipe recipe)
     {
         if (!CanCraft(recipe))
@@ -93,8 +93,18 @@ public class CraftManager : MonoBehaviour
             return false;
         }
 
-        ExecuteCraft(recipe);
+        // 제작 시간 확인 후 실행
+        StartCoroutine(CraftWithDelay(recipe));
         return true;
+    }
+    
+    // 제작시간에 따른 코루틴
+    private IEnumerator CraftWithDelay(SerializableRecipe recipe)
+    {
+        Debug.Log($" 제작 시작: {recipe.resultItemCode} (소요 시간: {recipe.craftTime}초)");
+        yield return new WaitForSeconds(recipe.craftTime);
+
+        ExecuteCraft(recipe);
     }
     
     // 제작 실행만 하는 함수
@@ -106,15 +116,6 @@ public class CraftManager : MonoBehaviour
         {
             inventory[ingredient.itemName] -= ingredient.amount;
         }
-        // 새로운 결과 아이템 지급
-        if (inventory.ContainsKey(recipe.resultItemCode))
-        {
-            inventory[recipe.resultItemCode] += recipe.resultAmount;
-        }
-        else
-        {
-            inventory[recipe.resultItemCode] = recipe.resultAmount;
-        }
-            
+        // 새로운 결과 아이템 지급 처리 필요
     }
 }
