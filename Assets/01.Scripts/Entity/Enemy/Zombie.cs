@@ -77,6 +77,11 @@ public class Zombie : Enemy, IAttackAble
             SetState(AIState.Idle);
             Invoke("WanderToNewLocation", UnityEngine.Random.Range(minWanderWaitTime, maxWanderWaitTime));    
         }
+
+        if (playerDistance < detectDistance)
+        {
+            SetState(AIState.Attacking);
+        }
     }
 
     void WanderToNewLocation()
@@ -110,9 +115,49 @@ public class Zombie : Enemy, IAttackAble
     
     public void Attack()
     {
-        
+        if (playerDistance < attackDistance && IsPlayerInFieldOfView())
+        {
+            agent.isStopped = true;
+            if (Time.time - lastAttackTime > attackRate)
+            {
+                lastAttackTime = Time.time;
+                animator.speed = 1;
+                animator.SetTrigger("IsAttack");
+            }
+        }
+        else
+        {
+            if (playerDistance < detectDistance)
+            {
+                agent.isStopped = false;
+                NavMeshPath path = new NavMeshPath();
+                if (agent.CalculatePath(CharacterManager.Player.transform.position, path))
+                {
+                    agent.SetDestination(CharacterManager.Player.transform.position);
+                }
+                else
+                {
+                    agent.SetDestination(transform.position);
+                    agent.isStopped = true;
+                    SetState(AIState.Wandering);
+                }
+            }
+            else
+            {
+                agent.SetDestination(transform.position);
+                agent.isStopped = true;
+                SetState(AIState.Wandering);
+            }
+        }
     }
 
+    bool IsPlayerInFieldOfView()
+    {
+        Vector3 direction = CharacterManager.Player.transform.position - transform.position;
+        float angle = Vector3.Angle(transform.forward, direction);
+        return angle < fieldOfView * 0.5f;
+    }
+    
     public void SetState(AIState state)
     {
         aiState = state;
