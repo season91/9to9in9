@@ -10,21 +10,19 @@ public class BuildManager : MonoBehaviour
     public static BuildManager Instance { get; private set; }
     
     [Header("설정")]
-    [SerializeField] private LayerMask buildableLayer;
-    [SerializeField] private LayerMask structureLayer;
+    [SerializeField] private LayerMask buildableLayer; // 건축 가능한 레이어 (ex.Ground)
+    [SerializeField] private LayerMask structureLayer; // 건축물 공통 레이어
     
-    [SerializeField] private float maxBuildDistance;
-    [SerializeField] private float snapRadius;
-    
-    [SerializeField] private Transform playerTransform;
+    [SerializeField] private Transform playerTransform; // 기준 플레이어 위치
+    [SerializeField] private float maxBuildDistance; // 플레이어 기준 건축 가능 범위
     
     private readonly Color validColor = new Color(0f, 1f, 0f, 0.4f);
     private readonly Color invalidColor = new Color(1f, 0f, 0f, 0.4f);
 
-    private BuildItemData currentItem;
-    private GameObject currentPreview;
-    private MeshRenderer[] previewRenderers;
-    private Vector3 halfExtents;
+    private BuildItemData currentItem; // 선택한 건축 아이템 정보
+    private GameObject currentPreview; // 현재 화면에 보여지는 프리뷰 오브젝트
+    private MeshRenderer[] previewRenderers; // 색상 변경용
+    private Vector3 halfExtents; // 콜라이더 겹침 검사
     
     private Camera cam;
     
@@ -36,7 +34,6 @@ public class BuildManager : MonoBehaviour
         structureLayer = LayerMask.GetMask("Structure");
         
         maxBuildDistance = 2f;
-        snapRadius = 0.5f;
         
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
@@ -56,11 +53,13 @@ public class BuildManager : MonoBehaviour
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         if (!Physics.Raycast(ray, out RaycastHit hit, maxBuildDistance, buildableLayer)) return;
         
-        SetPreviewPosition(hit); // Ray 닿는 곳으로 프리뷰 위치 정함
+        // Ray 닿는 곳으로 프리뷰 위치 정함. 프리뷰 위치가 곧 설치 위치
+        SetPreviewPosition(hit); 
         Vector3 targetPos = currentPreview.transform.position;
         
+        // 건축 가능한지 여부 판단, 초록색 or 빨간색 표시
         bool isValid = IsInBuildRange(targetPos) && !IsOverlappingStructure(targetPos);
-        SetPreviewColor(isValid ? validColor : invalidColor); // 건축 가능하면 초록색, 불가능하면 빨간색
+        SetPreviewColor(isValid ? validColor : invalidColor);
         
         // [RMB] 설치 확인
         if (Input.GetMouseButtonDown(1) && isValid)
@@ -110,21 +109,23 @@ public class BuildManager : MonoBehaviour
 
         Vector3 finalPos = hit.point;
         
+        // Station이 아닌 경우 스냅 실행
         if (currentItem.stationType == StationType.None)
         {
             if (Physics.Raycast(cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0)), out RaycastHit structureHit,
                 maxBuildDistance,
                 structureLayer))
             {
-                Vector3 basePos = structureHit.collider.transform.position;
-                Vector3 normal = structureHit.normal.normalized;
-                Vector3 size = structureHit.collider.bounds.size;
-                Vector3 snapDirection = GetRoundedDirection(normal);
+                Vector3 basePos = structureHit.collider.transform.position; // 붙이려는 구조물 중심 좌표
+                Vector3 normal = structureHit.normal.normalized; // 구조물 표면의 방향 벡터 (어디인지)
+                Vector3 size = structureHit.collider.bounds.size; // 구조물 전체 크기
+                Vector3 snapDirection = GetRoundedDirection(normal); // 붙일 방향 (상, 하, 좌, 우)
 
                 finalPos = basePos + Vector3.Scale(snapDirection, size);
             }
         }
-
+        
+        // Station이면 그냥 Ray 닿는 곳으로 설정
         currentPreview.transform.position = finalPos;
     }
     
@@ -136,7 +137,9 @@ public class BuildManager : MonoBehaviour
         return Vector3.Distance(playerTransform.position, targetPos) <= maxBuildDistance;
     }
 
-
+    /// <summary>
+    /// 겹치는지 체크
+    /// </summary>
     private bool IsOverlappingStructure(Vector3 position)
     {
         Quaternion rotation = currentPreview.transform.rotation;
@@ -158,7 +161,9 @@ public class BuildManager : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// 건축물을 스냅할 방향을 반환해줌
+    /// </summary>
     private Vector3 GetRoundedDirection(Vector3 normal)
     {
         Vector3 dir = Vector3.zero;
