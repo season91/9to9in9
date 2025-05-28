@@ -13,9 +13,9 @@ public enum EquipSlot
     Head,       // 머리
     Chest,      // 상의
     Legs,       // 하의
+    Feet,        // 신발
     LeftHand,   // 왼손
     RightHand,  // 오른손
-    Feet        // 신발
 }
 public class EquipableItemData : ItemData
 {

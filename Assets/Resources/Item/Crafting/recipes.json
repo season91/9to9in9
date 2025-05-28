@@ -1,23 +1,213 @@
 {
     "recipes": [
         {
-            "recipeCode": "rf1",
+            "recipeCode": "rfc1",
             "category": "Consumable",
             "resultItemCode": "c3",
             "resultItemName": "meat-cooked",
             "resultAmount": 1,
             "ingredients": [
                 {
-                    "itemName": "whole-ham",
+                    "itemName": "c1",
                     "amount": 1
                 },
                 {
-                    "itemName": "apple",
+                    "itemName": "c2",
                     "amount": 1
                 }
             ],
             "craftTime": 5.0,
             "workstationEnumType": "Campfire"
+        },
+        {
+            "recipeCode": "rfe1",
+            "category": "Equipable",
+            "resultItemCode": "e1",
+            "resultItemName": "axe",
+            "resultAmount": 1,
+            "ingredients": [
+                {
+                    "itemName": "r2",
+                    "amount": 1
+                },
+                {
+                    "itemName": "r3",
+                    "amount": 1
+                }
+            ],
+            "craftTime": 5.0,
+            "workstationEnumType": "Anvil"
+        },
+        {
+            "recipeCode": "rfe2",
+            "category": "Equipable",
+            "resultItemCode": "e2",
+            "resultItemName": "pickaxe",
+            "resultAmount": 1,
+            "ingredients": [
+                {
+                    "itemName": "r2",
+                    "amount": 1
+                },
+                {
+                    "itemName": "r3",
+                    "amount": 1
+                }
+            ],
+            "craftTime": 5.0,
+            "workstationEnumType": "Anvil"
+        },
+        {
+            "recipeCode": "rfe3",
+            "category": "Equipable",
+            "resultItemCode": "e3",
+            "resultItemName": "helmet",
+            "resultAmount": 1,
+            "ingredients": [
+                {
+                    "itemName": "r2",
+                    "amount": 3
+                },
+                {
+                    "itemName": "r3",
+                    "amount": 3
+                }
+            ],
+            "craftTime": 5.0,
+            "workstationEnumType": "Anvil"
+        },
+        {
+            "recipeCode": "rfe4",
+            "category": "Equipable",
+            "resultItemCode": "e4",
+            "resultItemName": "armor-chest",
+            "resultAmount": 1,
+            "ingredients": [
+                {
+                    "itemName": "r2",
+                    "amount": 5
+                },
+                {
+                    "itemName": "r4",
+                    "amount": 2
+                }
+            ],
+            "craftTime": 5.0,
+            "workstationEnumType": "Anvil"
+        },
+        {
+            "recipeCode": "rfe5",
+            "category": "Equipable",
+            "resultItemCode": "e5",
+            "resultItemName": "armor-leg",
+            "resultAmount": 1,
+            "ingredients": [
+                {
+                    "itemName": "r2",
+                    "amount": 5
+                },
+                {
+                    "itemName": "r4",
+                    "amount": 2
+                }
+            ],
+            "craftTime": 5.0,
+            "workstationEnumType": "Anvil"
+        },
+        {
+            "recipeCode": "rfe6",
+            "category": "Equipable",
+            "resultItemCode": "e6",
+            "resultItemName": "boots",
+            "resultAmount": 1,
+            "ingredients": [
+                {
+                    "itemName": "r2",
+                    "amount": 3
+                },
+                {
+                    "itemName": "r3",
+                    "amount": 3
+                }
+            ],
+            "craftTime": 5.0,
+            "workstationEnumType": "Anvil"
+        },
+        {
+            "recipeCode": "rfe7",
+            "category": "Equipable",
+            "resultItemCode": "e7",
+            "resultItemName": "shield",
+            "resultAmount": 1,
+            "ingredients": [
+                {
+                    "itemName": "r2",
+                    "amount": 7
+                },
+                {
+                    "itemName": "r4",
+                    "amount": 3
+                }
+            ],
+            "craftTime": 5.0,
+            "workstationEnumType": "Anvil"
+        },
+        {
+            "recipeCode": "rfe8",
+            "category": "Equipable",
+            "resultItemCode": "e8",
+            "resultItemName": "sword",
+            "resultAmount": 1,
+            "ingredients": [
+                {
+                    "itemName": "r2",
+                    "amount": 10
+                },
+                {
+                    "itemName": "r4",
+                    "amount": 5
+                }
+            ],
+            "craftTime": 5.0,
+            "workstationEnumType": "Anvil"
+        },
+        {
+            "recipeCode": "rfe9",
+            "category": "Equipable",
+            "resultItemCode": "e9",
+            "resultItemName": "hammer",
+            "resultAmount": 1,
+            "ingredients": [
+                {
+                    "itemName": "r2",
+                    "amount": 10
+                },
+                {
+                    "itemName": "r4",
+                    "amount": 5
+                }
+            ],
+            "craftTime": 5.0,
+            "workstationEnumType": "Anvil"
+        },
+        {
+            "recipeCode": "rfr1",
+            "category": "Resource",
+            "resultItemCode": "r4",
+            "resultItemName": "iron-bar",
+            "resultAmount": 1,
+            "ingredients": [
+                {
+                    "itemName": "r2",
+                    "amount": 1
+                },
+                {
+                    "itemName": "r3",
+                    "amount": 1
+                }
+            ],
+            "craftTime": 5.0,
+            "workstationEnumType": "Smelter"
         }
     ]
 }
