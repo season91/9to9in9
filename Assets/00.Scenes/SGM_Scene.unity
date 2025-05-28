@@ -106,15 +106,15 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 3
     agentTypeID: 0
-    agentRadius: 0.2
-    agentHeight: 2
+    agentRadius: 0.1
+    agentHeight: 3.8
     agentSlope: 45
-    agentClimb: 0.4
+    agentClimb: 0.1
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.06666667
+    cellSize: 0.033333335
     manualTileSize: 0
     tileSize: 256
     buildHeightMesh: 0
@@ -137,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2255431282154428443, guid: 727c2eb3fee83d346a74e0ff22c7de1d, type: 3}
       propertyPath: runSpeed
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2255431282154428443, guid: 727c2eb3fee83d346a74e0ff22c7de1d, type: 3}
       propertyPath: walkSpeed
@@ -153,7 +153,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2255431282154428443, guid: 727c2eb3fee83d346a74e0ff22c7de1d, type: 3}
       propertyPath: detectDistance
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2255431282154428443, guid: 727c2eb3fee83d346a74e0ff22c7de1d, type: 3}
       propertyPath: maxWanderDistance
@@ -290,6 +290,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &603825158 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8012982351981331770, guid: b5811eeab1b85b349849dfafcb5a1c3a, type: 3}
+  m_PrefabInstance: {fileID: 1674587830}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &999969744
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,6 +457,30 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1474278898 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4951249815551796382, guid: ab2f47ffb9db19b459fcdac0a606a016, type: 3}
+  m_PrefabInstance: {fileID: 1852297863}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1474278903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474278898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1001 &1674587830
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -547,13 +576,36 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8012982351981331770, guid: b5811eeab1b85b349849dfafcb5a1c3a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1674587838}
   m_SourcePrefab: {fileID: 100100000, guid: b5811eeab1b85b349849dfafcb5a1c3a, type: 3}
 --- !u!4 &1674587831 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8969633536328352032, guid: b5811eeab1b85b349849dfafcb5a1c3a, type: 3}
   m_PrefabInstance: {fileID: 1674587830}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1674587838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603825158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7028a14bb330c3e41a811eff6927bc9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health:
+    maxValue: 0
+    passiveValue: 0
+    curValue: 0
+  stamina:
+    maxValue: 0
+    passiveValue: 0
+    curValue: 0
 --- !u!1001 &1852297863
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -642,6 +694,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 4951249815551796382, guid: ab2f47ffb9db19b459fcdac0a606a016, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6476582503065220045, guid: ab2f47ffb9db19b459fcdac0a606a016, type: 3}
       propertyPath: m_Extents.x
       value: 0.345
@@ -672,7 +728,10 @@ PrefabInstance:
     - {fileID: 4171029933634292192, guid: ab2f47ffb9db19b459fcdac0a606a016, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4951249815551796382, guid: ab2f47ffb9db19b459fcdac0a606a016, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1474278903}
   m_SourcePrefab: {fileID: 100100000, guid: ab2f47ffb9db19b459fcdac0a606a016, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
