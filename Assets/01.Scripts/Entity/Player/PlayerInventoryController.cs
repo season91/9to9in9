@@ -127,7 +127,7 @@ public class PlayerInventoryController : MonoBehaviour
     {
         return inventoryItems[index].Quantity;
     }
-    
+
     public ItemData GetItem(int index)
     {
         return items[index];

@@ -1,11 +1,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public enum SceneType
 {
@@ -29,13 +27,16 @@ public class UIManager : MonoBehaviour
     
     private readonly Dictionary<string, IGUI> activeGUIs = new();
 
-    UICanvasGameScene canvasGameScene;
-    [SerializeField] private GameObject canvasLoading;
-    [SerializeField] private Image imgLoadingProgress;
-    [SerializeField] private TextMeshProUGUI txtLoadingProgress;
-    [SerializeField] private TextMeshProUGUI txtLoaingProgressTitle;
-    private float loadingProgressMax = 850f;
+    // 고정 UI
+    [SerializeField] UICanvasLoading canvasLoading;
     
+    // 재할당 필요 UI
+    UICanvasMainScene canvasMainScene;
+
+    private void Reset()
+    {
+        canvasLoading = GetComponentInChildren<UICanvasLoading>();
+    }
 
     private void Awake()
     {
@@ -50,36 +51,34 @@ public class UIManager : MonoBehaviour
             Destroy(this.gameObject);
         }
         
+        // 게임 최초 시작 시 Start씬의 UI를 등록해주기 위함 (초기화 단계)
         _ = OpenScene(SceneType.Start);
     }
     
+    // 비동기 Open Scene
     public async Task OpenScene(SceneType type)
     {
-        // AsyncOperation 타입을 Task로 반환해줌으로 await 해주기
-        // await SceneManager.LoadSceneAsync(StringScene.LoadingScene).ToTask();
+        // 활성화된 모든 UI 제거
+        UnloadAllGUIs();
         
-        // 활성화된 캔버스들 제거
-        UnloadAllCanvases();
-        // 0으로 초기화
-        canvasLoading.SetActive(true);
-        SetLoadingProgress(0);
-        txtLoaingProgressTitle.text = "세계 속으로 들어가는 중...";
+        // Loading 준비
+        canvasLoading.Initialization();
+        canvasLoading.SetProgressTitle(LoadType.Scene);
         
+        // Addressable 불러 올 프리팹 주소 저장할 곳
         string[] addresses;
         
         switch (type)
         {
-            case SceneType.Main:
-                addresses = new[] { StringAddressable.MainScene };
-                await LoadUIWithProgress(addresses);
-                await LoadSceneWithProgress(StringScene.MainScene);
-                
-                // await LoadUI(addresses); 
-                // await SceneManager.LoadSceneAsync(StringScene.GameScene).ToTask();
-                break;
             case SceneType.Start:
                 addresses = new[] { StringAddressable.StartScene };
-                await LoadUIWithProgress(addresses);
+                await LoadGUIWithProgress(addresses);
+                break;
+            case SceneType.Main:
+                addresses = new[] { StringAddressable.MainScene };
+                await LoadGUIWithProgress(addresses);
+                await LoadSceneWithProgress(StringScene.MainScene);
+                canvasMainScene = GetComponentInChildren<UICanvasMainScene>();
                 break;
             case SceneType.Option:
             default:
@@ -87,29 +86,32 @@ public class UIManager : MonoBehaviour
                 break;
         }
         
-        SetLoadingProgress(1f);
-        canvasLoading.SetActive(false);
+        canvasLoading.SetProgressBar(1f);
+        canvasLoading.gameObject.SetActive(false);
     }
 
+    // 비동기 Load Scene with Loading Progress
     async Task LoadSceneWithProgress(string sceneName)
     {
         var sceneLoad = SceneManager.LoadSceneAsync(sceneName);
         while (!sceneLoad.isDone)
         {
-            SetLoadingProgress(sceneLoad.progress);
+            canvasLoading.SetProgressBar(sceneLoad.progress);
             await Task.Yield();
         }
     }
     
-    async Task LoadUIWithProgress(string[] addresses)
+    // 비동기 Load UI with Loading Progress
+    async Task LoadGUIWithProgress(string[] addresses)
     { 
         float currentProgress = 1f;
-        txtLoaingProgressTitle.text = "세계 구축 중...";
+        canvasLoading.SetProgressTitle(LoadType.GUI);
         
         foreach (var address in addresses)
         {
-            SetLoadingProgress(0);
-            txtLoadingProgress.text = $"{currentProgress++}/{addresses.Length}";
+            canvasLoading.SetProgressBar(0);
+            string progressStatus = $"{currentProgress++}/{addresses.Length}";
+            canvasLoading.SetProgressStatus(progressStatus);
             
             // 로드 하려는 Canvas의 프리펩 주소를 통해 비동기로 프리팹 생성
             var handle = Addressables.InstantiateAsync(address, transform);
@@ -117,7 +119,7 @@ public class UIManager : MonoBehaviour
             // 생성이 완료될 때까지 대기
             while (!handle.IsDone)
             {
-                SetLoadingProgress(handle.PercentComplete);
+                canvasLoading.SetProgressBar(handle.PercentComplete);
                 await Task.Yield(); // == yield return null;
             }
 
@@ -140,28 +142,19 @@ public class UIManager : MonoBehaviour
         }
     }
     
-    // Scene 전환 시, 모든 UI 제거       // 이후 모든 씬 공통 UI 있으면 그건 제거X
-    void UnloadAllCanvases()
+    // Scene 전환 시, 모든 UI 제거
+    // 이후 모든 씬 공통 UI 있으면 그건 제거X
+    void UnloadAllGUIs()
     {
         if(activeGUIs.Count <= 0)
             return;
         
         foreach (var kvp in activeGUIs)
         {
-            Addressables.ReleaseInstance(kvp.Value.UIObject);
+            Addressables.ReleaseInstance(kvp.Value.GUIObject);
         }
 
         activeGUIs.Clear();
-    }
-    
-    void SetLoadingProgress(float normalizedValue)
-    {
-        float width = Mathf.Clamp01(normalizedValue) * loadingProgressMax;
-
-        if (imgLoadingProgress != null)
-        {
-            imgLoadingProgress.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
-        }
     }
     
     // Test
@@ -182,4 +175,11 @@ public class UIManager : MonoBehaviour
     //         Debug.LogError("Failed to load popup");
     //     }
     // }
+    
+    // Main Scene
+    public StationType CurrentStation() => canvasMainScene.currentStation;
+
+    public bool TrySlotClickWithStation(ItemData item) => canvasMainScene.TrySlotClickWithStation(item);
+
+    public void OpenStation(StationType type) => canvasMainScene.OpenStation(type);
 }
