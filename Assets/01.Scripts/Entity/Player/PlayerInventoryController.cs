@@ -100,6 +100,11 @@ public class PlayerInventoryController : MonoBehaviour
         return items;
     }
     
+    public List<ItemData> GetAllEquippedItems()
+    {
+        return equippedItems;
+    }
+    
     public Sprite GetIcon(int index)
     {
         if (items[index] != null)
@@ -113,6 +118,28 @@ public class PlayerInventoryController : MonoBehaviour
     {
         return inventoryItems[index].Quantity;
     }
+    
+    public ItemData GetItem(int index)
+    {
+        return items[index];
+    }
+
+    public ItemData EquipItem(ItemData item,EquipableType type)
+    {
+        /*int idx;
+        for (int i = 0; i < inventorySize; ++i)
+        {
+            if(items[i] == item)
+        }*/
+        return item;
+    }
+    //
+    // unequip 에서 enum type 넘어올 경우 해당 장비가 있는지 확인하고 제거
+    //
+    
+    //
+    // 
+    //
     
     //list getallitem
     //itemdata getitem(int index)
