@@ -18,9 +18,9 @@ MonoBehaviour:
   type: 0
   icon: {fileID: 21300000, guid: 73e5505259c39474d9ff050927e881fd, type: 3}
   prefab: {fileID: 2635201835922550776, guid: da9f4df84d9599b4aa68ef628b8b8f18, type: 3}
+  isStackable: 1
+  maxStack: 12
   functions: 00000000
   consumableTypes: 02000000
   amounts:
   - 20
-  isStackable: 1
-  maxStack: 12

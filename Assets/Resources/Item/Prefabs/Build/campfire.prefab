@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4048437950547055254}
   - component: {fileID: 4000964907907953386}
   - component: {fileID: 4846968145277272502}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: campfire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 3409758042824228029}
   - component: {fileID: 6772432046484170972}
   - component: {fileID: 6700877522060933100}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: wood
   m_TagString: Untagged
   m_Icon: {fileID: 0}

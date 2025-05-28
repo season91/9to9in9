@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
@@ -38,7 +39,7 @@ public class RecipeCSVToJsonConverter : EditorWindow
                 resultAmount = int.Parse(cols[4]),
                 ingredients = new List<SerializableIngredient>(),
                 craftTime = float.Parse(cols[7]),
-                workstationEnumType = cols[8]
+                workstationType = Enum.Parse<StationType>(cols[8])
             };
             
             string[] ingredientNames = cols[5].Split('|');
@@ -51,6 +52,7 @@ public class RecipeCSVToJsonConverter : EditorWindow
                 int amountValue = int.Parse(amountValues[j]);
                 SerializableIngredient ingredient = new SerializableIngredient
                 {
+                    itemCode = ingredientNames[j],
                     itemName = ingredientNames[j],
                     amount = amountValue
                 };
