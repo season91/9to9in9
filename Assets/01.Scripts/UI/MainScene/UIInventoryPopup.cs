@@ -64,7 +64,7 @@ public class UIInventoryPopup : MonoBehaviour, IGUI
         inventorySlots[index].SetPcs(pcs);
     }
 
-    public void OnItemSlotSelected(int index, UnityAction callback)
+    public void OnItemSlotSelected(int index)
     {
         ItemData item = inventoryCtrlr.GetItem(index);
 
@@ -74,7 +74,7 @@ public class UIInventoryPopup : MonoBehaviour, IGUI
         {
             inventoryCtrlr.RemoveItem(index);
             SettingSlotUI(index);
-            callback.Invoke();
+            inventorySlots[index].Select();
         }
         else 
         {
