@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: bf47822969602a74e807c5605f589b6a, type: 2}
---- !u!4 &318458897 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8969633536328352032, guid: b5811eeab1b85b349849dfafcb5a1c3a, type: 3}
-  m_PrefabInstance: {fileID: 397159412}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &397159412
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -225,6 +220,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5811eeab1b85b349849dfafcb5a1c3a, type: 3}
+--- !u!4 &502743234 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7694425692092234497, guid: b5811eeab1b85b349849dfafcb5a1c3a, type: 3}
+  m_PrefabInstance: {fileID: 397159412}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,10 +355,9 @@ MonoBehaviour:
     m_Bits: 64
   structureLayer:
     serializedVersion: 2
-    m_Bits: 0
-  maxBuildDistance: 5
-  snapRadius: 0
-  playerTransform: {fileID: 318458897}
+    m_Bits: 128
+  playerTransform: {fileID: 502743234}
+  maxBuildDistance: 2
 --- !u!114 &882358077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,7 +399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd77e49b8d5f5df4ba81c829f718d2b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallItem: {fileID: 11400000, guid: 66c1c0ecfaca2e842a1551f40f5850d0, type: 2}
+  wallItem: {fileID: 11400000, guid: 85a839100a9f5c642bfc043c84fdb862, type: 2}
 --- !u!1001 &1046565969
 PrefabInstance:
   m_ObjectHideFlags: 0
