@@ -26,7 +26,7 @@ public class SpawnManager : MonoBehaviour
             return instance;
         }
     }
-
+    //-------SpawnManager 수정 필요 : 오브젝트 호출 시 받아올 경로나 어드레서블 적용이 필요해 보임
     private void Awake()
     {
         //CreatePool<Item>("Item", Item);

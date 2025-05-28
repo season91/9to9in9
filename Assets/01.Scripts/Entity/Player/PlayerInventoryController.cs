@@ -124,7 +124,7 @@ public class PlayerInventoryController : MonoBehaviour
         return items[index];
     }
 
-    public ItemData EquipItem(ItemData item,EquipableType type)
+    public ItemData EquipItem(ItemData item,EquipType type)
     {
         /*int idx;
         for (int i = 0; i < inventorySize; ++i)
