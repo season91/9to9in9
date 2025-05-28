@@ -1444,19 +1444,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae8632f742ac463ba2a3d9d4aaa231cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 0}
-  maxHealth: {fileID: 0}
-  walkSpeed: 1
-  runSpeed: 4
-  detectDistance: 5
-  minWanderDistance: 5
-  maxWanderDistance: 10
+  health:
+    maxValue: 0
+    passiveValue: 0
+    curValue: 0
+  walkSpeed: 0.3
+  runSpeed: 0.5
+  detectDistance: 2
+  minWanderDistance: 2
+  maxWanderDistance: 5
   minWanderWaitTime: 1
   maxWanderWaitTime: 5
-  damage: 0
-  attackRate: 0
-  attackDistance: 0
+  damage: 2
+  attackRate: 2
+  attackDistance: 0.5
   fieldOfView: 120
+  playerStatHandler: {fileID: 0}
 --- !u!54 &9013517847114163759
 Rigidbody:
   m_ObjectHideFlags: 0
