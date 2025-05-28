@@ -10,7 +10,11 @@ public class BuildManager : MonoBehaviour
     
     [Header("설정")]
     [SerializeField] private LayerMask buildableLayer;
-    [SerializeField] private float maxBuildDistance = 5f;
+    [SerializeField] private LayerMask structureLayer;
+    
+    [SerializeField] private float maxBuildDistance;
+    [SerializeField] private float snapCheckRadius;
+    
     [SerializeField] private Transform playerTransform;
     
     private readonly Color validColor = new Color(0f, 1f, 0f, 0.4f);
@@ -19,10 +23,23 @@ public class BuildManager : MonoBehaviour
     private BuildItemData currentItem;
     private GameObject currentPreview;
     private MeshRenderer[] previewRenderers;
+    private Vector3 halfExtents;
     
     private Camera cam;
     
-#region Unity Events
+    #region Unity Events
+
+    private void Reset()
+    {
+        buildableLayer = LayerMask.GetMask("Ground");
+        structureLayer = LayerMask.GetMask("Structure");
+        
+        maxBuildDistance = 2f;
+        snapCheckRadius = 1f;
+        
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
     
     private void Awake()
     {
@@ -40,10 +57,10 @@ public class BuildManager : MonoBehaviour
         
         Vector3 targetPos = hit.point;
         SetPreviewPosition(targetPos); // Ray 닿는 곳으로 프리뷰 위치 정함
-        
-        bool isValid = IsInBuildRange(targetPos);
-        SetPreviewColor(isValid ? validColor : invalidColor); // 건축 가능하면 초록색, 불가능하면 빨간색
 
+        bool isValid = IsInBuildRange(targetPos) && !IsOverlappingStructure(targetPos);
+        SetPreviewColor(isValid ? validColor : invalidColor); // 건축 가능하면 초록색, 불가능하면 빨간색
+        
         
         // [RMB] 설치 확인
         if (Input.GetMouseButtonDown(1) && isValid)
@@ -67,7 +84,7 @@ public class BuildManager : MonoBehaviour
         }
     }
 
-#endregion
+    #endregion
     
     /// <summary>
     /// 건축 프리뷰 모드 진입 함수
@@ -82,6 +99,7 @@ public class BuildManager : MonoBehaviour
         
         currentPreview = Instantiate(item.previewPrefab);
         previewRenderers = currentPreview.GetComponentsInChildren<MeshRenderer>();
+        halfExtents = currentPreview.GetComponent<Collider>().bounds.extents;
     }
     
     /// <summary>
@@ -100,7 +118,15 @@ public class BuildManager : MonoBehaviour
     {
         return Vector3.Distance(playerTransform.position, targetPos) <= maxBuildDistance;
     }
-    
+
+
+    private bool IsOverlappingStructure(Vector3 position)
+    {
+        Quaternion rotation = currentPreview.transform.rotation;
+        
+        return Physics.CheckBox(position, halfExtents, rotation, structureLayer);
+    }
+
     /// <summary>
     /// 프리뷰 오브젝트의 머티리얼 색상 변경
     /// </summary>
