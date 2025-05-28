@@ -7,11 +7,8 @@ using UnityEngine;
 public class PlayerInventoryController : MonoBehaviour
 {
     private List<ItemData> items;
-
-    public List<ItemData> Items
-    {
-        get { return items; }
-    }
+    private List<ItemData> equippedItems;
+    
     void Init()
     {
         //TODO
@@ -23,18 +20,33 @@ public class PlayerInventoryController : MonoBehaviour
         items.Add(item);
     }
 
-    public void RemoveItem(ItemData item)
+    public void RemoveItem(int index)
     {
-        items.Remove(item);
+        items.RemoveAt(index);
     }
 
-    public ItemData GetItem(int index)
+    public List<ItemData> GetAllItems()
     {
-        return items[index];
+        return items;
+    }
+    
+    public Sprite GetIcon(int index)
+    {
+        return items[index].icon;
     }
 
-    public ItemData GetItem(string name)
+    /*public int GetPcs(int index)
     {
-        return items.Find(x => x.name == name);
-    }
+        if (items[index].isStackable)
+        {
+            return items[index].amount;
+        }
+    }*/
+    
+    //list getallitem
+    //itemdata getitem(int index)
+    //Icon geticon(int index)
+    //int getpcs(int index)
+    //void additem(itemdata item)
+    //void removeitem(int index)    
 }
