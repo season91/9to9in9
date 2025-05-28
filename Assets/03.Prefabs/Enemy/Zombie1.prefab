@@ -1457,7 +1457,8 @@ MonoBehaviour:
   maxWanderWaitTime: 5
   damage: 2
   attackRate: 2
-  attackDistance: 0.5
+  attackDistance: 0.3
+  playerDistance: 0
   fieldOfView: 120
   playerStatHandler: {fileID: 0}
 --- !u!54 &9013517847114163759
