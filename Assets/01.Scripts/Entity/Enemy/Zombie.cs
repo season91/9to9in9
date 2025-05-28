@@ -40,7 +40,9 @@ public class Zombie : Enemy, IAttackAble
     
     private Animator animator;
     private SkinnedMeshRenderer[] meshRenderers;
-
+    
+    public PlayerStatHandler playerStatHandler;
+    
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -50,6 +52,7 @@ public class Zombie : Enemy, IAttackAble
 
     private void Start()
     {
+        playerStatHandler = GameObject.Find("Player").GetComponent<PlayerStatHandler>();
         health.Init(100f, 100f, 0f);
         SetState(AIState.Wandering);
     }
@@ -57,7 +60,7 @@ public class Zombie : Enemy, IAttackAble
     private void Update()
     {
         playerDistance = Vector3.Distance(transform.position, CharacterManager.Player.transform.position);
-        animator.SetBool("IsMove", aiState != AIState.Idle);
+        animator.SetBool("IsMove", agent.velocity.magnitude > 0);
 
         switch (aiState)
         {
@@ -123,7 +126,9 @@ public class Zombie : Enemy, IAttackAble
             {
                 lastAttackTime = Time.time;
                 animator.speed = 1;
-                animator.SetTrigger("IsAttack");
+                animator.SetTrigger("Attack");
+                Debug.Log("공격 실행");
+                playerStatHandler.TakeDamage(attackPower);
             }
         }
         else
