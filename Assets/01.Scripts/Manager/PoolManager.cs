@@ -23,13 +23,20 @@ public class PoolManager
             collectionCheck: false,
             defaultCapacity: defaultCapacity,
             maxSize: maxCapacity);
-        GameObject obj;
-        int i;
-        for (i = 0; i < defaultCapacity; ++i)
+
+        List<GameObject> temp = new List<GameObject>();
+
+        for (int i = 0; i < defaultCapacity; ++i)
         {
-            obj = this.Get();
+            GameObject obj = this.Get();
+            temp.Add(obj);
         }
-    }
+
+        foreach (GameObject obj in temp)
+        {
+            this.Release(obj);
+        }
+}
 
     public GameObject Get()
     {
@@ -37,7 +44,6 @@ public class PoolManager
     }
     
     public void Release(GameObject obj){
-        obj.gameObject.SetActive(false);
         pool.Release(obj);
     }
 }
