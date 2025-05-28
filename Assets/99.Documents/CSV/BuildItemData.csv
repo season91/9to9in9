@@ -1,0 +1,8 @@
+﻿code,name,displayName,description,type,icon,prefab,function,previewPrefab,buildType,stationType,isStackable,maxStack
+b1,wooden-wall,나무 벽,가벼운 벽,Build,wooden-wall-icon,wooden-wall,Inspectable|Damagable,wooden-wall,Wall,None,TRUE,30
+b2,wooden-floor,나무 바닥,가벼운 바닥,Build,wooden-floor-icon,wooden-floor,Inspectable|Damagable,wooden-floor,Floor,None,TRUE,30
+b3,metal-wall,철 벽,철벽이다,Build,metal-wall-icon,metal-wall,Inspectable|Damagable,metal-wall,Wall,None,TRUE,30
+b4,workbench,제작대,만들자,Build,workbench-icon,workbench,Inspectable|Damagable|Interactable,workbench-icon,Station,Workbench,FALSE,1
+b5,campfire,모닥불,먹자,Build,campfire-icon,campfire,Inspectable|Damagable|Interactable,campfire-icon,Station,Campfire,FALSE,1
+b6,smelter,제련대,굽자,Build,smelter-icon,smelter,Inspectable|Damagable|Interactable,smelter-icon,Station,Smelter,FALSE,1
+b7,anvil,모루,강해지자,Build,anvil-icon,anvil,Inspectable|Damagable|Interactable,anvil-icon,Station,Anvil,FALSE,1

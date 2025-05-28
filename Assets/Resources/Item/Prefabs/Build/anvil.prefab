@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8922058437897740021}
   - component: {fileID: 1324819887191253582}
   - component: {fileID: 8712514504660595801}
+  - component: {fileID: 4745976011942121921}
   m_Layer: 0
   m_Name: anvil
   m_TagString: Untagged
@@ -64,6 +65,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: -6538903991835684241, guid: 681e0e81d420c66489b94e68d76bab65, type: 3}
+  - {fileID: -6538903991835684241, guid: 681e0e81d420c66489b94e68d76bab65, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -106,6 +108,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.32267386, y: 0.29575002, z: 0.29565248}
   m_Center: {x: -0.013510697, y: 0.14787501, z: 0}
+--- !u!208 &4745976011942121921
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2586235502125796603}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.16100001, y: 0.148, z: 0.148}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.014, y: 0.148, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &8177272251885680570
 GameObject:
   m_ObjectHideFlags: 0

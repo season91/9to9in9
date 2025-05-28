@@ -112,6 +112,7 @@ public class BuildManager : MonoBehaviour
             renderer.GetPropertyBlock(block);
             block.SetColor(MeshColor, color);
             renderer.SetPropertyBlock(block);
+            Debug.Log($"set color to {color}");
         }
     }
 
