@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1497202455600143366}
   - component: {fileID: 5223741306113422456}
   - component: {fileID: 4074515076369755492}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: hammer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 4452686888323036624}
   - component: {fileID: 7194456290502157768}
   - component: {fileID: -8955922707804390821}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: workbench
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 7201091074390355513}
   - component: {fileID: 3963657241471116330}
   - component: {fileID: 6443736464934820126}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: paper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
