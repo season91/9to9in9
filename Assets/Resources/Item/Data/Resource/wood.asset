@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemCode: r2
   displayName: "\uC7A5\uC791"
-  description: "\uC7A5\uC791\uC774\uB2E4. \uAC00\uACF5\uC744\uD574\uBCF4\uC790."
+  description: "\uC7A5\uC791\uC774\uB2E4. \uAC00\uACF5\uD574\uBCF4\uC790."
   type: 2
   icon: {fileID: 21300000, guid: cecbd04090d8c6d458a03451febe3f48, type: 3}
   prefab: {fileID: 3138268646689521794, guid: 08e10084922ab35418bb39d7251002e6, type: 3}
-  functions: 00000000
   isStackable: 1
   maxStack: 12
+  functions: 00000000
+  resourceType: 1
