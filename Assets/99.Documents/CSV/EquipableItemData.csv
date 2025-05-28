@@ -1,3 +1,10 @@
-﻿code,name,displayName,description,type,icon,prefab,function,isStackable,maxStack,EquipableType,power
-e1,axe,도끼,도끼이다.,Equipable,tool-axe-icon,tool-axe,Inspectable,FALSE,1,GatheringTool,10
-e2,pickaxe,곡괭이,곡괭이이다.,Equipable,tool-pickaxe-icon,tool-pickaxe,Inspectable,FALSE,1,GatheringTool,10
+﻿code,name,displayName,description,type,icon,prefab,function,isStackable,maxStack,EquipSlot,EquipType,power
+e1,tool-axe,도끼,도끼이다.,Equipable,tool-axe-icon,tool-axe,Inspectable|Interacable,FALSE,1,RightHand,GatheringTool,10
+e2,tool-pickaxe,곡괭이,곡괭이이다.,Equipable,tool-pickaxe-icon,tool-pickaxe,Inspectable|Interacable,FALSE,1,RightHand,GatheringTool,10
+e3,helmet,투구,투구이다.,Equipable,helmet-icon,helmet,Inspectable|Interacable,FALSE,1,Head,Armor,20
+e4,armor-chest,갑옷-상의,갑옷이다.,Equipable,armor-chest-icon,armor-chest,Inspectable|Interacable,FALSE,1,Chest,Armor,20
+e5,armor-leg,갑옷-하의,갑옷이다.,Equipable,armor-leg-icon,armor-leg,Inspectable|Interacable,FALSE,1,Legs,Armor,20
+e6,boots,신발,신발이다.,Equipable,boots-icon,boots,Inspectable|Interacable,FALSE,1,Feet,Armor,20
+e7,shield,방패,방패다.,Equipable,shield-icon,shield,Inspectable|Interacable,FALSE,1,LeftHand,Armor,20
+e8,sword,검,무기 검이다.,Equipable,sword-icon,sword,Inspectable|Interacable,FALSE,1,RightHand,Weapon,30
+e9,hammer,망치,무기 망치이다,Equipable,hammer-icon,hammer,Inspectable|Interacable,FALSE,1,RightHand,Weapon,30
