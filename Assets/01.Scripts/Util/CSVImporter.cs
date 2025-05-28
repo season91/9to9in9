@@ -25,8 +25,6 @@ public class CSVImporter
         ParseCommonFields(item, cols); // 공통데이터 파싱
         
         // 소비아이템 데이터 파싱
-        item.isStackable = bool.Parse(cols[8]);
-        item.maxStack = int.Parse(cols[9]);
         item.consumableTypes = ParseEnums<ConsumableType>(cols[10]);
         item.amounts = ParseFloats(cols[11]);
         return item;
@@ -48,8 +46,8 @@ public class CSVImporter
         ParseCommonFields(item, cols); // 공통데이터 파싱
         
         // 장착 아이템 데이터 파싱 작성
-        item.equipableType = Enum.Parse<EquipableType>(cols[8]);
-        item.power = int.Parse(cols[9]);
+        item.equipableType = Enum.Parse<EquipableType>(cols[10]);
+        item.power = int.Parse(cols[11]);
         return item;
     }
     
@@ -69,8 +67,6 @@ public class CSVImporter
         ParseCommonFields(item, cols); // 공통데이터 파싱
         
         // 자원아이템 데이터 파싱
-        item.isStackable = bool.Parse(cols[8]);
-        item.maxStack = int.Parse(cols[9]);
         return item;
     }
     
@@ -90,11 +86,10 @@ public class CSVImporter
         ParseCommonFields(item, cols); // 공통데이터 파싱
         
         // 건축아이템 데이터 파싱
-        item.previewPrefab = PrefabParse(cols[8], item.type);
-        item.buildType = Enum.Parse<BuildType>(cols[9]);
-        item.stationType = Enum.Parse<StationType>(cols[10]);
-        item.isStackable = bool.Parse(cols[11]);
-        item.maxStack = int.Parse(cols[12]);
+        item.previewPrefab = PrefabParse(cols[10], item.type);
+        item.buildType = Enum.Parse<BuildType>(cols[11]);
+        item.stationType = Enum.Parse<StationType>(cols[12]);
+        
         return item;
     }
     
@@ -152,6 +147,8 @@ public class CSVImporter
         item.icon = IconParse(cols[5], item.type);
         item.prefab = PrefabParse(cols[6], item.type);
         item.functions = ParseEnums<ItemFunction>(cols[7]);
+        item.isStackable = bool.Parse(cols[8]);
+        item.maxStack = int.Parse(cols[9]);
     }
 
     private static Sprite IconParse(string iconName, ItemType type)
