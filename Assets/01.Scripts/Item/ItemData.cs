@@ -27,6 +27,10 @@ public abstract class ItemData : ScriptableObject
     public ItemType type; // 회복, 공격, 채집 등으로 인한 각 아이템 타입
     public Sprite icon;
     public GameObject prefab; // 프리팹 정보
+    
+    // 여러 개 가지는 것에 대한 표시
+    public bool isStackable;
+    public int maxStack;
 
     // 추가: 이 아이템이 어떤 기능을 가져야 하는지 표시
     public ItemFunction[] functions;

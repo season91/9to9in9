@@ -18,6 +18,8 @@ MonoBehaviour:
   type: 1
   icon: {fileID: 21300000, guid: 6e076abef888a0943b897c945a3b48a3, type: 3}
   prefab: {fileID: 797100701153606036, guid: 699e495faf6f6b0489c84c6489deb464, type: 3}
+  isStackable: 0
+  maxStack: 1
   functions: 00000000
   equipableType: 2
   power: 10
