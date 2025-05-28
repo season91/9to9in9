@@ -132,11 +132,6 @@ public class PlayerInventoryController : MonoBehaviour
     {
         return items[index];
     }
-    
-    public ItemData GetItem(int index)
-    {
-        return items[index];
-    }
 
     public ItemData EquipItem(ItemData item,EquipType type)
     {

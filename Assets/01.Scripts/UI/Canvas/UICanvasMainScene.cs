@@ -27,6 +27,16 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
         anvilPopup = GetComponentInChildren<UIAnvilPopup>();
     }
 
+    private void Awake()
+    {
+        inventoryPopup.gameObject.SetActive(false);
+        equipmentPopup.gameObject.SetActive(false);
+        smelterPopup.gameObject.SetActive(false);
+        // campfirePopup.gameObject.SetActive(false);
+        // workbenchPopup.gameObject.SetActive(false);
+        // anvilPopup.gameObject.SetActive(false);
+    }
+
     public void Initialization()
     {
     }
@@ -60,7 +70,7 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
                 // 장착, 장착된 장비도 Select하면 장착 해제
                 // 장착된 장비가 있으면 교체
                 // 교체될 때 인벤토리로 다시 들어와야 됨 해당 아이템이
-                
+                // return TryPlaceItem()
             case StationType.Workbench:
             case StationType.Anvil:
             default:
@@ -93,6 +103,40 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
                 break;
         }
         
+        inventoryPopup.Open();
+    }
+
+    public void TestOpenEquipmentPopup()
+    {
+        equipmentPopup.Initialization();
+        inventoryPopup.Initialization();
+        
+        if (equipmentPopup.gameObject.activeSelf)
+        {
+            equipmentPopup.Close();
+            inventoryPopup.Close();
+            return;
+        }
+            
+        currentStation = StationType.None;
+        equipmentPopup.Open();
+        inventoryPopup.Open();
+    }
+
+    public void TestOpenSmelterPopup()
+    {
+        smelterPopup.Initialization();
+        inventoryPopup.Initialization();
+        
+        if (smelterPopup.gameObject.activeSelf)
+        {
+            smelterPopup.Close();
+            inventoryPopup.Close();
+            return;
+        }
+        
+        currentStation = StationType.Smelter;
+        smelterPopup.Open();
         inventoryPopup.Open();
     }
 }

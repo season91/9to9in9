@@ -15,6 +15,7 @@ public class GUIItemSlotInventory : GUIItemSlotBase
         imgIcon = transform.Find("Img_Icon_Slot").GetComponent<Image>();
         selectedCover = transform.Find("Img_SlotBG_Selected")?.gameObject;
         tmpPcs = transform.Find("Tmp_Pieces")?.GetComponent<TextMeshProUGUI>();
+        btnSelect = GetComponent<Button>();
     }
     
     public override void Initialization()
@@ -43,11 +44,11 @@ public class GUIItemSlotInventory : GUIItemSlotBase
         // UIManager.Instance.OnItemSlotSelected(index);
     }
 
-    public void SetClickEvent(UnityAction<int> callback, int slotIndex)
+    public void SetClickEvent(UnityAction<int, UnityAction> callback, int slotIndex)
     {
         index = slotIndex;
         btnSelect.onClick.RemoveAllListeners();
-        btnSelect.onClick.AddListener(() => callback(index));
-        btnSelect.onClick.AddListener(Select);
+        btnSelect.onClick.AddListener(() => callback(index, Select));
+        // btnSelect.onClick.AddListener(Select);
     }
 }

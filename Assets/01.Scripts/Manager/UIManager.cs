@@ -1,12 +1,9 @@
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public enum SceneType
 {
@@ -178,7 +175,6 @@ public class UIManager : MonoBehaviour
     //         Debug.LogError("Failed to load popup");
     //     }
     // }
-    
     
     // Main Scene
     public StationType CurrentStation() => canvasMainScene.currentStation;

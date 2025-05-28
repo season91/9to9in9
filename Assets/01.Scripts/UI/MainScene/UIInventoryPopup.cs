@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class UIInventoryPopup : MonoBehaviour, IGUI
 {
@@ -43,13 +44,15 @@ public class UIInventoryPopup : MonoBehaviour, IGUI
 
     void SettingInventoryUI()
     {
-        var items = inventoryCtrlr.GetAllItems();
-        for (int i = 0; i < items.Count; i++)
+        int inventoryCount = inventoryCtrlr.GetAllItemCount();
+        for (int i = 0; i < inventoryCount; i++)
         {
-            if (i < items.Count)
+            if (i < inventoryCount)
             {
                 int pcs = CharacterManager.Player.inventoryController.GetPcs(i);
                 Sprite icon = inventoryCtrlr.GetIcon(i);
+                if(icon == null)
+                    return;
                 inventorySlots[i].Show(icon, pcs);
             } 
         }   
@@ -61,16 +64,20 @@ public class UIInventoryPopup : MonoBehaviour, IGUI
         inventorySlots[index].SetPcs(pcs);
     }
 
-    public void OnItemSlotSelected(int index)
+    public void OnItemSlotSelected(int index, UnityAction callback)
     {
         ItemData item = inventoryCtrlr.GetItem(index);
 
         bool isSuccess = UIManager.Instance.TrySlotClickWithStation(item);
 
-        if (isSuccess) {
+        if (isSuccess) 
+        {
             inventoryCtrlr.RemoveItem(index);
             SettingSlotUI(index);
-        } else {
+            callback.Invoke();
+        }
+        else 
+        {
             Debug.Log("You can't place item in the slot! Slot is full!");
         }
     }

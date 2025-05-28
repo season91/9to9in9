@@ -15,6 +15,4 @@ public abstract class GUIItemSlotBase : MonoBehaviour
 
     public abstract void Show(Sprite icon, int pcs = 0);
     public abstract void Select();
-    
-    public bool IsEmpty() => isEmpty;
 }
