@@ -50,7 +50,7 @@ public class BuildManager : MonoBehaviour
     {
         if (!currentItem || !currentPreview) return;
 
-        Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        Ray ray = cam.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f));
         if (!Physics.Raycast(ray, out RaycastHit hit, maxBuildDistance, buildableLayer)) return;
         
         // Ray 닿는 곳으로 프리뷰 위치 정함. 프리뷰 위치가 곧 설치 위치
