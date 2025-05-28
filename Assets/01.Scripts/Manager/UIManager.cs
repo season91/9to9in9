@@ -178,4 +178,12 @@ public class UIManager : MonoBehaviour
     //         Debug.LogError("Failed to load popup");
     //     }
     // }
+    
+    
+    // Main Scene
+    public StationType CurrentStation() => canvasMainScene.currentStation;
+
+    public bool TrySlotClickWithStation(ItemData item) => canvasMainScene.TrySlotClickWithStation(item);
+
+    public void OpenStation(StationType type) => canvasMainScene.OpenStation(type);
 }
