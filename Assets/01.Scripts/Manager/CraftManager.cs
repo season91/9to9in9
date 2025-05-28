@@ -40,7 +40,7 @@ public class CraftManager : MonoBehaviour
     private void Start()
     {
         // test code
-        string targetRecipeCode = "rf1";
+        string targetRecipeCode = "rfc1";
 
         SerializableRecipe recipe = jsonRecipes.recipes.FirstOrDefault(r => r.recipeCode == targetRecipeCode);
         
@@ -75,8 +75,7 @@ public class CraftManager : MonoBehaviour
         
         foreach (var ingredient in recipe.ingredients)
         {
-            // itemName으로 비교할지 itemCode로 비교할지 고민
-            if (!inventory.ContainsKey(ingredient.itemName) || inventory[ingredient.itemName] < ingredient.amount)
+            if (!inventory.ContainsKey(ingredient.itemCode) || inventory[ingredient.itemCode] < ingredient.amount)
             {
                 return false;
             }
@@ -114,7 +113,7 @@ public class CraftManager : MonoBehaviour
         // 재료 차감 
         foreach (var ingredient in recipe.ingredients)
         {
-            inventory[ingredient.itemName] -= ingredient.amount;
+            inventory[ingredient.itemCode] -= ingredient.amount;
         }
         // 새로운 결과 아이템 지급 처리 필요
     }
