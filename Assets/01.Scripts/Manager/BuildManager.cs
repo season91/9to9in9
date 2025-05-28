@@ -99,10 +99,6 @@ public class BuildManager : MonoBehaviour
         
         currentPreview = Instantiate(item.previewPrefab);
         previewRenderers = currentPreview.GetComponentsInChildren<MeshRenderer>();
-        
-        Collider _collider = currentPreview.GetComponentInChildren<Collider>();
-        if (_collider)
-            halfExtents = GetComponent<Collider>().bounds.extents;
     }
     
     /// <summary>
@@ -129,7 +125,7 @@ public class BuildManager : MonoBehaviour
             }
         }
 
-        currentPreview.transform.position = finalPos + Vector3.up * 0.01f;
+        currentPreview.transform.position = finalPos;
     }
     
     /// <summary>
