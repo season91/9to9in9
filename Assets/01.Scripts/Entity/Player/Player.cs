@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -14,5 +15,9 @@ public class Player : Entity
         playerController = GetComponent<PlayerController>();
         inventoryController = GetComponent<PlayerInventoryController>();
     }
-    
+
+    private void Start()
+    {
+        SpawnManager temp = SpawnManager.Instance;
+    }
 }

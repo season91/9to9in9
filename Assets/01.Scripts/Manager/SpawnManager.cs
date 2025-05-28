@@ -31,30 +31,49 @@ public class SpawnManager : MonoBehaviour
     {
         //CreatePool<Item>("Item", Item);
         //CreatePool<Enemy>("Enemy",Enemy);
+        var rock = Resources.Load<GameObject>("Item/Prefabs/Resource/stone");
+        var wood = Resources.Load<GameObject>("Item/Prefabs/Resource/wood");
+        if (rock == null)
+        {
+            Debug.LogError("rockPrefab is null! 경로 확인 필요.");
+        }
+        else
+        {
+            CreatePool("Rock", rock);
+        }
+        if (wood == null)
+        {
+            Debug.LogError("woodPrefab is null! 경로 확인 필요.");
+        }
+        else
+        {
+            CreatePool("Wood", wood);
+        }
+
     }
 
-    private void CreatePool<T>(string key, T prefab) where T : Component
+    private void CreatePool(string key, GameObject prefab)
     {
         GameObject poolParent = new GameObject($"{key}Pool");
         poolParent.transform.SetParent(transform);
         
-        PoolManager<T> pool = new PoolManager<T>(prefab, poolParent.transform);
+        PoolManager pool = new PoolManager(prefab, poolParent.transform);
         pools[key] = pool;
     }
 
-    private PoolManager<T> GetPool<T>(string key) where T : Component
+    private PoolManager GetPool(string key)
     {
-        return pools[key] as PoolManager<T>;
+        return pools[key] as PoolManager;
     }
 
-    public T GetObject<T>(string key, T Prefab) where T : Component
+    public GameObject GetObject(string key, GameObject Prefab)
     {
-        return GetPool<T>(key).Get();
+        return GetPool(key).Get();
     }
 
-    public void ReleaseObject<T>(string key, T obj) where T : Component
+    public void ReleaseObject(string key, GameObject obj)
     {
-        GetPool<T>(key).Release(obj);
+        GetPool(key).Release(obj);
     }
     
     // 필드

@@ -23,3 +23,12 @@ public static class StringAddressable
 }
 
 // 아이템 이름 싹다 넣어주기
+
+public static class StringItemOftenUse
+{
+    public const string Rock = "Rock";
+    public const string Wood = "Wood";
+    //----오브젝트 풀 테스트용 키 밸류
+    
+    public static readonly string[] Keys = { Rock, Wood };
+}
