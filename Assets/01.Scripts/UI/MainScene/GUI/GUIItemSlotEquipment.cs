@@ -33,14 +33,16 @@ public class GUIItemSlotEquipment : GUIItemSlotBase
     public override void Select()
     {
         Initialization();
+        // CharacterManager.Player.inventoryController.Unequip(type);
     }
     
-    public void SetClickEvent(UnityAction<EquipSlot> callback)
-    {
-        btnSelect.onClick.RemoveAllListeners();
-        btnSelect.onClick.AddListener(() => callback(type));
-        btnSelect.onClick.AddListener(Select);
-    }
+    // public void SetClickEvent(UnityAction<EquipSlot> callback)
+    // {
+    //     btnSelect.onClick.RemoveAllListeners();
+    //     btnSelect.onClick.AddListener(() => callback(type));
+    //     btnSelect.onClick.AddListener(Select);
+    //     // CharacterManager.Player.inventoryController.Unequip(type);
+    // }
 
     public void SetType(EquipSlot equipSlot)
     {
