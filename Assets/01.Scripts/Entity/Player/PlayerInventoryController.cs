@@ -39,7 +39,7 @@ public class PlayerInventoryController : MonoBehaviour
     
     private List<ItemSlot> inventoryItems;
     private List<ItemData> items;
-    private List<ItemData> equippedItems;
+    private List<EquipableItemData> equippedItems;
 
     [SerializeField] private int inventorySize = 21;
     
@@ -54,7 +54,7 @@ public class PlayerInventoryController : MonoBehaviour
             inventoryItems.Add(new ItemSlot());
             items.Add(null);
         }
-        equippedItems = new List<ItemData>();
+        equippedItems = new List<EquipableItemData>();
     }
 
     void Init()
@@ -95,14 +95,23 @@ public class PlayerInventoryController : MonoBehaviour
         inventoryItems[index].InitSlot();
     }
 
-    public List<ItemData> GetAllItems()
+    public int GetAllItemCount()
     {
-        return items;
+        return items.Count;
     }
     
-    public List<ItemData> GetAllEquippedItems()
+    /*public List<EquipableItemData> GetAllEquippedItems()
     {
         return equippedItems;
+    }*/
+
+    public Sprite GetIcon(EquipSlot slot)
+    {
+        foreach (EquipableItemData item in equippedItems)
+        {
+            if (item.equipSlot == slot) return item.icon;
+        }
+        return null;
     }
     
     public Sprite GetIcon(int index)
@@ -129,7 +138,7 @@ public class PlayerInventoryController : MonoBehaviour
         return items[index];
     }
 
-    public ItemData EquipItem(ItemData item,EquipableType type)
+    public ItemData EquipItem(ItemData item,EquipType type)
     {
         /*int idx;
         for (int i = 0; i < inventorySize; ++i)
