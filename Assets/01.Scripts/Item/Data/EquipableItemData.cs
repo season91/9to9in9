@@ -5,6 +5,7 @@ public enum EquipableType
 {
     Weapon,
     Armor,
+    GatheringTool
 }
 public class EquipableItemData : ItemData
 {

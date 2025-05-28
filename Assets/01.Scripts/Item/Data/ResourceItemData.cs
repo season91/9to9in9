@@ -4,5 +4,7 @@ using UnityEngine;
 
 public class ResourceItemData  : ItemData
 {
-    // 필요한 필드 선언
+    // 여러 개 가지는 것에 대한 표시
+    public bool isStackable; // 여러개 가질 수 있는 아이템인지 구분
+    public int maxStack; // 얼마나
 }
