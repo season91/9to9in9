@@ -46,8 +46,9 @@ public class CSVImporter
         ParseCommonFields(item, cols); // 공통데이터 파싱
         
         // 장착 아이템 데이터 파싱 작성
-        item.equipableType = Enum.Parse<EquipableType>(cols[10]);
-        item.power = int.Parse(cols[11]);
+        item.equipSlot = Enum.Parse<EquipSlot>(cols[10]);
+        item.equipType = Enum.Parse<EquipType>(cols[11]);
+        item.power = int.Parse(cols[12]);
         return item;
     }
     
@@ -67,6 +68,7 @@ public class CSVImporter
         ParseCommonFields(item, cols); // 공통데이터 파싱
         
         // 자원아이템 데이터 파싱
+        item.resourceType = Enum.Parse<ResourceType>(cols[10]);
         return item;
     }
     

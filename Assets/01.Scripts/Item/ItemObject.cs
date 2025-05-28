@@ -11,6 +11,8 @@ public class ItemObject : MonoBehaviour
 
     private void Reset()
     {
+        bool found = false;
+        
         foreach (ItemType type in Enum.GetValues(typeof(ItemType)))
         {
             string path = $"Item/Data/{type}";
@@ -20,9 +22,17 @@ public class ItemObject : MonoBehaviour
                 if (item.name == name)
                 {
                     itemData = item;
+                    found = true;
                     return;
                 }
             }
+        }
+        
+        // 예외 처리
+        if (!found)
+        {
+            Debug.LogWarning($"[ItemObject] '{name}'에 해당하는 ItemData를 찾을 수 없습니다. SO 확인 필요!", this);
+            itemData = null;
         }
     }
 
