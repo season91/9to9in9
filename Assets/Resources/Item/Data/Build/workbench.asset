@@ -16,10 +16,10 @@ MonoBehaviour:
   displayName: "\uC81C\uC791\uB300"
   description: "\uB9CC\uB4E4\uC790"
   type: 3
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 49ab27a143ab4c941bad23e29dcb7cbc, type: 3}
   prefab: {fileID: 7550643799449119030, guid: 8e8b7bc897587f34493c34d27eb02144, type: 3}
   functions: 000000000200000001000000
-  previewPrefab: {fileID: 0}
+  previewPrefab: {fileID: 3547012347885662186, guid: b8f81f997efe9374cbc17ee277348efc, type: 3}
   buildType: 2
   stationType: 0
   isStackable: 0
