@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 5050469975759756817}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -141,8 +141,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7682968597119465327}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.947, z: -10}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -222,6 +222,7 @@ GameObject:
   - component: {fileID: 2477055300786949186}
   - component: {fileID: 4663675214375998211}
   - component: {fileID: 6073574819020685129}
+  - component: {fileID: 6126755026230407269}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -300,13 +301,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6fcaaa7fc1f0bd4fbdc56bf23e19c8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 1
   minMoveSpeed: 3
   maxMoveSpeed: 20
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  jumpPower: 7
+  jumpPower: 2
   minXLook: -85
   maxXLook: 85
   lookSensitivity: 0.1
@@ -369,6 +370,26 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.05
-  m_Height: 0.15015243
+  m_Height: 0.24
   m_Direction: 1
-  m_Center: {x: 0, y: 0.025076218, z: 0}
+  m_Center: {x: 0, y: 0.06, z: 0}
+--- !u!114 &6126755026230407269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8012982351981331770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7028a14bb330c3e41a811eff6927bc9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health:
+    maxValue: 0
+    passiveValue: 0
+    curValue: 0
+  stamina:
+    maxValue: 0
+    passiveValue: 0
+    curValue: 0

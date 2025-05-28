@@ -43,14 +43,13 @@ GameObject:
   - component: {fileID: 8200732622975301850}
   - component: {fileID: 4472330952149070419}
   - component: {fileID: 4596855479280484415}
-  - component: {fileID: 3207453026788224382}
   - component: {fileID: 5052423844177271179}
   m_Layer: 6
   m_Name: tree-log
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8200732622975301850
 Transform:
@@ -117,22 +116,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!208 &3207453026788224382
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 348468813239567889}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.125, y: 0.13900001, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: -0.003, y: 0.033, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!64 &5052423844177271179
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -493,14 +476,13 @@ GameObject:
   - component: {fileID: 8600819718974074636}
   - component: {fileID: 599209902479807017}
   - component: {fileID: 5837156320402721820}
-  - component: {fileID: 488879304701465283}
   - component: {fileID: 2162198631401144462}
   m_Layer: 6
   m_Name: tree-log-small
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8600819718974074636
 Transform:
@@ -567,22 +549,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!208 &488879304701465283
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1811008915827653234}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.125, y: 0.13900001, z: 0.32500002}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0.13900001, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!64 &2162198631401144462
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -680,14 +646,13 @@ GameObject:
   - component: {fileID: 5531264926663265377}
   - component: {fileID: 5556679800120009360}
   - component: {fileID: 2606184001399779882}
-  - component: {fileID: 4232876007755380616}
   - component: {fileID: 4722133992927587036}
   m_Layer: 6
   m_Name: resource-stone-large
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5531264926663265377
 Transform:
@@ -754,22 +719,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!208 &4232876007755380616
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2345990745405514825}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 0
-  m_Extents: {x: 0.2, y: 0.080000006, z: 0.2}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0.080000006, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!64 &4722133992927587036
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1517,14 +1466,13 @@ GameObject:
   - component: {fileID: 8898415493456490280}
   - component: {fileID: 708015229616784656}
   - component: {fileID: 3974203227958946340}
-  - component: {fileID: 2875457957598460456}
   - component: {fileID: 2580438713924614416}
   m_Layer: 6
   m_Name: rock-sand-a
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8898415493456490280
 Transform:
@@ -1591,22 +1539,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!208 &2875457957598460456
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4896439800772986461}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 0
-  m_Extents: {x: 0.33, y: 0.19600001, z: 0.33}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0.022000002, y: 0.19600001, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!64 &2580438713924614416
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1641,11 +1573,12 @@ GameObject:
   - component: {fileID: 9003178295520307169}
   - component: {fileID: 3901321985285491927}
   - component: {fileID: 4821325551376671075}
+  - component: {fileID: 65965647987952485}
   m_Layer: 6
   m_Name: rock-flat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 2
   m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &7369360173615971666
@@ -1735,6 +1668,25 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 3510842415079539893, guid: dee0be11294da1145904b72e92e7ba90, type: 3}
+--- !u!114 &65965647987952485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4951249815551796382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &5495752827243871554
 GameObject:
   m_ObjectHideFlags: 0
@@ -2144,14 +2096,13 @@ GameObject:
   - component: {fileID: 8106650269063505553}
   - component: {fileID: 417318794766746271}
   - component: {fileID: 7783787755778673862}
-  - component: {fileID: 4171029933634292192}
   - component: {fileID: 1074931548342776810}
   m_Layer: 6
   m_Name: tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8106650269063505553
 Transform:
@@ -2218,22 +2169,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!208 &4171029933634292192
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6758701802380499583}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.27600002, y: 0.70500004, z: 0.263}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0.0050000004, y: 0.70500004, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!64 &1074931548342776810
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2404,14 +2339,13 @@ GameObject:
   - component: {fileID: 4025556172281066545}
   - component: {fileID: 809379588759724910}
   - component: {fileID: 5102274181978611585}
-  - component: {fileID: 6476582503065220045}
   - component: {fileID: 2413327534389554186}
   m_Layer: 6
   m_Name: rock-c
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4025556172281066545
 Transform:
@@ -2478,22 +2412,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!208 &6476582503065220045
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7266819903235987826}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.39200002, y: 0.25500003, z: 0.28300002}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: -0.011000001, y: 0.25500003, z: -0.006}
-  m_TimeToStationary: 0.5
 --- !u!64 &2413327534389554186
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2633,14 +2551,13 @@ GameObject:
   - component: {fileID: 8069906937323493168}
   - component: {fileID: 4682211866877832337}
   - component: {fileID: 3400932134303470080}
-  - component: {fileID: 1999582818197349038}
   - component: {fileID: 2787923337791049437}
   m_Layer: 6
   m_Name: rock-b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8069906937323493168
 Transform:
@@ -2707,22 +2624,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!208 &1999582818197349038
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7533163292348217091}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.41700003, y: 0.209, z: 0.36200002}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: -0.039, y: 0.209, z: 0.007}
-  m_TimeToStationary: 0.5
 --- !u!64 &2787923337791049437
 MeshCollider:
   m_ObjectHideFlags: 0
