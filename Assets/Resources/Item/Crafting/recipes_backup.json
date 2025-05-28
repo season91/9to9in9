@@ -2,22 +2,22 @@
     "recipes": [
         {
             "recipeCode": "rf1",
-            "category": "Food",
+            "category": "Consumable",
             "resultItemCode": "c3",
             "resultItemName": "meat-cooked",
             "resultAmount": 1,
             "ingredients": [
                 {
-                    "itemCode": "whole-ham",
+                    "itemName": "whole-ham",
                     "amount": 1
                 },
                 {
-                    "itemCode": "apple",
+                    "itemName": "apple",
                     "amount": 1
                 }
             ],
             "craftTime": 5.0,
-            "workstationEnumType": "Furnace"
+            "workstationEnumType": "Campfire"
         }
     ]
 }
