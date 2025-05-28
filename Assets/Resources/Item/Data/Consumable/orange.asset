@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 00cd1437998705a4cb772ca04634fcfd, type: 3}
-  m_Name: apple
+  m_Name: orange
   m_EditorClassIdentifier: 
-  itemCode: c2
-  displayName: "\uC0AC\uACFC"
-  description: "\uC0AC\uACFC\uC774\uB2E4."
+  itemCode: c4
+  displayName: "\uC624\uB80C\uC9C0"
+  description: "\uC624\uB80C\uC9C0\uC774\uB2E4"
   type: 0
-  icon: {fileID: 21300000, guid: d0c3a85675a163b428c471de91dae155, type: 3}
-  prefab: {fileID: 3263329720415641761, guid: 7c2c3b9356697524d92f7c69c4a782ca, type: 3}
+  icon: {fileID: 21300000, guid: 086781190f56d7349a77da32fe6d0ad4, type: 3}
+  prefab: {fileID: 3930081007767744977, guid: ba7abc1c7bdc5684fb7a1bece31f6dc2, type: 3}
   functions: 00000000
-  consumableTypes: 00000000
+  consumableTypes: 02000000
   amounts:
-  - 5
+  - 30
   isStackable: 1
   maxStack: 12
