@@ -1,0 +1,5 @@
+﻿code,name,displayName,description,type,icon,prefab,function,isStackable,maxStack,ResourceType
+r1,stone,돌,돌이다.,Resource,stone-icon,stone,Inspectable,TRUE,12,None
+r2,wood,장작,장작이다. 가공해보자.,Resource,wood-icon,wood,Inspectable,TRUE,12,Fuel
+r3,iron,철,철이다. 가공해보자.,Resource,iron-icon,iron,Inspectable,TRUE,12,Metal
+r4,iron-bar,가공된 철,가공된 철이다.,Resource,iron-bar-icon,iron-bar,Inspectable,TRUE,12,None

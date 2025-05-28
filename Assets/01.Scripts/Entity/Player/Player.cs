@@ -1,18 +1,23 @@
+using System;
 using UnityEngine;
+
 /// <summary>
 /// IDamageble, IMoveable, IJumpable, IAttackable
 /// </summary>
 public class Player : Entity
 {
-    // Start is called before the first frame update
-    void Start()
+    public PlayerController playerController { get; private set; }
+    public PlayerInventoryController inventoryController { get; private set; }
+    
+    void Awake()
     {
-        
+        CharacterManager.Register(this);
+        playerController = GetComponent<PlayerController>();
+        inventoryController = GetComponent<PlayerInventoryController>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        SpawnManager temp = SpawnManager.Instance;
     }
 }

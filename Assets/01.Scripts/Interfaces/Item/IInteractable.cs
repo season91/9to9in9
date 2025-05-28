@@ -4,5 +4,6 @@
 /// </summary>
 public interface IInteractable : IInspectable
 {
+    // 상호작용 E 키 누름으로 인해 아이템 습득시
     public void OnInteract();
 }

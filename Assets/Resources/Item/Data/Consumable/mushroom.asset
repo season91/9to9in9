@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00cd1437998705a4cb772ca04634fcfd, type: 3}
+  m_Name: mushroom
+  m_EditorClassIdentifier: 
+  itemCode: c6
+  displayName: "\uBC84\uC12F"
+  description: "\uBC84\uC12F\uC774\uB2E4."
+  type: 0
+  icon: {fileID: 21300000, guid: 73e5505259c39474d9ff050927e881fd, type: 3}
+  prefab: {fileID: 2635201835922550776, guid: da9f4df84d9599b4aa68ef628b8b8f18, type: 3}
+  isStackable: 1
+  maxStack: 12
+  functions: 00000000
+  consumableTypes: 02000000
+  amounts:
+  - 20
