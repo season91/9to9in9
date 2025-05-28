@@ -1,10 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+// 자원 사용 타입
+public enum ResourceType
+{
+    None,
+    Fuel, //연료
+    Metal //금속
+}
 public class ResourceItemData  : ItemData
 {
-    // 여러 개 가지는 것에 대한 표시
-    public bool isStackable; // 여러개 가질 수 있는 아이템인지 구분
-    public int maxStack; // 얼마나
+    public ResourceType resourceType;
 }

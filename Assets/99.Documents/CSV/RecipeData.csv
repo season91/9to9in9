@@ -1,0 +1,12 @@
+﻿code,ItemType,resultItemCode,resultItemName,resultAmount,ingredients,amounts,craftTime,workstationType,,,
+rfc1,Consumable,c3,meat-cooked,1,c1|c2,1|1,5,Campfire,,고기요리,
+rfe1,Equipable,e1,axe,1,r2|r3,1|1,5,Anvil,,도끼,
+rfe2,Equipable,e2,pickaxe,1,r2|r3,1|1,5,Anvil,,곡괭이,
+rfe3,Equipable,e3,helmet,1,r2|r3,3|3,5,Anvil,,투구,
+rfe4,Equipable,e4,armor-chest,1,r2|r4,5|2,5,Anvil,,갑옷-상의,
+rfe5,Equipable,e5,armor-leg,1,r2|r4,5|2,5,Anvil,,갑옷-하의,
+rfe6,Equipable,e6,boots,1,r2|r3,3|3,5,Anvil,,신발,
+rfe7,Equipable,e7,shield,1,r2|r4,7|3,5,Anvil,,방패,
+rfe8,Equipable,e8,sword,1,r2|r4,10|5,5,Anvil,,검,
+rfe9,Equipable,e9,hammer,1,r2|r4,10|5,5,Anvil,,망치,
+rfr1,Resource,r4,iron-bar,1,r2|r3,1|1,5,Smelter,,가공된철,장작+철
