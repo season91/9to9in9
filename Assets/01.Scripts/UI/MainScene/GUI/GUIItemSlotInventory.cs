@@ -40,15 +40,12 @@ public class GUIItemSlotInventory : GUIItemSlotBase
     public override void Select()
     {
         selectedCover.SetActive(true);
-        
-        // UIManager.Instance.OnItemSlotSelected(index);
     }
 
-    public void SetClickEvent(UnityAction<int, UnityAction> callback, int slotIndex)
+    public void SetClickEvent(UnityAction<int> callback, int slotIndex)
     {
         index = slotIndex;
         btnSelect.onClick.RemoveAllListeners();
-        btnSelect.onClick.AddListener(() => callback(index, Select));
-        // btnSelect.onClick.AddListener(Select);
+        btnSelect.onClick.AddListener(() => callback(index));
     }
 }
