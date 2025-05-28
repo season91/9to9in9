@@ -40,17 +40,17 @@ public class CraftManager : MonoBehaviour
     private void Start()
     {
         // test code
-        string targetRecipeCode = "rfc1";
-
-        SerializableRecipe recipe = jsonRecipes.recipes.FirstOrDefault(r => r.recipeCode == targetRecipeCode);
-        
-        if (recipe == null)
-        {
-            Debug.LogWarning($"레시피 코드 '{targetRecipeCode}'를 찾을 수 없습니다.");
-            return;
-        }
-
-        TryCraft(recipe);
+        // string targetRecipeCode = "rfc1";
+        //
+        // SerializableRecipe recipe = jsonRecipes.recipes.FirstOrDefault(r => r.recipeCode == targetRecipeCode);
+        //
+        // if (recipe == null)
+        // {
+        //     Debug.LogWarning($"레시피 코드 '{targetRecipeCode}'를 찾을 수 없습니다.");
+        //     return;
+        // }
+        //
+        // TryCraft(recipe);
     }
 
     // json 레시피 data load
