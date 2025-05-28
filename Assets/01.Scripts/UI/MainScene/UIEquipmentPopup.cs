@@ -29,16 +29,15 @@ public class UIEquipmentPopup : MonoBehaviour, IGUI
         equipmentSlotDict = new Dictionary<EquipSlot, GUIItemSlotEquipment>();
         
         int slotIndex = 0;
-        foreach (EquipSlot slot in Enum.GetValues(typeof(EquipSlot)))
+        foreach (EquipSlot slotType in Enum.GetValues(typeof(EquipSlot)))
         {
-            if (equipmentSlotDict.ContainsKey(slot))
+            if (equipmentSlotDict.ContainsKey(slotType))
             {
-                Debug.LogError($"already contains {slot} in equipment slot");
+                Debug.LogError($"already contains {slotType} in equipment slot");
             }
             equipmentSlots[slotIndex].Initialization();
-            equipmentSlots[slotIndex].SetType(slot);
-            equipmentSlots[slotIndex].SetClickEvent(OnEquipSlotSelected);
-            equipmentSlotDict[slot] = equipmentSlots[slotIndex++];
+            equipmentSlots[slotIndex].SetType(slotType);
+            equipmentSlotDict[slotType] = equipmentSlots[slotIndex++];
             // 나중에 실루엣도 해당 타입에 맞는 이미지들로 변경해주기
         }
     }
@@ -63,11 +62,10 @@ public class UIEquipmentPopup : MonoBehaviour, IGUI
         gameObject.SetActive(false);
     }
 
-    void OnEquipSlotSelected(EquipSlot type)
-    {
-        // CharacterManager.Player.inventoryController.Unequip(type);
-        // Unequip에서 원래 비어있는지 체크해주고 비어 있으면 ㄴㄴ 
-    }
+    // void OnEquipSlotSelected(EquipSlot type)
+    // {
+    //     // Unequip에서 원래 비어있는지 체크해주고 비어 있으면 ㄴㄴ 
+    // }
 
     // public bool TryPlaceItem(ItemData item)
     // {
