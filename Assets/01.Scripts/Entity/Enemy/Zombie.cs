@@ -34,7 +34,7 @@ public class Zombie : Enemy, IAttackAble
     private float lastAttackTime;
     public float attackDistance;
 
-    private float playerDistance;
+    [SerializeField] private float playerDistance;
     
     public float fieldOfView = 120f;
     
@@ -42,6 +42,8 @@ public class Zombie : Enemy, IAttackAble
     private SkinnedMeshRenderer[] meshRenderers;
     
     public PlayerStatHandler playerStatHandler;
+
+    private bool isCalculate = true;
     
     private void Awake()
     {
@@ -62,6 +64,16 @@ public class Zombie : Enemy, IAttackAble
         playerDistance = Vector3.Distance(transform.position, CharacterManager.Player.transform.position);
         animator.SetBool("IsMove", agent.velocity.magnitude > 0);
 
+        NavMeshPath path = new NavMeshPath();
+        if (agent.CalculatePath(CharacterManager.Player.transform.position,path))
+        {
+            isCalculate = true;
+        }
+        else
+        {
+            isCalculate = false;
+        }
+        
         switch (aiState)
         {
             case AIState.Idle:
@@ -82,7 +94,7 @@ public class Zombie : Enemy, IAttackAble
             Invoke("WanderToNewLocation", Random.Range(minWanderWaitTime, maxWanderWaitTime));    
         }
 
-        if (playerDistance < detectDistance)
+        if (playerDistance < detectDistance && IsPlayerOnWalkable())
         {
             SetState(AIState.Attacking);
         }
@@ -126,8 +138,7 @@ public class Zombie : Enemy, IAttackAble
             {
                 lastAttackTime = Time.time;
                 animator.speed = 1;
-                animator.SetTrigger("Attack");
-                Debug.Log("공격 실행");
+                animator.SetTrigger("Attack"); ;
                 playerStatHandler.TakeDamage(attackPower);
             }
         }
@@ -138,7 +149,7 @@ public class Zombie : Enemy, IAttackAble
                 agent.isStopped = false;
                 NavMeshPath path = new NavMeshPath();
                 if (agent.CalculatePath(CharacterManager.Player.transform.position, path))
-                {
+                {;
                     agent.SetDestination(CharacterManager.Player.transform.position);
                 }
                 else
@@ -146,6 +157,7 @@ public class Zombie : Enemy, IAttackAble
                     agent.SetDestination(transform.position);
                     agent.isStopped = true;
                     SetState(AIState.Wandering);
+                    
                 }
             }
             else
@@ -187,4 +199,20 @@ public class Zombie : Enemy, IAttackAble
         animator.speed = agent.speed / walkSpeed;
     }
 
+    
+    bool IsPlayerOnWalkable()
+    {
+        NavMeshHit hit;
+        float checkDistance = 0.1f;
+
+        // Walkable 마스크 구하기 (Walkable = 기본 0 또는 1번 영역)
+        int walkableMask = 1 << NavMesh.GetAreaFromName("Walkable");
+
+        if (NavMesh.SamplePosition(CharacterManager.Player.transform.position, out hit, checkDistance, walkableMask))
+        {
+            return true;
+        }
+
+        return false;
+    }
 }
