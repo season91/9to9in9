@@ -66,11 +66,13 @@ public class SpawnManager : MonoBehaviour
         return pools[key] as PoolManager;
     }
 
+    // object pool 대상 활성화. 예) 자원인 경우 이름(wood), 프리팹명으로 호출(wood)
     public GameObject GetObject(string key, GameObject Prefab)
     {
         return GetPool(key).Get();
     }
 
+    // object pool 대상 비활성화
     public void ReleaseObject(string key, GameObject obj)
     {
         GetPool(key).Release(obj);
