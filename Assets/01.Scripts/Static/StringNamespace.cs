@@ -21,3 +21,5 @@ public static class StringAddressable
     public const string MainScene = "MainScene";
     public const string StartScene = "StartScene";
 }
+
+// 아이템 이름 싹다 넣어주기

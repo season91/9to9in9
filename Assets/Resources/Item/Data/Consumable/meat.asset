@@ -10,17 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 00cd1437998705a4cb772ca04634fcfd, type: 3}
-  m_Name: apple
+  m_Name: meat
   m_EditorClassIdentifier: 
-  itemCode: c2
-  displayName: "\uC0AC\uACFC"
-  description: "\uC0AC\uACFC\uC774\uB2E4."
+  itemCode: c1
+  displayName: "\uACE0\uAE30"
+  description: "\uC18C\uB97C \uC7A1\uC544 \uC5BB\uC740 \uACE0\uAE30\uC774\uB2E4.
+    \uBD88\uC5D0 \uAC00\uACF5\uD574\uBCF4\uC790."
   type: 0
-  icon: {fileID: 21300000, guid: d0c3a85675a163b428c471de91dae155, type: 3}
-  prefab: {fileID: 3263329720415641761, guid: 7c2c3b9356697524d92f7c69c4a782ca, type: 3}
+  icon: {fileID: 21300000, guid: 616790708d21e0545bb83a4695b3c0d2, type: 3}
+  prefab: {fileID: 3006929802225859455, guid: 50e2715f58895e240a288dd9cd592da4, type: 3}
   functions: 00000000
-  consumableTypes: 00000000
+  consumableTypes: 0000000001000000
   amounts:
-  - 5
+  - 15
+  - 10
   isStackable: 1
   maxStack: 12

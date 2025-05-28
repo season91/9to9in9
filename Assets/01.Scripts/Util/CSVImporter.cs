@@ -48,6 +48,8 @@ public class CSVImporter
         ParseCommonFields(item, cols); // 공통데이터 파싱
         
         // 장착 아이템 데이터 파싱 작성
+        item.equipableType = Enum.Parse<EquipableType>(cols[8]);
+        item.power = int.Parse(cols[9]);
         return item;
     }
     
@@ -67,6 +69,8 @@ public class CSVImporter
         ParseCommonFields(item, cols); // 공통데이터 파싱
         
         // 자원아이템 데이터 파싱
+        item.isStackable = bool.Parse(cols[8]);
+        item.maxStack = int.Parse(cols[9]);
         return item;
     }
     
@@ -140,8 +144,8 @@ public class CSVImporter
 
     private static void ParseCommonFields(ItemData item, string[] cols)
     {
-        item.name = cols[1]; // 파일명
         item.itemCode = cols[0];
+        item.name = cols[1]; // 파일명
         item.displayName = cols[2];
         item.description = cols[3];
         item.type = (ItemType)Enum.Parse(typeof(ItemType), cols[4]);

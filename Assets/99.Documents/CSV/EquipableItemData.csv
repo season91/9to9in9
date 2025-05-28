@@ -1,0 +1,3 @@
+﻿code,name,displayName,description,type,icon,prefab,function,EquipableType,power
+e1,axe,도끼,도끼이다.,Equipable,tool-axe-icon,tool-axe,Inspectable,GatheringTool,10
+e2,pickaxe,곡괭이,곡괭이이다.,Equipable,tool-pickaxe-icon,tool-pickaxe,Inspectable,GatheringTool,10
