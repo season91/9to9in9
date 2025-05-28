@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4125702089082098112}
   - component: {fileID: 2431531775107539684}
   - component: {fileID: 2870153609850591014}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: smelter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 5918932737175914068}
   - component: {fileID: 8192054735312591613}
   - component: {fileID: 3361654707176190723}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}

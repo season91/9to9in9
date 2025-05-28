@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1324819887191253582}
   - component: {fileID: 8712514504660595801}
   - component: {fileID: 4745976011942121921}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: anvil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 944259476325194363}
   - component: {fileID: 824284893676745805}
   - component: {fileID: 101213193035869577}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: hammer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
