@@ -16,11 +16,11 @@ MonoBehaviour:
   displayName: "\uBC30"
   description: "\uBC30\uC774\uB2E4."
   type: 0
-  icon: {fileID: 0}
-  prefab: {fileID: 0}
+  icon: {fileID: 21300000, guid: 2d6b388d66852fe4b99e49b67541608f, type: 3}
+  prefab: {fileID: 4602099555772426213, guid: ef9d688488b342e4e8eedf6df6de0927, type: 3}
+  isStackable: 1
+  maxStack: 12
   functions: 00000000
   consumableTypes: 01000000
   amounts:
   - 30
-  isStackable: 1
-  maxStack: 12
