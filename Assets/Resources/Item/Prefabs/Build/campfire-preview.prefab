@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3556936797638607271}
   - component: {fileID: 6578497546241721516}
   - component: {fileID: 2357239507270613919}
+  - component: {fileID: -5291636444340201748}
   m_Layer: 0
   m_Name: campfire-preview
   m_TagString: Untagged
@@ -84,6 +85,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-5291636444340201748
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2422841386545285316}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.27776858, y: 0.07272504, z: 0.26923183}
+  m_Center: {x: 0, y: 0.03636252, z: 0}
 --- !u!1 &9158282081473736760
 GameObject:
   m_ObjectHideFlags: 0
