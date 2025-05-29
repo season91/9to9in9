@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d74587e00f6bde46bc32e5a1060ec6a, type: 3}
+  m_Name: MetalWallScrewsData
+  m_EditorClassIdentifier: 
+  itemCode: b11
+  displayName: "\uAC15\uD654\uB41C \uCCA0 \uBCBD"
+  description: "\uB098\uC0AC\uAC00 \uBC15\uD600\uC788\uB2E4"
+  type: 3
+  icon: {fileID: 21300000, guid: 8127c9c0a75458d488e5544858de4ce1, type: 3}
+  prefab: {fileID: 6316037595029731472, guid: c2b7bee0f99f85947aa52b10ae19c71e, type: 3}
+  isStackable: 1
+  maxStack: 30
+  functions: 0000000002000000
+  previewPrefab: {fileID: 3597453034273277298, guid: 0cbde886092744a4fb810776046c3531, type: 3}
+  buildType: 0
+  stationType: 4
+  health: 70

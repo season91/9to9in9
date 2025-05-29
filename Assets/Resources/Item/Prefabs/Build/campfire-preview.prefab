@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3556936797638607271}
   - component: {fileID: 6578497546241721516}
   - component: {fileID: 2357239507270613919}
-  - component: {fileID: 4469838944254336159}
+  - component: {fileID: -5291636444340201748}
   m_Layer: 0
   m_Name: campfire-preview
   m_TagString: Untagged
@@ -85,7 +85,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4469838944254336159
+--- !u!65 &-5291636444340201748
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,7 +100,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

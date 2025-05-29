@@ -91,6 +91,7 @@ public class CSVImporter
         item.previewPrefab = PrefabParse(cols[10], item.type);
         item.buildType = Enum.Parse<BuildType>(cols[11]);
         item.stationType = Enum.Parse<StationType>(cols[12]);
+        item.health = float.Parse(cols[13]);
         
         return item;
     }
@@ -109,7 +110,7 @@ public class CSVImporter
             return;
         }
         
-        string targetFolder = $"Assets/Resources/Item/Data/";
+        string targetFolder = $"Assets/Addressables/MainScene/Data/";
         if (!Directory.Exists(targetFolder)) {
             Directory.CreateDirectory(targetFolder);
         }
@@ -117,10 +118,11 @@ public class CSVImporter
         for (int i = 1; i < lines.Length; i++) {
             string[] cols = lines[i].Split(',');
             T item = parseFunc(cols);
+            string adrName = ToPascalDataName(item.name);
             
             // itemType 기반 경로 분기
             string typeFolder = item.type.ToString(); 
-            string assetPath = $"{targetFolder}/{typeFolder}/{item.name}.asset";
+            string assetPath = $"{targetFolder}/{typeFolder}/{adrName}.asset";
             var existing = AssetDatabase.LoadAssetAtPath<T>(assetPath);
             if (existing != null)
             {
@@ -185,7 +187,19 @@ public class CSVImporter
     {
         return value.Split('|').Select(float.Parse).ToArray();
     }
- 
+    
+    public static string ToPascalDataName(string kebab)
+    {
+        // "metal-wall" → ["metal", "wall"]
+        string[] parts = kebab.Split('-');
+
+        // 각 단어의 첫 글자를 대문자로 만들고 이어붙임
+        string pascal = string.Concat(parts.Select(part =>
+            char.ToUpper(part[0]) + part.Substring(1)
+        ));
+
+        return pascal + "Data";
+    }
     #endregion
 }
 #endif

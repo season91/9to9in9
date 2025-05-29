@@ -25,7 +25,7 @@ public class GUIItemSlotInventory : GUIItemSlotBase
         tmpPcs.text = string.Empty;
     }
 
-    public override void Show(Sprite icon, int pcs = 0)
+    public override void Show(Sprite icon, int pcs = 0, ItemData itemData = null)
     {
         imgIcon.gameObject.SetActive(true);
         imgIcon.sprite = icon;

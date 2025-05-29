@@ -22,4 +22,5 @@ public class BuildItemData : ItemData
     public GameObject previewPrefab; // 프리뷰용 프리팹
     public BuildType buildType;
     public StationType stationType;
+    public float health;
 }

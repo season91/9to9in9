@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 318405702767360328}
   - component: {fileID: 3998217195974857917}
   - component: {fileID: 7630240415273208118}
-  - component: {fileID: 453070010189676816}
+  - component: {fileID: -5811308299944722740}
   m_Layer: 0
   m_Name: wooden-floor-preview
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &453070010189676816
+--- !u!65 &-5811308299944722740
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -99,7 +99,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

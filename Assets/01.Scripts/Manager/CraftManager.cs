@@ -1,93 +1,43 @@
 using System;
+using System.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using UnityEngine;
+
 /// <summary>
-/// item 조합
+/// 아이템 제작 흐름 조율
 /// </summary>
 public class CraftManager : MonoBehaviour
 {
     // 레시피 공식 데이터 json 으로 선택한 이유
     // 1. 복잡한 공식은 json 작성이 유지보수가 용이
     // 2. 공식 수정 후 동적 재로드 가능 
-    
-    // json data load
     private Dictionary<StationType, Dictionary<string, List<SerializableRecipe>>> parsedRecipes;
-
+    
     private PlayerInventoryController playerInventory;
+    
+    private RecipeHandler recipeHandler;
 
     private void Awake()
     {
-        ReloadRecipes();
         playerInventory = CharacterManager.Player.inventoryController;
+        recipeHandler = new RecipeHandler(playerInventory);
     }
 
-    private void Start()
+    private async void Start()
     {
-        // test
-        // GetRecipeOfStationType("Anvil");
-    }
+        await ReloadRecipes(); // 완료될 때까지 기다려야함. awake는 안됨
 
-    // json 레시피 data load
-    private void ReloadRecipes()
-    {
-        // Addressables 로 조회하는 거로 수정 필요
-        TextAsset jsonAsset = Resources.Load<TextAsset>("Item/Crafting/recipes"); // 동기로 가져오기
-        if (jsonAsset == null)
-        {
-            Debug.LogError("recipes.json을 찾을 수 없습니다.");
-            return;
-        }
+        Debug.Log("레시피 로딩 완료 후 후속 로직 가능");
         
-        Debug.Log("Reloading recipes.json");
-
-        JObject root = JObject.Parse(jsonAsset.text);
-        JArray recipeArray = (JArray)root["recipes"];
-
-        parsedRecipes = new Dictionary<StationType, Dictionary<string, List<SerializableRecipe>>>();
-
-        foreach (var stationEntry in recipeArray)
-        {
-            foreach (var kv in (JObject)stationEntry)
-            {
-                string stationKey = kv.Key;
-
-                if (!Enum.TryParse<StationType>(stationKey, out StationType stationEnum))
-                {
-                    Debug.LogWarning($"알 수 없는 StationType: {stationKey}");
-                    continue;
-                }
-
-                if (kv.Value.Type == JTokenType.Array)
-                {
-                    // Campfire, Smelter처럼 중분류 없이 바로 list일 경우
-                    var recipeList = kv.Value.ToObject<List<SerializableRecipe>>();
-                    parsedRecipes[stationEnum] = new Dictionary<string, List<SerializableRecipe>>
-                    {
-                        { "Default", recipeList }
-                    };
-                }
-                else if (kv.Value.Type == JTokenType.Object)
-                {
-                    // Anvil처럼 중분류가 있는 구조
-                    var categoryObject = (JObject)kv.Value;
-                    var categoryDict = new Dictionary<string, List<SerializableRecipe>>();
-
-                    foreach (var cat in categoryObject)
-                    {
-                        string category = cat.Key;
-                        var recipeList = cat.Value.ToObject<List<SerializableRecipe>>();
-                        categoryDict[category] = recipeList;
-                    }
-
-                    parsedRecipes[stationEnum] = categoryDict;
-                }
-            }
-        }
-
-        Debug.Log($"총 제작소 종류: {parsedRecipes.Count}개 로드됨");
+        // test
+        GetRecipeOfStationType("Anvil");
+    }
+    
+    private async Task ReloadRecipes()
+    {
+        var recipeLoader = new RecipeLoader();
+        parsedRecipes = await recipeLoader.LoadRecipesAsync();
     }
 
     /// <summary>
@@ -128,7 +78,7 @@ public class CraftManager : MonoBehaviour
                     continue;
                 }
 
-                bool isCraftable = CanCraft(recipe.ingredients);
+                bool isCraftable = CanCraft(recipe);
 
                 var iconDict = iconCraftableByCategory[category];
                 if (!iconDict.ContainsKey(iconSprite))
@@ -141,30 +91,14 @@ public class CraftManager : MonoBehaviour
         return iconCraftableByCategory;
     }
 
-    /// <summary>
-    /// 레시피에 필요한 재료가 모두 있어야 true
-    /// 하나라도 없으면 false
-    /// </summary>
-    private bool CanCraft(List<SerializableIngredient> ingredients)
-    {
-        foreach (var ingredient in ingredients)
-        {
-            var amount = playerInventory.GetPcs(ingredient.itemName);
-            if (amount <= 0)
-            {
-                return false;
-            }
-        }
-        return true;
-    }
+    private bool CanCraft(SerializableRecipe recipe) => recipeHandler.CanCraft(recipe.ingredients);
+    
     /// <summary>
     /// 제작 조건 검사 확인결과에 따라 실행 결정
     /// </summary>
-    /// <param name="recipe"></param>
-    /// <returns></returns>
     private bool TryCraft(SerializableRecipe recipe)
     {
-        if (!CanCraft(recipe.ingredients))
+        if (!CanCraft(recipe))
         {
             Debug.Log("재료 부족으로 제작 실패");
             return false;

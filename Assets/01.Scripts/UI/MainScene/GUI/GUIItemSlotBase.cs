@@ -12,6 +12,6 @@ public abstract class GUIItemSlotBase : MonoBehaviour
     
     public abstract void Initialization();
 
-    public abstract void Show(Sprite icon, int pcs = 0);
+    public abstract void Show(Sprite icon, int pcs = 0, ItemData itemData = null);
     public abstract void Select();
 }

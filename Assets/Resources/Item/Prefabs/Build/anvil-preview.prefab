@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3913415174245026860}
   - component: {fileID: 6585745438293779492}
   - component: {fileID: 1825089774869935249}
-  - component: {fileID: 8350053738957997246}
+  - component: {fileID: 3412378742533586016}
   m_Layer: 0
   m_Name: anvil-preview
   m_TagString: Untagged
@@ -85,7 +85,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8350053738957997246
+--- !u!65 &3412378742533586016
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,7 +100,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

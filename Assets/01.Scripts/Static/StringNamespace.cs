@@ -71,6 +71,12 @@ public static class StringAdrItemDataResource
     public const string Iron =  "IronData";
     public const string IronBar =  "IronBarData";
 }
+
+public static class StringAdrCraftRecipe
+{
+    public const string Recipes = "Recipes";
+}
+
 #endregion
 
 #endregion

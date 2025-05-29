@@ -23,7 +23,7 @@ public class GUIItemSlotEquipment : GUIItemSlotBase
         imgIcon.gameObject.SetActive(false);
     }
 
-    public override void Show(Sprite icon, int pcs = 0)
+    public override void Show(Sprite icon, int pcs = 0, ItemData itemData = null)
     {
         imgSilhouette.gameObject.SetActive(false);
         imgIcon.gameObject.SetActive(true);
