@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: MetalWallScrewsHalfData
   m_EditorClassIdentifier: 
   itemCode: b14
+  itemName: metal-wall-screws-half
   displayName: "\uAC15\uD654\uB41C \uB0AE\uC740 \uCCA0 \uBCBD"
   description: "\uC5C4\uD3D0\uD560 \uC218 \uC788\uB2E4"
   type: 3
@@ -23,5 +24,5 @@ MonoBehaviour:
   functions: 0000000002000000
   previewPrefab: {fileID: 6452314596346298864, guid: 54e6b38c093770e48983e436521a8e74, type: 3}
   buildType: 0
-  stationType: 4
+  stationType: 0
   health: 90

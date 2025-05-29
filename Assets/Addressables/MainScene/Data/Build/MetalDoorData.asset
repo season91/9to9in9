@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: MetalDoorData
   m_EditorClassIdentifier: 
   itemCode: b15
+  itemName: metal-door
   displayName: "\uCCA0 \uBB38"
   description: "\uC5EC\uC804\uD788 \uBAA8\uB450\uC5D0\uAC8C \uC5F4\uB824\uC788\uB2E4"
   type: 3
@@ -23,5 +24,5 @@ MonoBehaviour:
   functions: 0000000002000000
   previewPrefab: {fileID: 180806943741247926, guid: b5620555ba1fd8b4485c1710b424c29d, type: 3}
   buildType: 0
-  stationType: 4
+  stationType: 0
   health: 70

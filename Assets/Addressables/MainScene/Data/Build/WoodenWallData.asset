@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: WoodenWallData
   m_EditorClassIdentifier: 
   itemCode: b5
+  itemName: wooden-wall
   displayName: "\uB098\uBB34 \uBCBD"
   description: "\uAC00\uBCBC\uC6B4 \uBCBD"
   type: 3
@@ -23,5 +24,5 @@ MonoBehaviour:
   functions: 0000000002000000
   previewPrefab: {fileID: 6927473402442453038, guid: 0a0efb634af3b4d43a3a6c204173c056, type: 3}
   buildType: 0
-  stationType: 4
+  stationType: 0
   health: 50
