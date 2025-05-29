@@ -54,7 +54,6 @@ public class PlayerController : MonoBehaviour, IMoveable, IJumpable
     private void FixedUpdate()
     {
         Move();
-        SoundManager.Instance.PlayStepSfx();
     }
 
     private void LateUpdate()
@@ -82,6 +81,7 @@ public class PlayerController : MonoBehaviour, IMoveable, IJumpable
         dir.y = rigidBody.velocity.y;
         
         rigidBody.velocity = dir;
+        SoundManager.Instance.PlayStepSfx();
     }
 
     private void CameraLook()

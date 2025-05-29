@@ -290,126 +290,147 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - MainScene
+    - StartScene
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9c7db07a9749a7a449c5d3a58404168d
     m_Address: Attack3
     m_ReadOnly: 0
     m_SerializedLabels:
     - MainScene
+    - StartScene
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a55313ae139dda34a81fa83e398809e2
     m_Address: Attack2
     m_ReadOnly: 0
     m_SerializedLabels:
     - MainScene
+    - StartScene
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0a1a78ddd5d392843bc5f60c4c5bce68
     m_Address: Attack1
     m_ReadOnly: 0
     m_SerializedLabels:
     - MainScene
+    - StartScene
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 97064e4404cdb0043ac64b421978cf92
     m_Address: Attack0
     m_ReadOnly: 0
     m_SerializedLabels:
     - MainScene
+    - StartScene
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 42f69c06197f9854aa2f65e82d3ba51c
     m_Address: Hit0
     m_ReadOnly: 0
     m_SerializedLabels:
     - MainScene
+    - StartScene
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e436f3e9ee3cff34783b9a6004ebbb80
     m_Address: Hit1
     m_ReadOnly: 0
     m_SerializedLabels:
     - MainScene
+    - StartScene
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9676ab7842e07784b8d94ea386ea5889
     m_Address: Hit2
     m_ReadOnly: 0
     m_SerializedLabels:
     - MainScene
+    - StartScene
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7e057215426b9a043a8a939c88edcf54
     m_Address: Hit3
     m_ReadOnly: 0
     m_SerializedLabels:
     - MainScene
+    - StartScene
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 314223c8a9c6a194296bd21dac9228a5
     m_Address: Hit4
     m_ReadOnly: 0
     m_SerializedLabels:
     - MainScene
+    - StartScene
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2daaa006289b88c468325d817a45ac37
     m_Address: Logging0
     m_ReadOnly: 0
     m_SerializedLabels:
     - MainScene
+    - StartScene
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 24503a6228790e14495e7f78c9c313ce
     m_Address: Logging1
     m_ReadOnly: 0
     m_SerializedLabels:
     - MainScene
+    - StartScene
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 221f0117fc6f9a14697141569366659f
     m_Address: Logging2
     m_ReadOnly: 0
     m_SerializedLabels:
     - MainScene
+    - StartScene
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 299d71b282d0daf40bce13867432dd1f
     m_Address: Mining0
     m_ReadOnly: 0
     m_SerializedLabels:
     - MainScene
+    - StartScene
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: bbaa01e94724f894ab3e33ccf4e1cd4e
     m_Address: Mining1
     m_ReadOnly: 0
     m_SerializedLabels:
     - MainScene
+    - StartScene
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: dcb435b8077fdc04ea8ba3cc6185fcaf
     m_Address: Step0
     m_ReadOnly: 0
     m_SerializedLabels:
     - MainScene
+    - StartScene
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ec85f726b1c93e04290e96d83b60194e
     m_Address: Step1
     m_ReadOnly: 0
     m_SerializedLabels:
     - MainScene
+    - StartScene
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f8b43da650162ee499eec581223feb92
     m_Address: Step2
     m_ReadOnly: 0
     m_SerializedLabels:
     - MainScene
+    - StartScene
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 73271c5e061871347861dfa992200f2d
     m_Address: Step3
     m_ReadOnly: 0
     m_SerializedLabels:
     - MainScene
+    - StartScene
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f82833b5803b0df409ec91e21857e8f1
     m_Address: Step4
     m_ReadOnly: 0
     m_SerializedLabels:
     - MainScene
+    - StartScene
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 89453f2fffd0a234a965339a6488febf
     m_Address: UIClick0
     m_ReadOnly: 0
     m_SerializedLabels:
     - MainScene
+    - StartScene
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b73095aefd561e74599d4c8f30d0bd2b, type: 2}
