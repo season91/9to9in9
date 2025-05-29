@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d218a217209436442b604d821804a81b, type: 3}
-  m_Name: sword
+  m_Name: shield
   m_EditorClassIdentifier: 
-  itemCode: e8
-  displayName: "\uAC80"
-  description: "\uBB34\uAE30 \uAC80\uC774\uB2E4."
+  itemCode: e7
+  displayName: "\uBC29\uD328"
+  description: "\uBC29\uD328\uB2E4."
   type: 1
-  icon: {fileID: 21300000, guid: 5492fb47e1902b54db1b9aed27ef6544, type: 3}
-  prefab: {fileID: 1601730241942091120, guid: 629901497db4536419bf6f6c205dc171, type: 3}
+  icon: {fileID: 21300000, guid: 72d8261d625677b46b1e3ef8490830c4, type: 3}
+  prefab: {fileID: 4395386305711825143, guid: 8a390cf4d27d71740878ab804ab34b49, type: 3}
   isStackable: 0
   maxStack: 1
   functions: 00000000
-  equipSlot: 4
-  equipType: 0
-  power: 30
+  equipSlot: 0
+  equipType: 1
+  power: 20

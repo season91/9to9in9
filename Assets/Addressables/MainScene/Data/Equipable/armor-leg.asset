@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d218a217209436442b604d821804a81b, type: 3}
-  m_Name: tool-pickaxe
+  m_Name: armor-leg
   m_EditorClassIdentifier: 
-  itemCode: e2
-  displayName: "\uACE1\uAD2D\uC774"
-  description: "\uACE1\uAD2D\uC774\uC774\uB2E4."
+  itemCode: e5
+  displayName: "\uAC11\uC637-\uD558\uC758"
+  description: "\uAC11\uC637\uC774\uB2E4."
   type: 1
-  icon: {fileID: 21300000, guid: d2839a5380788ef4193866a7358495b3, type: 3}
-  prefab: {fileID: 7119051631146859550, guid: 5939efe9843494c4391baebd55c7e764, type: 3}
+  icon: {fileID: 21300000, guid: 856a71fdd80c903499c6bc19fb242008, type: 3}
+  prefab: {fileID: 4465894124721020135, guid: 8f57760c285ea4443b1db27a52444a49, type: 3}
   isStackable: 0
   maxStack: 1
   functions: 00000000
-  equipSlot: 4
-  equipType: 2
-  power: 10
+  equipSlot: 0
+  equipType: 1
+  power: 20

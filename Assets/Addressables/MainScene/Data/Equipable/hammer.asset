@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d218a217209436442b604d821804a81b, type: 3}
-  m_Name: tool-axe
+  m_Name: hammer
   m_EditorClassIdentifier: 
-  itemCode: e1
-  displayName: "\uB3C4\uB07C"
-  description: "\uB3C4\uB07C\uC774\uB2E4."
+  itemCode: e9
+  displayName: "\uB9DD\uCE58"
+  description: "\uBB34\uAE30 \uB9DD\uCE58\uC774\uB2E4"
   type: 1
-  icon: {fileID: 21300000, guid: c9d793a1d3906f74d816ed8017311e9b, type: 3}
-  prefab: {fileID: 2269037468637560863, guid: eebdfd2c36421a044b50cbc5cdcd3b80, type: 3}
+  icon: {fileID: 21300000, guid: 2fefd34c15748f7498ed991ecb2d1ce3, type: 3}
+  prefab: {fileID: 1968771716127388321, guid: 43160fdd5ce5b614ea94751fc673222e, type: 3}
   isStackable: 0
   maxStack: 1
   functions: 00000000
-  equipSlot: 4
-  equipType: 2
-  power: 10
+  equipSlot: 0
+  equipType: 0
+  power: 30
