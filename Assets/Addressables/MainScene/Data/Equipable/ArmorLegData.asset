@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d218a217209436442b604d821804a81b, type: 3}
-  m_Name: armor-leg
+  m_Name: ArmorLegData
   m_EditorClassIdentifier: 
   itemCode: e5
   displayName: "\uAC11\uC637-\uD558\uC758"
@@ -21,6 +21,6 @@ MonoBehaviour:
   isStackable: 0
   maxStack: 1
   functions: 00000000
-  equipSlot: 2
+  equipSlot: 0
   equipType: 1
   power: 20
