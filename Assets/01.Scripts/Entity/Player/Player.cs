@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -10,7 +11,7 @@ public class Player : Entity
     public PlayerInventoryController inventoryController { get; private set; }
     
     void Awake()
-    {
+    {//getcomponent에서 null 반환 시 addcomponent할 것
         CharacterManager.Register(this);
         playerController = GetComponent<PlayerController>();
         inventoryController = GetComponent<PlayerInventoryController>();
