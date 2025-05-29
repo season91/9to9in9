@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d74587e00f6bde46bc32e5a1060ec6a, type: 3}
-  m_Name: wooden-floor
+  m_Name: wooden-floor-hole
   m_EditorClassIdentifier: 
-  itemCode: b2
-  displayName: "\uB098\uBB34 \uBC14\uB2E5"
-  description: "\uAC00\uBCBC\uC6B4 \uBC14\uB2E5"
+  itemCode: b3
+  displayName: "\uB098\uBB34 \uBC14\uB2E5 \uC785\uAD6C"
+  description: "\uC704\uC5D0\uC11C \uB0B4\uB824\uC62C \uC218 \uC788\uB2E4"
   type: 3
-  icon: {fileID: 21300000, guid: f145bccbe1940824b8dc234b4ba042d4, type: 3}
-  prefab: {fileID: 5712094915227370815, guid: 391553ce3551a0b4b85fd89aa04fa711, type: 3}
+  icon: {fileID: 21300000, guid: 178f2997bd9f9a3408a87a041c857b91, type: 3}
+  prefab: {fileID: 2230129475867011661, guid: 1d9a23222a4f80441aef7fd7d8783fbc, type: 3}
   isStackable: 1
   maxStack: 30
   functions: 00000000
-  previewPrefab: {fileID: 1541003827288670209, guid: c97319a8a2cd3dd4a9e5e6fa51ed42ac, type: 3}
+  previewPrefab: {fileID: 2765252861915648695, guid: 092f0afa4f02fa44391ef0d7a3344847, type: 3}
   buildType: 1
   stationType: 4
   health: 50

@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d74587e00f6bde46bc32e5a1060ec6a, type: 3}
-  m_Name: metal-wall
+  m_Name: metal-wall-screws-half
   m_EditorClassIdentifier: 
-  itemCode: b10
-  displayName: "\uCCA0 \uBCBD"
-  description: "\uB4E0\uB4E0\uD55C \uCCA0\uD310"
+  itemCode: b14
+  displayName: "\uAC15\uD654\uB41C \uB0AE\uC740 \uCCA0 \uBCBD"
+  description: "\uC5C4\uD3D0\uD560 \uC218 \uC788\uB2E4"
   type: 3
-  icon: {fileID: 21300000, guid: 491f641fe064e91438e6f2ed5a1a817e, type: 3}
-  prefab: {fileID: 3856265350502986392, guid: 2a22b22e3a65adc4aa64cac17da0510c, type: 3}
+  icon: {fileID: 21300000, guid: 536dba4773023b841b08eed614a7212a, type: 3}
+  prefab: {fileID: 5009263738173793039, guid: 87c958a53c9ab174a8dd141da0dbc9e8, type: 3}
   isStackable: 1
   maxStack: 30
   functions: 00000000
-  previewPrefab: {fileID: 867616730880761746, guid: 3b73bf251f3de7241b9a63e9d70e5684, type: 3}
+  previewPrefab: {fileID: 6452314596346298864, guid: 54e6b38c093770e48983e436521a8e74, type: 3}
   buildType: 0
   stationType: 4
-  health: 70
+  health: 90
