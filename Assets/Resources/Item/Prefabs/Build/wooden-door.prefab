@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2071266253012684884}
   - component: {fileID: 4705968187735350497}
   - component: {fileID: 4826354576396377617}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 5129716015428334484}
   - component: {fileID: 3696517940229470004}
   - component: {fileID: 685711783006159308}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: wooden-door
   m_TagString: Untagged
   m_Icon: {fileID: 0}

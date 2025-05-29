@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 93175559228278973}
   - component: {fileID: 4925816980080662130}
   - component: {fileID: 2840814208536175624}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: wooden-floor-old
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7979977483145059514}
   - component: {fileID: 2167847891904293987}
   - component: {fileID: 2212869014374641668}
-  - component: {fileID: 4869469811664179995}
+  - component: {fileID: -1984096029922638180}
   m_Layer: 0
   m_Name: wooden-fence-preview
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4869469811664179995
+--- !u!65 &-1984096029922638180
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

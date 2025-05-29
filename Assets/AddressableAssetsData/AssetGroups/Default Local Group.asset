@@ -51,8 +51,8 @@ MonoBehaviour:
     m_SerializedLabels:
     - MainScene
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: af752d7a1b685ab408df9e1c41bcd547
-    m_Address: WorkbenchData
+  - m_GUID: 6fb9d4d67488eaa4dbbd648f18ab06aa
+    m_Address: MetalDoorData
     m_ReadOnly: 0
     m_SerializedLabels:
     - MainScene
@@ -63,14 +63,14 @@ MonoBehaviour:
     m_SerializedLabels:
     - MainScene
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 85a839100a9f5c642bfc043c84fdb862
-    m_Address: WoodenFloorData
+  - m_GUID: c543904b35b37894786aa636b80ea1b2
+    m_Address: CampfireData
     m_ReadOnly: 0
     m_SerializedLabels:
     - MainScene
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9977695e8740b054285b839e04933004
-    m_Address: WoodenWallData
+  - m_GUID: 50c93b240921c8d47beb5a73bf5be6f8
+    m_Address: AnvilData
     m_ReadOnly: 0
     m_SerializedLabels:
     - MainScene
@@ -197,6 +197,102 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 96e68596a0554744ba2657fbc6791e8e
     m_Address: Recipes
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5b38c77db26858e49be8543720d9c457
+    m_Address: MetalFenceData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 69c1b4faee504ce4489684e863fb92ba
+    m_Address: MetalWallData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4224458758b1c5b4a8947582fff28b43
+    m_Address: MetalWallNarrowData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2cfb5635e130edd4783d159901e4a1fe
+    m_Address: MetalWallScrewsData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 66d3c0bf3006cdf4cb6a65caf6e12169
+    m_Address: MetalWallScrewsHalfData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4bcff88bd421fa941bc7e82d4475b1ea
+    m_Address: MetalWallScrewsNarrowData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ccdadd122c58f744b90990286e84cac9
+    m_Address: SignpostMultiData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d49520960c2446b4aab3acd6162d9e99
+    m_Address: SignpostSingleData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: be0d9f2fadf26e643aa2ce05bc905759
+    m_Address: SmelterData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3095b59f905c96d45999702d67e870b8
+    m_Address: WoodenDoorData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 379ed434f763af74894bfb56dd5c7540
+    m_Address: WoodenFenceData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9217c19e291576240b5efd912791a6bd
+    m_Address: WoodenFloorData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c8410a454786cd44eb3c6a734a6b0124
+    m_Address: WoodenFloorHoleData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 213b76c7ba63f8344aa71a69635defc3
+    m_Address: WoodenFloorOldData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c121861d51f3b024eac846f7bb9b063e
+    m_Address: WoodenWallData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ebaf7480ea91c3842bfa4846a6a472a0
+    m_Address: WorkbenchData
     m_ReadOnly: 0
     m_SerializedLabels:
     - MainScene

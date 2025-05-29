@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8671273425773720486}
   - component: {fileID: 4571401084513377654}
   - component: {fileID: 2644204682110289621}
-  - component: {fileID: 3340507053072551719}
+  - component: {fileID: 5356478319723324927}
   m_Layer: 0
   m_Name: signpost-single-preview
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3340507053072551719
+--- !u!65 &5356478319723324927
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
