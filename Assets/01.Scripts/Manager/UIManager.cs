@@ -79,12 +79,12 @@ public class UIManager : MonoBehaviour
         switch (type)
         {
             case SceneType.Start: 
-                addresses = new[]{ StringAddressable.StartScene };
+                addresses = new[]{ StringAdr.StartScene };
                 await ResourceManager.Instance.LoadSceneResourcesWithProgress(StringScene.StartScene, canvasLoading);
                 await LoadGUIWithProgress(addresses);
                 break;
             case SceneType.Main:
-                addresses = new[] { StringAddressable.MainScene };
+                addresses = new[] { StringAdr.MainScene };
                 await ResourceManager.Instance.LoadSceneResourcesWithProgress(StringScene.MainScene, canvasLoading);
                 await LoadGUIWithProgress(addresses);
                 await LoadSceneWithProgress(StringScene.MainScene);
