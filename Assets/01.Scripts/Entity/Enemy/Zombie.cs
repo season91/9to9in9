@@ -51,7 +51,6 @@ public class Zombie : Enemy, IAttackAble
         if (agent == null) Debug.LogError("NavMeshAgent not found");
         if (animator == null) Debug.LogError("Animator not found");
         if (meshRenderers == null) Debug.LogError("SkinnedMeshRenderer not found");
-        
     }
 
     private void Start()
