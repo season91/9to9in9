@@ -1,8 +1,20 @@
-﻿code,name,displayName,description,type,icon,prefab,function,isStackable,maxStack,previewPrefab,buildType,stationType
-b1,wooden-wall,나무 벽,가벼운 벽,Build,wooden-wall-icon,wooden-wall,Inspectable|Damagable,TRUE,30,wooden-wall,Wall,None
-b2,wooden-floor,나무 바닥,가벼운 바닥,Build,wooden-floor-icon,wooden-floor,Inspectable|Damagable,TRUE,30,wooden-floor,Floor,None
-b3,metal-wall,철 벽,철벽이다,Build,metal-wall-icon,metal-wall,Inspectable|Damagable,TRUE,30,metal-wall,Wall,None
-b4,workbench,제작대,만들자,Build,workbench-icon,workbench,Inspectable|Damagable|Interactable,FALSE,1,workbench-icon,Station,Workbench
-b5,campfire,모닥불,먹자,Build,campfire-icon,campfire,Inspectable|Damagable|Interactable,FALSE,1,campfire-icon,Station,Campfire
-b6,smelter,제련대,굽자,Build,smelter-icon,smelter,Inspectable|Damagable|Interactable,FALSE,1,smelter-icon,Station,Smelter
-b7,anvil,모루,강해지자,Build,anvil-icon,anvil,Inspectable|Damagable|Interactable,FALSE,1,anvil-icon,Station,Anvil
+﻿code,name,displayName,description,type,icon,prefab,function,isStackable,maxStack,previewPrefab,buildType,stationType,health
+b1,wooden-floor-old,오래된 나무 바닥,삐걱거린다,Build,wooden-floor-old-icon,wooden-floor-old,Inspectable,TRUE,30,wooden-floor-old-preview,Floor,None,50
+b2,wooden-floor,나무 바닥,가벼운 바닥,Build,wooden-floor-icon,wooden-floor,Inspectable,TRUE,30,wooden-floor-preview,Floor,None,50
+b3,wooden-floor-hole,나무 바닥 입구,위에서 내려올 수 있다,Build,wooden-floor-hole-icon,wooden-floor-hole,Inspectable,TRUE,30,wooden-floor-hole-preview,Floor,None,50
+b4,wooden-fence,나무 울타리,제기능은 못 할 것 같다,Build,wooden-fence-icon,wooden-fence,Inspectable,TRUE,30,wooden-fence-preview,Wall,None,50
+b5,wooden-wall,나무 벽,가벼운 벽,Build,wooden-wall-icon,wooden-wall,Inspectable,TRUE,30,wooden-wall-preview,Wall,None,50
+b6,wooden-door,나무 문,모두에게 열려있다,Build,wooden-door-icon,wooden-door,Inspectable,TRUE,10,wooden-door-preview,Wall,None,50
+b7,signpost-multi,좌우 표지판,어디로 갈까,Build,signpost-multi-icon,signpost-multi,Inspectable,TRUE,10,signpost-multi-preview,Wall,None,30
+b8,signpost-single,단일 표지판,여기로 가자,Build,signpost-single-icon,signpost-single,Inspectable,TRUE,10,signpost-single-preview,Wall,None,30
+b9,metal-fence,철 울타리,여전히 제기능을 못 할 것 같다,Build,metal-fence-icon,metal-fence,Inspectable,TRUE,30,metal-fence-preview,Wall,None,70
+b10,metal-wall,철 벽,든든한 철판,Build,metal-wall-icon,metal-wall,Inspectable,TRUE,30,metal-wall-preview,Wall,None,70
+b11,metal-wall-screws,강화된 철 벽,나사가 박혀있다,Build,metal-wall-screws-icon,metal-wall-screws,Inspectable,TRUE,30,metal-wall-screws-preview,Wall,None,70
+b12,metal-wall-narrow,철 반 벽,좁은 벽이다,Build,metal-wall-narrow-icon,metal-wall-narrow,Inspectable,TRUE,30,metal-wall-narrow-preview,Wall,None,70
+b13,metal-wall-screws-narrow,강화된 철 반 벽,좁고 단단한 벽이다,Build,metal-wall-screws-narrow-icon,metal-wall-screws-narrow,Inspectable,TRUE,30,metal-wall-screws-narrow-preview,Wall,None,90
+b14,metal-wall-screws-half,강화된 낮은 철 벽,엄폐할 수 있다,Build,metal-wall-screws-half-icon,metal-wall-screws-half,Inspectable,TRUE,30,metal-wall-screws-half-preview,Wall,None,90
+b15,metal-door,철 문,여전히 모두에게 열려있다,Build,metal-door-icon,metal-door,Inspectable,TRUE,10,metal-door-preview,Wall,None,70
+b16,workbench,제작대,만들자,Build,workbench-icon,workbench,Inspectable|Interactable,FALSE,1,workbench-preview,Station,Workbench,100
+b17,campfire,모닥불,먹자,Build,campfire-icon,campfire,Inspectable|Interactable,FALSE,1,campfire-preview,Station,Campfire,100
+b18,smelter,제련대,굽자,Build,smelter-icon,smelter,Inspectable|Interactable,FALSE,1,smelter-preview,Station,Smelter,100
+b19,anvil,모루,강해지자,Build,anvil-icon,anvil,Inspectable|Interactable,FALSE,1,anvil-preview,Station,Anvil,100

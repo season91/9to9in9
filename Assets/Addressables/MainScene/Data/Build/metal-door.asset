@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d74587e00f6bde46bc32e5a1060ec6a, type: 3}
+  m_Name: metal-door
+  m_EditorClassIdentifier: 
+  itemCode: b15
+  displayName: "\uCCA0 \uBB38"
+  description: "\uC5EC\uC804\uD788 \uBAA8\uB450\uC5D0\uAC8C \uC5F4\uB824\uC788\uB2E4"
+  type: 3
+  icon: {fileID: 21300000, guid: c951ca1d87414084daea32a0f9cc6eaf, type: 3}
+  prefab: {fileID: 2401526326137311891, guid: aee46e376fb256e4da857b6040dffaae, type: 3}
+  isStackable: 1
+  maxStack: 10
+  functions: 00000000
+  previewPrefab: {fileID: 180806943741247926, guid: b5620555ba1fd8b4485c1710b424c29d, type: 3}
+  buildType: 0
+  stationType: 4
+  health: 70

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -7,6 +8,7 @@ using UnityEngine.SceneManagement;
 
 public enum SceneType
 {
+    None,
     Start,
     Main,
     Option,
@@ -32,6 +34,8 @@ public class UIManager : MonoBehaviour
     
     // 재할당 필요 UI
     UICanvasMainScene canvasMainScene;
+    
+    SceneType curSceneType = SceneType.None;
 
     private void Reset()
     {
@@ -59,7 +63,11 @@ public class UIManager : MonoBehaviour
     public async Task OpenScene(SceneType type)
     {
         // 활성화된 모든 UI 제거
-        UnloadAllGUIs();
+        if (curSceneType != SceneType.None)
+        {
+            UnloadAllGUIs(); 
+            ResourceManager.Instance.UnloadSceneResources(SceneManager.GetActiveScene().name);
+        }
         
         // Loading 준비
         canvasLoading.Initialization();
@@ -70,12 +78,14 @@ public class UIManager : MonoBehaviour
         
         switch (type)
         {
-            case SceneType.Start:
-                addresses = new[] { StringAddressable.StartScene };
+            case SceneType.Start: 
+                addresses = new[]{ StringAdr.StartScene };
+                await ResourceManager.Instance.LoadSceneResourcesWithProgress(StringScene.StartScene, canvasLoading);
                 await LoadGUIWithProgress(addresses);
                 break;
             case SceneType.Main:
-                addresses = new[] { StringAddressable.MainScene };
+                addresses = new[] { StringAdr.MainScene };
+                await ResourceManager.Instance.LoadSceneResourcesWithProgress(StringScene.MainScene, canvasLoading);
                 await LoadGUIWithProgress(addresses);
                 await LoadSceneWithProgress(StringScene.MainScene);
                 canvasMainScene = GetComponentInChildren<UICanvasMainScene>();
@@ -88,11 +98,14 @@ public class UIManager : MonoBehaviour
         
         canvasLoading.SetProgressBar(1f);
         canvasLoading.gameObject.SetActive(false);
+        curSceneType = type;
     }
 
     // 비동기 Load Scene with Loading Progress
     async Task LoadSceneWithProgress(string sceneName)
     {
+        canvasLoading.SetProgressStatus(string.Empty);
+        
         var sceneLoad = SceneManager.LoadSceneAsync(sceneName);
         while (!sceneLoad.isDone)
         {
@@ -106,41 +119,42 @@ public class UIManager : MonoBehaviour
     { 
         float currentProgress = 1f;
         canvasLoading.SetProgressTitle(LoadType.GUI);
-        
+
         foreach (var address in addresses)
         {
             canvasLoading.SetProgressBar(0);
             string progressStatus = $"{currentProgress++}/{addresses.Length}";
             canvasLoading.SetProgressStatus(progressStatus);
-            
+
             // 로드 하려는 Canvas의 프리펩 주소를 통해 비동기로 프리팹 생성
             var handle = Addressables.InstantiateAsync(address, transform);
-            
-            // 생성이 완료될 때까지 대기
+
+            // 생성이 완료될 때까지 대기 / 좀 더 고민 
             while (!handle.IsDone)
             {
                 canvasLoading.SetProgressBar(handle.PercentComplete);
                 await Task.Yield(); // == yield return null;
             }
-
+            
             // 생성 완료 시,
             if (handle.Status == AsyncOperationStatus.Succeeded)
             {
                 // 해당 Addressable의 IGUI를 상속 받는 Canvas 혹은 Popup을 초기화 시켜 줌.
                 var obj = handle.Result;
                 var gui = obj.GetComponent<IGUI>();
-
+            
                 if (gui == null)
                 {
                     Debug.LogError($"IGUI not found on {address}");
                     return;
                 }
-
+                
                 activeGUIs[address] = gui;
                 gui.Initialization();
             }
         }
     }
+    
     
     // Scene 전환 시, 모든 UI 제거
     // 이후 모든 씬 공통 UI 있으면 그건 제거X
@@ -153,7 +167,7 @@ public class UIManager : MonoBehaviour
         {
             Addressables.ReleaseInstance(kvp.Value.GUIObject);
         }
-
+    
         activeGUIs.Clear();
     }
     

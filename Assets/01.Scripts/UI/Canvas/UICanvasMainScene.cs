@@ -29,16 +29,22 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
 
     private void Awake()
     {
-        inventoryPopup.gameObject.SetActive(false);
-        equipmentPopup.gameObject.SetActive(false);
-        smelterPopup.gameObject.SetActive(false);
+        // inventoryPopup.gameObject.SetActive(false);
+        // equipmentPopup.gameObject.SetActive(false);
+        // smelterPopup.gameObject.SetActive(false);
         // campfirePopup.gameObject.SetActive(false);
         // workbenchPopup.gameObject.SetActive(false);
         // anvilPopup.gameObject.SetActive(false);
+
+        Initialization();
     }
 
     public void Initialization()
     {
+        inventoryPopup.Initialization();
+        
+        equipmentPopup.Initialization();
+        smelterPopup.Initialization();
     }
 
     public void Open()
@@ -106,18 +112,17 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
         inventoryPopup.Open();
     }
 
+    #region  TestCode
+    
     public void TestOpenEquipmentPopup()
     {
-        equipmentPopup.Initialization();
-        inventoryPopup.Initialization();
-        
         if (equipmentPopup.gameObject.activeSelf)
         {
             equipmentPopup.Close();
             inventoryPopup.Close();
             return;
         }
-            
+        
         currentStation = StationType.None;
         equipmentPopup.Open();
         inventoryPopup.Open();
@@ -125,9 +130,6 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
 
     public void TestOpenSmelterPopup()
     {
-        smelterPopup.Initialization();
-        inventoryPopup.Initialization();
-        
         if (smelterPopup.gameObject.activeSelf)
         {
             smelterPopup.Close();
@@ -139,4 +141,6 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
         smelterPopup.Open();
         inventoryPopup.Open();
     }
+    
+    #endregion
 }
