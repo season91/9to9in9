@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public enum AIState
 {
@@ -12,6 +14,7 @@ public class Zombie : Enemy, IAttackAble
 {
     [Header("Stat")]
     [SerializeField] private StatProfile statProfile;
+    private StatHandler statHandler = new StatHandler();
     
     [Header("AI")]
     private NavMeshAgent agent;
@@ -44,11 +47,19 @@ public class Zombie : Enemy, IAttackAble
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         meshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
+        
+        if (agent == null) Debug.LogError("NavMeshAgent not found");
+        if (animator == null) Debug.LogError("Animator not found");
+        if (meshRenderers == null) Debug.LogError("SkinnedMeshRenderer not found");
+        
     }
 
     private void Start()
     {
         SetState(AIState.Wandering);
+        
+        statHandler.Initialize(statProfile.ToDictionary());
+        if (statProfile == null) Debug.LogError("StatProfile not found");
     }
 
     private void Update()
@@ -118,12 +129,14 @@ public class Zombie : Enemy, IAttackAble
 
     public override void TakeDamage(float damage)
     {
-        //TODO:
+        statHandler.Modify(StatType.Health, -damage);
+        if (statHandler.IsEmpty(StatType.Health))
+            Die();
     }
 
     public override void Die()
     {
-        //TODO:
+        //TODO: 죽었을 때 로직
     }
 
     public void Attack()

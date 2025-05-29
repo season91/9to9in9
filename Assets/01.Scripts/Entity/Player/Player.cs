@@ -4,21 +4,25 @@ using UnityEngine;
 /// <summary>
 /// IDamageble, IMoveable, IJumpable, IAttackable
 /// </summary>
-public class Player : Entity
+public class Player : Entity, IDamagable
 {
     public PlayerController playerController { get; private set; }
     public PlayerInventoryController inventoryController { get; private set; }
+    public StatHandler statHandler = new StatHandler();
     
     [SerializeField] private StatProfile statProfile;
     
     private void Awake()
-    {//getcomponent에서 null 반환 시 addcomponent할 것
+    {
+        //getcomponent에서 null 반환 시 addcomponent할 것
         CharacterManager.Register(this);
         playerController = GetComponent<PlayerController>();
-        if (playerController == null) Debug.LogError("PlayerController not found");
-        
         inventoryController = GetComponent<PlayerInventoryController>();
+        
+        // null체크
+        if (playerController == null) Debug.LogError("PlayerController not found");
         if (inventoryController == null) Debug.LogError("InventoryController not found");
+        if (statProfile == null) Debug.LogError("StatProfile not found");
     }
 
     private void Start()
@@ -27,7 +31,12 @@ public class Player : Entity
         SpawnManager temp = SpawnManager.Instance;
     }
 
-    public override void Die()
+    public void TakeDamage(float damage)
+    {
+        // TODO: 피해입는 로직 작성
+    }
+
+    public void Die()
     {
         Debug.Log("플레이어 사망!");
     }

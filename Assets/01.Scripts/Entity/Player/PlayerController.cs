@@ -36,13 +36,19 @@ public class PlayerController : MonoBehaviour, IMoveable, IJumpable
     private void Awake()
     {
         rigidBody = GetComponent<Rigidbody>();
-        statHandler = CharacterManager.Player.statHandler;
         cameraContainer = transform.Find(cameraContainerName).transform;
+        
+        // null 체크
+        if (rigidBody == null) Debug.LogError("Rigidbody not found");
+        if (cameraContainer == null) Debug.LogError("CameraContainer not found");
     }
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        
+        statHandler = CharacterManager.Player.statHandler;
+        if (statHandler == null) Debug.LogError("StatHandler not found");
     }
 
     private void FixedUpdate()
