@@ -9,6 +9,5 @@ using UnityEngine;
 
 public interface IJumpable
 {
-    public float JumpPower { get; } 
     public void Jumping();
 }

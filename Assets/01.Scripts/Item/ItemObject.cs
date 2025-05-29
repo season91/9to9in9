@@ -64,11 +64,6 @@ public class ItemObject : MonoBehaviour
                         gameObject.AddComponent<InteractableBehaviour>().Initialize(itemData);
                     break;
 
-                case ItemFunction.Damagable:
-                    if (!TryGetComponent<IDamagable>(out _))
-                        gameObject.AddComponent<DamagableBehaviour>().Initialize(itemData);
-                    break;
-
                 default:
                     Debug.LogWarning($"[ItemObject] Unknown function: {function}");
                     break;

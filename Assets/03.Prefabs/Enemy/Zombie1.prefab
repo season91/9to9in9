@@ -1444,23 +1444,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae8632f742ac463ba2a3d9d4aaa231cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health:
-    maxValue: 0
-    passiveValue: 0
-    curValue: 0
-  walkSpeed: 0.3
-  runSpeed: 0.5
+  statProfile: {fileID: 11400000, guid: b1cb689616867d74793647c2a4b21fee, type: 2}
   detectDistance: 2
   minWanderDistance: 2
   maxWanderDistance: 5
   minWanderWaitTime: 1
   maxWanderWaitTime: 5
-  damage: 2
-  attackRate: 2
+  speedOffset: 1
   attackDistance: 0.5
   playerDistance: 0
   fieldOfView: 120
-  playerStatHandler: {fileID: 0}
 --- !u!54 &9013517847114163759
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b71c5239a06a2234992839685019eddb, type: 3}
+  m_Name: PlayerStat
+  m_EditorClassIdentifier: 
+  statEntries:
+  - statType: 0
+    stat:
+      curValue: 100
+      maxValue: 100
+      passiveValue: 0
+  - statType: 1
+    stat:
+      curValue: 100
+      maxValue: 100
+      passiveValue: 5
+  - statType: 2
+    stat:
+      curValue: 1
+      maxValue: 5
+      passiveValue: 0
+  - statType: 3
+    stat:
+      curValue: 3
+      maxValue: 5
+      passiveValue: 0
+  - statType: 4
+    stat:
+      curValue: 10
+      maxValue: 30
+      passiveValue: 0
+  - statType: 5
+    stat:
+      curValue: 3
+      maxValue: 5
+      passiveValue: 0
+  - statType: 6
+    stat:
+      curValue: 10
+      maxValue: 100
+      passiveValue: 0
+  - statType: 7
+    stat:
+      curValue: 0
+      maxValue: 50
+      passiveValue: 0
