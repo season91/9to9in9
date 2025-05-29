@@ -6,6 +6,7 @@ using UnityEngine;
 public abstract class Enemy : Entity, IDamagable, IMoveable
 {
     public abstract void TakeDamage(float damage);
+    public abstract void Die();
 
     public abstract void Move();
 }

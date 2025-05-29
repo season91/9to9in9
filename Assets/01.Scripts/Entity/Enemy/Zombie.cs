@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public enum AIState
 {
@@ -10,10 +12,9 @@ public enum AIState
 
 public class Zombie : Enemy, IAttackAble
 {
-    [Header("Info")] 
-    [SerializeField] private Stat health;
-    public float walkSpeed;
-    public float runSpeed;
+    [Header("Stat")]
+    [SerializeField] private StatProfile statProfile;
+    private StatHandler statHandler;
     
     [Header("AI")]
     private NavMeshAgent agent;
@@ -25,23 +26,19 @@ public class Zombie : Enemy, IAttackAble
     public float maxWanderDistance;
     public float minWanderWaitTime;
     public float maxWanderWaitTime;
-    
+
     [Header("Combat")]
-    private float attackPower = 15f;
-    public float AttackPower => attackPower;
-    public int damage;
-    public float attackRate;
+    [SerializeField] private float speedOffset;
     private float lastAttackTime;
     public float attackDistance;
 
+    
     [SerializeField] private float playerDistance;
     
     public float fieldOfView = 120f;
     
     private Animator animator;
     private SkinnedMeshRenderer[] meshRenderers;
-    
-    public PlayerStatHandler playerStatHandler;
 
     private bool isCalculate = true;
     
@@ -50,13 +47,22 @@ public class Zombie : Enemy, IAttackAble
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         meshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
+        
+        if (agent == null) Debug.LogError("NavMeshAgent not found");
+        if (animator == null) Debug.LogError("Animator not found");
+        if (meshRenderers == null) Debug.LogError("SkinnedMeshRenderer not found");
+        
     }
 
     private void Start()
     {
-        playerStatHandler = GameObject.Find("Player").GetComponent<PlayerStatHandler>();
-        health.Init(100f, 100f, 0f);
         SetState(AIState.Wandering);
+        
+        statHandler = GetComponent<StatHandler>();
+        if (statHandler == null) Debug.LogError("Player StatHandler not found");
+        
+        statHandler.Initialize(statProfile.ToDictionary());
+        if (statProfile == null) Debug.LogError("StatProfile not found");
     }
 
     private void Update()
@@ -126,20 +132,30 @@ public class Zombie : Enemy, IAttackAble
 
     public override void TakeDamage(float damage)
     {
-        
+        statHandler.Modify(StatType.Health, -damage);
+        if (statHandler.IsEmpty(StatType.Health))
+            Die();
     }
-    
+
+    public override void Die()
+    {
+        //TODO: 죽었을 때 로직
+    }
+
     public void Attack()
     {
+        float attackPower = statHandler.Get(StatType.AttackPower);
+        float attackspeed = statHandler.Get(StatType.AttackSpeed);
+        
         if (playerDistance < attackDistance && IsPlayerInFieldOfView())
         {
             agent.isStopped = true;
-            if (Time.time - lastAttackTime > attackRate)
+            if (Time.time - lastAttackTime > attackspeed)
             {
                 lastAttackTime = Time.time;
                 animator.speed = 1;
                 animator.SetTrigger("Attack"); ;
-                playerStatHandler.TakeDamage(attackPower);
+                statHandler.Modify(StatType.Health, -attackPower);
             }
         }
         else
@@ -178,6 +194,9 @@ public class Zombie : Enemy, IAttackAble
     
     public void SetState(AIState state)
     {
+        float walkSpeed = statHandler.Get(StatType.MoveSpeed);
+        float runSpeed = statHandler.Get(StatType.MoveSpeed) + speedOffset;
+        
         aiState = state;
 
         switch (aiState)
