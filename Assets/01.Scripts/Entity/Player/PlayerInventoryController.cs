@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Collections;
 using UnityEditor;
 using UnityEngine;
 
@@ -24,7 +25,13 @@ public class PlayerInventoryController : MonoBehaviour
             item = null;
             Quantity = 0;
         }
-
+        
+        public ItemSlot(ItemData item, int quantity)
+        {
+            this.item = item;
+            Quantity = quantity;
+        }
+        
         public void InitSlot(ItemData item = null,int quantity=0)
         {
             this.item = item;
@@ -33,6 +40,8 @@ public class PlayerInventoryController : MonoBehaviour
         public bool isMax => Quantity >= item.maxStack;
     
         public bool isItemExsit(ItemData item) => this.item == item;
+
+        public bool isItemExsit(string name) => this.item.name == name;
         public bool CanStack() => item.isStackable && !isMax;
         public bool isSlotEmpty() => item == null;
     }
@@ -41,7 +50,10 @@ public class PlayerInventoryController : MonoBehaviour
     private List<ItemData> items;
     private List<EquipableItemData> equippedItems;
 
-    [SerializeField] private int inventorySize = 21;
+    //외부 읽기 전용 list 반환
+    public IReadOnlyList<ItemData> Items => items;
+
+    //[SerializeField] private int inventorySize = 21;
     
     public Action UpdateInventory;
     
@@ -49,11 +61,6 @@ public class PlayerInventoryController : MonoBehaviour
     {
         inventoryItems = new List<ItemSlot>();
         items = new List<ItemData>();
-        for (int i = 0; i < inventorySize; ++i)
-        {
-            inventoryItems.Add(new ItemSlot());
-            items.Add(null);
-        }
         equippedItems = new List<EquipableItemData>();
     }
 
@@ -63,25 +70,18 @@ public class PlayerInventoryController : MonoBehaviour
         //세이브/로드 기능 추가 시 json(혹은 파일) 읽어올 것
     }
 
-    public void AddItem(ItemData item)
+    public void AddItem(ItemData item, int quantity = 1)
     {
-        for (int i = 0; i < inventorySize; ++i)
+        for (int i = 0; i < items.Count; ++i)
         {
-            if (items[i] == item && item.isStackable && inventoryItems[i].CanStack())
+            if (inventoryItems[i].isItemExsit(item) && inventoryItems[i].CanStack())
             {
-                ++inventoryItems[i].Quantity;
+                inventoryItems[i].Quantity += quantity;
                 return;
             }
         }
-        for (int j = 0; j < inventorySize; ++j)
-        {
-            if (inventoryItems[j].isSlotEmpty())
-            {
-                items[j] = item;
-                inventoryItems[j].InitSlot(item, 1);
-                return;
-            }
-        }
+        items.Add(item);
+        inventoryItems.Add(new ItemSlot(item, quantity));
     }
 
     public void RemoveItem(int index)
@@ -128,6 +128,20 @@ public class PlayerInventoryController : MonoBehaviour
         return inventoryItems[index].Quantity;
     }
 
+    public int GetPcs(string name)
+    {
+        int totalQuantity = 0;
+        foreach (ItemSlot slot in inventoryItems)
+        {
+            if (slot.isItemExsit(name))
+            {
+                totalQuantity += slot.Quantity;
+            }
+        }
+        return totalQuantity;
+    }
+
+    
     public ItemData GetItem(int index)
     {
         return items[index];
