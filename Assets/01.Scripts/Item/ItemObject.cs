@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -95,6 +96,74 @@ public class ItemObject : MonoBehaviour
                     Debug.LogWarning($"[ItemObject] Unknown function: {function}");
                     break;
             }
+        }
+    }
+
+    private void UseItem(ItemData itemData)
+    {
+        switch (itemData.type)
+        {
+            case ItemType.Build:
+                BuildManager.Instance.EnterBuildMode(itemData as BuildItemData);
+                break;
+            
+            case ItemType.Consumable:
+                UseConsumableItem(itemData as ConsumableItemData);
+                break;
+            
+            case ItemType.Equipable:
+                //TODO: 장착 로직
+                break;
+            
+            case ItemType.Resource:
+                break;
+            
+            default:
+                Debug.Log($"{itemData.type}: 아이템 타입 잘못됐어요!!!");
+                break;
+        }
+    }
+    
+    // 임시로 여기 둘게요 옮기는 게 좋을듯 !!!!
+    private void UseConsumableItem(ConsumableItemData item)
+    {
+        for (int i = 0; i < item.consumableTypes.Length; i++)
+        {
+            float value = item.amounts[i];
+            switch (item.consumableTypes[i])
+            {
+                case ConsumableType.Health:
+                    CharacterManager.Player.statHandler.Modify(StatType.Health, value);
+                    break;
+                
+                case ConsumableType.Hunger:
+                    CharacterManager.Player.statHandler.Modify(StatType.Hunger, value);
+                    break;
+                
+                case ConsumableType.Stamina:
+                    CharacterManager.Player.statHandler.Modify(StatType.Stamina, value);
+                    break;
+                
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+    }
+    
+    // 얘도 옮겨야 함 !!!!
+    private void UseEquipableItem(EquipableItemData item)
+    {
+        switch (item.equipType)
+        {
+            case EquipType.Armor:
+                // 아무일도 안 일어나요
+                break;
+            
+            case EquipType.Weapon:
+                break;
+            
+            case EquipType.GatheringTool:
+                break;
         }
     }
 }
