@@ -54,6 +54,7 @@ public class PlayerController : MonoBehaviour, IMoveable, IJumpable
     private void FixedUpdate()
     {
         Move();
+        SoundManager.Instance.PlayStepSfx();
     }
 
     private void LateUpdate()
