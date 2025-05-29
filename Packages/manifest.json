@@ -1,4 +1,14 @@
 {
+  "scopedRegistries": [
+    {
+      "name": "openupm",
+      "url": "https://package.openupm.com",
+      "scopes": [
+        "com.openupm",
+        "jillejr"
+      ]
+    }
+  ],
   "dependencies": {
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.addressables": "1.21.21",
@@ -40,6 +50,7 @@
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
-    "com.unity.modules.xr": "1.0.0"
+    "com.unity.modules.xr": "1.0.0",
+    "jillejr.newtonsoft.json-for-unity": "13.0.102"
   }
 }

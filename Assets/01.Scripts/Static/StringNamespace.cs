@@ -9,18 +9,23 @@ public static class StringTag
 
 public static class StringScene
 {
+    public const string StartScene = "StartScene";
     public const string MainScene = "MainScene";
     public const string LoadingScene = "LoadingScene";
 }
+
+#region  Addressable
 
 public static class StringAddressable
 {
     public const string Environment = "Environment";
     
     // GUI
-    public const string MainScene = "MainScene";
-    public const string StartScene = "StartScene";
+    public const string MainScene = "CanvasMainScene";
+    public const string StartScene = "CanvasStartScene";
 }
+
+#endregion
 
 public static class StringItemOftenUse
 {
