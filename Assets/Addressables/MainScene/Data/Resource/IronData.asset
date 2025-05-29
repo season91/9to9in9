@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: IronData
   m_EditorClassIdentifier: 
   itemCode: r3
+  itemName: iron
   displayName: "\uCCA0"
   description: "\uCCA0\uC774\uB2E4. \uAC00\uACF5\uD574\uBCF4\uC790."
   type: 2
