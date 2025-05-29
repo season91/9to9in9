@@ -81,7 +81,12 @@ public class PlayerController : MonoBehaviour, IMoveable, IJumpable
         dir.y = rigidBody.velocity.y;
         
         rigidBody.velocity = dir;
-        SoundManager.Instance.PlayStepSfx();
+
+        if (rigidBody.velocity.magnitude > 0.1f)
+        {
+            Debug.Log($"{rigidBody.velocity.magnitude}");
+            SoundManager.Instance.PlayStepSfx();
+        }
     }
 
     private void CameraLook()
