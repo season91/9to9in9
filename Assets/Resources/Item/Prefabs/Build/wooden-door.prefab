@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 5129716015428334484}
   - component: {fileID: 3696517940229470004}
   - component: {fileID: 685711783006159308}
+  - component: {fileID: -3951786779731425942}
   m_Layer: 7
   m_Name: wooden-door
   m_TagString: Untagged
@@ -189,3 +190,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5, y: 0.51746684, z: 0.042780027}
   m_Center: {x: 0, y: 0.25873342, z: -0.22860998}
+--- !u!208 &-3951786779731425942
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5116820967417805696}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.25, y: 0.259, z: 0.021000002}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.259, z: -0.22900002}
+  m_TimeToStationary: 0.5
