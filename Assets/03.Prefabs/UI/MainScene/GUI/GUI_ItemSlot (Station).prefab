@@ -341,6 +341,7 @@ MonoBehaviour:
   tmpTitle: {fileID: 5408802118338304538}
   tmpPcs: {fileID: 2931389622278036847}
   btnSelect: {fileID: 7018267337968137687}
+  itemData: {fileID: 0}
 --- !u!114 &7018267337968137687
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -71,7 +71,7 @@ public class ResourceManager
         }
         else
         {
-            Debug.LogError($"[Addressables] Failed to load assets with label: {sceneLabel}");
+            MyDebug.LogError($"[Addressables] Failed to load assets with label: {sceneLabel}");
         }
 
         // UI 마무리
@@ -89,7 +89,7 @@ public class ResourceManager
     {
         if (!loadedHandlesByLabel.TryGetValue(sceneLabel, out var handleList))
         {
-            Debug.LogWarning($"[Addressables] No resources to unload for label: {sceneLabel}");
+            MyDebug.LogWarning($"[Addressables] No resources to unload for label: {sceneLabel}");
             return;
         }
 
@@ -111,7 +111,7 @@ public class ResourceManager
         }
 
         loadedHandlesByLabel.Remove(sceneLabel);
-        Debug.Log($"[Addressables] Unloaded all resources for label: {sceneLabel}");
+        MyDebug.Log($"[Addressables] Unloaded all resources for label: {sceneLabel}");
     }
     #endregion
     
@@ -123,14 +123,14 @@ public class ResourceManager
     {
         if (!resources.TryGetValue(key, out var obj))
         {
-            Debug.LogWarning($"this Resource is not exist: Key = {key}");
+            MyDebug.LogWarning($"this Resource is not exist: Key = {key}");
             return null;
         }
 
         T objAsT = obj as T;
         if (objAsT == null)
         {
-            Debug.LogWarning($"this Resource is not this Type: Key = {key}, Type = {typeof(T)}");
+            MyDebug.LogWarning($"this Resource is not this Type: Key = {key}, Type = {typeof(T)}");
             return null;
         }
         return objAsT;

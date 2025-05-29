@@ -64,7 +64,7 @@ public class CraftManager : MonoBehaviour
         Debug.Log("레시피 로딩 완료 후 후속 로직 가능");
         
         // test
-        GetRecipeOfStationType(StationType.Anvil);
+        // GetRecipeOfStationType(StationType.Anvil);
     }
     
     private async Task ReloadRecipes()
@@ -80,6 +80,11 @@ public class CraftManager : MonoBehaviour
     /// </summary>
     public Dictionary<string, List<CraftableItemInfo>> GetRecipeOfStationType(StationType stationType)
     {
+        if (parsedRecipes == null)
+        {
+            MyDebug.LogWarning("parsedRecipes is null, is not ReloadRecipes yet...................ㅠ");
+            return null;
+        }
         if (!parsedRecipes.ContainsKey(stationType))
         {
             Debug.LogWarning($"parsedRecipes에 {stationType} 데이터가 없음");
