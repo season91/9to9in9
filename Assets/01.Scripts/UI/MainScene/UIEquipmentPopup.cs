@@ -64,13 +64,20 @@ public class UIEquipmentPopup : MonoBehaviour, IGUI
         gameObject.SetActive(false);
     }
 
-    // void OnEquipSlotSelected(EquipSlot type)
-    // {
-    //     // Unequip에서 원래 비어있는지 체크해주고 비어 있으면 ㄴㄴ 
-    // }
-
-    // public bool TryPlaceItem(ItemData item)
-    // {
-    //     return CharacterManager.Player.inventoryController.EquipItem(item);
-    // }
+    public bool TryPlaceItem(ItemData item)
+    {
+        EquipableItemData equipableItem = item as EquipableItemData;
+        
+        if (equipableItem == null)
+        {
+            Debug.Log("Casting Failed! Is not Equipable!");
+            return false;
+        }        
+        
+        equipmentSlotDict[equipableItem.equipSlot].Show(equipableItem.icon);
+        
+        CharacterManager.Player.inventoryController.EquipItem(equipableItem);
+        
+        return true;
+    }
 }

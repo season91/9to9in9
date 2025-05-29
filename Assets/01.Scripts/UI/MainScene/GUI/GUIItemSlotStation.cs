@@ -81,7 +81,7 @@ public class GUIItemSlotStation : GUIItemSlotBase
                     return;
                 case 1:
                     Initialization();
-                    return;
+                    break;
                 default:
                     pieces--;
                     tmpPcs.text = pieces.ToString().Trim();

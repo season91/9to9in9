@@ -76,7 +76,7 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
                 // 장착, 장착된 장비도 Select하면 장착 해제
                 // 장착된 장비가 있으면 교체
                 // 교체될 때 인벤토리로 다시 들어와야 됨 해당 아이템이
-                // return TryPlaceItem()
+                return equipmentPopup.TryPlaceItem(item);
             case StationType.Workbench:
             case StationType.Anvil:
             default:
