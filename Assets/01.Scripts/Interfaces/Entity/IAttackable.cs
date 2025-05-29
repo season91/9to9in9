@@ -6,7 +6,6 @@ using UnityEngine;
 /// </summary>
 public interface IAttackAble
 {
-    public float AttackPower { get; }
     public void Attack();
 }
 

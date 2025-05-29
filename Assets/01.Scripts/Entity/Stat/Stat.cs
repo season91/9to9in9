@@ -1,42 +1,43 @@
 using System;
 using UnityEngine;
-/// <summary>
-/// [공통스탯값] 모든 Character는 해당 Stat으로 사용. PlayerStat, MonsterStat 등등
-/// </summary>
 
+/// <summary>
+/// [공통스탯값] 런타임에서 변화하는 스탯 데이터
+/// </summary>
 [System.Serializable]
 public class Stat
 {
-    [SerializeField] private float maxValue;
-    public float MaxValue => maxValue;
-
-    [SerializeField] private float passiveValue;
-    public float PassiveValue => passiveValue;
-
     [SerializeField] private float curValue;
     public float CurValue
     {
         get => curValue;
         private set => curValue = Mathf.Clamp(value, 0f, maxValue);
     }
+    
+    [SerializeField] private float maxValue;
+    public float MaxValue => maxValue;
+
+    [SerializeField] private float passiveValue;
+    public float PassiveValue => passiveValue;
 
     public bool IsEmpty => CurValue <= 0f;
 
-    public void Init(float StartValue, float MaxValue, float PassiveValue)
+    public void Init(Stat baseStat)
     {
-        maxValue = MaxValue;
-        passiveValue = PassiveValue;
-        CurValue = StartValue;
+        maxValue = baseStat.maxValue;
+        passiveValue = baseStat.passiveValue;
+        curValue = baseStat.curValue;
     }
 
+    
     public void Change(float amount)
     {
         CurValue += amount;
     }
-
+    
+    
     public float GetPercentage()
     {
         return CurValue / maxValue;
     }
 }
-

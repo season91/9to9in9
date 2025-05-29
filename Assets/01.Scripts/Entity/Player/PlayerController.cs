@@ -8,20 +8,13 @@ using UnityEngine.InputSystem.Editor;
 public class PlayerController : MonoBehaviour, IMoveable, IJumpable
 {
     [Header("Movement")]
-    private Vector2 curMoveInput;
-    [SerializeField] private float moveSpeed = 10f;
-    [SerializeField] private float minMoveSpeed = 3f;
-    [SerializeField] private float maxMoveSpeed = 20f;
     [SerializeField] private LayerMask groundLayerMask;
-    [SerializeField] private float jumpPower = 7f;
-
-    public float JumpPower
-    {
-        get
-        {
-            return jumpPower;
-        }
-    }
+    private Vector2 curMoveInput;
+    
+    // [SerializeField] private float moveSpeed = 10f;
+    // [SerializeField] private float minMoveSpeed = 3f;
+    // [SerializeField] private float maxMoveSpeed = 20f;
+    // [SerializeField] private float jumpPower = 7f;
 
 
     [Header("CameraLook")]
@@ -36,12 +29,14 @@ public class PlayerController : MonoBehaviour, IMoveable, IJumpable
     private bool canLook = true;
     
     private Rigidbody rigidBody;
+    private StatHandler statHandler;
     
     public Action inventoryAction;
 
     private void Awake()
     {
-        rigidBody = GetComponent<Rigidbody>(); 
+        rigidBody = GetComponent<Rigidbody>();
+        statHandler = CharacterManager.Player.statHandler;
         cameraContainer = transform.Find(cameraContainerName).transform;
     }
 
@@ -76,7 +71,7 @@ public class PlayerController : MonoBehaviour, IMoveable, IJumpable
     public void Move()
     {
         Vector3 dir = transform.forward * curMoveInput.y + transform.right * curMoveInput.x;
-        dir *= moveSpeed;
+        dir *= statHandler.Get(StatType.MoveSpeed);
         dir.y = rigidBody.velocity.y;
         
         rigidBody.velocity = dir;
@@ -95,7 +90,7 @@ public class PlayerController : MonoBehaviour, IMoveable, IJumpable
     {
         if (IsGrounded())
         {
-            rigidBody.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
+            rigidBody.AddForce(Vector2.up * statHandler.Get(StatType.JumpPower), ForceMode.Impulse);
         }
     }
     
