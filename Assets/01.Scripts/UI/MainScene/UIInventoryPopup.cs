@@ -27,6 +27,8 @@ public class UIInventoryPopup : MonoBehaviour, IGUI
             inventorySlots[i].Initialization();
             inventorySlots[i].SetClickEvent(OnItemSlotSelected, index);
         }
+        
+        gameObject.SetActive(false);
     }
 
     public void Open()
