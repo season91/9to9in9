@@ -309,6 +309,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!82 &2026708361 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1985098339950404815, guid: 6d2527dc6e0a6a94eb6247bfa2954690, type: 3}
+  m_PrefabInstance: {fileID: 1713716295268539027}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2051897763
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -430,6 +435,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1039142524387628476, guid: 6d2527dc6e0a6a94eb6247bfa2954690, type: 3}
+      propertyPath: sfxSource
+      value: 
+      objectReference: {fileID: 2026708361}
+    - target: {fileID: 1039142524387628476, guid: 6d2527dc6e0a6a94eb6247bfa2954690, type: 3}
+      propertyPath: stepInterval
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5986823351275481131, guid: 6d2527dc6e0a6a94eb6247bfa2954690, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.09321448
