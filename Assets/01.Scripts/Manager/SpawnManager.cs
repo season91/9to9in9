@@ -9,7 +9,8 @@ using UnityEngine;
 /// PoolManager를 Get. Pool을 활용해 Object 생성 처리 담당
 /// </summary>
 
-public class SpawnManager : MonoBehaviour
+public class 
+    SpawnManager : MonoBehaviour
 {
     private static SpawnManager instance;
 

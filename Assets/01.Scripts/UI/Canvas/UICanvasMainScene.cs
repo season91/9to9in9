@@ -27,18 +27,6 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
         anvilPopup = GetComponentInChildren<UIAnvilPopup>();
     }
 
-    private void Awake()
-    {
-        // inventoryPopup.gameObject.SetActive(false);
-        // equipmentPopup.gameObject.SetActive(false);
-        // smelterPopup.gameObject.SetActive(false);
-        // campfirePopup.gameObject.SetActive(false);
-        // workbenchPopup.gameObject.SetActive(false);
-        // anvilPopup.gameObject.SetActive(false);
-
-        Initialization();
-    }
-
     public void Initialization()
     {
         inventoryPopup.Initialization();

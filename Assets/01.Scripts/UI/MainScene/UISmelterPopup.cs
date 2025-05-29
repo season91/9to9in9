@@ -1,6 +1,6 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class UISmelterPopup : MonoBehaviour, IGUI
@@ -8,8 +8,14 @@ public class UISmelterPopup : MonoBehaviour, IGUI
     [SerializeField] private GUIItemSlotStation fuelSlot;
     [SerializeField] private GUIItemSlotStation metalSlot;
     [SerializeField] private GUIItemSlotStation resultSlot;
+    [SerializeField] private RectTransform rectTrGauge;
+    [SerializeField] private float maxWidthGauge;
 
     private Dictionary<ResourceType, GUIItemSlotStation> slotStationDict;
+    private List<CraftableItemInfo> craftableItemInfos;
+    
+    Coroutine curGaugeCoroutine;
+    Coroutine curUpdateUICoroutine;
     
     public GameObject GUIObject => gameObject;
 
@@ -18,15 +24,13 @@ public class UISmelterPopup : MonoBehaviour, IGUI
         fuelSlot = transform.Find("GUI_ItemSlot (Fuel)").GetComponent<GUIItemSlotStation>();
         metalSlot = transform.Find("GUI_ItemSlot (Metal)").GetComponent<GUIItemSlotStation>();
         resultSlot = transform.Find("GUI_ItemSlot (Result)").GetComponent<GUIItemSlotStation>();
+        rectTrGauge = transform.Find("Group_Gauge/Img_Gauge").GetComponent<RectTransform>();
+        maxWidthGauge = transform.Find("Group_Gauge/Img_GaugeBG").GetComponent<RectTransform>().sizeDelta.x;
     }
 
     public void Initialization()
     {
         slotStationDict = new Dictionary<ResourceType, GUIItemSlotStation>();
-        
-        // fuelSlot.Initialization();
-        // metalSlot.Initialization();
-        // resultSlot.Initialization();
         
         slotStationDict[ResourceType.Fuel] = fuelSlot;
         slotStationDict[ResourceType.Metal] = metalSlot;
@@ -51,11 +55,21 @@ public class UISmelterPopup : MonoBehaviour, IGUI
             }
         }
         
+        rectTrGauge.gameObject.SetActive(false);
+        
         gameObject.SetActive(false);
     }
-
+    
     public void Open()
     {
+        // key: 중분류 ("Tool", "Armor", "Weapon", 그외 "Default")
+        // value: 중분류에 따른 레시피 결과 아이템 리스트
+        if (craftableItemInfos == null)
+        {
+            craftableItemInfos = new List<CraftableItemInfo>();
+            craftableItemInfos = CraftManager.Instance.GetRecipeOfStationType(StationType.Smelter)["Default"];
+        }
+        
         gameObject.SetActive(true);
     }
 
@@ -64,6 +78,9 @@ public class UISmelterPopup : MonoBehaviour, IGUI
         gameObject.SetActive(false);
     }
     
+    bool CheckAllSlotFull() => !slotStationDict[ResourceType.Fuel].IsEmpty 
+                               && !slotStationDict[ResourceType.Metal].IsEmpty;
+    
     public bool TryPlaceItem(ItemData item) 
     {
         // ItemData을 상속받는 ResourceItemData에 있는 정보를 가져오고 싶은데 어떻게 하면 될까?
@@ -71,21 +88,90 @@ public class UISmelterPopup : MonoBehaviour, IGUI
 
         if (resourceItem == null)
         {
-            Debug.Log("Casting Failed! Is not Resource!");
+            MyDebug.Log("Casting Failed! Is not Resource!");
             return false;
         }
 
-        switch (resourceItem.resourceType)
+        ResourceType curResourceType = resourceItem.resourceType;
+        if (!slotStationDict.TryGetValue(resourceItem.resourceType, out GUIItemSlotStation slot))
         {
-            case ResourceType.Fuel when fuelSlot.IsPlacePossible(resourceItem.icon):
-                fuelSlot.Show(item.icon, 1, item);
-                return true;
-            case ResourceType.Metal when metalSlot.IsPlacePossible(resourceItem.icon):
-                metalSlot.Show(item.icon, 1, item);
-                return true;
-            default:
-                Debug.Log("Slot is full!");
-                return false;
+            MyDebug.Log($"No slot found for resourceType: {resourceItem.resourceType}");
+            return false;
+        }
+        
+        if (curResourceType != ResourceType.Fuel && curResourceType != ResourceType.Metal )
+        {
+            MyDebug.Log($"This resource type({curResourceType}) does not apply to smelters!");
+            return false;
+        }
+        
+        if (!slot.IsPlacePossible(resourceItem.icon))
+        {
+            MyDebug.Log($"different item than {resourceItem.itemName} already exists.");
+            return false;
+        }
+        
+        slot.Show(item.icon, 1, item);
+        
+        if (CheckAllSlotFull() && curUpdateUICoroutine == null)
+        {
+            curUpdateUICoroutine = StartCoroutine(UpdateUIWhileCraftable());
+        }
+        
+        return true;
+    }
+    
+    // 제작 가능한 항목이 있을 동안 계속 돌아가도록!
+    IEnumerator UpdateUIWhileCraftable()
+    {
+        try
+        {
+            while (craftableItemInfos.Exists(item => item.itemData.isCraftable))
+            {
+                foreach (var itemInfo in craftableItemInfos)
+                {
+                    if (itemInfo.itemData.isCraftable && curGaugeCoroutine == null)
+                    {
+                        slotStationDict[ResourceType.None].Show(itemInfo.itemData.icon, 1, itemInfo.itemData);
+                        curGaugeCoroutine = StartCoroutine(UpdateGaugeGUI(5)); //임의로 5
+                        yield return new WaitUntil(() => curGaugeCoroutine == null);
+                    }
+                }
+
+                // 다음 프레임까지 기다리므로 CPU 자원 낭비 줄일 수 있음
+                yield return null;
+            }
+        }
+        finally
+        {
+            curUpdateUICoroutine = null;
+        }
+    }
+    
+    // 제작 시간 동안 게이지 업데이트
+    IEnumerator UpdateGaugeGUI(float maxTime)
+    {
+        try
+        {
+            slotStationDict[ResourceType.None].SetImageToSilhouette(false);
+        
+            float elapsedTime = 0;
+        
+            while (elapsedTime <= maxTime)
+            {
+                float timeRatio = elapsedTime / maxTime;
+            
+                rectTrGauge.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, timeRatio * maxWidthGauge);
+            
+                yield return new WaitForSeconds(0.5f);
+                elapsedTime += 0.5f;
+            }
+        
+            slotStationDict[ResourceType.None].SetImageToSilhouette(true);
+        }
+        finally
+        {
+            curGaugeCoroutine = null;
         }
     }
 }

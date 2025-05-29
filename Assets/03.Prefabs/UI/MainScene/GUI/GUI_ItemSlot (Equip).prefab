@@ -52,7 +52,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 535b6602ad8c2ca48bcc15888a8a0b1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isEmpty: 1
   imgIcon: {fileID: 2619815512881716750}
   imgSilhouette: {fileID: 2326136529431199745}
   btnSelect: {fileID: 4824766108007028604}

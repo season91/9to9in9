@@ -13,6 +13,8 @@ public class GUIItemSlotStation : GUIItemSlotBase
     [SerializeField] private Button btnSelect;
     [SerializeField] private ItemData itemData;
 
+    public bool IsEmpty => !itemData;
+    
     public bool IsPlacePossible(Sprite icon)
     {
         if(!imgIcon.sprite)
@@ -68,7 +70,7 @@ public class GUIItemSlotStation : GUIItemSlotBase
     {
         if (tmpPcs.text == string.Empty)
         {
-            Debug.Log("This Slot is Empty");
+            MyDebug.Log("This Slot is Empty");
         }
         else
         {
@@ -77,7 +79,7 @@ public class GUIItemSlotStation : GUIItemSlotBase
             switch (pieces)
             {
                 case <= 0:
-                    Debug.Log("This Slot is Empty");
+                    MyDebug.Log("This Slot is Empty");
                     return;
                 case 1:
                     Initialization();
@@ -95,5 +97,11 @@ public class GUIItemSlotStation : GUIItemSlotBase
     public void SetTitle(string title)
     {
         tmpTitle.text = title;
+    }
+
+    public void SetImageToSilhouette(bool isCreatePossible)
+    {
+        // ItemSlot (Equip) 보면 실루엣 스프라이트 컬러 기준 있음
+        imgIcon.color = isCreatePossible ? Color.white : new Color(0, 0, 0, 0.509804f);
     }
 }
