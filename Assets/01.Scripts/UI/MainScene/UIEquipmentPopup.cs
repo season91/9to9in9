@@ -40,6 +40,8 @@ public class UIEquipmentPopup : MonoBehaviour, IGUI
             equipmentSlotDict[slotType] = equipmentSlots[slotIndex++];
             // 나중에 실루엣도 해당 타입에 맞는 이미지들로 변경해주기
         }
+        
+        gameObject.SetActive(false);
     }
 
     public void Open()
@@ -69,6 +71,6 @@ public class UIEquipmentPopup : MonoBehaviour, IGUI
 
     // public bool TryPlaceItem(ItemData item)
     // {
-    //     CharacterManager.Player.inventoryController.Equip(item);
+    //     return CharacterManager.Player.inventoryController.EquipItem(item);
     // }
 }
