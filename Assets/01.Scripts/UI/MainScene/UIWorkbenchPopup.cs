@@ -13,7 +13,6 @@ public class UIWorkbenchPopup : MonoBehaviour, IGUI
     // sprite 
     // int형으로 index를
     // 모루 (type, 어떤 타입(장비,도구), index)
-
     
     public GameObject GUIObject => gameObject;
     
