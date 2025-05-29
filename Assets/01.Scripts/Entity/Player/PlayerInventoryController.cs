@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Collections;
 using UnityEditor;
 using UnityEngine;
 
@@ -40,6 +41,9 @@ public class PlayerInventoryController : MonoBehaviour
     private List<ItemSlot> inventoryItems;
     private List<ItemData> items;
     private List<EquipableItemData> equippedItems;
+
+    //외부 읽기 전용 list 반환
+    public IReadOnlyList<ItemData> Items => items;
 
     [SerializeField] private int inventorySize = 21;
     
