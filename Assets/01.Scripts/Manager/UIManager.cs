@@ -155,7 +155,6 @@ public class UIManager : MonoBehaviour
         }
     }
     
-    
     // Scene 전환 시, 모든 UI 제거
     // 이후 모든 씬 공통 UI 있으면 그건 제거X
     void UnloadAllGUIs()

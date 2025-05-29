@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: bf47822969602a74e807c5605f589b6a, type: 2}
---- !u!4 &318458897 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8969633536328352032, guid: b5811eeab1b85b349849dfafcb5a1c3a, type: 3}
-  m_PrefabInstance: {fileID: 397159412}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &397159412
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -289,8 +284,6 @@ GameObject:
   m_Component:
   - component: {fileID: 882358078}
   - component: {fileID: 882358077}
-  - component: {fileID: 882358080}
-  - component: {fileID: 882358079}
   m_Layer: 0
   m_Name: TestObject
   m_TagString: Untagged
@@ -310,8 +303,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a48fde856fa3a2f409815e976332d102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jsonRecipes:
-    recipes: []
 --- !u!4 &882358078
 Transform:
   m_ObjectHideFlags: 0
@@ -327,39 +318,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &882358079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 882358075}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd77e49b8d5f5df4ba81c829f718d2b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wallItem: {fileID: 11400000, guid: 85a839100a9f5c642bfc043c84fdb862, type: 2}
---- !u!114 &882358080
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 882358075}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84231d94aec064945bd9bfdf5b852a87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buildableLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  structureLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  playerTransform: {fileID: 318458897}
-  maxBuildDistance: 2
 --- !u!1001 &1046565969
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -8,6 +8,8 @@ public class UIInventoryPopup : MonoBehaviour, IGUI
 {
     [SerializeField] private List<GUIItemSlotInventory> inventorySlots;
     [SerializeField] private TextMeshProUGUI tmpTitle;
+
+    private int curInventoryCount;
     
     PlayerInventoryController inventoryCtrlr;
     
@@ -21,20 +23,29 @@ public class UIInventoryPopup : MonoBehaviour, IGUI
     
     public void Initialization()
     {
+        InitializationInventoryGUI();
+        
+        gameObject.SetActive(false);
+    }
+
+    void InitializationInventoryGUI()
+    {
         for (int i = 0; i < inventorySlots.Count; i++)
         {
             int index = i; // 캡쳐 문제 회피
             inventorySlots[i].Initialization();
             inventorySlots[i].SetClickEvent(OnItemSlotSelected, index);
         }
-        
-        gameObject.SetActive(false);
     }
 
     public void Open()
     {
         gameObject.SetActive(true);
+        
         inventoryCtrlr = CharacterManager.Player.inventoryController;
+        
+        inventoryCtrlr.UpdateInventory -= SettingInventoryUI;
+        inventoryCtrlr.UpdateInventory += SettingInventoryUI;
         
         SettingInventoryUI();
     }
@@ -47,6 +58,14 @@ public class UIInventoryPopup : MonoBehaviour, IGUI
     void SettingInventoryUI()
     {
         int inventoryCount = inventoryCtrlr.GetAllItemCount();
+        
+        if (curInventoryCount != inventoryCount)
+        {
+            InitializationInventoryGUI();
+        }
+        
+        curInventoryCount = inventoryCount;
+        
         for (int i = 0; i < inventoryCount; i++)
         {
             if (i < inventoryCount)
@@ -66,7 +85,7 @@ public class UIInventoryPopup : MonoBehaviour, IGUI
         inventorySlots[index].SetPcs(pcs);
     }
 
-    public void OnItemSlotSelected(int index)
+    void OnItemSlotSelected(int index)
     {
         ItemData item = inventoryCtrlr.GetItem(index);
 
@@ -75,8 +94,7 @@ public class UIInventoryPopup : MonoBehaviour, IGUI
         if (isSuccess) 
         {
             inventoryCtrlr.RemoveItem(index);
-            SettingSlotUI(index);
-            inventorySlots[index].Select();
+            // inventorySlots[index].Select();
         }
         else 
         {

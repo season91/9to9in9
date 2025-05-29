@@ -13,7 +13,9 @@ public class SpawnManager : MonoBehaviour
 {
     private static SpawnManager instance;
 
-    private Dictionary<string, object> pools = new Dictionary<string, object>();
+    private Dictionary<string, PoolManager> pools = new Dictionary<string, PoolManager>();
+    private Dictionary<string, GameObject> prefabs = new Dictionary<string, GameObject>();
+    
     
     public static SpawnManager Instance
     {
@@ -31,25 +33,32 @@ public class SpawnManager : MonoBehaviour
     {
         //CreatePool<Item>("Item", Item);
         //CreatePool<Enemy>("Enemy",Enemy);
-        var rock = Resources.Load<GameObject>("Item/Prefabs/Resource/stone");
-        var wood = Resources.Load<GameObject>("Item/Prefabs/Resource/wood");
-        if (rock == null)
-        {
-            Debug.LogError("rockPrefab is null! 경로 확인 필요.");
-        }
-        else
-        {
-            CreatePool("Rock", rock);
-        }
-        if (wood == null)
-        {
-            Debug.LogError("woodPrefab is null! 경로 확인 필요.");
-        }
-        else
-        {
-            CreatePool("Wood", wood);
-        }
+        //foreach (string key in StringItemName.oftenUseKeys)
+        //{
+            ItemData data = ResourceManager.Instance.GetResource<ItemData>(StringAdrItemDataResource.Wood);
+            if (data != null)
+            {
+                CreatePool(StringAdrItemDataResource.Wood,data.prefab);
+            }
+            else
+            {
+                Debug.Log($"{StringAdrItemDataResource.Wood} 프리팹 찾을 수 없음!");
+            }
+        //}
 
+        //foreach (string key in StringItemName.prefabKeys)
+        //{
+            data = ResourceManager.Instance.GetResource<ItemData>(StringAdrItemDataEquipable.ArmorChest);
+            if (data != null)
+            {
+                prefabs[StringAdrItemDataEquipable.ArmorChest] = data.prefab;
+            }
+            else
+            {
+                Debug.Log($"{StringAdrItemDataEquipable.ArmorChest} 프리팹 찾을 수 없음!");
+            }
+            Debug.Log($"{prefabs[StringAdrItemDataEquipable.ArmorChest].name}");
+        //}
     }
 
     private void CreatePool(string key, GameObject prefab)
@@ -69,13 +78,32 @@ public class SpawnManager : MonoBehaviour
     // object pool 대상 활성화. 예) 자원인 경우 이름(wood), 프리팹명으로 호출(wood)
     public GameObject GetObject(string key, GameObject Prefab)
     {
-        return GetPool(key).Get();
+        if (pools.ContainsKey(key))
+        {
+            return GetPool(key).Get();
+        }
+        else if(prefabs.ContainsKey(key))
+        {
+            return Instantiate(prefabs[key]);
+        }
+        
+        Debug.Log("프리팹 없음!!! 심각한 버그!!");
+        throw new Exception();
+        return null;
     }
 
     // object pool 대상 비활성화
     public void ReleaseObject(string key, GameObject obj)
     {
-        GetPool(key).Release(obj);
+        if (pools.ContainsKey(key))
+        {
+            GetPool(key).Release(obj);
+        }
+        else
+        {
+            Debug.Log($"SpawnManager.Prefabs에서 {key} 프리팹 찾을 수 없음!");
+            Destroy(obj);
+        }
     }
     
     // 필드

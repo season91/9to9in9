@@ -21,9 +21,11 @@ public class GUIItemSlotEquipment : GUIItemSlotBase
     {
         imgSilhouette.gameObject.SetActive(true);
         imgIcon.gameObject.SetActive(false);
+        btnSelect.onClick.RemoveAllListeners();
+        btnSelect.onClick.AddListener(Select);
     }
 
-    public override void Show(Sprite icon, int pcs = 0)
+    public override void Show(Sprite icon, int pcs = 0, ItemData itemData = null)
     {
         imgSilhouette.gameObject.SetActive(false);
         imgIcon.gameObject.SetActive(true);
@@ -32,8 +34,14 @@ public class GUIItemSlotEquipment : GUIItemSlotBase
 
     public override void Select()
     {
-        Initialization();
-        // CharacterManager.Player.inventoryController.Unequip(type);
+        if (CharacterManager.Player.inventoryController.UnEquipItem(type))
+        {
+            Initialization();
+        }
+        else
+        {
+            Debug.Log("item can't unequip");
+        }
     }
     
     // public void SetClickEvent(UnityAction<EquipSlot> callback)
