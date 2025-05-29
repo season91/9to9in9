@@ -45,7 +45,7 @@ public class CraftManager : MonoBehaviour
     /// Player 인벤토리에 있는 아이템 중 위 레시피 중 제작 가능 여부 판단해서 리턴
     /// key: 중분류 이름 ("Tool", "Armor", "Weapon", 그외 "Default")
     /// </summary>
-    private Dictionary<string, Dictionary<Sprite, bool>> GetRecipeOfStationType(string stationType)
+    public Dictionary<string, Dictionary<Sprite, bool>> GetRecipeOfStationType(string stationType)
     {
         if (string.IsNullOrEmpty(stationType)) return null;
 
