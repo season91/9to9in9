@@ -195,6 +195,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - StartScene
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 96e68596a0554744ba2657fbc6791e8e
+    m_Address: Recipes
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b73095aefd561e74599d4c8f30d0bd2b, type: 2}
   m_SchemaSet:
