@@ -33,18 +33,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 66c1c0ecfaca2e842a1551f40f5850d0
-    m_Address: AnvilData
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - MainScene
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d4e1659b7ea379e4098005457b83f79b
-    m_Address: CampfireData
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - MainScene
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: aefe4d97c7a774a439e41992ddfe8cff
     m_Address: MeatCookedData
     m_ReadOnly: 0
@@ -57,12 +45,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - MainScene
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f68c0e706163d1246ad198a1a4c52eb3
-    m_Address: MetalWallData
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - MainScene
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c543904b35b37894786aa636b80ea1b2
     m_Address: CampfireData
     m_ReadOnly: 0
@@ -71,12 +53,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 50c93b240921c8d47beb5a73bf5be6f8
     m_Address: AnvilData
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - MainScene
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 3344000ffd2d1494f9cd733244fb53cb
-    m_Address: SmelterData
     m_ReadOnly: 0
     m_SerializedLabels:
     - MainScene
