@@ -194,32 +194,26 @@ public class PlayerInventoryController : MonoBehaviour
     
     public ItemData GetItem(int index)
     {
-        if(index > inventoryItems.Count) {return null;}
+        if(index >= inventoryItems.Count) {return null;}
         return items[index];
     }
 
-    public bool EquipItem(ItemData item)
+    public void EquipItem(EquipableItemData equipItem)
     {
-        if (item is EquipableItemData equipItem)
+        RemoveItem(equipItem);
+        int targetIdx = equippedItems.FindIndex(item => item.equipSlot == equipItem.equipSlot);
+        if (targetIdx == -1)
         {
-            RemoveItem(item);
-            int targetIdx = equippedItems.FindIndex(item => item.equipSlot == equipItem.equipSlot);
-            if (targetIdx == -1)
-            {
-                equippedItems.Add(equipItem);
-            }
-            else
-            {
-                ItemData temp = equippedItems[targetIdx];
-                equippedItems.RemoveAt(targetIdx);
-                equippedItems.Add(equipItem);
-                AddItem(temp);
-            }
-            UpdateInventory?.Invoke();
-            return true;
+            equippedItems.Add(equipItem);
         }
-
-        return false;
+        else
+        {
+            ItemData temp = equippedItems[targetIdx];
+            equippedItems.RemoveAt(targetIdx);
+            equippedItems.Add(equipItem);
+            AddItem(temp);
+        }
+        UpdateInventory?.Invoke();
     }
     //
     // unequip 에서 enum type 넘어올 경우 해당 장비가 있는지 확인하고 제거
