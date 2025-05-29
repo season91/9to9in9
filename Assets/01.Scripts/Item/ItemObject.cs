@@ -99,6 +99,11 @@ public class ItemObject : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 퀵슬롯에서 현재 선택된 칸의 아이템 데이터를 받아와서 사용 처리
+    /// 퀵슬롯에서는 소비 / 건축 아이템만 사용
+    /// </summary>
+    /// <param name="itemData">ItemData</param>
     private void UseItem(ItemData itemData)
     {
         switch (itemData.type)
@@ -110,21 +115,13 @@ public class ItemObject : MonoBehaviour
             case ItemType.Consumable:
                 UseConsumableItem(itemData as ConsumableItemData);
                 break;
-            
-            case ItemType.Equipable:
-                //TODO: 장착 로직
-                break;
-            
-            case ItemType.Resource:
-                break;
-            
-            default:
-                Debug.Log($"{itemData.type}: 아이템 타입 잘못됐어요!!!");
-                break;
         }
     }
     
-    // 임시로 여기 둘게요 옮기는 게 좋을듯 !!!!
+    /// <summary>
+    /// 음식 먹기 
+    /// </summary>
+    /// <param name="item">ConsumableItemData</param>
     private void UseConsumableItem(ConsumableItemData item)
     {
         for (int i = 0; i < item.consumableTypes.Length; i++)
@@ -143,27 +140,47 @@ public class ItemObject : MonoBehaviour
                 case ConsumableType.Stamina:
                     CharacterManager.Player.statHandler.Modify(StatType.Stamina, value);
                     break;
-                
-                default:
-                    throw new ArgumentOutOfRangeException();
             }
         }
     }
-    
-    // 얘도 옮겨야 함 !!!!
+
+    #region 오른손 무기 처리 로직 (이동 예정)
+
+    /// <summary>
+    /// 오른손에 든 거 사용하기
+    /// 타입에 따라 switch (공격 / 채집)
+    /// </summary>
+    /// <param name="item">EquipableItemData</param>
     private void UseEquipableItem(EquipableItemData item)
     {
         switch (item.equipType)
         {
-            case EquipType.Armor:
-                // 아무일도 안 일어나요
-                break;
-            
             case EquipType.Weapon:
+                // TODO: 휘두르기
                 break;
             
             case EquipType.GatheringTool:
+                // TODO: 채집하기
                 break;
         }
     }
+    
+    // curEquip, equipParent 선언해야됨
+    private void Equip(ItemData item)
+    {
+        UnEquip();
+        // curEquip = Instantiate(item.prefab, equipParent);
+        
+        Debug.Log($"[ItemObject-{name}] 장착됨 !");
+    }
+
+    private void UnEquip()
+    {
+        //Destroy(curEquip.gameObject);
+        //cureEquip = null
+        Debug.Log($"[ItemObject-{name}] 해제됨 !");
+    }
+
+    #endregion
+    
 }
