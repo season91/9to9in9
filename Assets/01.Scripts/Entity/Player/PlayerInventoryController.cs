@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Collections;
 using UnityEditor;
 using UnityEngine;
 
@@ -9,14 +10,12 @@ using UnityEngine;
 /// </summary>
 ///
 
-//인벤토리 내에서 사용할 아이템 슬롯 클래스
-
-
 public class PlayerInventoryController : MonoBehaviour
 {
+    //인벤토리 내에서 사용할 아이템 슬롯 클래스
     class ItemSlot
     {
-        private ItemData item;
+        public ItemData item { get; private set; }
         public int Quantity;
 
         public ItemSlot()
@@ -24,7 +23,13 @@ public class PlayerInventoryController : MonoBehaviour
             item = null;
             Quantity = 0;
         }
-
+        
+        public ItemSlot(ItemData item, int quantity = 1)
+        {
+            this.item = item;
+            Quantity = quantity;
+        }
+        
         public void InitSlot(ItemData item = null,int quantity=0)
         {
             this.item = item;
@@ -33,6 +38,8 @@ public class PlayerInventoryController : MonoBehaviour
         public bool isMax => Quantity >= item.maxStack;
     
         public bool isItemExsit(ItemData item) => this.item == item;
+
+        public bool isItemExsit(string name) => this.item.name == name;
         public bool CanStack() => item.isStackable && !isMax;
         public bool isSlotEmpty() => item == null;
     }
@@ -41,7 +48,10 @@ public class PlayerInventoryController : MonoBehaviour
     private List<ItemData> items;
     private List<EquipableItemData> equippedItems;
 
-    [SerializeField] private int inventorySize = 21;
+    //외부 읽기 전용 list 반환
+    public IReadOnlyList<ItemData> Items => items;
+
+    //[SerializeField] private int inventorySize = 21;
     
     public Action UpdateInventory;
     
@@ -49,11 +59,6 @@ public class PlayerInventoryController : MonoBehaviour
     {
         inventoryItems = new List<ItemSlot>();
         items = new List<ItemData>();
-        for (int i = 0; i < inventorySize; ++i)
-        {
-            inventoryItems.Add(new ItemSlot());
-            items.Add(null);
-        }
         equippedItems = new List<EquipableItemData>();
     }
 
@@ -63,38 +68,68 @@ public class PlayerInventoryController : MonoBehaviour
         //세이브/로드 기능 추가 시 json(혹은 파일) 읽어올 것
     }
 
-    public void AddItem(ItemData item)
+    public void AddItem(ItemData item, int quantity = 1)
     {
-        for (int i = 0; i < inventorySize; ++i)
+        for (int i = 0; i < items.Count; ++i)
         {
-            if (items[i] == item && item.isStackable && inventoryItems[i].CanStack())
+            if (inventoryItems[i].isItemExsit(item) && inventoryItems[i].CanStack())
             {
-                ++inventoryItems[i].Quantity;
+                inventoryItems[i].Quantity += quantity;
                 return;
             }
         }
-        for (int j = 0; j < inventorySize; ++j)
-        {
-            if (inventoryItems[j].isSlotEmpty())
-            {
-                items[j] = item;
-                inventoryItems[j].InitSlot(item, 1);
-                return;
-            }
-        }
+        items.Add(item);
+        inventoryItems.Add(new ItemSlot(item, quantity));
     }
-
+    
+    
+    //UI에서 아이템 사용 혹은 제거 시 불러올 메서드
     public void RemoveItem(int index)
     {
-        if (items[index] == null) return;
+        if (index > inventoryItems.Count) return;
         if(items[index].isStackable)
         {
             if (--inventoryItems[index].Quantity > 0) return;
         }
-        items[index] = null;
-        inventoryItems[index].InitSlot();
+        items.RemoveAt(index);
+        inventoryItems.RemoveAt(index);
     }
 
+    //재료 아이템 소모 시 호출할 메서드
+    public void RemoveItem(string name, int quantity = 1)
+    {
+        for (int i = inventoryItems.Count - 1; i >= 0 && quantity > 0 ; --i)
+        {
+            if (!inventoryItems[i].isItemExsit(name)) continue;
+            
+            if (inventoryItems[i].Quantity > quantity)
+            {
+                inventoryItems[i].Quantity -= quantity;
+                return;
+            }
+            else
+            {
+                quantity -= inventoryItems[i].Quantity;
+                inventoryItems.RemoveAt(i);
+                items.RemoveAt(i);
+            }
+        }
+    }
+    
+    //단일 아이템 제거의 경우 호출
+    public void RemoveItem(ItemData item)
+    {
+        items.Remove(item);
+        for (int i = 0; i < inventoryItems.Count; i++)
+        {
+            if (inventoryItems[i].isItemExsit(item))
+            {
+                inventoryItems.RemoveAt(i);
+                return;
+            }
+        }
+    }
+    
     public int GetAllItemCount()
     {
         return items.Count;
@@ -128,23 +163,62 @@ public class PlayerInventoryController : MonoBehaviour
         return inventoryItems[index].Quantity;
     }
 
+    public int GetPcs(string name)
+    {
+        int totalQuantity = 0;
+        foreach (ItemSlot slot in inventoryItems)
+        {
+            if (slot.isItemExsit(name))
+            {
+                totalQuantity += slot.Quantity;
+            }
+        }
+        return totalQuantity;
+    }
+
+    
     public ItemData GetItem(int index)
     {
         return items[index];
     }
 
-    public ItemData EquipItem(ItemData item,EquipType type)
+    public bool EquipItem(ItemData item)
     {
-        /*int idx;
-        for (int i = 0; i < inventorySize; ++i)
+        if (item is EquipableItemData equipItem)
         {
-            if(items[i] == item)
-        }*/
-        return item;
+            RemoveItem(item);
+            int targetIdx = equippedItems.FindIndex(item => item.equipSlot == equipItem.equipSlot);
+            if (targetIdx == -1)
+            {
+                equippedItems.Add(equipItem);
+            }
+            else
+            {
+                ItemData temp = equippedItems[targetIdx];
+                equippedItems.RemoveAt(targetIdx);
+                equippedItems.Add(equipItem);
+                AddItem(temp);
+            }
+            return true;
+        }
+
+        return false;
     }
     //
     // unequip 에서 enum type 넘어올 경우 해당 장비가 있는지 확인하고 제거
     //
+
+    public bool UnEquipItem(EquipSlot slotType)
+    {
+        foreach (EquipableItemData equipItem in equippedItems)
+        {
+            if (equipItem.equipSlot != slotType) continue;
+            AddItem(equipItem);
+            equippedItems.Remove(equipItem);
+            return true;
+        }
+        return false;
+    }
     
     //
     // 

@@ -112,16 +112,20 @@ public class BuildManager : MonoBehaviour
         // Station이 아닌 경우 스냅 실행
         if (currentItem.stationType == StationType.None)
         {
-            if (Physics.Raycast(cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0)), out RaycastHit structureHit,
-                maxBuildDistance,
-                structureLayer))
+            Ray ray = cam.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f));
+            if (Physics.Raycast(ray, out RaycastHit structureHit, maxBuildDistance, structureLayer))
             {
-                Vector3 basePos = structureHit.collider.transform.position; // 붙이려는 구조물 중심 좌표
-                Vector3 normal = structureHit.normal.normalized; // 구조물 표면의 방향 벡터 (어디인지)
-                Vector3 size = structureHit.collider.bounds.size; // 구조물 전체 크기
-                Vector3 snapDirection = GetRoundedDirection(normal); // 붙일 방향 (상, 하, 좌, 우)
-
-                finalPos = basePos + Vector3.Scale(snapDirection, size);
+                BoxCollider box = structureHit.collider as BoxCollider;
+                if (!box) return;
+                
+                Vector3 basePos = box.transform.position;
+                Vector3 normal = structureHit.normal.normalized;
+                Vector3 snapDirection = GetRoundedDirection(normal);
+                
+                Vector3 size = box.size;
+                Vector3 offset = box.transform.rotation * Vector3.Scale(snapDirection, size);
+                
+                finalPos = basePos + offset;
             }
         }
         
@@ -168,11 +172,10 @@ public class BuildManager : MonoBehaviour
     {
         Vector3 dir = Vector3.zero;
 
-        float x = Mathf.Round(normal.x);
-        float z = Mathf.Round(normal.z);
-
-        if (Mathf.Abs(x) > 0.5f) dir.x = Mathf.Sign(x);
-        if (Mathf.Abs(z) > 0.5f) dir.z = Mathf.Sign(z);
+        if (Mathf.Abs(normal.z) > Mathf.Abs(normal.x))
+            dir.z = Mathf.Sign(normal.z);
+        else
+            dir.x = Mathf.Sign(normal.x);
 
         return dir;
     }

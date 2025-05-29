@@ -20,17 +20,180 @@ MonoBehaviour:
   - m_GUID: 2c60574521c8c5d45a4dc31c1286100b
     m_Address: Environment
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - MainScene
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6bece0b757081824e9b050490eef5e04
-    m_Address: MainScene
+    m_Address: CanvasMainScene
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4b717e521fc8470489240fb9687fcd2c
-    m_Address: StartScene
+    m_Address: CanvasStartScene
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 66c1c0ecfaca2e842a1551f40f5850d0
+    m_Address: AnvilData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d4e1659b7ea379e4098005457b83f79b
+    m_Address: CampfireData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 52337d7a170d94a439bf6c6a07b3514f
+    m_Address: AppleData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: af752d7a1b685ab408df9e1c41bcd547
+    m_Address: WorkbenchData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f68c0e706163d1246ad198a1a4c52eb3
+    m_Address: MetalWallData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 85a839100a9f5c642bfc043c84fdb862
+    m_Address: WoodenFloorData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9977695e8740b054285b839e04933004
+    m_Address: WoodenWallData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3344000ffd2d1494f9cd733244fb53cb
+    m_Address: SmelterData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 159f8787a42a6cb4a844010f7139ae57
+    m_Address: MushroomData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 950ae426d88500f409d9eb8c9a662434
+    m_Address: PearData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7e30721be33f2c44c9e94a6a6bf5a383
+    m_Address: MeatCookedData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9a66d6b978a09d4438317aa524c8be6d
+    m_Address: OrangeData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e168fe2bda70ec04d93ccb5fd6db0ba1
+    m_Address: MeatData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ab3f187bad1163f40a94f4aa35e949c1
+    m_Address: SwordData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 114ecc02503a4194fbd9b86e490898d7
+    m_Address: HammerData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 271a65e809fb87145becb4851ce98bd1
+    m_Address: BootsData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c0a112517e533fd49842321d5910f9a4
+    m_Address: ArmorChestData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6096a15d7bf283841b2ac4c4b29ef7ca
+    m_Address: ToolPickaxeData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ea9b816fa9e335c43a8b7e7df67391ab
+    m_Address: ShieldData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f04babd6dc0aeda4abc5761b90d46150
+    m_Address: HelmetData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1aba0dda3adccdf44afa675da8e14747
+    m_Address: ToolAxeData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 38524a3827e5c274a852c3e4b09fa970
+    m_Address: ArmorLegData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f2e35ab25c31b064bbc4955f83c7c39c
+    m_Address: StoneData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d241a7346e38bde4f852759dc6b2ad86
+    m_Address: IronBarData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e19ea5c1800e0bf4f979585a2023af2b
+    m_Address: IronData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d65102d3744c43b45812f3534dd471ef
+    m_Address: WoodData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 20bb3acc0ac50754fb185b1a2a0a793d
+    m_Address: Test
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - StartScene
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b73095aefd561e74599d4c8f30d0bd2b, type: 2}

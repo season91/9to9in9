@@ -8,20 +8,13 @@ using UnityEngine.InputSystem.Editor;
 public class PlayerController : MonoBehaviour, IMoveable, IJumpable
 {
     [Header("Movement")]
-    private Vector2 curMoveInput;
-    [SerializeField] private float moveSpeed = 10f;
-    [SerializeField] private float minMoveSpeed = 3f;
-    [SerializeField] private float maxMoveSpeed = 20f;
     [SerializeField] private LayerMask groundLayerMask;
-    [SerializeField] private float jumpPower = 7f;
-
-    public float JumpPower
-    {
-        get
-        {
-            return jumpPower;
-        }
-    }
+    private Vector2 curMoveInput;
+    
+    // [SerializeField] private float moveSpeed = 10f;
+    // [SerializeField] private float minMoveSpeed = 3f;
+    // [SerializeField] private float maxMoveSpeed = 20f;
+    // [SerializeField] private float jumpPower = 7f;
 
 
     [Header("CameraLook")]
@@ -36,18 +29,26 @@ public class PlayerController : MonoBehaviour, IMoveable, IJumpable
     private bool canLook = true;
     
     private Rigidbody rigidBody;
+    private StatHandler statHandler;
     
     public Action inventoryAction;
 
     private void Awake()
     {
-        rigidBody = GetComponent<Rigidbody>(); 
+        rigidBody = GetComponent<Rigidbody>();
         cameraContainer = transform.Find(cameraContainerName).transform;
+        
+        // null 체크
+        if (rigidBody == null) Debug.LogError("Rigidbody not found");
+        if (cameraContainer == null) Debug.LogError("CameraContainer not found");
     }
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        
+        statHandler = CharacterManager.Player.statHandler;
+        if (statHandler == null) Debug.LogError("StatHandler not found");
     }
 
     private void FixedUpdate()
@@ -76,7 +77,7 @@ public class PlayerController : MonoBehaviour, IMoveable, IJumpable
     public void Move()
     {
         Vector3 dir = transform.forward * curMoveInput.y + transform.right * curMoveInput.x;
-        dir *= moveSpeed;
+        dir *= statHandler.Get(StatType.MoveSpeed);
         dir.y = rigidBody.velocity.y;
         
         rigidBody.velocity = dir;
@@ -95,7 +96,7 @@ public class PlayerController : MonoBehaviour, IMoveable, IJumpable
     {
         if (IsGrounded())
         {
-            rigidBody.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
+            rigidBody.AddForce(Vector2.up * statHandler.Get(StatType.JumpPower), ForceMode.Impulse);
         }
     }
     

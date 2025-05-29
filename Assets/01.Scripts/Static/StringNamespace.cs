@@ -9,18 +9,71 @@ public static class StringTag
 
 public static class StringScene
 {
+    public const string StartScene = "StartScene";
     public const string MainScene = "MainScene";
     public const string LoadingScene = "LoadingScene";
 }
 
-public static class StringAddressable
+#region  Addressable
+
+public static class StringAdr
 {
     public const string Environment = "Environment";
     
     // GUI
-    public const string MainScene = "MainScene";
-    public const string StartScene = "StartScene";
+    public const string MainScene = "CanvasMainScene";
+    public const string StartScene = "CanvasStartScene";
 }
+
+#region  ItemData
+public static class StringAdrItemDataBuild
+{
+    // Build
+    public const string Anvil = "AnvilData";
+    public const string Campfire = "CampfireData";
+    public const string MetalWall = "MetalWallData";
+    public const string Smelter = "SmelterData";
+    public const string WoodenFloor = "WoodenFloorData";
+    public const string WoodenWall = "WoodenWallData";
+    public const string Workbench = "WorkbenchData";
+}
+
+public static class StringAdrItemDataConsumable
+{
+    // Consumable
+    public const string Apple =  "AppleData";
+    public const string MeatCooked =  "MeatCookedData";
+    public const string Meat =  "MeatData";
+    public const string Mushroom =  "MushroomData";
+    public const string Orange =  "OrangeData";
+    public const string Pear =  "PearData";
+}
+
+public static class StringAdrItemDataEquipable
+{
+    // Equipable
+    public const string ArmorChest =  "ArmorChestData";
+    public const string ArmorLeg =  "ArmorLegData";
+    public const string Boots =  "BootsData";
+    public const string Hammer =  "HammerData";
+    public const string Helmet =  "HelmetData";
+    public const string Shield =  "ShieldData";
+    public const string Sword =  "SwordData";
+    public const string ToolAxe =  "ToolAxeData";
+    public const string ToolPickaxe =  "ToolPickaxeData";
+}
+
+public static class StringAdrItemDataResource
+{
+    // Resource
+    public const string Stone =  "StoneData";
+    public const string Wood =  "WoodData";
+    public const string Iron =  "IronData";
+    public const string IronBar =  "IronBarData";
+}
+#endregion
+
+#endregion
 
 public static class StringItemOftenUse
 {

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d218a217209436442b604d821804a81b, type: 3}
+  m_Name: shield
+  m_EditorClassIdentifier: 
+  itemCode: e7
+  displayName: "\uBC29\uD328"
+  description: "\uBC29\uD328\uB2E4."
+  type: 1
+  icon: {fileID: 21300000, guid: 72d8261d625677b46b1e3ef8490830c4, type: 3}
+  prefab: {fileID: 4395386305711825143, guid: 8a390cf4d27d71740878ab804ab34b49, type: 3}
+  isStackable: 0
+  maxStack: 1
+  functions: 00000000
+  equipSlot: 0
+  equipType: 1
+  power: 20

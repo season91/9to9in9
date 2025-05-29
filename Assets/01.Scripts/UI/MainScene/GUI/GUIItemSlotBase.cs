@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public abstract class GUIItemSlotBase : MonoBehaviour
 {
-    [SerializeField] protected bool isEmpty = true;
     [SerializeField] protected Image imgIcon;
     // public ItemData itemData;
     
