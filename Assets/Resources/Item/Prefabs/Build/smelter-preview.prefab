@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 8865125405428757536}
   - component: {fileID: 2570258279807289102}
   - component: {fileID: 7325492875001149012}
-  - component: {fileID: 6010218982383265990}
+  - component: {fileID: -5935433878165483060}
   m_Layer: 0
   m_Name: smelter-preview
   m_TagString: Untagged
@@ -168,7 +168,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6010218982383265990
+--- !u!65 &-5935433878165483060
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -183,7 +183,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

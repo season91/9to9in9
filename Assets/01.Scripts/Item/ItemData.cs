@@ -16,6 +16,7 @@ public enum ItemFunction
 {
     Inspectable,
     Interactable,
+    Damageable
 }
 public abstract class ItemData : ScriptableObject
 {

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1607100776792771413}
   - component: {fileID: 6993294070724154779}
   - component: {fileID: 4999474311579795199}
-  - component: {fileID: 7907515721103168646}
+  - component: {fileID: 671855363256703313}
   m_Layer: 0
   m_Name: wooden-floor-hole-preview
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7907515721103168646
+--- !u!65 &671855363256703313
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

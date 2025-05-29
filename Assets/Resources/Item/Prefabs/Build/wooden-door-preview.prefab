@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1688528872342175839}
   - component: {fileID: 211726669472444120}
   - component: {fileID: 6525271624692807758}
-  - component: {fileID: 7426738058112825278}
+  - component: {fileID: -4608632922977356459}
   m_Layer: 0
   m_Name: wooden-door-preview
   m_TagString: Untagged
@@ -85,7 +85,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7426738058112825278
+--- !u!65 &-4608632922977356459
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5673473013404486203}
   - component: {fileID: 4076467124538531927}
   - component: {fileID: 6877857506773920689}
-  - component: {fileID: 8004970306771039353}
+  - component: {fileID: 5070346115975131561}
   m_Layer: 0
   m_Name: metal-fence-preview
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8004970306771039353
+--- !u!65 &5070346115975131561
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4585255750949547191}
   - component: {fileID: 6912904778919160511}
   - component: {fileID: 2184422990970743242}
-  - component: {fileID: 2584835516565663395}
+  - component: {fileID: 7356959545426982912}
   m_Layer: 0
   m_Name: metal-door-preview
   m_TagString: Untagged
@@ -85,7 +85,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2584835516565663395
+--- !u!65 &7356959545426982912
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

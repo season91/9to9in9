@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5956496126213562190}
   - component: {fileID: 8950901620856862318}
   - component: {fileID: 3845984442874253043}
-  - component: {fileID: 1308905341315344660}
+  - component: {fileID: 1645936589527524491}
   m_Layer: 0
   m_Name: metal-wall-screws-half-preview
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1308905341315344660
+--- !u!65 &1645936589527524491
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

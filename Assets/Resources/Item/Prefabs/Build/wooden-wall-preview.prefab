@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8618503497997379869}
   - component: {fileID: 4603660105192674891}
   - component: {fileID: 6596553719311888453}
-  - component: {fileID: 4567172059784469369}
+  - component: {fileID: -5895039909837179531}
   m_Layer: 0
   m_Name: wooden-wall-preview
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4567172059784469369
+--- !u!65 &-5895039909837179531
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -99,7 +99,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

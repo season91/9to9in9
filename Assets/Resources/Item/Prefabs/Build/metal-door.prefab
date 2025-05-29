@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8670457702049105150}
   - component: {fileID: 2845607732187991154}
   - component: {fileID: 4226595126674938433}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 3064576221274733919}
   - component: {fileID: 2024263770105114927}
   - component: {fileID: 1306368656717408961}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: metal-door
   m_TagString: Untagged
   m_Icon: {fileID: 0}

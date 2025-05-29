@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1321880545596980006}
   - component: {fileID: 8503831042152815509}
   - component: {fileID: 4748914359450078435}
-  - component: {fileID: 2037015481341622055}
+  - component: {fileID: -7112801507719716936}
   m_Layer: 0
   m_Name: wooden-floor-old-preview
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2037015481341622055
+--- !u!65 &-7112801507719716936
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
