@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: BootsData
   m_EditorClassIdentifier: 
   itemCode: e6
+  itemName: boots
   displayName: "\uC2E0\uBC1C"
   description: "\uC2E0\uBC1C\uC774\uB2E4."
   type: 1

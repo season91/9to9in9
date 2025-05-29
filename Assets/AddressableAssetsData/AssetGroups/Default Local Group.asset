@@ -111,8 +111,32 @@ MonoBehaviour:
     m_SerializedLabels:
     - MainScene
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dc1c51bf65066fb48b8a32432730bda7
+    m_Address: SwordData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a14e97c6e9cad6d4fae44e791c38d811
     m_Address: ShieldData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 514b91717e3d9094f98cf47ddde2b966
+    m_Address: ArmorLegData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 385d8d2bf6b95a848b93c988452b0fdf
+    m_Address: BootsData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3a996527e5103f542a8c448b18075b5a
+    m_Address: ToolAxeData
     m_ReadOnly: 0
     m_SerializedLabels:
     - MainScene
@@ -129,32 +153,8 @@ MonoBehaviour:
     m_SerializedLabels:
     - MainScene
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 3a996527e5103f542a8c448b18075b5a
-    m_Address: ToolAxeData
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - MainScene
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2dd3a8c0c917cb34998f2d6e440b6d52
     m_Address: HammerData
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - MainScene
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 385d8d2bf6b95a848b93c988452b0fdf
-    m_Address: BootsData
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - MainScene
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 514b91717e3d9094f98cf47ddde2b966
-    m_Address: ArmorLegData
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - MainScene
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: dc1c51bf65066fb48b8a32432730bda7
-    m_Address: SwordData
     m_ReadOnly: 0
     m_SerializedLabels:
     - MainScene

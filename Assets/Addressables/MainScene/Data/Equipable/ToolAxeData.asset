@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ToolAxeData
   m_EditorClassIdentifier: 
   itemCode: e1
+  itemName: tool-axe
   displayName: "\uB3C4\uB07C"
   description: "\uB3C4\uB07C\uC774\uB2E4."
   type: 1
