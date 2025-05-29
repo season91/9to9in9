@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: armor-chest
   m_EditorClassIdentifier: 
   itemCode: e4
+  itemName: armor-chest
   displayName: "\uAC11\uC637-\uC0C1\uC758"
   description: "\uAC11\uC637\uC774\uB2E4."
   type: 1

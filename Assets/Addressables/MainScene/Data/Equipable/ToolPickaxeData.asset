@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: tool-pickaxe
   m_EditorClassIdentifier: 
   itemCode: e2
+  itemName: tool-pickaxe
   displayName: "\uACE1\uAD2D\uC774"
   description: "\uACE1\uAD2D\uC774\uC774\uB2E4."
   type: 1
@@ -21,6 +22,6 @@ MonoBehaviour:
   isStackable: 0
   maxStack: 1
   functions: 00000000
-  equipSlot: 5
+  equipSlot: 0
   equipType: 2
   power: 10

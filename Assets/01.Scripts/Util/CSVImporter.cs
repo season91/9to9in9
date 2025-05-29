@@ -118,7 +118,7 @@ public class CSVImporter
         for (int i = 1; i < lines.Length; i++) {
             string[] cols = lines[i].Split(',');
             T item = parseFunc(cols);
-            string adrName = ToPascalDataName(item.name);
+            string adrName = ToPascalDataName(item.itemName);
             
             // itemType 기반 경로 분기
             string typeFolder = item.type.ToString(); 
@@ -144,7 +144,7 @@ public class CSVImporter
     private static void ParseCommonFields(ItemData item, string[] cols)
     {
         item.itemCode = cols[0];
-        item.name = cols[1]; // 파일명
+        item.itemName = cols[1];
         item.displayName = cols[2];
         item.description = cols[3];
         item.type = (ItemType)Enum.Parse(typeof(ItemType), cols[4]);
