@@ -17,11 +17,11 @@ MonoBehaviour:
   description: "\uC881\uC740 \uBCBD\uC774\uB2E4"
   type: 3
   icon: {fileID: 21300000, guid: 4a4b899187860c641ae0baff1e24fce6, type: 3}
-  prefab: {fileID: 0}
+  prefab: {fileID: 3670093199476329454, guid: 75292f5c3b567cd4b8580674c4f9bc54, type: 3}
   isStackable: 1
   maxStack: 30
   functions: 00000000
-  previewPrefab: {fileID: 0}
+  previewPrefab: {fileID: 6630517686227405384, guid: cd0b8334e91c5164a9b4531009dff09f, type: 3}
   buildType: 0
   stationType: 4
   health: 70

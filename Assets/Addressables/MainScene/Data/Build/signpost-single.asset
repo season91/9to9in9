@@ -16,7 +16,7 @@ MonoBehaviour:
   displayName: "\uB2E8\uC77C \uD45C\uC9C0\uD310"
   description: "\uC5EC\uAE30\uB85C \uAC00\uC790"
   type: 3
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: db0df15a43209fc4e88b63726642422f, type: 3}
   prefab: {fileID: 6298469963001710597, guid: b43853eaf4d0a4945b1916ae661d3e66, type: 3}
   isStackable: 1
   maxStack: 10
