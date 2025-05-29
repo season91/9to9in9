@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d74587e00f6bde46bc32e5a1060ec6a, type: 3}
-  m_Name: metal-wall
+  m_Name: signpost-multi
   m_EditorClassIdentifier: 
-  itemCode: b10
-  displayName: "\uCCA0 \uBCBD"
-  description: "\uB4E0\uB4E0\uD55C \uCCA0\uD310"
+  itemCode: b7
+  displayName: "\uC88C\uC6B0 \uD45C\uC9C0\uD310"
+  description: "\uC5B4\uB514\uB85C \uAC08\uAE4C"
   type: 3
-  icon: {fileID: 21300000, guid: 491f641fe064e91438e6f2ed5a1a817e, type: 3}
-  prefab: {fileID: 3856265350502986392, guid: 2a22b22e3a65adc4aa64cac17da0510c, type: 3}
+  icon: {fileID: 0}
+  prefab: {fileID: 371626872780341577, guid: c3cec192c83055946b7b29e563c3ad9a, type: 3}
   isStackable: 1
-  maxStack: 30
+  maxStack: 10
   functions: 00000000
-  previewPrefab: {fileID: 867616730880761746, guid: 3b73bf251f3de7241b9a63e9d70e5684, type: 3}
+  previewPrefab: {fileID: 1170970709812737968, guid: 2b602ebef768bc940b1d19fa500d96fd, type: 3}
   buildType: 0
   stationType: 4
-  health: 70
+  health: 30
