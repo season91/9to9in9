@@ -164,7 +164,7 @@ public class UIManager : MonoBehaviour
                 break;
             case SceneType.Main:
                 SpawnManager.Instance.Init();
-                GameManager.InitMainScene();
+                GameManager.Instance.InitMainScene();
                 break;
             case SceneType.Option:
             default:
