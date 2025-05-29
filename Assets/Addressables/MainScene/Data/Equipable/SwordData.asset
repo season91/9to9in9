@@ -22,6 +22,6 @@ MonoBehaviour:
   isStackable: 0
   maxStack: 1
   functions: 00000000
-  equipSlot: 0
+  equipSlot: 5
   equipType: 0
   power: 30
