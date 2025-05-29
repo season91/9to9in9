@@ -91,6 +91,7 @@ public class CSVImporter
         item.previewPrefab = PrefabParse(cols[10], item.type);
         item.buildType = Enum.Parse<BuildType>(cols[11]);
         item.stationType = Enum.Parse<StationType>(cols[12]);
+        item.health = float.Parse(cols[13]);
         
         return item;
     }
