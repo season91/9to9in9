@@ -32,6 +32,10 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private List<SfxClipGroup> sfxClipGroups = new();
     private Dictionary<SfxType, List<AudioClip>> sfxClipLists = new();
 
+    [Header("Step")] 
+    [SerializeField] private float stepInterval;
+    private float stepTimer;
+    
     private void Awake()
     {
         if (Instance == null)
@@ -41,8 +45,7 @@ public class SoundManager : MonoBehaviour
         }
         else Destroy(gameObject);
     }
-    
-    
+
     public void InitSfx()
     {
         foreach (var group in sfxClipGroups)
@@ -85,4 +88,14 @@ public class SoundManager : MonoBehaviour
         sfxSource.PlayOneShot(clip);
         Debug.Log($"playing {clip.name}");
     }
+
+    public void PlayStepSfx()
+    {
+        stepTimer += Time.deltaTime;
+        if (!(stepTimer >= stepInterval)) return;
+        
+        stepTimer = 0f;
+        PlayRandomSfx(SfxType.Step);
+    }
+
 }
