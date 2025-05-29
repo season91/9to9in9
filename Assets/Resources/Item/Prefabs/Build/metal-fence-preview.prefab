@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6877857506773920689}
   - component: {fileID: 8004970306771039353}
   m_Layer: 0
-  m_Name: metal-fence-preview 1
+  m_Name: metal-fence-preview
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
