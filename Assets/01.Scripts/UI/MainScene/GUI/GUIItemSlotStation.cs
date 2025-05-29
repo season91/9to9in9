@@ -8,12 +8,18 @@ using UnityEngine.UI;
 
 public class GUIItemSlotStation : GUIItemSlotBase
 {
-    private bool isEmpty = true;
     [SerializeField] private TextMeshProUGUI tmpTitle;
     [SerializeField] private TextMeshProUGUI tmpPcs;
     [SerializeField] private Button btnSelect;
-    
-    public bool IsEmpty() => isEmpty;
+    [SerializeField] private ItemData itemData;
+
+    public bool IsPlacePossible(Sprite icon)
+    {
+        if(!imgIcon.sprite)
+            return true;
+        
+        return imgIcon.sprite == icon;
+    }
 
     void Reset()
     {
@@ -26,41 +32,64 @@ public class GUIItemSlotStation : GUIItemSlotBase
     public override void Initialization()
     {
         imgIcon.gameObject.SetActive(false);
-        tmpTitle.text = string.Empty;
+        imgIcon.sprite = null;
         tmpPcs.text = string.Empty;
-        isEmpty = imgIcon.sprite == null;
         
         btnSelect.onClick.RemoveAllListeners();
         btnSelect.onClick.AddListener(Select);
     }
 
-    public override void Show(Sprite icon, int pcs = 0)
+    /// <summary>
+    /// pcs 값 넣어주세요! 제거하는 거면 -1, 추가하는 거면 1
+    /// </summary>
+    /// <param name="icon">아이템 아이콘</param>
+    /// <param name="pcs">아이템 개수 -1 or 1</param>
+    public override void Show(Sprite icon, int pcs, ItemData item)
     {
         imgIcon.gameObject.SetActive(true);
         imgIcon.sprite = icon;
-        int pieces = Convert.ToInt32(tmpPcs.text);
-        pieces += pcs;
+
+        int pieces = 0;
+        if (tmpPcs.text == string.Empty)
+        {
+            pieces += pcs;
+        }
+        else
+        {
+            pieces = Convert.ToInt32(tmpPcs.text);
+            pieces += pcs;
+        }
         tmpPcs.text = pieces.ToString().Trim();
+
+        itemData = item;
     }
 
     public override void Select()
     {
-        int pieces = Convert.ToInt32(tmpPcs.text);
-
-        if (pieces == 1)
-        {
-            Initialization();
-            return;
-        }
-        
-        if (pieces <= 0 || tmpPcs.text == null)
+        if (tmpPcs.text == string.Empty)
         {
             Debug.Log("This Slot is Empty");
-            return;
         }
-        
-        pieces--;
-        tmpPcs.text = pieces.ToString().Trim();
+        else
+        {
+            int pieces = Convert.ToInt32(tmpPcs.text);
+            
+            switch (pieces)
+            {
+                case <= 0:
+                    Debug.Log("This Slot is Empty");
+                    return;
+                case 1:
+                    Initialization();
+                    return;
+                default:
+                    pieces--;
+                    tmpPcs.text = pieces.ToString().Trim();
+                    break;
+            }
+
+            CharacterManager.Player.inventoryController.AddItem(itemData);
+        }
     }
 
     public void SetTitle(string title)

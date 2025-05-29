@@ -51,26 +51,8 @@ MonoBehaviour:
     m_SerializedLabels:
     - MainScene
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: af752d7a1b685ab408df9e1c41bcd547
-    m_Address: WorkbenchData
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - MainScene
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f68c0e706163d1246ad198a1a4c52eb3
     m_Address: MetalWallData
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - MainScene
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 85a839100a9f5c642bfc043c84fdb862
-    m_Address: WoodenFloorData
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - MainScene
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9977695e8740b054285b839e04933004
-    m_Address: WoodenWallData
     m_ReadOnly: 0
     m_SerializedLabels:
     - MainScene
