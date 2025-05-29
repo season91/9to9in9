@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4148773930489232270}
   - component: {fileID: 2764106717984449479}
   - component: {fileID: 7256812888851144076}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: metal-wall-screws-half
   m_TagString: Untagged
   m_Icon: {fileID: 0}

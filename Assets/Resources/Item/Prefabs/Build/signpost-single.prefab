@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4339036318029271657}
   - component: {fileID: 7793456709385947531}
   - component: {fileID: 7579696580618182324}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: signpost-single
   m_TagString: Untagged
   m_Icon: {fileID: 0}
