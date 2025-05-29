@@ -174,6 +174,7 @@ public class PlayerInventoryController : MonoBehaviour
 
     public int GetPcs(int index)
     {
+        if(index > inventoryItems.Count) return -1;
         return inventoryItems[index].Quantity;
     }
 
@@ -193,6 +194,7 @@ public class PlayerInventoryController : MonoBehaviour
     
     public ItemData GetItem(int index)
     {
+        if(index > inventoryItems.Count) {return null;}
         return items[index];
     }
 
