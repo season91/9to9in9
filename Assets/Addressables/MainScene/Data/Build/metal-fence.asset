@@ -10,18 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d74587e00f6bde46bc32e5a1060ec6a, type: 3}
-  m_Name: metal-wall
+  m_Name: metal-fence
   m_EditorClassIdentifier: 
-  itemCode: b10
-  displayName: "\uCCA0 \uBCBD"
-  description: "\uB4E0\uB4E0\uD55C \uCCA0\uD310"
+  itemCode: b9
+  displayName: "\uCCA0 \uC6B8\uD0C0\uB9AC"
+  description: "\uC5EC\uC804\uD788 \uC81C\uAE30\uB2A5\uC744 \uBABB \uD560 \uAC83
+    \uAC19\uB2E4"
   type: 3
-  icon: {fileID: 21300000, guid: 491f641fe064e91438e6f2ed5a1a817e, type: 3}
-  prefab: {fileID: 3856265350502986392, guid: 2a22b22e3a65adc4aa64cac17da0510c, type: 3}
+  icon: {fileID: 21300000, guid: 0f369c6c0fecde344991de0ea09b0c66, type: 3}
+  prefab: {fileID: 4491284123586516050, guid: 43466153e5445224ba057af8501f7040, type: 3}
   isStackable: 1
   maxStack: 30
   functions: 00000000
-  previewPrefab: {fileID: 867616730880761746, guid: 3b73bf251f3de7241b9a63e9d70e5684, type: 3}
+  previewPrefab: {fileID: 4639200251370739088, guid: 8b643924b09042c4fac61021d24f61c1, type: 3}
   buildType: 0
   stationType: 4
   health: 70

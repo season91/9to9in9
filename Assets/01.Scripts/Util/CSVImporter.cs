@@ -110,7 +110,7 @@ public class CSVImporter
             return;
         }
         
-        string targetFolder = $"Assets/Resources/Item/Data/";
+        string targetFolder = $"Assets/Addressables/MainScene/Data/";
         if (!Directory.Exists(targetFolder)) {
             Directory.CreateDirectory(targetFolder);
         }
