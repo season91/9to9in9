@@ -18,7 +18,7 @@ MonoBehaviour:
   description: "\uCCA0\uAD11\uC11D\uC744 \uCE90\uBCF4\uC790."
   type: 2
   icon: {fileID: 0}
-  prefab: {fileID: 510619728292910355, guid: dbfecc40ad2be0c4dbb442dc61d50a1e, type: 3}
+  prefab: {fileID: 510619728292910355, guid: 39685d20050bedb48b4a7c2864ec7039, type: 3}
   isStackable: 0
   maxStack: 0
   functions: 0000000002000000

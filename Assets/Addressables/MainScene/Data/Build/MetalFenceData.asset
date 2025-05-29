@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: MetalFenceData
   m_EditorClassIdentifier: 
   itemCode: b9
+  itemName: metal-fence
   displayName: "\uCCA0 \uC6B8\uD0C0\uB9AC"
   description: "\uC5EC\uC804\uD788 \uC81C\uAE30\uB2A5\uC744 \uBABB \uD560 \uAC83
     \uAC19\uB2E4"
@@ -24,5 +25,5 @@ MonoBehaviour:
   functions: 0000000002000000
   previewPrefab: {fileID: 4639200251370739088, guid: 8b643924b09042c4fac61021d24f61c1, type: 3}
   buildType: 0
-  stationType: 4
+  stationType: 0
   health: 70

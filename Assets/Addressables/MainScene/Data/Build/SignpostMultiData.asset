@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SignpostMultiData
   m_EditorClassIdentifier: 
   itemCode: b7
+  itemName: signpost-multi
   displayName: "\uC88C\uC6B0 \uD45C\uC9C0\uD310"
   description: "\uC5B4\uB514\uB85C \uAC08\uAE4C"
   type: 3
@@ -23,5 +24,5 @@ MonoBehaviour:
   functions: 0000000002000000
   previewPrefab: {fileID: 1170970709812737968, guid: 2b602ebef768bc940b1d19fa500d96fd, type: 3}
   buildType: 0
-  stationType: 4
+  stationType: 0
   health: 30

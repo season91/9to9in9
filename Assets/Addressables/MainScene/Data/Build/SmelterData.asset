@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SmelterData
   m_EditorClassIdentifier: 
   itemCode: b18
+  itemName: smelter
   displayName: "\uC81C\uB828\uB300"
   description: "\uAD7D\uC790"
   type: 3
@@ -23,5 +24,5 @@ MonoBehaviour:
   functions: 0100000002000000
   previewPrefab: {fileID: 1752346811827462274, guid: 0dfe26ceac1519441b6f1152a9cb2520, type: 3}
   buildType: 0
-  stationType: 2
+  stationType: 0
   health: 100

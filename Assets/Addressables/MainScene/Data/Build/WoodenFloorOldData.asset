@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: WoodenFloorOldData
   m_EditorClassIdentifier: 
   itemCode: b1
+  itemName: wooden-floor-old
   displayName: "\uC624\uB798\uB41C \uB098\uBB34 \uBC14\uB2E5"
   description: "\uC090\uAC71\uAC70\uB9B0\uB2E4"
   type: 3
@@ -23,5 +24,5 @@ MonoBehaviour:
   functions: 0000000002000000
   previewPrefab: {fileID: 7623352263080812907, guid: 8c5b846cca396df48b2ec2f9f64c41a1, type: 3}
   buildType: 0
-  stationType: 4
+  stationType: 0
   health: 50

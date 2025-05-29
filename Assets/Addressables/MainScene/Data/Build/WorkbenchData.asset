@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: WorkbenchData
   m_EditorClassIdentifier: 
   itemCode: b16
+  itemName: workbench
   displayName: "\uC81C\uC791\uB300"
   description: "\uB9CC\uB4E4\uC790"
   type: 3
