@@ -79,6 +79,52 @@ public class DebugWindow : EditorWindow
             LoadItemAndAddToInventory(StringAdrItemDataResource.Wood);
             LoadItemAndAddToInventory(StringAdrItemDataResource.Iron);
         }
+        
+        if (GUILayout.Button("AddEquipItemToInventory"))
+        {
+            List<string> addressList = new List<string>();
+            
+            FieldInfo[] fields = typeof(StringAdrItemDataEquipable)
+                .GetFields(BindingFlags.Public | BindingFlags.Static);
+            
+            foreach (FieldInfo field in fields)
+            {
+                if (field.IsLiteral && field.FieldType == typeof(string))
+                {
+                    string value = field.GetRawConstantValue() as string;
+                    addressList.Add(value);
+                }
+            }
+            
+            foreach (var address in addressList)
+            {
+                var item = ResourceManager.Instance.GetResource<ItemData>(address);
+                CharacterManager.Player.inventoryController.AddItem(item);
+            }
+        }
+        
+        if (GUILayout.Button("AddConsumableItemToInventory"))
+        {
+            List<string> addressList = new List<string>();
+            
+            FieldInfo[] fields = typeof(StringAdrItemDataConsumable)
+                .GetFields(BindingFlags.Public | BindingFlags.Static);
+            
+            foreach (FieldInfo field in fields)
+            {
+                if (field.IsLiteral && field.FieldType == typeof(string))
+                {
+                    string value = field.GetRawConstantValue() as string;
+                    addressList.Add(value);
+                }
+            }
+            
+            foreach (var address in addressList)
+            {
+                var item = ResourceManager.Instance.GetResource<ItemData>(address);
+                CharacterManager.Player.inventoryController.AddItem(item);
+            }
+        }
     }
     
     // OnGUI는 async를 못붙이는 함수여서 await 사용 불가능
