@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: HelmetData
   m_EditorClassIdentifier: 
   itemCode: e3
+  itemName: helmet
   displayName: "\uD22C\uAD6C"
   description: "\uD22C\uAD6C\uC774\uB2E4."
   type: 1

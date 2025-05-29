@@ -22,6 +22,7 @@ public abstract class ItemData : ScriptableObject
 {
     [Header("아이템에 들어갈 정보 Info")]
     public string itemCode;
+    public string itemName;
     public string displayName; // 아이템 이름
     public string description; // 아이템 설명
     public ItemType type; // 회복, 공격, 채집 등으로 인한 각 아이템 타입

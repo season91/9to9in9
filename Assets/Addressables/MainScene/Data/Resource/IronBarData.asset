@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: IronBarData
   m_EditorClassIdentifier: 
   itemCode: r4
+  itemName: iron-bar
   displayName: "\uAC00\uACF5\uB41C \uCCA0"
   description: "\uAC00\uACF5\uB41C \uCCA0\uC774\uB2E4."
   type: 2
