@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 00cd1437998705a4cb772ca04634fcfd, type: 3}
-  m_Name: 
+  m_Name: MeatData
   m_EditorClassIdentifier: 
   itemCode: c1
   itemName: meat
