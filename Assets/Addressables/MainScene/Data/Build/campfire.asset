@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d74587e00f6bde46bc32e5a1060ec6a, type: 3}
+  m_Name: campfire
+  m_EditorClassIdentifier: 
+  itemCode: b5
+  displayName: "\uBAA8\uB2E5\uBD88"
+  description: "\uBA39\uC790"
+  type: 3
+  icon: {fileID: 21300000, guid: c9722d27c64c3a34d8c669ec749c7ab6, type: 3}
+  prefab: {fileID: 4418324156752746484, guid: 29a3f50b69c9bec449cb2c5d18b089c1, type: 3}
+  functions: 000000000200000001000000
+  previewPrefab: {fileID: 2422841386545285316, guid: 5085e934417ef384f94fc841370cc8ec, type: 3}
+  buildType: 2
+  stationType: 1
+  isStackable: 0
+  maxStack: 1
