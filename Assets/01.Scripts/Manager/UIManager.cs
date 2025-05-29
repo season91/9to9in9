@@ -62,8 +62,6 @@ public class UIManager : MonoBehaviour
     // 비동기 Open Scene
     public async Task OpenScene(SceneType type)
     {
-        InitManagers();
-        
         // 활성화된 모든 UI 제거
         if (curSceneType != SceneType.None)
         {
@@ -98,6 +96,7 @@ public class UIManager : MonoBehaviour
                 break;
         }
         
+        InitManagers();
         canvasLoading.SetProgressBar(1f);
         canvasLoading.gameObject.SetActive(false);
         curSceneType = type;
