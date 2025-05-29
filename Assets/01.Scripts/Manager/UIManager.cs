@@ -96,7 +96,7 @@ public class UIManager : MonoBehaviour
                 break;
         }
         
-        InitManagers();
+        InitManagers(type);
         canvasLoading.SetProgressBar(1f);
         canvasLoading.gameObject.SetActive(false);
         curSceneType = type;
@@ -156,8 +156,22 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    void InitManagers()
+    void InitManagers(SceneType sceneType)
     {
+        switch (sceneType)
+        {
+            case SceneType.Start: 
+                break;
+            case SceneType.Main:
+                SpawnManager.Instance.Init();
+                GameManager.InitMainScene();
+                break;
+            case SceneType.Option:
+            default:
+                break;
+        }
+        
+        // 공통 (DDO)
         SoundManager.Instance.InitSfx();
     }
     

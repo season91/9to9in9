@@ -9,6 +9,19 @@ using UnityEngine;
 /// </summary>
 public class CraftManager : MonoBehaviour
 {
+    private static CraftManager instance;
+
+    public static CraftManager Instance
+    {
+        get
+        {
+            if (instance == null)
+                return null;
+
+            return instance;
+        }
+    }
+    
     // 레시피 공식 데이터 json 으로 선택한 이유
     // 1. 복잡한 공식은 json 작성이 유지보수가 용이
     // 2. 공식 수정 후 동적 재로드 가능 
@@ -20,6 +33,17 @@ public class CraftManager : MonoBehaviour
 
     private void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+        
         playerInventory = CharacterManager.Player.inventoryController;
         recipeHandler = new RecipeHandler(playerInventory);
     }
@@ -31,7 +55,7 @@ public class CraftManager : MonoBehaviour
         Debug.Log("레시피 로딩 완료 후 후속 로직 가능");
         
         // test
-        GetRecipeOfStationType("Anvil");
+        // GetRecipeOfStationType("Anvil");
     }
     
     private async Task ReloadRecipes()
@@ -45,20 +69,20 @@ public class CraftManager : MonoBehaviour
     /// Player 인벤토리에 있는 아이템 중 위 레시피 중 제작 가능 여부 판단해서 리턴
     /// key: 중분류 이름 ("Tool", "Armor", "Weapon", 그외 "Default")
     /// </summary>
-    public Dictionary<string, Dictionary<Sprite, bool>> GetRecipeOfStationType(string stationType)
+    public Dictionary<string, Dictionary<Sprite, bool>> GetRecipeOfStationType(StationType stationType)
     {
-        if (string.IsNullOrEmpty(stationType)) return null;
+        // if (string.IsNullOrEmpty(stationType)) return null;
+        //
+        // if (!Enum.TryParse(stationType, out StationType stationEnum)) return null;
 
-        if (!Enum.TryParse(stationType, out StationType stationEnum)) return null;
-
-        if (!parsedRecipes.ContainsKey(stationEnum))
+        if (!parsedRecipes.ContainsKey(stationType))
         {
-            Debug.LogWarning($"parsedRecipes에 {stationEnum} 데이터가 없음");
+            Debug.LogWarning($"parsedRecipes에 {stationType} 데이터가 없음");
             return null;
         }
 
         var iconCraftableByCategory = new Dictionary<string, Dictionary<Sprite, bool>>();
-        var categoryDict = parsedRecipes[stationEnum];
+        var categoryDict = parsedRecipes[stationType];
 
         foreach (var categoryPair in categoryDict)
         {
