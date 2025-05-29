@@ -52,7 +52,7 @@ public class PlayerInventoryController : MonoBehaviour
     //외부 읽기 전용 list 반환
     public IReadOnlyList<ItemData> Items => items;
 
-    //[SerializeField] private int inventorySize = 21;
+    [SerializeField] private int inventorySize = 21;
     
     public Action UpdateInventory;
     
@@ -71,6 +71,13 @@ public class PlayerInventoryController : MonoBehaviour
 
     public void AddItem(ItemData item, int quantity = 1)
     {
+        if (items.Count == inventorySize)
+        {
+            #if UNITY_EDITOR
+            Debug.LogWarning("인벤토리 최대 칸 수 넘어감!!");
+                #endif
+            return;
+        }
         for (int i = 0; i < items.Count; ++i)
         {
             if (inventoryItems[i].isItemExsit(item) && inventoryItems[i].CanStack())
@@ -200,7 +207,7 @@ public class PlayerInventoryController : MonoBehaviour
 
     public void EquipItem(EquipableItemData equipItem)
     {
-        RemoveItem(equipItem);
+        //RemoveItem(equipItem);    --UI에서 remove(int index)를 호출하기 때문에 한 번 더 지우는 행위를 하지 않아도 됨
         int targetIdx = equippedItems.FindIndex(item => item.equipSlot == equipItem.equipSlot);
         if (targetIdx == -1)
         {

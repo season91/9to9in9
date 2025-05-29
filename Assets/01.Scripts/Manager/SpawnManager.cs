@@ -31,36 +31,38 @@ public class SpawnManager : MonoBehaviour
     //-------SpawnManager 수정 필요 : 오브젝트 호출 시 받아올 경로나 어드레서블 적용이 필요해 보임
     private void Awake()
     {
-        //CreatePool<Item>("Item", Item);
-        //CreatePool<Enemy>("Enemy",Enemy);
+        Init();
+    }
+
+    public void Init()
+    {
         //foreach (string key in StringItemName.oftenUseKeys)
         //{
-            ItemData data = ResourceManager.Instance.GetResource<ItemData>(StringAdrItemDataResource.Wood);
-            if (data != null)
-            {
-                CreatePool(StringAdrItemDataResource.Wood,data.prefab);
-            }
-            else
-            {
-                Debug.Log($"{StringAdrItemDataResource.Wood} 프리팹 찾을 수 없음!");
-            }
+        ItemData data = ResourceManager.Instance.GetResource<ItemData>(StringAdrItemDataResource.Wood);
+        if (data != null)
+        {
+            CreatePool(StringAdrItemDataResource.Wood,data.prefab);
+        }
+        else
+        {
+            Debug.Log($"{StringAdrItemDataResource.Wood} 프리팹 찾을 수 없음!");
+        }
         //}
 
         //foreach (string key in StringItemName.prefabKeys)
         //{
-            data = ResourceManager.Instance.GetResource<ItemData>(StringAdrItemDataEquipable.ArmorChest);
-            if (data != null)
-            {
-                prefabs[StringAdrItemDataEquipable.ArmorChest] = data.prefab;
-            }
-            else
-            {
-                Debug.Log($"{StringAdrItemDataEquipable.ArmorChest} 프리팹 찾을 수 없음!");
-            }
-            Debug.Log($"{prefabs[StringAdrItemDataEquipable.ArmorChest].name}");
+        data = ResourceManager.Instance.GetResource<ItemData>(StringAdrItemDataEquipable.ArmorChest);
+        if (data != null)
+        {
+            prefabs[StringAdrItemDataEquipable.ArmorChest] = data.prefab;
+        }
+        else
+        {
+            Debug.Log($"{StringAdrItemDataEquipable.ArmorChest} 프리팹 찾을 수 없음!");
+        }
+        Debug.Log($"{prefabs[StringAdrItemDataEquipable.ArmorChest].name}");
         //}
     }
-
     private void CreatePool(string key, GameObject prefab)
     {
         GameObject poolParent = new GameObject($"{key}Pool");
@@ -76,7 +78,7 @@ public class SpawnManager : MonoBehaviour
     }
 
     // object pool 대상 활성화. 예) 자원인 경우 이름(wood), 프리팹명으로 호출(wood)
-    public GameObject GetObject(string key, GameObject Prefab)
+    public GameObject GetObject(string key)
     {
         if (pools.ContainsKey(key))
         {
