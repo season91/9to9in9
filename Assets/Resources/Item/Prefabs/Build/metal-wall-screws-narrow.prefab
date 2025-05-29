@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2903408477631391919}
   - component: {fileID: 8369197588502602996}
   - component: {fileID: 1882659770478364717}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: metal-wall-screws-narrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
