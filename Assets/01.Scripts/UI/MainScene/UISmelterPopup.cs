@@ -23,10 +23,10 @@ public class UISmelterPopup : MonoBehaviour, IGUI
     public void Initialization()
     {
         slotStationDict = new Dictionary<ResourceType, GUIItemSlotStation>();
-
-        fuelSlot.SetTitle("Fuel");
-        metalSlot.SetTitle("Metal");
-        resultSlot.SetTitle("Result");
+        
+        // fuelSlot.Initialization();
+        // metalSlot.Initialization();
+        // resultSlot.Initialization();
         
         slotStationDict[ResourceType.Fuel] = fuelSlot;
         slotStationDict[ResourceType.Metal] = metalSlot;
@@ -38,16 +38,18 @@ public class UISmelterPopup : MonoBehaviour, IGUI
             switch (slotStation.Key)
             {
                 case ResourceType.Fuel:
+                    fuelSlot.SetTitle("Fuel");
+                    break;
                 case ResourceType.Metal:
+                    metalSlot.SetTitle("Metal");
+                    break;
                 case ResourceType.None:
+                    resultSlot.SetTitle("Result");
+                    break;
+                default:
                     break;
             }
-            slotStation.Value.SetTitle("Fuel");
         }
-        
-        fuelSlot.Initialization();
-        metalSlot.Initialization();
-        resultSlot.Initialization();
         
         gameObject.SetActive(false);
     }
@@ -69,22 +71,21 @@ public class UISmelterPopup : MonoBehaviour, IGUI
 
         if (resourceItem == null)
         {
-            Debug.LogError("Casting Failed");
+            Debug.Log("Casting Failed! Is not Resource!");
             return false;
         }
 
-        if (resourceItem.resourceType == ResourceType.Fuel && fuelSlot.IsEmpty())
+        switch (resourceItem.resourceType)
         {
-            fuelSlot.Show(item.icon);
-            return true;
+            case ResourceType.Fuel when fuelSlot.IsPlacePossible(resourceItem.icon):
+                fuelSlot.Show(item.icon, 1, item);
+                return true;
+            case ResourceType.Metal when metalSlot.IsPlacePossible(resourceItem.icon):
+                metalSlot.Show(item.icon, 1, item);
+                return true;
+            default:
+                Debug.Log("Slot is full!");
+                return false;
         }
-        if (resourceItem.resourceType == ResourceType.Metal && metalSlot.IsEmpty()) 
-        {
-            metalSlot.Show(item.icon);
-            return true;
-        }
-
-        Debug.Log("Slot is full!");
-        return false;
     }
 }

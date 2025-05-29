@@ -77,11 +77,13 @@ public class PlayerInventoryController : MonoBehaviour
             if (inventoryItems[i].isItemExsit(item) && inventoryItems[i].CanStack())
             {
                 inventoryItems[i].Quantity += quantity;
+                UpdateInventory?.Invoke();
                 return;
             }
         }
         items.Add(item);
         inventoryItems.Add(new ItemSlot(item, quantity));
+        UpdateInventory?.Invoke();
     }
 
     public void RemoveItem(int index)
@@ -93,6 +95,7 @@ public class PlayerInventoryController : MonoBehaviour
         }
         items[index] = null;
         inventoryItems[index].InitSlot();
+        UpdateInventory?.Invoke();
     }
 
     public int GetAllItemCount()

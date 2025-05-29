@@ -34,7 +34,11 @@ public class UIInventoryPopup : MonoBehaviour, IGUI
     public void Open()
     {
         gameObject.SetActive(true);
+        
         inventoryCtrlr = CharacterManager.Player.inventoryController;
+        
+        inventoryCtrlr.UpdateInventory -= SettingInventoryUI;
+        inventoryCtrlr.UpdateInventory += SettingInventoryUI;
         
         SettingInventoryUI();
     }
@@ -66,7 +70,7 @@ public class UIInventoryPopup : MonoBehaviour, IGUI
         inventorySlots[index].SetPcs(pcs);
     }
 
-    public void OnItemSlotSelected(int index)
+    void OnItemSlotSelected(int index)
     {
         ItemData item = inventoryCtrlr.GetItem(index);
 
@@ -75,7 +79,6 @@ public class UIInventoryPopup : MonoBehaviour, IGUI
         if (isSuccess) 
         {
             inventoryCtrlr.RemoveItem(index);
-            SettingSlotUI(index);
             inventorySlots[index].Select();
         }
         else 
