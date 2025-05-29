@@ -2028,9 +2028,10 @@ GameObject:
   - component: {fileID: 1117324734450495670}
   - component: {fileID: 4950774525503659049}
   - component: {fileID: 6410857931770135226}
-  - component: {fileID: 4686959314820510518}
   - component: {fileID: 7750605451445748494}
   - component: {fileID: 7878220083124243955}
+  - component: {fileID: 7226837837551744467}
+  - component: {fileID: 8028963472439590267}
   m_Layer: 0
   m_Name: Zombie2
   m_TagString: Untagged
@@ -2098,35 +2099,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &4686959314820510518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9130397229717783166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae8632f742ac463ba2a3d9d4aaa231cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health:
-    maxValue: 0
-    passiveValue: 0
-    curValue: 0
-  walkSpeed: 0.3
-  runSpeed: 0.5
-  detectDistance: 2
-  minWanderDistance: 2
-  maxWanderDistance: 5
-  minWanderWaitTime: 1
-  maxWanderWaitTime: 5
-  damage: 2
-  attackRate: 2
-  attackDistance: 0.5
-  playerDistance: 0
-  fieldOfView: 120
-  playerStatHandler: {fileID: 0}
 --- !u!54 &7750605451445748494
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2177,3 +2149,37 @@ CapsuleCollider:
   m_Height: 3.88
   m_Direction: 1
   m_Center: {x: 0, y: 1.86, z: 0}
+--- !u!114 &7226837837551744467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9130397229717783166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8f3e15946b749f58f3bd71af54c1a66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statProfile: {fileID: 11400000, guid: 5cf93fbd754f24e4f897f5bdef1bb709, type: 2}
+  detectDistance: 1.5
+  minWanderDistance: 3
+  maxWanderDistance: 6
+  minWanderWaitTime: 3
+  maxWanderWaitTime: 5
+  speedOffset: 0.2
+  attackDistance: 0.4
+  playerDistance: 0
+  fieldOfView: 120
+--- !u!114 &8028963472439590267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9130397229717783166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed1ee45caf9d1c6458bd1d76dbf36f97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
