@@ -24,5 +24,5 @@ MonoBehaviour:
   functions: 0000000002000000
   previewPrefab: {fileID: 6630517686227405384, guid: cd0b8334e91c5164a9b4531009dff09f, type: 3}
   buildType: 0
-  stationType: 0
+  stationType: 4
   health: 70
