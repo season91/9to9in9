@@ -89,7 +89,7 @@ public class PlayerInventoryController : MonoBehaviour
     //UI에서 아이템 사용 혹은 제거 시 불러올 메서드
     public void RemoveItem(int index)
     {
-        if (index > inventoryItems.Count) return;
+        if (index >= inventoryItems.Count) return;
         if(items[index].isStackable)
         {
             if ((--inventoryItems[index].Quantity) <= 0) 
