@@ -153,7 +153,7 @@ public class CSVImporter
         item.maxStack = int.Parse(cols[9]);
     }
 
-    private static Sprite IconParse(string iconName, ItemType type)
+    public static Sprite IconParse(string iconName, ItemType type)
     {
         string path = $"Item/Icons/{type}/{iconName.Trim()}";
         Sprite icon = Resources.Load<Sprite>(path);
