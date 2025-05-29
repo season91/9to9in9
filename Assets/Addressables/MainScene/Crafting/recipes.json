@@ -21,7 +21,8 @@
                             }
                         ],
                         "craftTime": 5.0,
-                        "workstationEnumType": "Anvil"
+                        "workstationEnumType": "Anvil",
+                        "addressableName" : "ToolAxeData"
                     },
                     {
                         "recipeCode": "rfe2",
@@ -41,7 +42,8 @@
                             }
                         ],
                         "craftTime": 5.0,
-                        "workstationEnumType": "Anvil"
+                        "workstationEnumType": "Anvil",
+                        "addressableName" : "ToolPickaxeData"
                     }
                 ],
                 "Weapon": [
@@ -63,7 +65,8 @@
                             }
                         ],
                         "craftTime": 5.0,
-                        "workstationEnumType": "Anvil"
+                        "workstationEnumType": "Anvil",
+                        "addressableName" : "SwordData"
                     },
                     {
                         "recipeCode": "rfe9",
@@ -83,7 +86,8 @@
                             }
                         ],
                         "craftTime": 5.0,
-                        "workstationEnumType": "Anvil"
+                        "workstationEnumType": "Anvil",
+                        "addressableName" : "HammerData"
                     }
                 ],
                 "Armor": [
@@ -105,7 +109,8 @@
                             }
                         ],
                         "craftTime": 5.0,
-                        "workstationEnumType": "Anvil"
+                        "workstationEnumType": "Anvil",
+                        "addressableName" : "HelmetData"
                     },
                     {
                         "recipeCode": "rfe4",
@@ -125,7 +130,8 @@
                             }
                         ],
                         "craftTime": 5.0,
-                        "workstationEnumType": "Anvil"
+                        "workstationEnumType": "Anvil",
+                        "addressableName" : "ArmorChestData"
                     },
                     {
                         "recipeCode": "rfe5",
@@ -145,7 +151,8 @@
                             }
                         ],
                         "craftTime": 5.0,
-                        "workstationEnumType": "Anvil"
+                        "workstationEnumType": "Anvil",
+                        "addressableName" : "ArmorLegData"
                     },
                     {
                         "recipeCode": "rfe6",
@@ -165,7 +172,8 @@
                             }
                         ],
                         "craftTime": 5.0,
-                        "workstationEnumType": "Anvil"
+                        "workstationEnumType": "Anvil",
+                        "addressableName" : "BootsData"
                     },
                     {
                         "recipeCode": "rfe7",
@@ -185,7 +193,8 @@
                             }
                         ],
                         "craftTime": 5.0,
-                        "workstationEnumType": "Anvil"
+                        "workstationEnumType": "Anvil",
+                        "addressableName" : "ShieldData"
                     }
                 ]
             }
@@ -210,7 +219,8 @@
                         }
                     ],
                     "craftTime": 5.0,
-                    "workstationEnumType": "Campfire"
+                    "workstationEnumType": "Campfire",
+                    "addressableName" : "MeatCookedData"
                 }
             ]
         },
@@ -234,7 +244,8 @@
                         }
                     ],
                     "craftTime": 5.0,
-                    "workstationEnumType": "Smelter"
+                    "workstationEnumType": "Smelter",
+                    "addressableName" : "IronBarData"
                 }
             ]
         }

@@ -55,7 +55,7 @@ public class CraftManager : MonoBehaviour
         Debug.Log("레시피 로딩 완료 후 후속 로직 가능");
         
         // test
-        // GetRecipeOfStationType("Anvil");
+        GetRecipeOfStationType(StationType.Anvil);
     }
     
     private async Task ReloadRecipes()
@@ -69,50 +69,41 @@ public class CraftManager : MonoBehaviour
     /// Player 인벤토리에 있는 아이템 중 위 레시피 중 제작 가능 여부 판단해서 리턴
     /// key: 중분류 이름 ("Tool", "Armor", "Weapon", 그외 "Default")
     /// </summary>
-    public Dictionary<string, Dictionary<Sprite, bool>> GetRecipeOfStationType(StationType stationType)
+    public Dictionary<string, List<ItemData>> GetRecipeOfStationType(StationType stationType)
     {
-        // if (string.IsNullOrEmpty(stationType)) return null;
-        //
-        // if (!Enum.TryParse(stationType, out StationType stationEnum)) return null;
-
         if (!parsedRecipes.ContainsKey(stationType))
         {
             Debug.LogWarning($"parsedRecipes에 {stationType} 데이터가 없음");
             return null;
         }
 
-        var iconCraftableByCategory = new Dictionary<string, Dictionary<Sprite, bool>>();
+        var itemDataByCategory = new Dictionary<string, List<ItemData>>();
         var categoryDict = parsedRecipes[stationType];
 
         foreach (var categoryPair in categoryDict)
         {
             string category = string.IsNullOrEmpty(categoryPair.Key) ? "Default" : categoryPair.Key;
 
-            if (!iconCraftableByCategory.ContainsKey(category))
+            if (!itemDataByCategory.ContainsKey(category))
             {
-                iconCraftableByCategory[category] = new Dictionary<Sprite, bool>();
+                itemDataByCategory[category] = new List<ItemData>();
             }
-
             foreach (var recipe in categoryPair.Value)
             {
-                Sprite iconSprite = Resources.Load<Sprite>($"Item/Icons/{recipe.resultItemType}/{recipe.resultItemIcon}");
-                if (iconSprite == null)
+                var itemData = GetItemData(recipe.addressableName);
+                if (itemData == null)
                 {
-                    Debug.LogWarning($"아이콘 누락 확인필요 : Item/Icons/{recipe.resultItemType}/{recipe.resultItemIcon}");
+                    Debug.LogWarning($"[GetRecipeOfStationType] itemData 없음: {recipe.addressableName}");
                     continue;
                 }
 
-                bool isCraftable = CanCraft(recipe);
+                itemData.isCraftable = CanCraft(recipe);
 
-                var iconDict = iconCraftableByCategory[category];
-                if (!iconDict.ContainsKey(iconSprite))
-                {
-                    iconDict.Add(iconSprite, isCraftable);
-                }
+                itemDataByCategory[category].Add(itemData);
             }
         }
 
-        return iconCraftableByCategory;
+        return itemDataByCategory;
     }
 
     private bool CanCraft(SerializableRecipe recipe) => recipeHandler.CanCraft(recipe.ingredients);
@@ -156,5 +147,16 @@ public class CraftManager : MonoBehaviour
         }
         // 새로운 결과 아이템 지급 처리 필요
         // itemData만들어서 Add는해주구
+    }
+
+    public ItemData GetItemData(string addressName)
+    {
+        foreach (ItemType type in Enum.GetValues(typeof(ItemType)))
+        {
+            var item = ResourceManager.Instance.GetResource<ItemData>(addressName);
+            if (item != null) return item;
+        }
+
+        return null;
     }
 }

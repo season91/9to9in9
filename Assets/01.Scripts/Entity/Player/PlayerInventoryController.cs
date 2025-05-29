@@ -40,7 +40,7 @@ public class PlayerInventoryController : MonoBehaviour
     
         public bool isItemExsit(ItemData item) => this.item == item;
 
-        public bool isItemExsit(string name) => this.item.name == name;
+        public bool isItemExsit(string name) => this.item.itemName == name;
         public bool CanStack() => item.isStackable && !isMax;
         public bool isSlotEmpty() => item == null;
     }
