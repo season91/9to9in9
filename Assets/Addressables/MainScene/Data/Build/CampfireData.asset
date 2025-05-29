@@ -23,6 +23,6 @@ MonoBehaviour:
   maxStack: 1
   functions: 0100000002000000
   previewPrefab: {fileID: 2422841386545285316, guid: 5085e934417ef384f94fc841370cc8ec, type: 3}
-  buildType: 0
-  stationType: 0
+  buildType: 2
+  stationType: 1
   health: 100
