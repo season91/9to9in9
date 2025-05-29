@@ -7,7 +7,7 @@ public class PlayerInteractionHandler : MonoBehaviour
 {
     [SerializeField] private float checkRate = 0.05f;
     [SerializeField] private float lastCheckTime;
-    [SerializeField] private float maxCheckDistance;
+    [SerializeField] private float maxCheckDistance = 5f;
     [SerializeField] private LayerMask layerMask;
 
     private GameObject curInteractGameObject;
@@ -28,27 +28,25 @@ public class PlayerInteractionHandler : MonoBehaviour
 
             Ray ray = camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
             RaycastHit hit;
-
             if(Physics.Raycast(ray, out hit, maxCheckDistance, layerMask))
             {
                 if(hit.collider.gameObject != curInteractGameObject)
                 {
                     curInteractGameObject = hit.collider.gameObject;
                     curInteractable = hit.collider.GetComponent<IInteractable>();
-                    //SetPromptText();
                 }
             }
             else
             {
                 curInteractGameObject = null;
                 curInteractable = null;
-                //promptText.gameObject.SetActive(false);
             }
         }
     }
 
     public void OnInteract()
     {
-        Debug.Log("인터랙트 활성화 - 작업 필요");
+        Debug.Log("OnInteract : " + curInteractGameObject.name);
+        curInteractable.OnInteract();
     }
 }
