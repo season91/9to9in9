@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d74587e00f6bde46bc32e5a1060ec6a, type: 3}
-  m_Name: wooden-floor
+  m_Name: WoodenFloorOldData
   m_EditorClassIdentifier: 
-  itemCode: b2
-  displayName: "\uB098\uBB34 \uBC14\uB2E5"
-  description: "\uAC00\uBCBC\uC6B4 \uBC14\uB2E5"
+  itemCode: b1
+  displayName: "\uC624\uB798\uB41C \uB098\uBB34 \uBC14\uB2E5"
+  description: "\uC090\uAC71\uAC70\uB9B0\uB2E4"
   type: 3
-  icon: {fileID: 21300000, guid: f145bccbe1940824b8dc234b4ba042d4, type: 3}
-  prefab: {fileID: 5712094915227370815, guid: 391553ce3551a0b4b85fd89aa04fa711, type: 3}
+  icon: {fileID: 21300000, guid: cfdddac38c5e3d7438474264abc32554, type: 3}
+  prefab: {fileID: 4558848782615283036, guid: 3063e358deb96a24b98396dd628828ec, type: 3}
   isStackable: 1
   maxStack: 30
-  functions: 00000000
-  previewPrefab: {fileID: 1541003827288670209, guid: c97319a8a2cd3dd4a9e5e6fa51ed42ac, type: 3}
+  functions: 0000000002000000
+  previewPrefab: {fileID: 7623352263080812907, guid: 8c5b846cca396df48b2ec2f9f64c41a1, type: 3}
   buildType: 1
   stationType: 4
   health: 50

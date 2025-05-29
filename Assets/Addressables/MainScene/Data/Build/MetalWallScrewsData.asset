@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d74587e00f6bde46bc32e5a1060ec6a, type: 3}
-  m_Name: metal-wall
+  m_Name: MetalWallScrewsData
   m_EditorClassIdentifier: 
-  itemCode: b10
-  displayName: "\uCCA0 \uBCBD"
-  description: "\uB4E0\uB4E0\uD55C \uCCA0\uD310"
+  itemCode: b11
+  displayName: "\uAC15\uD654\uB41C \uCCA0 \uBCBD"
+  description: "\uB098\uC0AC\uAC00 \uBC15\uD600\uC788\uB2E4"
   type: 3
-  icon: {fileID: 21300000, guid: 491f641fe064e91438e6f2ed5a1a817e, type: 3}
-  prefab: {fileID: 3856265350502986392, guid: 2a22b22e3a65adc4aa64cac17da0510c, type: 3}
+  icon: {fileID: 21300000, guid: 8127c9c0a75458d488e5544858de4ce1, type: 3}
+  prefab: {fileID: 6316037595029731472, guid: c2b7bee0f99f85947aa52b10ae19c71e, type: 3}
   isStackable: 1
   maxStack: 30
-  functions: 00000000
-  previewPrefab: {fileID: 867616730880761746, guid: 3b73bf251f3de7241b9a63e9d70e5684, type: 3}
+  functions: 0000000002000000
+  previewPrefab: {fileID: 3597453034273277298, guid: 0cbde886092744a4fb810776046c3531, type: 3}
   buildType: 0
   stationType: 4
   health: 70

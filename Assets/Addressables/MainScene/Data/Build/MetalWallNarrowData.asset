@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d74587e00f6bde46bc32e5a1060ec6a, type: 3}
-  m_Name: wooden-wall
+  m_Name: MetalWallNarrowData
   m_EditorClassIdentifier: 
-  itemCode: b5
-  displayName: "\uB098\uBB34 \uBCBD"
-  description: "\uAC00\uBCBC\uC6B4 \uBCBD"
+  itemCode: b12
+  displayName: "\uCCA0 \uBC18 \uBCBD"
+  description: "\uC881\uC740 \uBCBD\uC774\uB2E4"
   type: 3
-  icon: {fileID: 21300000, guid: 4d8426dd8e4f57b468acc0d57716fca5, type: 3}
-  prefab: {fileID: 8936125078442131013, guid: 2446a94ef94abbc419fe7b54dc9ea1bf, type: 3}
+  icon: {fileID: 21300000, guid: 4a4b899187860c641ae0baff1e24fce6, type: 3}
+  prefab: {fileID: 3670093199476329454, guid: 75292f5c3b567cd4b8580674c4f9bc54, type: 3}
   isStackable: 1
   maxStack: 30
-  functions: 00000000
-  previewPrefab: {fileID: 6927473402442453038, guid: 0a0efb634af3b4d43a3a6c204173c056, type: 3}
+  functions: 0000000002000000
+  previewPrefab: {fileID: 6630517686227405384, guid: cd0b8334e91c5164a9b4531009dff09f, type: 3}
   buildType: 0
   stationType: 4
-  health: 50
+  health: 70

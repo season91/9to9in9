@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d74587e00f6bde46bc32e5a1060ec6a, type: 3}
-  m_Name: smelter
+  m_Name: AnvilData
   m_EditorClassIdentifier: 
-  itemCode: b18
-  displayName: "\uC81C\uB828\uB300"
-  description: "\uAD7D\uC790"
+  itemCode: b19
+  displayName: "\uBAA8\uB8E8"
+  description: "\uAC15\uD574\uC9C0\uC790"
   type: 3
-  icon: {fileID: 21300000, guid: e5ea516ab18a1c74baadde565e2d1122, type: 3}
-  prefab: {fileID: 6222925435491247009, guid: 573df7d6a16494b4c9096ee6516f8527, type: 3}
+  icon: {fileID: 21300000, guid: 8de32cb5dfb707b45af6b96cc2274c52, type: 3}
+  prefab: {fileID: 2586235502125796603, guid: 7aa1145a7b48ad545911b8f3ccc68b13, type: 3}
   isStackable: 0
   maxStack: 1
-  functions: 0000000001000000
-  previewPrefab: {fileID: 1752346811827462274, guid: 0dfe26ceac1519441b6f1152a9cb2520, type: 3}
+  functions: 0100000002000000
+  previewPrefab: {fileID: 2500573822435145128, guid: faaf7118baf4b4d419a1b48fec545aac, type: 3}
   buildType: 2
-  stationType: 2
+  stationType: 3
   health: 100
