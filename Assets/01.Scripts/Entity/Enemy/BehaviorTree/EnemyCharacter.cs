@@ -44,11 +44,8 @@ public class EnemyCharacter : MonoBehaviour
     
     private Animator animator;
     private SkinnedMeshRenderer[] meshRenderers;
-    
-    public PlayerStatHandler playerStatHandler;
 
     private bool isCalculate = true;
-    
 
     void Start()
     {
