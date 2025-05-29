@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4148773930489232270}
   - component: {fileID: 2764106717984449479}
   - component: {fileID: 7256812888851144076}
+  - component: {fileID: 5261357315370250229}
   m_Layer: 7
   m_Name: metal-wall-screws-half
   m_TagString: Untagged
@@ -105,3 +106,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5, y: 0.25, z: 0.0625}
   m_Center: {x: 0, y: 0.125, z: 0.0062500015}
+--- !u!208 &5261357315370250229
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5009263738173793039}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.25, y: 0.125, z: 0.031000001}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.125, z: 0.006}
+  m_TimeToStationary: 0.5

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6295635238661677671}
   - component: {fileID: 6881657926733007489}
   - component: {fileID: 6910309938952262791}
+  - component: {fileID: 6450576751516063407}
   m_Layer: 7
   m_Name: metal-wall-screws
   m_TagString: Untagged
@@ -105,3 +106,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5, y: 0.5, z: 0.0625}
   m_Center: {x: 0, y: 0.25, z: 0.0062500015}
+--- !u!208 &6450576751516063407
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6316037595029731472}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.25, y: 0.25, z: 0.031000001}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.25, z: 0.006}
+  m_TimeToStationary: 0.5
