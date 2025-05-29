@@ -35,4 +35,6 @@ public abstract class ItemData : ScriptableObject
 
     // 추가: 이 아이템이 어떤 기능을 가져야 하는지 표시
     public ItemFunction[] functions;
+
+    [NonSerialized] public bool isCraftable;
 }

@@ -125,6 +125,11 @@ public class DebugWindow : EditorWindow
                 CharacterManager.Player.inventoryController.AddItem(item);
             }
         }
+        
+        if (GUILayout.Button("CraftAnvilTest"))
+        {
+            CraftManager.Instance.GetRecipeOfStationType(StationType.Anvil);
+        }
     }
     
     // OnGUI는 async를 못붙이는 함수여서 await 사용 불가능
