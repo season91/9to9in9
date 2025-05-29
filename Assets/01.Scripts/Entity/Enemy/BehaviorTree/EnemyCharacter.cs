@@ -23,8 +23,7 @@ public class EnemyCharacter : Enemy, IAttackAble
     [Header("AI")]
     private NavMeshAgent agent;
     public float detectDistance;
-    private AIState aiState;
-    
+        
     [Header("Wandering")]
     public float minWanderDistance;
     public float maxWanderDistance;
