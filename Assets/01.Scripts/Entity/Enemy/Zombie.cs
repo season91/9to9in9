@@ -14,7 +14,7 @@ public class Zombie : Enemy, IAttackAble
 {
     [Header("Stat")]
     [SerializeField] private StatProfile statProfile;
-    private StatHandler statHandler = new StatHandler();
+    private StatHandler statHandler;
     
     [Header("AI")]
     private NavMeshAgent agent;
@@ -57,6 +57,9 @@ public class Zombie : Enemy, IAttackAble
     private void Start()
     {
         SetState(AIState.Wandering);
+        
+        statHandler = GetComponent<StatHandler>();
+        if (statHandler == null) Debug.LogError("Player StatHandler not found");
         
         statHandler.Initialize(statProfile.ToDictionary());
         if (statProfile == null) Debug.LogError("StatProfile not found");

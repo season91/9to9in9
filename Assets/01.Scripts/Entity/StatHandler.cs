@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StatHandler
+public class StatHandler: MonoBehaviour
 {
     private Dictionary<StatType, Stat> stats = new();
 

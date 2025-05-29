@@ -8,7 +8,7 @@ public class Player : Entity, IDamagable
 {
     public PlayerController playerController { get; private set; }
     public PlayerInventoryController inventoryController { get; private set; }
-    public StatHandler statHandler = new StatHandler();
+    public StatHandler statHandler;
     
     [SerializeField] private StatProfile statProfile;
     
@@ -18,10 +18,12 @@ public class Player : Entity, IDamagable
         CharacterManager.Register(this);
         playerController = GetComponent<PlayerController>();
         inventoryController = GetComponent<PlayerInventoryController>();
+        statHandler = GetComponent<StatHandler>();
         
         // null체크
         if (playerController == null) Debug.LogError("PlayerController not found");
         if (inventoryController == null) Debug.LogError("InventoryController not found");
+        if (statHandler == null) Debug.LogError("Player StatHandler not found");
         if (statProfile == null) Debug.LogError("StatProfile not found");
     }
 
