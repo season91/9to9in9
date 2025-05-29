@@ -3,8 +3,13 @@ using UnityEngine;
 /// [전역] 게임 진행
 /// GameStart, GameOver
 /// </summary>
-public class GameManager : MonoBehaviour
+public static class GameManager
 {
-    
-    
+
+    public static void ResourceSpawn()
+    {
+        
+    }
+
+
 }

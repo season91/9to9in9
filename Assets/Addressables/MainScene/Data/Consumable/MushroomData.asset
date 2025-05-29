@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: MushroomData
   m_EditorClassIdentifier: 
   itemCode: c6
+  itemName: mushroom
   displayName: "\uBC84\uC12F"
   description: "\uBC84\uC12F\uC774\uB2E4."
   type: 0
@@ -21,6 +22,6 @@ MonoBehaviour:
   isStackable: 1
   maxStack: 12
   functions: 00000000
-  consumableTypes: 02000000
+  consumableTypes: 00000000
   amounts:
   - 20

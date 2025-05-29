@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: shield
   m_EditorClassIdentifier: 
   itemCode: e7
+  itemName: shield
   displayName: "\uBC29\uD328"
   description: "\uBC29\uD328\uB2E4."
   type: 1

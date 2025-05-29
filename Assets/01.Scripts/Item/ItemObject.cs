@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+
 /// <summary>
 /// 아이템 프리팹에 붙는 공통 스크립트
 /// 해당 오브젝트가 어떤 아이템 데이터를 기반으로 생성되었는지 추적
@@ -13,20 +15,40 @@ public class ItemObject : MonoBehaviour
     {
         bool found = false;
         
-        foreach (ItemType type in Enum.GetValues(typeof(ItemType)))
+        string itemKey = name; // 혹은 $"{itemType}/{name}" 형태로 키 구성도 가능
+
+        var handle = Addressables.LoadAssetAsync<ItemData>(itemKey);
+
+        try
         {
-            string path = $"Item/Data/{type}";
-            var allItems = Resources.LoadAll<ItemData>(path);
-            foreach (var item in allItems)
+            if (itemData != null)
             {
-                if (item.name == name)
-                {
-                    itemData = item;
-                    found = true;
-                    return;
-                }
+                Debug.Log($"[ItemObject] {itemKey} 로드 성공");
+            }
+            else
+            {
+                Debug.LogWarning($"[ItemObject] {itemKey}에 해당하는 ItemData가 없습니다.");
             }
         }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"[ItemObject] {itemKey} 로드 실패: {e.Message}");
+        }
+        
+        // foreach (ItemType type in Enum.GetValues(typeof(ItemType)))
+        // {
+        //     string path = $"Item/Data/{type}";
+        //     var allItems = Resources.LoadAll<ItemData>(path);
+        //     foreach (var item in allItems)
+        //     {
+        //         if (item.name == name)
+        //         {
+        //             itemData = item;
+        //             found = true;
+        //             return;
+        //         }
+        //     }
+        // }
         
         // 예외 처리
         if (!found)
