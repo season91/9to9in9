@@ -4,6 +4,7 @@ using System.Linq;
 using Unity.Collections;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 /// <summary>
 /// [제어] Inventory 아이템 추가, 제거, 사용 등 기능 구현
@@ -91,11 +92,19 @@ public class PlayerInventoryController : MonoBehaviour
         if (index > inventoryItems.Count) return;
         if(items[index].isStackable)
         {
-            if (--inventoryItems[index].Quantity > 0) return;
+            if ((--inventoryItems[index].Quantity) <= 0) 
+            { 
+                items.RemoveAt(index);
+                inventoryItems.RemoveAt(index);
+            }
+        }
+        else
+        {
+            items.RemoveAt(index);
+            inventoryItems.RemoveAt(index);
         }
 
-        items.RemoveAt(index);
-        inventoryItems.RemoveAt(index);
+        UpdateInventory?.Invoke();
     }
 
     //재료 아이템 소모 시 호출할 메서드
@@ -108,7 +117,7 @@ public class PlayerInventoryController : MonoBehaviour
             if (inventoryItems[i].Quantity > quantity)
             {
                 inventoryItems[i].Quantity -= quantity;
-                return;
+                break;
             }
             else
             {
@@ -117,6 +126,7 @@ public class PlayerInventoryController : MonoBehaviour
                 items.RemoveAt(i);
             }
         }
+        UpdateInventory?.Invoke();
     }
     
     //단일 아이템 제거의 경우 호출
@@ -128,6 +138,7 @@ public class PlayerInventoryController : MonoBehaviour
             if (inventoryItems[i].isItemExsit(item))
             {
                 inventoryItems.RemoveAt(i);
+                UpdateInventory?.Invoke();
                 return;
             }
         }
@@ -202,6 +213,7 @@ public class PlayerInventoryController : MonoBehaviour
                 equippedItems.Add(equipItem);
                 AddItem(temp);
             }
+            UpdateInventory?.Invoke();
             return true;
         }
 
@@ -218,6 +230,7 @@ public class PlayerInventoryController : MonoBehaviour
             if (equipItem.equipSlot != slotType) continue;
             AddItem(equipItem);
             equippedItems.Remove(equipItem);
+            UpdateInventory?.Invoke();
             return true;
         }
         return false;

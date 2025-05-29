@@ -13,7 +13,9 @@ public class SpawnManager : MonoBehaviour
 {
     private static SpawnManager instance;
 
-    private Dictionary<string, object> pools = new Dictionary<string, object>();
+    private Dictionary<string, PoolManager> pools = new Dictionary<string, PoolManager>();
+    private Dictionary<string, GameObject> prefabs = new Dictionary<string, GameObject>();
+    
     
     public static SpawnManager Instance
     {
@@ -31,25 +33,32 @@ public class SpawnManager : MonoBehaviour
     {
         //CreatePool<Item>("Item", Item);
         //CreatePool<Enemy>("Enemy",Enemy);
-        var rock = Resources.Load<GameObject>("Item/Prefabs/Resource/stone");
-        var wood = Resources.Load<GameObject>("Item/Prefabs/Resource/wood");
-        if (rock == null)
-        {
-            Debug.LogError("rockPrefab is null! 경로 확인 필요.");
-        }
-        else
-        {
-            CreatePool("Rock", rock);
-        }
-        if (wood == null)
-        {
-            Debug.LogError("woodPrefab is null! 경로 확인 필요.");
-        }
-        else
-        {
-            CreatePool("Wood", wood);
-        }
+        //foreach (string key in StringItemName.oftenUseKeys)
+        //{
+            ItemData data = ResourceManager.Instance.GetResource<ItemData>(StringAdrItemDataResource.Wood);
+            if (data != null)
+            {
+                CreatePool(StringAdrItemDataResource.Wood,data.prefab);
+            }
+            else
+            {
+                Debug.Log($"{StringAdrItemDataResource.Wood} 프리팹 찾을 수 없음!");
+            }
+        //}
 
+        //foreach (string key in StringItemName.prefabKeys)
+        //{
+            data = ResourceManager.Instance.GetResource<ItemData>(StringAdrItemDataEquipable.ArmorChest);
+            if (data != null)
+            {
+                prefabs[StringAdrItemDataEquipable.ArmorChest] = data.prefab;
+            }
+            else
+            {
+                Debug.Log($"{StringAdrItemDataEquipable.ArmorChest} 프리팹 찾을 수 없음!");
+            }
+            Debug.Log($"{prefabs[StringAdrItemDataEquipable.ArmorChest].name}");
+        //}
     }
 
     private void CreatePool(string key, GameObject prefab)
@@ -75,7 +84,14 @@ public class SpawnManager : MonoBehaviour
         }
         else
         {
-            return Instantiate(Prefab);
+            if (prefabs.ContainsKey(key))
+            {
+                return Instantiate(prefabs[key]);
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 
@@ -88,6 +104,7 @@ public class SpawnManager : MonoBehaviour
         }
         else
         {
+            Debug.Log($"SpawnManager.Prefabs에서 {key} 프리팹 찾을 수 없음!");
             Destroy(obj);
         }
     }
