@@ -82,17 +82,14 @@ public class SpawnManager : MonoBehaviour
         {
             return GetPool(key).Get();
         }
-        else
+        else if(prefabs.ContainsKey(key))
         {
-            if (prefabs.ContainsKey(key))
-            {
-                return Instantiate(prefabs[key]);
-            }
-            else
-            {
-                return null;
-            }
+            return Instantiate(prefabs[key]);
         }
+        
+        Debug.Log("프리팹 없음!!! 심각한 버그!!");
+        throw new Exception();
+        return null;
     }
 
     // object pool 대상 비활성화
