@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyCharacter : Enemy, IAttackAble
+public class EnemyController : Enemy, IAttackAble
 {
     [Header("Nodes")]
     SelectorNode rootNode; // 루트 노드는 셀렉터노드
