@@ -118,4 +118,5 @@ public static class StringItemName
     public const string Campfire = "campfire";
     public const string Smelter = "smelter";
     public const string Anvil = "anvil";
+    public const string Tree = "tree";
 }
