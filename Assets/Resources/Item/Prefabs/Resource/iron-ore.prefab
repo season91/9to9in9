@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 2396274615169696295}
   - component: {fileID: 770395690141482022}
   - component: {fileID: 2332417950108657246}
-  m_Layer: 0
+  - component: {fileID: 1505314395365000049}
+  m_Layer: 10
   m_Name: iron-ore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,3 +98,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: c455c2380453ada4c91f829d51669e96, type: 2}
+--- !u!135 &1505314395365000049
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510619728292910355}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.28099048
+  m_Center: {x: -0.010552505, y: 0.14413342, z: -0.006351868}

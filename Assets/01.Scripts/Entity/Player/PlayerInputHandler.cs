@@ -32,7 +32,7 @@ public class PlayerInputHandler : MonoBehaviour
         
         playerInputAsset["Inventory"].started += OnInventoryInput;
         
-        playerInputAsset["Attack"].started += OnAttackInput;
+        playerInputAsset["Use"].started += OnUseInput;
         
         playerInputAsset["Build"].started += OnBuildInput;
     }
@@ -52,7 +52,7 @@ public class PlayerInputHandler : MonoBehaviour
         
         playerInputAsset["Inventory"].started -= OnInventoryInput;
         
-        playerInputAsset["Attack"].started -= OnAttackInput;
+        playerInputAsset["Use"].started -= OnUseInput;
         
         playerInputAsset["Build"].started -= OnBuildInput;
     }
@@ -77,7 +77,7 @@ public class PlayerInputHandler : MonoBehaviour
         playerInteractionHandler.OnInteract();
     }
 
-    private void OnAttackInput(InputAction.CallbackContext context)
+    private void OnUseInput(InputAction.CallbackContext context)
     {
         //TODO
         //공격 모션 시 콜백 함수 호출 필요

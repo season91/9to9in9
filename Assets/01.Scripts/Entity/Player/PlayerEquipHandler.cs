@@ -1,6 +1,7 @@
+using System;
 using UnityEngine;
 
-public class PlayerEquip : MonoBehaviour
+public class PlayerEquipHandler : MonoBehaviour
 {
     [SerializeField] private GameObject curEquip;
     [SerializeField] private Transform equipParent;
@@ -15,7 +16,6 @@ public class PlayerEquip : MonoBehaviour
     {
         UnEquip();
         curEquip = Instantiate(item.prefab, equipParent);
-        
         Debug.Log($"[ItemObject-{name}] 장착됨 !");
     }
 
@@ -23,28 +23,30 @@ public class PlayerEquip : MonoBehaviour
     public void UnEquip()
     {
         if (!curEquip) return;
-        
         Destroy(curEquip.gameObject);
         curEquip = null;
         Debug.Log($"[ItemObject-{name}] 해제됨 !");
     }
-    
-    /// <summary>
-    /// 오른손에 든 거 사용하기
-    /// 타입에 따라 switch (공격 / 채집)
-    /// </summary>
-    /// <param name="item">EquipableItemData</param>
-    
-    private void UseEquipableItem(EquipableItemData item)
+
+    public void UpdateStat(EquipableItemData item, float value)
     {
         switch (item.equipType)
         {
+            case EquipType.Armor:
+                CharacterManager.Player.statHandler.ModifyBonus(StatType.DefensePower, value);
+                UIManager.Instance.UpdateStatUI(StatType.DefensePower);
+                break;
+            
             case EquipType.Weapon:
-                // TODO: 휘두르기
+                CharacterManager.Player.statHandler.ModifyBonus(StatType.AttackPower, value);
+                UIManager.Instance.UpdateStatUI(StatType.AttackPower);
                 break;
             
             case EquipType.GatheringTool:
-                // TODO: 채집하기
+                break;
+            
+            default:
+                Debug.Log($"{item.equipType}: 타입이 잘못됐어요!!!");
                 break;
         }
     }
