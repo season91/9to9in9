@@ -77,18 +77,34 @@ public static class StringAdrCraftRecipe
     public const string Recipes = "Recipes";
 }
 
-#endregion
-
-#endregion
-
-public static class StringItemOftenUse
+public static class StringAdrSpawnManagerKey
 {
-    public const string Rock = "Rock";
-    public const string Wood = "Wood";
-    //----오브젝트 풀 테스트용 키 밸류
-    
-    public static readonly string[] Keys = { Rock, Wood };
+    public static readonly string[] PoolItem =
+    {
+        StringAdrItemDataResource.Stone, StringAdrItemDataResource.Wood
+    };
+
+    public static readonly string[] PrefabItem =
+    {
+        //Consumable
+        StringAdrItemDataConsumable.Apple, StringAdrItemDataConsumable.MeatCooked, StringAdrItemDataConsumable.Meat,
+        StringAdrItemDataConsumable.Mushroom, StringAdrItemDataConsumable.Orange, StringAdrItemDataConsumable.Pear,
+        //Equipable
+        StringAdrItemDataEquipable.ArmorChest, StringAdrItemDataEquipable.ArmorLeg, StringAdrItemDataEquipable.Boots,
+        StringAdrItemDataEquipable.Hammer, StringAdrItemDataEquipable.Helmet, StringAdrItemDataEquipable.Shield,
+        StringAdrItemDataEquipable.Sword, StringAdrItemDataEquipable.ToolAxe, StringAdrItemDataEquipable.ToolPickaxe,
+        //Resource
+        StringAdrItemDataResource.Iron, StringAdrItemDataResource.IronBar,
+        //Build
+        StringAdrItemDataBuild.Anvil, StringAdrItemDataBuild.Campfire, StringAdrItemDataBuild.MetalWall,
+        StringAdrItemDataBuild.Smelter, StringAdrItemDataBuild.WoodenFloor, StringAdrItemDataBuild.WoodenWall,
+        StringAdrItemDataBuild.Workbench
+    };
 }
+
+#endregion
+
+#endregion
 
 public static class StringItemName
 {
