@@ -23,7 +23,7 @@ public class RecipeHandler
         foreach (var ingredient in ingredients)
         {
             var amount = playerInventory.GetPcs(ingredient.itemName);
-            if (amount <= 0)
+            if (amount < ingredient.amount)
             {
                 return false;
             }
