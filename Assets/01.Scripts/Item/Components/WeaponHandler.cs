@@ -23,7 +23,7 @@ public class WeaponHandler : MonoBehaviour
         }
         
         camera = Camera.main;
-        if (animator == null) Debug.LogError("camera is null");
+        if (camera == null) Debug.LogError("camera is null");
         
         animator = GetComponent<Animator>();
         if (animator == null) Debug.LogError("animator is null");
@@ -53,15 +53,37 @@ public class WeaponHandler : MonoBehaviour
 
     private void OnHit()
     {
+        Debug.Log($"itemData is null? → {itemData == null}");
+
+        if (itemData != null)
+        {
+            Debug.Log($"itemData.equipType = {itemData.equipType}");
+        }
+        
         Ray ray = camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
         RaycastHit hit;
+        
+        Debug.DrawRay(ray.origin, ray.direction * attackDistance, Color.red, 1f);
 
         if (!Physics.Raycast(ray, out hit, attackDistance)) return;
 
         bool isGather = (itemData.equipType == EquipType.GatheringTool);
-        if (isGather && hit.collider.TryGetComponent(out ResourceHandler resourceHandler))
+        if (isGather)
         {
-            resourceHandler.Gather(hit.point, hit.normal);
+            Debug.Log("채집 도구로 판단됨");
+            if (hit.collider.TryGetComponent(out ResourceHandler resourceHandler))
+            {
+                Debug.Log("ResourceHandler 있음! Gather 호출");
+                resourceHandler.Gather(hit.point, hit.normal);
+            }
+            else
+            {
+                Debug.Log("ResourceHandler 못 찾음");
+            }
+        }
+        else
+        {
+            Debug.Log("이 아이템은 채집 도구가 아님");
         }
     }
 }
