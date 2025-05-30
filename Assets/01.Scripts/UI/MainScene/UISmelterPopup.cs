@@ -126,7 +126,12 @@ public class UISmelterPopup : MonoBehaviour, IGUI
     {
         try
         {
-            while (craftableItemInfos.Exists(item => item.itemData.isCraftable))
+            if (craftableItemInfos == null)
+            {
+                MyDebug.LogWarning("craftableItemInfos is null!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                yield break;
+            }
+            while (craftableItemInfos.Exists(item => item.itemData.isCraftable)) // isCraftable 판단 메서드 (string)
             {
                 foreach (var itemInfo in craftableItemInfos)
                 {
