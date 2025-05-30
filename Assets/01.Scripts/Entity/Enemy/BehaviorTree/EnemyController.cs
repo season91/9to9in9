@@ -37,13 +37,18 @@ public class EnemyController : Enemy, IAttackAble
     private float lastAttackTime;
     public float attackDistance;
     
+    [Header("AI")]
+    private float playerDistance;
+    private bool isWaitingToWander = false;
+    
     public float fieldOfView = 120f;
+    
+    [Header("Particle")]
+    [SerializeField] private ParticleSystem hitBlood;
     
     private Animator animator;
     private SkinnedMeshRenderer[] meshRenderers;
-
-    private float playerDistance;
-    private bool isWaitingToWander = false;
+    
 
     public ItemData[] itemdatas;
     private void Awake()
@@ -263,6 +268,8 @@ public class EnemyController : Enemy, IAttackAble
     public override void TakeDamage(float damage)
     {
         statHandler.Modify(StatType.Health, -damage);
+        PlayHitEffect();
+        
         if (statHandler.Get(StatType.Health) <= 0)
         {
             Die();
@@ -286,5 +293,13 @@ public class EnemyController : Enemy, IAttackAble
         {
             agent.SetDestination(CharacterManager.Player.transform.position);
         }
+    }
+
+    private void PlayHitEffect()
+    {
+        if (hitBlood == null)  return;
+        
+        hitBlood.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear); // 초기화
+        hitBlood.Play();
     }
 }
