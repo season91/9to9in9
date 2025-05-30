@@ -81,13 +81,6 @@ public class PlayerInventoryController : MonoBehaviour
 
     public void AddItem(ItemData item, int quantity = 1)
     {
-        if (items.Count == inventorySize)
-        {
-            #if UNITY_EDITOR
-            Debug.LogWarning("인벤토리 최대 칸 수 넘어감!!");
-                #endif
-            return;
-        }
         for (int i = 0; i < items.Count; ++i)
         {
             if (inventoryItems[i].isItemExsit(item) && inventoryItems[i].CanStack())
@@ -96,6 +89,13 @@ public class PlayerInventoryController : MonoBehaviour
                 UpdateInventory?.Invoke();
                 return;
             }
+        }
+        if (items.Count == inventorySize)
+        {
+#if UNITY_EDITOR
+            Debug.LogWarning("인벤토리 최대 칸 수 넘어감!!");
+#endif
+            return;
         }
         items.Add(item);
         inventoryItems.Add(new ItemSlot(item, quantity));
@@ -245,21 +245,25 @@ public class PlayerInventoryController : MonoBehaviour
 
     public bool UnEquipItem(EquipSlot slotType)
     {
-        foreach (EquipableItemData equipItem in equippedItems)
+        if (inventoryItems.Count < inventorySize)
         {
-            if (equipItem.equipSlot != slotType) continue;
-            AddItem(equipItem);
-            equippedItems.Remove(equipItem);
-            
-            // 오른손이면 장비 화면에서 지우기
-            if (equipItem.equipSlot == EquipSlot.RightHand)
-                CharacterManager.Player.equipHandler.UnEquip();
-            
-            // 스탯 업데이트
-            CharacterManager.Player.equipHandler.UpdateStat(equipItem, 0);
-            UpdateInventory?.Invoke();
-            return true;
+            foreach (EquipableItemData equipItem in equippedItems)
+            {
+                if (equipItem.equipSlot != slotType) continue;
+                AddItem(equipItem);
+                equippedItems.Remove(equipItem);
+
+                // 오른손이면 장비 화면에서 지우기
+                if (equipItem.equipSlot == EquipSlot.RightHand)
+                    CharacterManager.Player.equipHandler.UnEquip();
+
+                // 스탯 업데이트
+                CharacterManager.Player.equipHandler.UpdateStat(equipItem, 0);
+                UpdateInventory?.Invoke();
+                return true;
+            }
         }
+
         return false;
     }
     
@@ -293,7 +297,7 @@ public class PlayerInventoryController : MonoBehaviour
 
     public ItemData UseItemInQuickSlot(int quickSlotIndex)
     {
-        if (quickSlotIndex >= quickSlotSize) return null;
+        if (quickSlotIndex >= quickSlotItems.Count) return null;
         ItemData temp = quickSlotItems[quickSlotIndex].item;
         if (--quickSlotItems[quickSlotIndex].Quantity <= 0)
         {
