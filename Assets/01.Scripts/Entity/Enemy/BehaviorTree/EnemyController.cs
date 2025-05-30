@@ -44,9 +44,8 @@ public class EnemyController : Enemy, IAttackAble
 
     private float playerDistance;
     private bool isWaitingToWander = false;
-    
-    [Unity.Collections.ReadOnly] public bool isAttacking = false;
-    
+
+    public ItemData[] itemdatas;
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -272,7 +271,10 @@ public class EnemyController : Enemy, IAttackAble
 
     public override void Die()
     {
-        // 아이템 떨구고
+        foreach (ItemData itemData in itemdatas)
+        {
+            SpawnManager.Instance.ItemSpawnInPosition(itemData.name, transform.position);
+        }
         Destroy(gameObject);
     }
 
