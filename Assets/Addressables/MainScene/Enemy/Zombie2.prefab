@@ -6946,7 +6946,9 @@ MonoBehaviour:
   attackDistance: 0.4
   fieldOfView: 120
   hitBlood: {fileID: 0}
-  itemdatas: []
+  itemdatas:
+  - {fileID: 11400000, guid: f936b8f311512cb49b85f2bff9ea2c2e, type: 2}
+  - {fileID: 11400000, guid: 26d3a3e4fbed3794abafe5106bbf0577, type: 2}
 --- !u!114 &8028963472439590267
 MonoBehaviour:
   m_ObjectHideFlags: 0
