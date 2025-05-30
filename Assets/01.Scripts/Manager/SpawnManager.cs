@@ -96,6 +96,7 @@ public class
         
         spawnCenter = FindObjectOfType<Player>().transform;
     }
+    
     private void CreatePool(string key, GameObject prefab)
     {
         GameObject poolParent = new GameObject($"{key}Pool");

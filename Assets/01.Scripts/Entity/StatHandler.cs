@@ -23,7 +23,7 @@ public class StatHandler: MonoBehaviour
 
     /// <summary>
     /// 지정한 스탯 타입의 현재 값을 반환
-    /// 해당 스탯이 없으면 0을 반환함 (공격력 없을 경우)
+    /// 해당 스탯이 없으면 0을 반환함 (ex. 공격력 없을 경우)
     /// </summary>
     /// <param name="type">스탯 타입</param>
     public float Get(StatType type)
@@ -32,7 +32,15 @@ public class StatHandler: MonoBehaviour
     }
 
     /// <summary>
-    /// 지정한 스탯의 값을 변화.
+    /// 전체 스탯을 딕셔너리형으로 반환
+    /// </summary>
+    public Dictionary<StatType, Stat> GetNameAndType()
+    {
+        return stats;
+    }
+
+    /// <summary>
+    /// 지정한 스탯을 변화.
     /// 음수 값은 감소, 양수 값은 증가
     /// </summary>
     /// <param name="type">스탯 타입</param>
@@ -42,6 +50,19 @@ public class StatHandler: MonoBehaviour
         if (stats.TryGetValue(type, out var stat))
             stat.Change(amount);
     }
+    
+    /// <summary>
+    /// 지정한 스탯의 추가값을 변화.
+    /// 양수 값만 사용
+    /// </summary>
+    /// <param name="type">스탯 타입</param>
+    /// <param name="amount">변경할 수치</param>
+    public void ModifyBonus(StatType type, float amount)
+    {
+        if (stats.TryGetValue(type, out var stat))
+            stat.ChangeBonus(amount);
+    }
+
 
     /// <summary>
     /// 지정한 스탯의 현재 값이 0 이하인지 확인
