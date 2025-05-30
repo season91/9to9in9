@@ -10,7 +10,7 @@ public class PlayerInteractionHandler : MonoBehaviour
     [SerializeField] private float maxCheckDistance = 5f;
     [SerializeField] private LayerMask layerMask;
 
-    private GameObject curInteractGameObject;
+    [SerializeField] private GameObject curInteractGameObject;
     private IInteractable curInteractable;
     
     private Camera camera;
@@ -28,7 +28,7 @@ public class PlayerInteractionHandler : MonoBehaviour
 
             Ray ray = camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
             RaycastHit hit;
-            if(Physics.Raycast(ray, out hit, maxCheckDistance, layerMask))
+            if (Physics.Raycast(ray, out hit, maxCheckDistance, layerMask))
             {
                 if(hit.collider.gameObject != curInteractGameObject)
                 {
@@ -46,6 +46,8 @@ public class PlayerInteractionHandler : MonoBehaviour
 
     public void OnInteract()
     {
+        if (curInteractable == null) return;
+        
         Debug.Log("OnInteract : " + curInteractGameObject.name);
         curInteractable.OnInteract();
     }
