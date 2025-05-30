@@ -155,7 +155,6 @@ public class
 
     public void ResourceSpawn(string key)
     {
-        Debug.Log("ResourceSpawn 시작!!");
         Vector3 spawnPos = GetRandomPositionOnNavMesh(spawnCenter.position, 20f);
         GameObject obj = GetObject(key);
         obj.transform.position = spawnPos;
@@ -163,20 +162,21 @@ public class
     
     private Vector3 GetRandomPositionOnNavMesh(Vector3 center, float range)
     {
-        for (int i = 0; i < 10; i++) // 최대 10번 시도
+        for (int i = 0; i < 10; i++) // 최대 20번 시도
         {
             Vector3 randomPoint = center + Random.insideUnitSphere * range;
             randomPoint.y = 0.0f; // y 바닥 고정 
             
             //  가깝게 생성 가능한 지형 찾기
-            if (NavMesh.SamplePosition(randomPoint, out NavMeshHit hit, 2.0f, NavMesh.AllAreas))
+            if (NavMesh.SamplePosition(randomPoint, out NavMeshHit hit, 5.0f, NavMesh.AllAreas))
             {
-                Debug.Log("SamplePosition 랜덤 생성 좌표 값 " + hit.position);
-                return hit.position;
+                // y 바닥 고정
+                return new Vector3(hit.position.x, 0f, hit.position.z);
             }
+            // Debug.LogWarning($"[Spawn] 실패 위치: {randomPoint} - NavMesh 못 찾음");
         }
-        Debug.LogWarning("NavMesh 위 유효한 랜덤 위치를 찾지 못했습니다.");
-        return center; // fallback
+
+        return new Vector3(center.x, 0f, center.z);
     }
     
     //--------아이템 지정 위치에 생성------------
