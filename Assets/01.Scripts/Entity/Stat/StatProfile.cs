@@ -8,14 +8,15 @@ using UnityEngine;
 
 public enum StatType
 {
-    Health,
-    Stamina,
-    MoveSpeed,
-    JumpPower,
-    AttackPower,
-    AttackSpeed,
-    CriticalChance,
-    DefensePower,
+    Health, // 체력
+    Hunger, // 배고픔
+    Stamina, // 스태미나
+    MoveSpeed, // 걸음 속도
+    JumpPower, // 점프 높이
+    AttackPower, // 공격력
+    AttackSpeed, // 공격 주기
+    CriticalChance, // 치명타 확률
+    DefensePower, // 방어력
 }
 
 [CreateAssetMenu(menuName = "Stats/StatProfile")]

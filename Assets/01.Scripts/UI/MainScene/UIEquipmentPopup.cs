@@ -12,7 +12,7 @@ public class UIEquipmentPopup : MonoBehaviour, IGUI
     // 인벤토리 클릭 시 장착된 장비 있으면 해제 후 장착
     // 현재 장착 중인 아이템 리스트
     // key enum value equip dictionary로 하자!
-    
+    [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private GUIItemSlotEquipment[] equipmentSlots;
     
     private Dictionary<EquipSlot, GUIItemSlotEquipment> equipmentSlotDict;
@@ -21,6 +21,7 @@ public class UIEquipmentPopup : MonoBehaviour, IGUI
     
     void Reset()
     {
+        canvasGroup = GetComponent<CanvasGroup>();
         equipmentSlots = GetComponentsInChildren<GUIItemSlotEquipment>();
     }
 
@@ -41,36 +42,62 @@ public class UIEquipmentPopup : MonoBehaviour, IGUI
             // 나중에 실루엣도 해당 타입에 맞는 이미지들로 변경해주기
         }
         
-        gameObject.SetActive(false);
+        Close();
     }
 
     public void Open()
     {
-        gameObject.SetActive(true);
-
         foreach (var slot in equipmentSlotDict)
         {
             PlayerInventoryController inventoryController = CharacterManager.Player.inventoryController;
             var icon = inventoryController.GetIcon(slot.Key);
-            
-            if(icon == null)
-                return;
-            slot.Value.Show(icon);
+
+            if (icon)
+            {
+                slot.Value.Show(icon);
+            }
         }
+        
+        canvasGroup.alpha = 1;
+        canvasGroup.interactable = true;
+        canvasGroup.blocksRaycasts = true;
     }
 
     public void Close()
     {
-        gameObject.SetActive(false);
+        canvasGroup.alpha = 0;
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
     }
 
-    // void OnEquipSlotSelected(EquipSlot type)
-    // {
-    //     // Unequip에서 원래 비어있는지 체크해주고 비어 있으면 ㄴㄴ 
-    // }
-
-    // public bool TryPlaceItem(ItemData item)
-    // {
-    //     return CharacterManager.Player.inventoryController.EquipItem(item);
-    // }
+    public bool TryPlaceItem(ItemData item)
+    {
+        EquipableItemData equipableItem = item as EquipableItemData;
+        
+        if (equipableItem == null)
+        {
+            Debug.Log("Casting Failed! Is not Equipable!");
+            return false;
+        }        
+        
+        equipmentSlotDict[equipableItem.equipSlot].Show(equipableItem.icon);
+        
+        CharacterManager.Player.inventoryController.EquipItem(equipableItem);
+        
+        return true;
+    }
+    
+    #if UNITY_EDITOR
+    public void TestOpen()
+    {
+        if (canvasGroup.alpha >= 0.5)
+        {
+            Close();
+        }
+        else
+        {
+            Open();
+        }
+    }
+    #endif
 }

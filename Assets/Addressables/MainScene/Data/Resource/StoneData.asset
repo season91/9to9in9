@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: StoneData
   m_EditorClassIdentifier: 
   itemCode: r1
+  itemName: stone
   displayName: "\uB3CC"
   description: "\uB3CC\uC774\uB2E4."
   type: 2

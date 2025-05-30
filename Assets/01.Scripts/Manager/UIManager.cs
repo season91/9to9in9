@@ -86,16 +86,17 @@ public class UIManager : MonoBehaviour
             case SceneType.Main:
                 addresses = new[] { StringAdr.MainScene };
                 await ResourceManager.Instance.LoadSceneResourcesWithProgress(StringScene.MainScene, canvasLoading);
-                await LoadGUIWithProgress(addresses);
                 await LoadSceneWithProgress(StringScene.MainScene);
-                canvasMainScene = GetComponentInChildren<UICanvasMainScene>();
+                await LoadGUIWithProgress(addresses);
                 break;
             case SceneType.Option:
             default:
-                Debug.Log("Implementation in progress.");
+                MyDebug.Log("Implementation in progress.");
                 break;
         }
         
+        InitManagers(type);
+        InitCanvas(type);
         canvasLoading.SetProgressBar(1f);
         canvasLoading.gameObject.SetActive(false);
         curSceneType = type;
@@ -145,7 +146,7 @@ public class UIManager : MonoBehaviour
             
                 if (gui == null)
                 {
-                    Debug.LogError($"IGUI not found on {address}");
+                    MyDebug.LogError($"IGUI not found on {address}");
                     return;
                 }
                 
@@ -154,7 +155,40 @@ public class UIManager : MonoBehaviour
             }
         }
     }
-    
+
+    void InitManagers(SceneType sceneType)
+    {
+        switch (sceneType)
+        {
+            case SceneType.Start: 
+                break;
+            case SceneType.Main:
+                SpawnManager.Instance.Init();
+                GameManager.Instance.InitMainScene();
+                break;
+            case SceneType.Option:
+            default:
+                break;
+        }
+        
+        // 공통 (DDO)
+        SoundManager.Instance.InitSfx();
+    }
+
+    void InitCanvas(SceneType sceneType)
+    {
+        switch (sceneType)
+        {
+            case SceneType.Start: 
+                break;
+            case SceneType.Main:
+                canvasMainScene = GetComponentInChildren<UICanvasMainScene>();
+                break;
+            case SceneType.Option:
+            default:
+                break;
+        }
+    }
     
     // Scene 전환 시, 모든 UI 제거
     // 이후 모든 씬 공통 UI 있으면 그건 제거X
@@ -196,4 +230,18 @@ public class UIManager : MonoBehaviour
     public bool TrySlotClickWithStation(ItemData item) => canvasMainScene.TrySlotClickWithStation(item);
 
     public void OpenStation(StationType type) => canvasMainScene.OpenStation(type);
+
+    public event Action<StatType> OnUpdateStatUI;
+    public void UpdateStatUI(StatType type)
+    {
+        OnUpdateStatUI?.Invoke(type);
+    }
+
+    public void ShowItemInformation(string information) => canvasMainScene.ShowItemName(information);
+
+    public void HideItemInformation()
+    {
+        if (canvasMainScene == null) return;
+        canvasMainScene.HideItemName();
+    }
 }

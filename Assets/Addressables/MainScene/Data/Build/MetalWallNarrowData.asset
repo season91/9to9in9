@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: MetalWallNarrowData
   m_EditorClassIdentifier: 
   itemCode: b12
+  itemName: metal-wall-narrow
   displayName: "\uCCA0 \uBC18 \uBCBD"
   description: "\uC881\uC740 \uBCBD\uC774\uB2E4"
   type: 3

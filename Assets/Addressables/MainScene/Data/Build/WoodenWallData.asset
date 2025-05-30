@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: WoodenWallData
   m_EditorClassIdentifier: 
   itemCode: b5
+  itemName: wooden-wall
   displayName: "\uB098\uBB34 \uBCBD"
   description: "\uAC00\uBCBC\uC6B4 \uBCBD"
   type: 3

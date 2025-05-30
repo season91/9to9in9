@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +9,10 @@ public class GUIItemSlotStation : GUIItemSlotBase
     [SerializeField] private Button btnSelect;
     [SerializeField] private ItemData itemData;
 
+    public ItemData ItemData => itemData;
+    
+    public bool IsEmpty => !itemData;
+    
     public bool IsPlacePossible(Sprite icon)
     {
         if(!imgIcon.sprite)
@@ -20,6 +20,7 @@ public class GUIItemSlotStation : GUIItemSlotBase
         
         return imgIcon.sprite == icon;
     }
+    
 
     void Reset()
     {
@@ -34,6 +35,7 @@ public class GUIItemSlotStation : GUIItemSlotBase
         imgIcon.gameObject.SetActive(false);
         imgIcon.sprite = null;
         tmpPcs.text = string.Empty;
+        itemData = null;
         
         btnSelect.onClick.RemoveAllListeners();
         btnSelect.onClick.AddListener(Select);
@@ -49,51 +51,84 @@ public class GUIItemSlotStation : GUIItemSlotBase
         imgIcon.gameObject.SetActive(true);
         imgIcon.sprite = icon;
 
-        int pieces = 0;
-        if (tmpPcs.text == string.Empty)
-        {
-            pieces += pcs;
-        }
-        else
-        {
-            pieces = Convert.ToInt32(tmpPcs.text);
-            pieces += pcs;
-        }
-        tmpPcs.text = pieces.ToString().Trim();
+        SetPcs(pcs);
 
         itemData = item;
     }
 
     public override void Select()
     {
-        if (tmpPcs.text == string.Empty)
+        if (!int.TryParse(tmpPcs.text, out int pieces))
         {
-            Debug.Log("This Slot is Empty");
+            MyDebug.Log("This Slot is Empty");
+            return;
         }
-        else
-        {
-            int pieces = Convert.ToInt32(tmpPcs.text);
-            
-            switch (pieces)
-            {
-                case <= 0:
-                    Debug.Log("This Slot is Empty");
-                    return;
-                case 1:
-                    Initialization();
-                    return;
-                default:
-                    pieces--;
-                    tmpPcs.text = pieces.ToString().Trim();
-                    break;
-            }
 
-            CharacterManager.Player.inventoryController.AddItem(itemData);
+        switch (pieces)
+        {
+            case <= 0:
+                MyDebug.Log("This Slot is Empty");
+                break;
+            case 1:
+                CharacterManager.Player.inventoryController.AddItem(itemData);
+                Initialization();
+                break;
+            default:
+                CharacterManager.Player.inventoryController.AddItem(itemData);
+                SetPcs(-1);
+                break;
         }
     }
 
     public void SetTitle(string title)
     {
         tmpTitle.text = title;
+    }
+
+    public void SetImageToSilhouette(bool isGetPossible)
+    {
+        // ItemSlot (Equip) 보면 실루엣 스프라이트 컬러 기준 있음
+        imgIcon.color = isGetPossible? Color.white : new Color(0, 0, 0, 0.509804f);
+    }
+    
+    public void SetPcs(int pcs)
+    {
+        if (!int.TryParse(tmpPcs.text, out int pieces))
+        {
+            pieces = 0;
+        }
+
+        pieces += pcs;
+
+        if (pieces <= 0)
+        {
+            Initialization();
+            return;
+        }
+
+        tmpPcs.text = pieces.ToString().Trim();
+    }
+    
+    public void DiscountPcsOfName(string itemName, int amount)
+    {
+        if(IsEmpty)
+            return;
+
+        if (itemData.itemName == itemName)
+        {
+            for (int i = 0; i < amount; i++)
+            {
+                SetPcs(-1);
+            }
+        }
+    }
+    
+    public int GetPcs()
+    {
+        if (int.TryParse(tmpPcs.text, out int pcs))
+        {
+            return pcs;
+        }
+        return 0;
     }
 }

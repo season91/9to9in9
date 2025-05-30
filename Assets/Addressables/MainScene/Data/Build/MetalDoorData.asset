@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: MetalDoorData
   m_EditorClassIdentifier: 
   itemCode: b15
+  itemName: metal-door
   displayName: "\uCCA0 \uBB38"
   description: "\uC5EC\uC804\uD788 \uBAA8\uB450\uC5D0\uAC8C \uC5F4\uB824\uC788\uB2E4"
   type: 3

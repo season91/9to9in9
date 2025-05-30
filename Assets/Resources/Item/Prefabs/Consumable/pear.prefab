@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4222716582577611170}
   - component: {fileID: 8278045678135306449}
   - component: {fileID: 366181072868733711}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: pear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,4 +96,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94642e54fb3541845b4029a9937daeef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: 950ae426d88500f409d9eb8c9a662434, type: 2}
+  itemData: {fileID: 11400000, guid: cbc7ccb941e75224fb1abfdd3a499444, type: 2}

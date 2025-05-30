@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2677804307665975963}
   - component: {fileID: 3244226516222012638}
   - component: {fileID: -1621051321207887546}
+  - component: {fileID: 5639820527692376883}
   m_Layer: 7
   m_Name: metal-wall
   m_TagString: Untagged
@@ -100,3 +101,16 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0.25, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &5639820527692376883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3856265350502986392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94642e54fb3541845b4029a9937daeef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemData: {fileID: 11400000, guid: 69c1b4faee504ce4489684e863fb92ba, type: 2}

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PearData
   m_EditorClassIdentifier: 
   itemCode: c5
+  itemName: pear
   displayName: "\uBC30"
   description: "\uBC30\uC774\uB2E4."
   type: 0

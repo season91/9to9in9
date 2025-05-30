@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: AppleData
   m_EditorClassIdentifier: 
   itemCode: c2
+  itemName: apple
   displayName: "\uC0AC\uACFC"
   description: "\uC0AC\uACFC\uC774\uB2E4."
   type: 0

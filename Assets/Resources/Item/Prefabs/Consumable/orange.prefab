@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9055800953534305121}
   - component: {fileID: 8502090201506817073}
   - component: {fileID: 2145706990753601697}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: orange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,4 +96,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94642e54fb3541845b4029a9937daeef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: 9a66d6b978a09d4438317aa524c8be6d, type: 2}
+  itemData: {fileID: 11400000, guid: 1e731cb33cea8244983bff3afd6c86e8, type: 2}

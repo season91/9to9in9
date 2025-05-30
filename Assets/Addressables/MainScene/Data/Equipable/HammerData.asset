@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: HammerData
   m_EditorClassIdentifier: 
   itemCode: e9
+  itemName: hammer
   displayName: "\uB9DD\uCE58"
   description: "\uBB34\uAE30 \uB9DD\uCE58\uC774\uB2E4"
   type: 1
@@ -21,6 +22,6 @@ MonoBehaviour:
   isStackable: 0
   maxStack: 1
   functions: 00000000
-  equipSlot: 0
+  equipSlot: 5
   equipType: 0
   power: 30

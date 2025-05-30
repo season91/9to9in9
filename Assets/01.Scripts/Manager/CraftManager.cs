@@ -2,24 +2,56 @@ using System;
 using System.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
 /// 아이템 제작 흐름 조율
 /// </summary>
+///
+
+
+public class CraftableItemInfo
+{
+    public ItemData itemData;
+    public float craftTime;
+}
+
 public class CraftManager : MonoBehaviour
 {
-    // 레시피 공식 데이터 json 으로 선택한 이유
-    // 1. 복잡한 공식은 json 작성이 유지보수가 용이
-    // 2. 공식 수정 후 동적 재로드 가능 
+    private static CraftManager instance;
+    public static CraftManager Instance
+    {
+        get
+        {
+            if (instance == null)
+                return null;
+
+            return instance;
+        }
+    }
+    
     private Dictionary<StationType, Dictionary<string, List<SerializableRecipe>>> parsedRecipes;
+
+    private SerializableRecipe currentRecipe;
     
     private PlayerInventoryController playerInventory;
     
     private RecipeHandler recipeHandler;
-
+    
     private void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+        
         playerInventory = CharacterManager.Player.inventoryController;
         recipeHandler = new RecipeHandler(playerInventory);
     }
@@ -31,7 +63,7 @@ public class CraftManager : MonoBehaviour
         Debug.Log("레시피 로딩 완료 후 후속 로직 가능");
         
         // test
-        GetRecipeOfStationType("Anvil");
+        // GetRecipeOfStationType(StationType.Anvil);
     }
     
     private async Task ReloadRecipes()
@@ -45,50 +77,50 @@ public class CraftManager : MonoBehaviour
     /// Player 인벤토리에 있는 아이템 중 위 레시피 중 제작 가능 여부 판단해서 리턴
     /// key: 중분류 이름 ("Tool", "Armor", "Weapon", 그외 "Default")
     /// </summary>
-    private Dictionary<string, Dictionary<Sprite, bool>> GetRecipeOfStationType(string stationType)
+    public Dictionary<string, List<CraftableItemInfo>> GetRecipeOfStationType(StationType stationType)
     {
-        if (string.IsNullOrEmpty(stationType)) return null;
-
-        if (!Enum.TryParse(stationType, out StationType stationEnum)) return null;
-
-        if (!parsedRecipes.ContainsKey(stationEnum))
+        if (parsedRecipes == null)
         {
-            Debug.LogWarning($"parsedRecipes에 {stationEnum} 데이터가 없음");
+            MyDebug.LogWarning("parsedRecipes is null, is not ReloadRecipes yet...................ㅠ");
+            return null;
+        }
+        if (!parsedRecipes.ContainsKey(stationType))
+        {
+            Debug.LogWarning($"parsedRecipes에 {stationType} 데이터가 없음");
             return null;
         }
 
-        var iconCraftableByCategory = new Dictionary<string, Dictionary<Sprite, bool>>();
-        var categoryDict = parsedRecipes[stationEnum];
+        var itemDataByCategory = new Dictionary<string, List<CraftableItemInfo>>();
+        var categoryDict = parsedRecipes[stationType];
 
         foreach (var categoryPair in categoryDict)
         {
             string category = string.IsNullOrEmpty(categoryPair.Key) ? "Default" : categoryPair.Key;
 
-            if (!iconCraftableByCategory.ContainsKey(category))
+            if (!itemDataByCategory.ContainsKey(category))
             {
-                iconCraftableByCategory[category] = new Dictionary<Sprite, bool>();
+                itemDataByCategory[category] = new List<CraftableItemInfo>();
             }
-
             foreach (var recipe in categoryPair.Value)
             {
-                Sprite iconSprite = Resources.Load<Sprite>($"Item/Icons/{recipe.resultItemType}/{recipe.resultItemIcon}");
-                if (iconSprite == null)
+                var itemData = GetItemData(recipe.addressableName);
+                if (itemData == null)
                 {
-                    Debug.LogWarning($"아이콘 누락 확인필요 : Item/Icons/{recipe.resultItemType}/{recipe.resultItemIcon}");
+                    Debug.LogWarning($"[GetRecipeOfStationType] itemData 없음: {recipe.addressableName}");
                     continue;
                 }
 
-                bool isCraftable = CanCraft(recipe);
+                itemData.isCraftable = CanCraft(recipe);
 
-                var iconDict = iconCraftableByCategory[category];
-                if (!iconDict.ContainsKey(iconSprite))
+                itemDataByCategory[category].Add(new CraftableItemInfo
                 {
-                    iconDict.Add(iconSprite, isCraftable);
-                }
+                    itemData = itemData,
+                    craftTime = recipe.craftTime
+                });
             }
         }
 
-        return iconCraftableByCategory;
+        return itemDataByCategory;
     }
 
     private bool CanCraft(SerializableRecipe recipe) => recipeHandler.CanCraft(recipe.ingredients);
@@ -118,19 +150,105 @@ public class CraftManager : MonoBehaviour
         ExecuteCraft(recipe);
     }
     
-    // 제작 실행만 하는 함수
-    // 어떤식으로 inventory에 정보를 전달할건지? 차감할 아이템과 추가할 아이템정보
-    // return 재료 배열과 결과물아이템... itemName or itemCode 일부정보만 넘겨주면 itemData에서 찾아서 처리
-    // 추가 구현 필요
-    private void ExecuteCraft(SerializableRecipe recipe)
+    
+    // GetRecipe
+    /// <summary>
+    /// 레시피 정보 기준으로 재료 차감 및 아이템 추가
+    /// </summary>
+    public void ExecuteCraft(SerializableRecipe recipe)
     {
-        // test code로 인벤토리 생기면 수정
         // 재료 차감 string, 수량 
         foreach (var ingredient in recipe.ingredients)
         {
-            // inventory[ingredient.itemCode] -= ingredient.amount;
+            playerInventory.RemoveItem(ingredient.itemName, ingredient.amount);
         }
+        
         // 새로운 결과 아이템 지급 처리 필요
-        // itemData만들어서 Add는해주구
+        // addressbale name 파싱
+        string adrName = StringUtils.KebabToPascal(recipe.addressableName);
+        ItemData itemData = GetItemData(adrName);
+
+        if (itemData == null)
+        {
+            Debug.LogError($"[ExecuteCraft] 결과 아이템 데이터 정보가 없음 : {adrName}");
+            return;
+        }
+        
+        playerInventory.AddItem(itemData, recipe.resultAmount);
     }
+
+    public ItemData GetItemData(string addressName)
+    {
+        foreach (ItemType type in Enum.GetValues(typeof(ItemType)))
+        {
+            var item = ResourceManager.Instance.GetResource<ItemData>(addressName);
+            if (item != null) return item;
+        }
+
+        return null;
+    }
+    
+    /// <summary>
+    /// 레시피 단건 정보로 isCratable 판단하는 함수
+    /// </summary>
+    public bool CanCraftByItemName(string itemName)
+    {
+        // 레시피 정보 조회 -> currentRecipe 에 적재
+        if (currentRecipe == null || currentRecipe.resultItemName != itemName)
+        {
+            currentRecipe = GetRecipe(itemName);
+            if (currentRecipe == null)
+            {
+                Debug.LogWarning($"[CanCraftCachedRecipe] 레시피 없음: {itemName}");
+                return false;
+            }
+        }
+        
+        // 적재된 레시피 정보로 제작 가능한지 확인
+        return CanCraft(currentRecipe);
+    }
+
+    /// <summary>
+    /// itemName으로 레시피 단건 조회, 레시피 건수가 많아진다면 캐싱 리팩토링 고려
+    /// </summary>
+    public SerializableRecipe GetRecipe(string itemName)
+    {
+        foreach (var stationPair in parsedRecipes)
+        {
+            foreach (var categoryPair in stationPair.Value)
+            {
+                foreach (var recipe in categoryPair.Value)
+                {
+                    if (recipe.resultItemName == itemName)
+                    {
+                        return recipe;
+                    }
+                }
+            }
+        }
+        
+        return null;
+    }
+    
+    public bool CanCraftFromSlots(GUIItemSlotStation[] slots, List<SerializableIngredient> ingredients)
+    {
+        foreach (var ingredient in ingredients)
+        {
+            int totalAmount = 0;
+
+            foreach (var slot in slots)
+            {
+                if (!slot.IsEmpty && slot.ItemData.itemName == ingredient.itemName) 
+                {
+                    totalAmount += slot.GetPcs();
+                }
+            }
+
+            if (totalAmount < ingredient.amount)
+                return false;
+        }
+
+        return true;
+    }
+    
 }

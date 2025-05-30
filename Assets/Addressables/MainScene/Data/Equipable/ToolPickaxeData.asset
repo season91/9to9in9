@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ToolPickaxeData
   m_EditorClassIdentifier: 
   itemCode: e2
+  itemName: tool-pickaxe
   displayName: "\uACE1\uAD2D\uC774"
   description: "\uACE1\uAD2D\uC774\uC774\uB2E4."
   type: 1

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: WoodenFenceData
   m_EditorClassIdentifier: 
   itemCode: b4
+  itemName: wooden-fence
   displayName: "\uB098\uBB34 \uC6B8\uD0C0\uB9AC"
   description: "\uC81C\uAE30\uB2A5\uC740 \uBABB \uD560 \uAC83 \uAC19\uB2E4"
   type: 3

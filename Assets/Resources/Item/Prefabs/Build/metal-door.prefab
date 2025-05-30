@@ -95,6 +95,8 @@ GameObject:
   - component: {fileID: 3064576221274733919}
   - component: {fileID: 2024263770105114927}
   - component: {fileID: 1306368656717408961}
+  - component: {fileID: 7274320423481851750}
+  - component: {fileID: -3104187570446985203}
   m_Layer: 7
   m_Name: metal-door
   m_TagString: Untagged
@@ -189,3 +191,32 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5354298, y: 0.5, z: 0.08890475}
   m_Center: {x: 0, y: 0.25, z: -0.22326252}
+--- !u!208 &7274320423481851750
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2401526326137311891}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.268, y: 0.25, z: 0.044000003}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.25, z: -0.223}
+  m_TimeToStationary: 0.5
+--- !u!114 &-3104187570446985203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2401526326137311891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94642e54fb3541845b4029a9937daeef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemData: {fileID: 11400000, guid: 6fb9d4d67488eaa4dbbd648f18ab06aa, type: 2}

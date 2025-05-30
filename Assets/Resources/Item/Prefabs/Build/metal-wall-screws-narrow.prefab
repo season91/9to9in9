@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 2903408477631391919}
   - component: {fileID: 8369197588502602996}
   - component: {fileID: 1882659770478364717}
+  - component: {fileID: -8755440680550721144}
+  - component: {fileID: -3877383288246546546}
   m_Layer: 7
   m_Name: metal-wall-screws-narrow
   m_TagString: Untagged
@@ -105,3 +107,32 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.25, y: 0.5, z: 0.0625}
   m_Center: {x: 0, y: 0.25, z: 0.0062500015}
+--- !u!208 &-8755440680550721144
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6154926400613555587}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.125, y: 0.25, z: 0.031000001}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.25, z: 0.006}
+  m_TimeToStationary: 0.5
+--- !u!114 &-3877383288246546546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6154926400613555587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94642e54fb3541845b4029a9937daeef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemData: {fileID: 11400000, guid: 4bcff88bd421fa941bc7e82d4475b1ea, type: 2}

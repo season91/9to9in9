@@ -46,8 +46,8 @@ public class CSVImporter
         ParseCommonFields(item, cols); // 공통데이터 파싱
         
         // 장착 아이템 데이터 파싱 작성
-        item.equipSlot = Enum.Parse<EquipSlot>(cols[10]);
-        item.equipType = Enum.Parse<EquipType>(cols[11]);
+        item.equipSlot = (EquipSlot) Enum.Parse(typeof(EquipSlot), cols[10]);
+        item.equipType = (EquipType) Enum.Parse(typeof(EquipType), cols[11]);
         item.power = int.Parse(cols[12]);
         return item;
     }
@@ -68,7 +68,7 @@ public class CSVImporter
         ParseCommonFields(item, cols); // 공통데이터 파싱
         
         // 자원아이템 데이터 파싱
-        item.resourceType = Enum.Parse<ResourceType>(cols[10]);
+        item.resourceType = (ResourceType) Enum.Parse(typeof(ResourceType), cols[10]);
         return item;
     }
     
@@ -89,8 +89,8 @@ public class CSVImporter
         
         // 건축아이템 데이터 파싱
         item.previewPrefab = PrefabParse(cols[10], item.type);
-        item.buildType = Enum.Parse<BuildType>(cols[11]);
-        item.stationType = Enum.Parse<StationType>(cols[12]);
+        item.buildType = (BuildType) Enum.Parse(typeof(BuildType), cols[11]);
+        item.stationType = (StationType) Enum.Parse(typeof(StationType), cols[12]);
         item.health = float.Parse(cols[13]);
         
         return item;
@@ -118,7 +118,7 @@ public class CSVImporter
         for (int i = 1; i < lines.Length; i++) {
             string[] cols = lines[i].Split(',');
             T item = parseFunc(cols);
-            string adrName = ToPascalDataName(item.name);
+            string adrName = ToPascalDataName(item.itemName);
             
             // itemType 기반 경로 분기
             string typeFolder = item.type.ToString(); 
@@ -144,7 +144,7 @@ public class CSVImporter
     private static void ParseCommonFields(ItemData item, string[] cols)
     {
         item.itemCode = cols[0];
-        item.name = cols[1]; // 파일명
+        item.itemName = cols[1];
         item.displayName = cols[2];
         item.description = cols[3];
         item.type = (ItemType)Enum.Parse(typeof(ItemType), cols[4]);

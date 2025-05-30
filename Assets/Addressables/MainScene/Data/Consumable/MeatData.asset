@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: MeatData
   m_EditorClassIdentifier: 
   itemCode: c1
+  itemName: meat
   displayName: "\uACE0\uAE30"
   description: "\uC18C\uB97C \uC7A1\uC544 \uC5BB\uC740 \uACE0\uAE30\uC774\uB2E4.
     \uBD88\uC5D0 \uAC00\uACF5\uD574\uBCF4\uC790."

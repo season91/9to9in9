@@ -81,6 +81,12 @@ public class PlayerController : MonoBehaviour, IMoveable, IJumpable
         dir.y = rigidBody.velocity.y;
         
         rigidBody.velocity = dir;
+
+        if (rigidBody.velocity.magnitude > 0.1f)
+        {
+            // Debug.Log($"{rigidBody.velocity.magnitude}");
+            // // SoundManager.Instance.PlayStepSfx();
+        }
     }
 
     private void CameraLook()
@@ -133,5 +139,41 @@ public class PlayerController : MonoBehaviour, IMoveable, IJumpable
         bool toggle = Cursor.lockState == CursorLockMode.Locked;
         Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
         canLook = !toggle;
+    }
+
+    public void UseQuickSlotItem(ItemData itemData)
+    {
+        switch (itemData.type)
+        {
+            case ItemType.Build:
+                BuildManager.Instance.EnterBuildMode(itemData as BuildItemData);
+                break;
+
+            case ItemType.Consumable:
+                UseConsumableItem(itemData as ConsumableItemData);
+                break;
+        }
+    }
+    
+    private void UseConsumableItem(ConsumableItemData item)
+    {
+        for (int i = 0; i < item.consumableTypes.Length; i++)
+        {
+            float value = item.amounts[i];
+            switch (item.consumableTypes[i])
+            {
+                case ConsumableType.Health:
+                    CharacterManager.Player.statHandler.Modify(StatType.Health, value);
+                    break;
+
+                case ConsumableType.Hunger:
+                    CharacterManager.Player.statHandler.Modify(StatType.Hunger, value);
+                    break;
+
+                case ConsumableType.Stamina:
+                    CharacterManager.Player.statHandler.Modify(StatType.Stamina, value);
+                    break;
+            }
+        }
     }
 }

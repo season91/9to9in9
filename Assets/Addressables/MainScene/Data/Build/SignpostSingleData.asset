@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SignpostSingleData
   m_EditorClassIdentifier: 
   itemCode: b8
+  itemName: signpost-single
   displayName: "\uB2E8\uC77C \uD45C\uC9C0\uD310"
   description: "\uC5EC\uAE30\uB85C \uAC00\uC790"
   type: 3

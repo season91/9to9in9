@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3261475171901427044}
   - component: {fileID: 9033237957075508474}
   - component: {fileID: 7565593398007795050}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,4 +96,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94642e54fb3541845b4029a9937daeef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: ea9b816fa9e335c43a8b7e7df67391ab, type: 2}
+  itemData: {fileID: 11400000, guid: a14e97c6e9cad6d4fae44e791c38d811, type: 2}

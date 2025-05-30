@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 171314572812951944}
   - component: {fileID: 3430120477384753514}
   - component: {fileID: 587029258620939757}
-  m_Layer: 0
+  - component: {fileID: 7677863366540291479}
+  m_Layer: 10
   m_Name: iron
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,4 +97,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94642e54fb3541845b4029a9937daeef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: e19ea5c1800e0bf4f979585a2023af2b, type: 2}
+  itemData: {fileID: 11400000, guid: 534ccbb47f7260d4e9cb8cce8ddbaa5b, type: 2}
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16416572269313672}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.23768866
+  m_Center: {x: 0.02240916, y: 0.12324929, z: 0.013673753}

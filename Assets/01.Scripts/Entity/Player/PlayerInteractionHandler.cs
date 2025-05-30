@@ -7,11 +7,12 @@ public class PlayerInteractionHandler : MonoBehaviour
 {
     [SerializeField] private float checkRate = 0.05f;
     [SerializeField] private float lastCheckTime;
-    [SerializeField] private float maxCheckDistance;
+    [SerializeField] private float maxCheckDistance = 1f;
     [SerializeField] private LayerMask layerMask;
 
-    private GameObject curInteractGameObject;
+    [SerializeField] private GameObject curInteractGameObject;
     private IInteractable curInteractable;
+    private IInspectable curInspectable;
     
     private Camera camera;
 
@@ -27,28 +28,39 @@ public class PlayerInteractionHandler : MonoBehaviour
             lastCheckTime = Time.time;
 
             Ray ray = camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
-            RaycastHit hit;
+            Debug.DrawRay(ray.origin, ray.direction * maxCheckDistance, Color.red);
 
-            if(Physics.Raycast(ray, out hit, maxCheckDistance, layerMask))
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, maxCheckDistance, layerMask))
             {
                 if(hit.collider.gameObject != curInteractGameObject)
                 {
                     curInteractGameObject = hit.collider.gameObject;
-                    curInteractable = hit.collider.GetComponent<IInteractable>();
-                    //SetPromptText();
+                    // 인터페이스 검사
+                    curInteractable = curInteractGameObject.GetComponent<IInteractable>();
+                    curInspectable = curInteractGameObject.GetComponent<IInspectable>();
+                    if (curInspectable == null)
+                    {
+                        Debug.Log("curInspectable 정보가 null!"); return;
+                    }
+                    UIManager.Instance.ShowItemInformation(curInspectable.GetPromptText());
                 }
             }
             else
             {
                 curInteractGameObject = null;
+                curInspectable = null;
                 curInteractable = null;
-                //promptText.gameObject.SetActive(false);
+                UIManager.Instance.HideItemInformation();
             }
         }
     }
 
     public void OnInteract()
     {
-        Debug.Log("인터랙트 활성화 - 작업 필요");
+        if (curInteractable == null) return;
+        
+        Debug.Log("OnInteract : " + curInteractGameObject.name);
+        curInteractable.OnInteract();
     }
 }

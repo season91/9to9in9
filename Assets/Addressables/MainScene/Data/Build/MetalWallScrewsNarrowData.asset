@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: MetalWallScrewsNarrowData
   m_EditorClassIdentifier: 
   itemCode: b13
+  itemName: metal-wall-screws-narrow
   displayName: "\uAC15\uD654\uB41C \uCCA0 \uBC18 \uBCBD"
   description: "\uC881\uACE0 \uB2E8\uB2E8\uD55C \uBCBD\uC774\uB2E4"
   type: 3

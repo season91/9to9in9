@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ShieldData
   m_EditorClassIdentifier: 
   itemCode: e7
+  itemName: shield
   displayName: "\uBC29\uD328"
   description: "\uBC29\uD328\uB2E4."
   type: 1
@@ -21,6 +22,6 @@ MonoBehaviour:
   isStackable: 0
   maxStack: 1
   functions: 00000000
-  equipSlot: 0
+  equipSlot: 4
   equipType: 1
   power: 20

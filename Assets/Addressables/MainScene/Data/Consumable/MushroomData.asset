@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: MushroomData
   m_EditorClassIdentifier: 
   itemCode: c6
+  itemName: mushroom
   displayName: "\uBC84\uC12F"
   description: "\uBC84\uC12F\uC774\uB2E4."
   type: 0

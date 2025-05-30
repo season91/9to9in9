@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ArmorChestData
   m_EditorClassIdentifier: 
   itemCode: e4
+  itemName: armor-chest
   displayName: "\uAC11\uC637-\uC0C1\uC758"
   description: "\uAC11\uC637\uC774\uB2E4."
   type: 1
@@ -21,6 +22,6 @@ MonoBehaviour:
   isStackable: 0
   maxStack: 1
   functions: 00000000
-  equipSlot: 0
+  equipSlot: 1
   equipType: 1
   power: 20

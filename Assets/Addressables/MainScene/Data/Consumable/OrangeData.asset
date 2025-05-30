@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: OrangeData
   m_EditorClassIdentifier: 
   itemCode: c4
+  itemName: orange
   displayName: "\uC624\uB80C\uC9C0"
   description: "\uC624\uB80C\uC9C0\uC774\uB2E4"
   type: 0

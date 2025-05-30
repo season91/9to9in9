@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: MeatCookedData
   m_EditorClassIdentifier: 
   itemCode: c3
+  itemName: meat-cooked
   displayName: "\uC694\uB9AC\uB41C \uACE0\uAE30"
   description: "\uC694\uB9AC\uAC00 \uB41C \uB9DB\uC788\uB294 \uACE0\uAE30 \uC74C\uC2DD
     \uC774\uB2E4."

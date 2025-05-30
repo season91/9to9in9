@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8288228717125732494}
   - component: {fileID: 2238109927185333326}
   - component: {fileID: 3770604106245087881}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: helmet_parts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 392266810786743190}
   - component: {fileID: 1820945933340651949}
   - component: {fileID: 8480559242511169959}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: helmet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94642e54fb3541845b4029a9937daeef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: f04babd6dc0aeda4abc5761b90d46150, type: 2}
+  itemData: {fileID: 11400000, guid: dda540d2c2acb5a41bcdc62cdb354435, type: 2}
 --- !u!1 &6943539698740359832
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 6973511495736418105}
   - component: {fileID: 1685232225205795969}
   - component: {fileID: 7233205265778219903}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: helmet_visor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

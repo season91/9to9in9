@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4339036318029271657}
   - component: {fileID: 7793456709385947531}
   - component: {fileID: 7579696580618182324}
+  - component: {fileID: -4849117944438026895}
+  - component: {fileID: -4155426874500321009}
   m_Layer: 7
   m_Name: signpost-single
   m_TagString: Untagged
@@ -105,3 +107,32 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.2086357, y: 0.46008, z: 0.0429778}
   m_Center: {x: 0.00795947, y: 0.23004, z: 0.0034888983}
+--- !u!208 &-4849117944438026895
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6298469963001710597}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.104, y: 0.23, z: 0.021000002}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.008, y: 0.23, z: 0.003}
+  m_TimeToStationary: 0.5
+--- !u!114 &-4155426874500321009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6298469963001710597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94642e54fb3541845b4029a9937daeef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemData: {fileID: 11400000, guid: d49520960c2446b4aab3acd6162d9e99, type: 2}

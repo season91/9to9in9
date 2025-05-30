@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +14,10 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
     [SerializeField] private UICampfirePopup campfirePopup;
     [SerializeField] private UIWorkbenchPopup workbenchPopup;
     [SerializeField] private UIAnvilPopup anvilPopup;
+    [SerializeField] private UIStateGroup stateGroup;
+
+    [SerializeField] private TextMeshProUGUI tmpInformation;
+    [SerializeField] private TextMeshProUGUI tmpDay;
     
     public GameObject GUIObject => gameObject;
 
@@ -25,18 +30,12 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
         campfirePopup = GetComponentInChildren<UICampfirePopup>();
         workbenchPopup = GetComponentInChildren<UIWorkbenchPopup>();
         anvilPopup = GetComponentInChildren<UIAnvilPopup>();
-    }
 
-    private void Awake()
-    {
-        // inventoryPopup.gameObject.SetActive(false);
-        // equipmentPopup.gameObject.SetActive(false);
-        // smelterPopup.gameObject.SetActive(false);
-        // campfirePopup.gameObject.SetActive(false);
-        // workbenchPopup.gameObject.SetActive(false);
-        // anvilPopup.gameObject.SetActive(false);
+        stateGroup = GetComponentInChildren<UIStateGroup>();
 
-        Initialization();
+        tmpInformation = transform.Find("Tmp_Information").GetComponent<TextMeshProUGUI>();
+        tmpDay = transform.Find("Tmp_Day").GetComponent<TextMeshProUGUI>();
+
     }
 
     public void Initialization()
@@ -45,6 +44,12 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
         
         equipmentPopup.Initialization();
         smelterPopup.Initialization();
+       
+        campfirePopup.Initialization();
+        workbenchPopup.Initialization();
+        anvilPopup.Initialization();
+        
+        tmpInformation.gameObject.SetActive(false);
     }
 
     public void Open()
@@ -61,22 +66,21 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
         {
             case StationType.Smelter:
                 // 클릭한 것이 연료 계열이면 연료 칸에 장착
-                // 클릭한 것이 음식이면 음식 칸에 장착
-                // 둘 다 아니면 무시
-                // 칸이 전부 찼으면 무시
-                return smelterPopup.TryPlaceItem(item);
-            case StationType.Campfire:
-                // 클릭한 것이 연료 계열이면 연료 칸에 장착
                 // 클릭한 것이 광물이면 광물 칸에 장착
                 // 칸이 전부 찼으면 무시
                 // 둘 다 아니면 무시
-                // return campfirePopup.TryPlaceItem(item);
+                return smelterPopup.TryPlaceItem(item);
+            case StationType.Campfire:
+                // 클릭한 것이 음식이면 음식 칸에 차례대로
+                // 아니면 무시
+                // 칸이 전부 찼으면 무시
+                return campfirePopup.TryPlaceItem(item);
             case StationType.None:
                 // None이면 장비 장착 창
                 // 장착, 장착된 장비도 Select하면 장착 해제
                 // 장착된 장비가 있으면 교체
                 // 교체될 때 인벤토리로 다시 들어와야 됨 해당 아이템이
-                // return TryPlaceItem()
+                return equipmentPopup.TryPlaceItem(item);
             case StationType.Workbench:
             case StationType.Anvil:
             default:
@@ -112,35 +116,44 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
         inventoryPopup.Open();
     }
 
-    #region  TestCode
+    public void ShowItemName(string information)
+    {
+        tmpInformation.text = information;
+        tmpInformation.gameObject.SetActive(true);
+    }
     
+    public void HideItemName()
+    {
+        if (tmpInformation.IsActive())
+        {
+            tmpInformation.text = "";
+            tmpInformation.gameObject.SetActive(false);
+        }
+    }
+    
+    #region  TestCode
+#if  UNITY_EDITOR
     public void TestOpenEquipmentPopup()
     {
-        if (equipmentPopup.gameObject.activeSelf)
-        {
-            equipmentPopup.Close();
-            inventoryPopup.Close();
-            return;
-        }
-        
         currentStation = StationType.None;
-        equipmentPopup.Open();
-        inventoryPopup.Open();
+        equipmentPopup.TestOpen();
+        inventoryPopup.TestOpen();
     }
 
     public void TestOpenSmelterPopup()
     {
-        if (smelterPopup.gameObject.activeSelf)
-        {
-            smelterPopup.Close();
-            inventoryPopup.Close();
-            return;
-        }
-        
         currentStation = StationType.Smelter;
-        smelterPopup.Open();
-        inventoryPopup.Open();
+        smelterPopup.TestOpen();
+        inventoryPopup.TestOpen();
     }
     
+    public void TestOpenCampfirePopup()
+    {
+        currentStation = StationType.Campfire;
+        campfirePopup.TestOpen();
+        inventoryPopup.TestOpen();
+    }
+#endif
+
     #endregion
 }

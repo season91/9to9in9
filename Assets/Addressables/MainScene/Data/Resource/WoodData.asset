@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: WoodData
   m_EditorClassIdentifier: 
   itemCode: r2
+  itemName: wood
   displayName: "\uC7A5\uC791"
   description: "\uC7A5\uC791\uC774\uB2E4. \uAC00\uACF5\uD574\uBCF4\uC790."
   type: 2

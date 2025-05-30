@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 93175559228278973}
   - component: {fileID: 4925816980080662130}
   - component: {fileID: 2840814208536175624}
+  - component: {fileID: 5080347882623629434}
+  - component: {fileID: -6524797545742165105}
   m_Layer: 7
   m_Name: wooden-floor-old
   m_TagString: Untagged
@@ -105,3 +107,32 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.49999997, y: 0.0512, z: 0.5}
   m_Center: {x: 0.0053474754, y: 0.0256, z: 0.0033231154}
+--- !u!208 &5080347882623629434
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4558848782615283036}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.25, y: 0.026, z: 0.25}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.0050000004, y: 0.026, z: 0.003}
+  m_TimeToStationary: 0.5
+--- !u!114 &-6524797545742165105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4558848782615283036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94642e54fb3541845b4029a9937daeef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemData: {fileID: 11400000, guid: 213b76c7ba63f8344aa71a69635defc3, type: 2}
