@@ -38,7 +38,8 @@ public class Player : Entity, IDamagable
 
     public void TakeDamage(float damage)
     {
-        // TODO: 피해입는 로직 작성
+        CharacterManager.Player.statHandler.Modify(StatType.Health, -damage);
+        UIManager.Instance.UpdateStatUI(StatType.AttackPower);
     }
 
     public void Die()

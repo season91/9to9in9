@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using Unity.Collections;
 using UnityEditor;
@@ -221,9 +222,12 @@ public class PlayerInventoryController : MonoBehaviour
             AddItem(temp);
         }
         
+        // 오른손이면 장비 화면에 띄우기
         if (equipItem.equipSlot == EquipSlot.RightHand)
             CharacterManager.Player.playerEquip.Equip(equipItem);
         
+        // 스탯 업데이트
+        CharacterManager.Player.playerEquip.UpdateStat(equipItem, equipItem.power);
         UpdateInventory?.Invoke();
     }
     //
@@ -238,8 +242,12 @@ public class PlayerInventoryController : MonoBehaviour
             AddItem(equipItem);
             equippedItems.Remove(equipItem);
             
+            // 오른손이면 장비 화면에서 지우기
             if (equipItem.equipSlot == EquipSlot.RightHand)
                 CharacterManager.Player.playerEquip.UnEquip();
+            
+            // 스탯 업데이트
+            CharacterManager.Player.playerEquip.UpdateStat(equipItem, 0);
             UpdateInventory?.Invoke();
             return true;
         }
