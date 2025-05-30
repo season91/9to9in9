@@ -2349,6 +2349,8 @@ MonoBehaviour:
   workbenchPopup: {fileID: 0}
   anvilPopup: {fileID: 0}
   stateGroup: {fileID: 3884651240724174145}
+  tmpInformation: {fileID: 7485575907454987732}
+  tmpDay: {fileID: 7265276641364737957}
 --- !u!1 &3253812075279652248
 GameObject:
   m_ObjectHideFlags: 0
@@ -3283,7 +3285,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5410027762699043731
 RectTransform:
   m_ObjectHideFlags: 0

@@ -238,5 +238,10 @@ public class UIManager : MonoBehaviour
     }
 
     public void ShowItemInformation(string information) => canvasMainScene.ShowItemName(information);
-    public void HideItemInformation() => canvasMainScene.HideItemName();
+
+    public void HideItemInformation()
+    {
+        if (canvasMainScene == null) return;
+        canvasMainScene.HideItemName();
+    }
 }

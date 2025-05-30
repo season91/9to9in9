@@ -45,8 +45,7 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
         equipmentPopup.Initialization();
         smelterPopup.Initialization();
         
-        tmpInformation = transform.Find("Tmp_Information").GetComponent<TextMeshProUGUI>();
-        tmpDay = transform.Find("Tmp_Day").GetComponent<TextMeshProUGUI>();
+        tmpInformation.gameObject.SetActive(false);
     }
 
     public void Open()
@@ -117,13 +116,16 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
     public void ShowItemName(string information)
     {
         tmpInformation.text = information;
-        tmpInformation.enabled = true;
+        tmpInformation.gameObject.SetActive(true);
     }
     
     public void HideItemName()
     {
-        tmpInformation.text = "";
-        tmpInformation.enabled = false;
+        if (tmpInformation.IsActive())
+        {
+            tmpInformation.text = "";
+            tmpInformation.gameObject.SetActive(false);
+        }
     }
 
     #region  TestCode
