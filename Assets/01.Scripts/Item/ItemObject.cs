@@ -82,49 +82,4 @@ public class ItemObject : MonoBehaviour
             }
         }
     }
-
-    /// <summary>
-    /// 퀵슬롯에서 현재 선택된 칸의 아이템 데이터를 받아와서 사용 처리
-    /// 퀵슬롯에서는 소비 / 건축 아이템만 사용
-    /// </summary>
-    /// <param name="itemData">ItemData</param>
-    private void UseQuickSlotItem(ItemData itemData)
-    {
-        /*switch (itemData.type)
-        {
-            case ItemType.Build:
-                BuildManager.Instance.EnterBuildMode(itemData as BuildItemData);
-                break;
-
-            case ItemType.Consumable:
-                UseConsumableItem(itemData as ConsumableItemData);
-                break;
-        }*/
-    }
-
-    /// <summary>
-    /// 음식 먹기 
-    /// </summary>
-    /// <param name="item">ConsumableItemData</param>
-    private void UseConsumableItem(ConsumableItemData item)
-    {
-        /*for (int i = 0; i < item.consumableTypes.Length; i++)
-        {
-            float value = item.amounts[i];
-            switch (item.consumableTypes[i])
-            {
-                case ConsumableType.Health:
-                    CharacterManager.Player.statHandler.Modify(StatType.Health, value);
-                    break;
-
-                case ConsumableType.Hunger:
-                    CharacterManager.Player.statHandler.Modify(StatType.Hunger, value);
-                    break;
-
-                case ConsumableType.Stamina:
-                    CharacterManager.Player.statHandler.Modify(StatType.Stamina, value);
-                    break;
-            }
-        }*/
-    }
 }
