@@ -7,11 +7,12 @@ public class PlayerInteractionHandler : MonoBehaviour
 {
     [SerializeField] private float checkRate = 0.05f;
     [SerializeField] private float lastCheckTime;
-    [SerializeField] private float maxCheckDistance = 5f;
+    [SerializeField] private float maxCheckDistance = 1f;
     [SerializeField] private LayerMask layerMask;
 
     [SerializeField] private GameObject curInteractGameObject;
     private IInteractable curInteractable;
+    private IInspectable curInspectable;
     
     private Camera camera;
 
@@ -27,19 +28,30 @@ public class PlayerInteractionHandler : MonoBehaviour
             lastCheckTime = Time.time;
 
             Ray ray = camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
+            Debug.DrawRay(ray.origin, ray.direction * maxCheckDistance, Color.red);
+
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, maxCheckDistance, layerMask))
             {
                 if(hit.collider.gameObject != curInteractGameObject)
                 {
                     curInteractGameObject = hit.collider.gameObject;
-                    curInteractable = hit.collider.GetComponent<IInteractable>();
+                    // 인터페이스 검사
+                    curInteractable = curInteractGameObject.GetComponent<IInteractable>();
+                    curInspectable = curInteractGameObject.GetComponent<IInspectable>();
+                    if (curInspectable == null)
+                    {
+                        Debug.Log("curInspectable 정보가 null!"); return;
+                    }
+                    UIManager.Instance.ShowItemInformation(curInspectable.GetPromptText());
                 }
             }
             else
             {
                 curInteractGameObject = null;
+                curInspectable = null;
                 curInteractable = null;
+                UIManager.Instance.HideItemInformation();
             }
         }
     }
