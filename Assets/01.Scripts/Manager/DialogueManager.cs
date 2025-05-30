@@ -8,8 +8,8 @@ public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager instance;
     
-    // private CanvasGroup dialogueCanvasGroup; // 알파 조절을 위한 CanvasGroup
-    // public TextMeshProUGUI dialogueText;
+    private CanvasGroup dialogueCanvasGroup; // 알파 조절을 위한 CanvasGroup
+    public TextMeshProUGUI dialogueText;
     public string[] dialogueLines;
 
     private int currentLine = 0;
@@ -26,12 +26,9 @@ public class DialogueManager : MonoBehaviour
             instance = this;
         }
     }
-
+    
     private void Start()
     {
-    //     dialogueCanvasGroup = GameObject.Find("DialogueCanvas").GetComponent<CanvasGroup>();
-    //     dialogueText = GameObject.Find("DialogueCanvas/Group_Dialogue/Tmp_Dialogue").GetComponent<TextMeshProUGUI>();
-    //     
         dialogueCanvasGroup.alpha = 0f;
         dialogueCanvasGroup.interactable = false;
         dialogueCanvasGroup.blocksRaycasts = false;
