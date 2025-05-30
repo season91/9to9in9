@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class UISmelterPopup : MonoBehaviour, IGUI
@@ -113,7 +114,7 @@ public class UISmelterPopup : MonoBehaviour, IGUI
         
         slot.Show(item.icon, 1, item);
         
-        if (CheckAllSlotFull() && curUpdateUICoroutine == null)
+        if (curUpdateUICoroutine == null)
         {
             curUpdateUICoroutine = StartCoroutine(UpdateUIWhileCraftable());
         }
@@ -131,20 +132,47 @@ public class UISmelterPopup : MonoBehaviour, IGUI
                 MyDebug.LogWarning("craftableItemInfos is null!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                 yield break;
             }
-            while (craftableItemInfos.Exists(item => item.itemData.isCraftable)) // isCraftable 판단 메서드 (string)
+            while (CheckAllSlotFull())
             {
-                foreach (var itemInfo in craftableItemInfos)
+                // 제작 가능한 아이템만 필터링
+                var craftables = craftableItemInfos
+                    .Where(itemInfo => CraftManager.Instance.CanCraftByItemName(itemInfo.itemData.itemName))
+                    .ToList();
+
+                if (craftables.Count == 0)
+                    break; // 더 이상 제작 가능한 아이템 없음 → 루프 종료
+
+                foreach (var itemInfo in craftables)
                 {
-                    if (itemInfo.itemData.isCraftable && curGaugeCoroutine == null)
+                    if (curGaugeCoroutine == null)
                     {
-                        slotStationDict[ResourceType.None].Show(itemInfo.itemData.icon, 1, itemInfo.itemData);
-                        curGaugeCoroutine = StartCoroutine(UpdateGaugeGUI(5)); //임의로 5
-                        yield return new WaitUntil(() => curGaugeCoroutine == null);
+                        bool craftingSuccess = false;
+                        
+                        curGaugeCoroutine = StartCoroutine
+                        (
+                            UpdateGaugeGUI
+                            (
+                                itemInfo.craftTime,
+                                success => { craftingSuccess = success; }
+                            )
+                        );
+                        
+                        // 게이지 끝날 때까지 대기
+                        yield return curGaugeCoroutine;
+                        
+                        if (craftingSuccess)
+                        {
+                            slotStationDict[ResourceType.None].Show(itemInfo.itemData.icon, 1, itemInfo.itemData);
+                        }
+                        else
+                        {
+                            MyDebug.Log("Crafting Failed! Slot is not full...");
+                            yield break;
+                        }
                     }
                 }
 
-                // 다음 프레임까지 기다리므로 CPU 자원 낭비 줄일 수 있음
-                yield return null;
+                yield return null; // 다음 프레임까지 대기
             }
         }
         finally
@@ -154,29 +182,30 @@ public class UISmelterPopup : MonoBehaviour, IGUI
     }
     
     // 제작 시간 동안 게이지 업데이트
-    IEnumerator UpdateGaugeGUI(float maxTime)
+    IEnumerator UpdateGaugeGUI(float maxTime, Action<bool> onComplete)
     {
         try
         {
-            slotStationDict[ResourceType.None].SetImageToSilhouette(false);
-        
+            rectTrGauge.gameObject.SetActive(true);
             float elapsedTime = 0;
+            bool isCraftingSuccessful = false;
         
-            while (elapsedTime <= maxTime)
+            while (elapsedTime <= maxTime && CheckAllSlotFull())
             {
                 float timeRatio = elapsedTime / maxTime;
-            
                 rectTrGauge.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, timeRatio * maxWidthGauge);
             
                 yield return new WaitForSeconds(0.5f);
                 elapsedTime += 0.5f;
             }
-        
-            slotStationDict[ResourceType.None].SetImageToSilhouette(true);
+            
+            isCraftingSuccessful = elapsedTime >= maxTime;
+            onComplete?.Invoke(isCraftingSuccessful);
         }
         finally
         {
             curGaugeCoroutine = null;
+            rectTrGauge.gameObject.SetActive(false);
         }
     }
 }

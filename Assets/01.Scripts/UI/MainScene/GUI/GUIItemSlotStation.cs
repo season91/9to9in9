@@ -36,6 +36,7 @@ public class GUIItemSlotStation : GUIItemSlotBase
         imgIcon.gameObject.SetActive(false);
         imgIcon.sprite = null;
         tmpPcs.text = string.Empty;
+        itemData = null;
         
         btnSelect.onClick.RemoveAllListeners();
         btnSelect.onClick.AddListener(Select);
@@ -82,15 +83,16 @@ public class GUIItemSlotStation : GUIItemSlotBase
                     MyDebug.Log("This Slot is Empty");
                     return;
                 case 1:
+                    CharacterManager.Player.inventoryController.AddItem(itemData);
                     Initialization();
                     break;
                 default:
+                    CharacterManager.Player.inventoryController.AddItem(itemData);
                     pieces--;
                     tmpPcs.text = pieces.ToString().Trim();
                     break;
             }
 
-            CharacterManager.Player.inventoryController.AddItem(itemData);
         }
     }
 
@@ -99,9 +101,9 @@ public class GUIItemSlotStation : GUIItemSlotBase
         tmpTitle.text = title;
     }
 
-    public void SetImageToSilhouette(bool isCreatePossible)
+    public void SetImageToSilhouette(bool isGetPossible)
     {
         // ItemSlot (Equip) 보면 실루엣 스프라이트 컬러 기준 있음
-        imgIcon.color = isCreatePossible ? Color.white : new Color(0, 0, 0, 0.509804f);
+        imgIcon.color = isGetPossible? Color.white : new Color(0, 0, 0, 0.509804f);
     }
 }
