@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3203284645892159147}
   - component: {fileID: 122662868727579485}
   - component: {fileID: 3645200365264030827}
+  - component: {fileID: 8554905321615782579}
   m_Layer: 7
   m_Name: wooden-floor
   m_TagString: Untagged
@@ -122,3 +123,16 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0.0050000004, y: 0.026, z: 0.003}
   m_TimeToStationary: 0.5
+--- !u!114 &8554905321615782579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5712094915227370815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94642e54fb3541845b4029a9937daeef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemData: {fileID: 0}
