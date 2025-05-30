@@ -52,47 +52,32 @@ public class GUIItemSlotStation : GUIItemSlotBase
         imgIcon.gameObject.SetActive(true);
         imgIcon.sprite = icon;
 
-        int pieces = 0;
-        if (tmpPcs.text == string.Empty)
-        {
-            pieces += pcs;
-        }
-        else
-        {
-            pieces = Convert.ToInt32(tmpPcs.text);
-            pieces += pcs;
-        }
-        tmpPcs.text = pieces.ToString().Trim();
+        SetPcs(pcs);
 
         itemData = item;
     }
 
     public override void Select()
     {
-        if (tmpPcs.text == string.Empty)
+        if (!int.TryParse(tmpPcs.text, out int pieces))
         {
             MyDebug.Log("This Slot is Empty");
+            return;
         }
-        else
-        {
-            int pieces = Convert.ToInt32(tmpPcs.text);
-            
-            switch (pieces)
-            {
-                case <= 0:
-                    MyDebug.Log("This Slot is Empty");
-                    return;
-                case 1:
-                    CharacterManager.Player.inventoryController.AddItem(itemData);
-                    Initialization();
-                    break;
-                default:
-                    CharacterManager.Player.inventoryController.AddItem(itemData);
-                    pieces--;
-                    tmpPcs.text = pieces.ToString().Trim();
-                    break;
-            }
 
+        switch (pieces)
+        {
+            case <= 0:
+                MyDebug.Log("This Slot is Empty");
+                break;
+            case 1:
+                CharacterManager.Player.inventoryController.AddItem(itemData);
+                Initialization();
+                break;
+            default:
+                CharacterManager.Player.inventoryController.AddItem(itemData);
+                SetPcs(-1);
+                break;
         }
     }
 
@@ -105,5 +90,23 @@ public class GUIItemSlotStation : GUIItemSlotBase
     {
         // ItemSlot (Equip) 보면 실루엣 스프라이트 컬러 기준 있음
         imgIcon.color = isGetPossible? Color.white : new Color(0, 0, 0, 0.509804f);
+    }
+    
+    public void SetPcs(int pcs)
+    {
+        if (!int.TryParse(tmpPcs.text, out int pieces))
+        {
+            pieces = 0;
+        }
+
+        pieces += pcs;
+
+        if (pieces <= 0)
+        {
+            Initialization();
+            return;
+        }
+
+        tmpPcs.text = pieces.ToString().Trim();
     }
 }

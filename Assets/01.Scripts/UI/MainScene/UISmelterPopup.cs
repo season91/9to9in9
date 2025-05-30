@@ -163,6 +163,15 @@ public class UISmelterPopup : MonoBehaviour, IGUI
                         if (craftingSuccess)
                         {
                             slotStationDict[ResourceType.None].Show(itemInfo.itemData.icon, 1, itemInfo.itemData);
+                            
+                            // ResourceType curResourceType = resourceItem.resourceType;
+                            foreach (var slotKvp in slotStationDict)
+                            {
+                                if (slotKvp.Key == ResourceType.None)
+                                    break;
+
+                                slotKvp.Value.SetPcs(-1);
+                            }
                         }
                         else
                         {

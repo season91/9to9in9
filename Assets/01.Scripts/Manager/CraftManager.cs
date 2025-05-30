@@ -149,10 +149,12 @@ public class CraftManager : MonoBehaviour
         ExecuteCraft(recipe);
     }
     
+    
+    // GetRecipe
     /// <summary>
     /// 레시피 정보 기준으로 재료 차감 및 아이템 추가
     /// </summary>
-    private void ExecuteCraft(SerializableRecipe recipe)
+    public void ExecuteCraft(SerializableRecipe recipe)
     {
         // 재료 차감 string, 수량 
         foreach (var ingredient in recipe.ingredients)
@@ -162,7 +164,7 @@ public class CraftManager : MonoBehaviour
         
         // 새로운 결과 아이템 지급 처리 필요
         // addressbale name 파싱
-        string adrName = StringUtils.KebabToPascal(recipe.resultItemName);
+        string adrName = StringUtils.KebabToPascal(recipe.addressableName);
         ItemData itemData = GetItemData(adrName);
 
         if (itemData == null)
