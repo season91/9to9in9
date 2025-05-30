@@ -231,16 +231,6 @@ public class UICampfirePopup : MonoBehaviour, IGUI
     }
     
 #if UNITY_EDITOR
-    public void TestOpen()
-    {
-        if (canvasGroup.alpha >= 0.5)
-        {
-            Close();
-        }
-        else
-        {
-            Open();
-        }
-    }
+    public float CanvasAlpha() => canvasGroup.alpha;
 #endif
 }
