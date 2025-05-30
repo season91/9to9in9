@@ -55,6 +55,14 @@ public class GameManager : MonoBehaviour
                 SpawnManager.Instance.ResourceSpawn(pair.Key);
             }
         }
+
+        foreach (var pair in StringSpawnDic.enemyResourceSpawnTable)
+        {
+            for (int i = 0; i < pair.Value; i++)
+            {
+                SpawnManager.Instance.ResourceSpawn(pair.Key);
+            }
+        }
     }
 
 }

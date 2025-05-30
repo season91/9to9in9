@@ -80,6 +80,12 @@ public static class StringAdrCraftRecipe
     public const string Recipes = "Recipes";
 }
 
+public static class StringEnemyPrefab
+{
+    public const string Zombie1 = "Zombie1";
+    public const string Zombie2 = "Zombie2";
+}
+
 public static class StringAdrSpawnManagerKey
 {
     // 1차 자원
@@ -103,9 +109,16 @@ public static class StringAdrSpawnManagerKey
         //Build
         StringAdrItemDataBuild.Anvil, StringAdrItemDataBuild.Campfire, StringAdrItemDataBuild.MetalWall,
         StringAdrItemDataBuild.Smelter, StringAdrItemDataBuild.WoodenFloor, StringAdrItemDataBuild.WoodenWall,
-        StringAdrItemDataBuild.Workbench
+        StringAdrItemDataBuild.Workbench,
+    };
+
+    public static readonly string[] PrefabEnemy =
+    {
+        //Enemy
+        StringEnemyPrefab.Zombie1, StringEnemyPrefab.Zombie2
     };
 }
+        
 
 #endregion
 
@@ -122,4 +135,11 @@ public static class StringSpawnDic
         { StringAdrItemDataResource.IronOre, 5 },
         { StringAdrItemDataResource.Rock, 5 },
     };
+
+    public static readonly Dictionary<string, int> enemyResourceSpawnTable = new Dictionary<string, int>
+    {
+        { StringEnemyPrefab.Zombie1, 1 },
+        { StringEnemyPrefab.Zombie2, 2 },
+    };
+
 }
