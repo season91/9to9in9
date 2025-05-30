@@ -32,6 +32,14 @@ public class StatHandler: MonoBehaviour
     }
 
     /// <summary>
+    /// 전체 스탯을 딕셔너리형으로 반환
+    /// </summary>
+    public Dictionary<StatType, Stat> GetNameAndType()
+    {
+        return stats;
+    }
+
+    /// <summary>
     /// 지정한 스탯을 변화.
     /// 음수 값은 감소, 양수 값은 증가
     /// </summary>
