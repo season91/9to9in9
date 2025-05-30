@@ -8,12 +8,14 @@ public class PlayerInputHandler : MonoBehaviour
 {
     private InputActionAsset playerInputAsset;
     private PlayerController playerController;
+    private PlayerEquipHandler playerEquipHandler;
     private PlayerInteractionHandler playerInteractionHandler;
     
     private void Awake()
     {
         playerInputAsset = GetComponent<PlayerInput>().actions;
         playerController = GetComponent<PlayerController>();
+        playerEquipHandler = GetComponent<PlayerEquipHandler>();
         playerInteractionHandler = GetComponent<PlayerInteractionHandler>();
     }
 
@@ -83,9 +85,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void OnUseInput(InputAction.CallbackContext context)
     {
-        //TODO
-        //공격 모션 시 콜백 함수 호출 필요
-        //함수 위치 조정 필요
+        playerEquipHandler.UseEquippedWeapon();
     }
 
     private void OnInventoryInput(InputAction.CallbackContext context)

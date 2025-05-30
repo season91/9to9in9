@@ -23,11 +23,13 @@ public class PlayerEquipHandler : MonoBehaviour
     public void UnEquip()
     {
         if (!curEquip) return;
+        
         Destroy(curEquip.gameObject);
         curEquip = null;
         Debug.Log($"[ItemObject-{name}] 해제됨 !");
     }
 
+    
     public void UpdateStat(EquipableItemData item, float value)
     {
         switch (item.equipType)
@@ -48,6 +50,16 @@ public class PlayerEquipHandler : MonoBehaviour
             default:
                 Debug.Log($"{item.equipType}: 타입이 잘못됐어요!!!");
                 break;
+        }
+    }
+
+    public void UseEquippedWeapon()
+    {
+        if (curEquip == null) return;
+        
+        if (curEquip.TryGetComponent(out WeaponHandler weaponHandler))
+        {
+            weaponHandler.OnAttackInput();
         }
     }
 }
