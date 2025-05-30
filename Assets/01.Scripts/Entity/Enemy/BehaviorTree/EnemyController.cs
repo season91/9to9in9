@@ -203,6 +203,8 @@ public class EnemyController : Enemy, IAttackAble
             animator.speed = 1;
             animator.SetTrigger("Attack");
             
+            //TODO: 아래처럼 수정할거임
+            //CharacterManager.Player.TakeDamage(-attackPower);
             CharacterManager.Player.statHandler.Modify(StatType.Health, -attackPower);
         }
     }
