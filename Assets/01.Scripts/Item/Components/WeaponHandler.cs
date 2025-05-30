@@ -53,37 +53,30 @@ public class WeaponHandler : MonoBehaviour
 
     private void OnHit()
     {
-        Debug.Log($"itemData is null? → {itemData == null}");
-
-        if (itemData != null)
-        {
-            Debug.Log($"itemData.equipType = {itemData.equipType}");
-        }
-        
         Ray ray = camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
         RaycastHit hit;
-        
-        Debug.DrawRay(ray.origin, ray.direction * attackDistance, Color.red, 1f);
 
         if (!Physics.Raycast(ray, out hit, attackDistance)) return;
 
-        bool isGather = (itemData.equipType == EquipType.GatheringTool);
-        if (isGather)
+        switch (itemData.equipType)
         {
-            Debug.Log("채집 도구로 판단됨");
-            if (hit.collider.TryGetComponent(out ResourceHandler resourceHandler))
-            {
-                Debug.Log("ResourceHandler 있음! Gather 호출");
-                resourceHandler.Gather(hit.point, hit.normal);
-            }
-            else
-            {
-                Debug.Log("ResourceHandler 못 찾음");
-            }
-        }
-        else
-        {
-            Debug.Log("이 아이템은 채집 도구가 아님");
+            case EquipType.GatheringTool:
+                if (hit.collider.TryGetComponent(out ResourceHandler resourceHandler))
+                {
+                    resourceHandler.Gather(hit.point, hit.normal);
+                }
+                break;
+
+            case EquipType.Weapon:
+                if (hit.collider.TryGetComponent(out IDamagable damagable))
+                {
+                    if (hit.collider.CompareTag("Player")) return;
+                    
+                    float damage = CharacterManager.Player.statHandler.Get(StatType.AttackPower);
+                    damagable.TakeDamage(damage);
+                    Debug.Log($"공격 성공! 대상: {hit.collider.name}, 데미지: {damage}");
+                }
+                break;
         }
     }
 }
