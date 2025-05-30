@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +9,8 @@ public class GUIItemSlotStation : GUIItemSlotBase
     [SerializeField] private Button btnSelect;
     [SerializeField] private ItemData itemData;
 
+    public ItemData ItemData => itemData;
+    
     public bool IsEmpty => !itemData;
     
     public bool IsPlacePossible(Sprite icon)
@@ -22,6 +20,7 @@ public class GUIItemSlotStation : GUIItemSlotBase
         
         return imgIcon.sprite == icon;
     }
+    
 
     void Reset()
     {
@@ -108,5 +107,28 @@ public class GUIItemSlotStation : GUIItemSlotBase
         }
 
         tmpPcs.text = pieces.ToString().Trim();
+    }
+    
+    public void DiscountPcsOfName(string itemName, int amount)
+    {
+        if(IsEmpty)
+            return;
+
+        if (itemData.itemName == itemName)
+        {
+            for (int i = 0; i < amount; i++)
+            {
+                SetPcs(-1);
+            }
+        }
+    }
+    
+    public int GetPcs()
+    {
+        if (int.TryParse(tmpPcs.text, out int pcs))
+        {
+            return pcs;
+        }
+        return 0;
     }
 }

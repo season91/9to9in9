@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class UISmelterPopup : MonoBehaviour, IGUI
 {
+    [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private GUIItemSlotStation fuelSlot;
     [SerializeField] private GUIItemSlotStation metalSlot;
     [SerializeField] private GUIItemSlotStation resultSlot;
@@ -22,6 +23,7 @@ public class UISmelterPopup : MonoBehaviour, IGUI
 
     private void Reset()
     {
+        canvasGroup = GetComponent<CanvasGroup>();
         fuelSlot = transform.Find("GUI_ItemSlot (Fuel)").GetComponent<GUIItemSlotStation>();
         metalSlot = transform.Find("GUI_ItemSlot (Metal)").GetComponent<GUIItemSlotStation>();
         resultSlot = transform.Find("GUI_ItemSlot (Result)").GetComponent<GUIItemSlotStation>();
@@ -57,8 +59,8 @@ public class UISmelterPopup : MonoBehaviour, IGUI
         }
         
         rectTrGauge.gameObject.SetActive(false);
-        
-        gameObject.SetActive(false);
+
+        Close();
     }
     
     public void Open()
@@ -71,12 +73,16 @@ public class UISmelterPopup : MonoBehaviour, IGUI
             craftableItemInfos = CraftManager.Instance.GetRecipeOfStationType(StationType.Smelter)["Default"];
         }
         
-        gameObject.SetActive(true);
+        canvasGroup.alpha = 1;
+        canvasGroup.interactable = true;
+        canvasGroup.blocksRaycasts = true;
     }
-
+    
     public void Close()
     {
-        gameObject.SetActive(false);
+        canvasGroup.alpha = 0;
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
     }
     
     bool CheckAllSlotFull() => !slotStationDict[ResourceType.Fuel].IsEmpty 
@@ -164,6 +170,8 @@ public class UISmelterPopup : MonoBehaviour, IGUI
                         {
                             slotStationDict[ResourceType.None].Show(itemInfo.itemData.icon, 1, itemInfo.itemData);
                             
+                            // 나중에 레시피의 개수에 따라서도 제거 되게 해야됨..
+                            // inventory에 없으면 안 됨
                             // ResourceType curResourceType = resourceItem.resourceType;
                             foreach (var slotKvp in slotStationDict)
                             {
@@ -217,4 +225,18 @@ public class UISmelterPopup : MonoBehaviour, IGUI
             rectTrGauge.gameObject.SetActive(false);
         }
     }
+    
+#if UNITY_EDITOR
+    public void TestOpen()
+    {
+        if (canvasGroup.alpha >= 0.5)
+        {
+            Close();
+        }
+        else
+        {
+            Open();
+        }
+    }
+#endif
 }

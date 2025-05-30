@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -227,6 +228,27 @@ public class CraftManager : MonoBehaviour
         }
         
         return null;
+    }
+    
+    public bool CanCraftFromSlots(GUIItemSlotStation[] slots, List<SerializableIngredient> ingredients)
+    {
+        foreach (var ingredient in ingredients)
+        {
+            int totalAmount = 0;
+
+            foreach (var slot in slots)
+            {
+                if (!slot.IsEmpty && slot.ItemData.itemName == ingredient.itemName) 
+                {
+                    totalAmount += slot.GetPcs();
+                }
+            }
+
+            if (totalAmount < ingredient.amount)
+                return false;
+        }
+
+        return true;
     }
     
 }
