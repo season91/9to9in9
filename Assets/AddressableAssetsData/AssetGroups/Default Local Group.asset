@@ -432,6 +432,12 @@ MonoBehaviour:
     - MainScene
     - StartScene
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 169659929858dd24386d3b7e4e3249ba
+    m_Address: RockData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b73095aefd561e74599d4c8f30d0bd2b, type: 2}
   m_SchemaSet:
