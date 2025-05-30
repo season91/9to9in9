@@ -48,7 +48,8 @@ public class GameManager : MonoBehaviour
         }
         
         Debug.Log("ResourceSpawn 시작!!");
-        // SpawnManager.Instance.GetObject(StringItemName.Tree);
+        SpawnManager.Instance.GetObject(StringAdrItemDataResource.Tree);
+        SpawnManager.Instance.GetObject(StringAdrItemDataResource.IronOre);
     }
 
 }
