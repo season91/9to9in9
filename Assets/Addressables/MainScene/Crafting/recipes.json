@@ -210,11 +210,11 @@
                     "resultAmount": 1,
                     "ingredients": [
                         {
-                            "itemName": "c1",
+                            "itemName": "apple",
                             "amount": 1
                         },
                         {
-                            "itemName": "c2",
+                            "itemName": "meat",
                             "amount": 1
                         }
                     ],

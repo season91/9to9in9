@@ -66,7 +66,7 @@ public class SoundManager : MonoBehaviour
         {
             string address = $"{prefix}{i}";
             var clip = ResourceManager.Instance.GetResource<AudioClip>(address);
-            if (clip != null)
+            if (clip)
                 list.Add(clip);
             else
                 Debug.LogWarning($"[SoundManager] {address} 클립을 찾을 수 없음");
