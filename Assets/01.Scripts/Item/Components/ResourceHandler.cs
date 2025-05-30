@@ -11,6 +11,7 @@ public class ResourceHandler : MonoBehaviour
    [SerializeField] private ItemData itemToGive;
    [SerializeField] private int quantityPerHit;
    [SerializeField] private float capacity;
+   [SerializeField] private ParticleSystem rockEffect;
    
    [SerializeField] private RootResourceType rootResourceType;
    
@@ -24,8 +25,8 @@ public class ResourceHandler : MonoBehaviour
 
          capacity -= 1;
          Debug.Log($"{this.name} 캐는 중 - 남은 체력 {capacity}");
-         //TODO: 아마 스폰매니저?
-         //Instantiate(itemToGive.prefab, hitPoint + Vector3.up, Quaternion.LookRotation(hitNormal, Vector3.up));
+         SoundManager.Instance.PlayParticle(rockEffect);
+         SpawnManager.Instance.ItemSpawnInPosition(itemToGive.name, transform.position);
       }
 
       if (!(capacity <= 0)) return;
