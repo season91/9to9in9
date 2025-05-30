@@ -7,7 +7,7 @@ public class PlayerInteractionHandler : MonoBehaviour
 {
     [SerializeField] private float checkRate = 0.05f;
     [SerializeField] private float lastCheckTime;
-    [SerializeField] private float maxCheckDistance = 5f;
+    [SerializeField] private float maxCheckDistance = 1f;
     [SerializeField] private LayerMask layerMask;
 
     [SerializeField] private GameObject curInteractGameObject;
@@ -27,13 +27,21 @@ public class PlayerInteractionHandler : MonoBehaviour
             lastCheckTime = Time.time;
 
             Ray ray = camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
+            // Debug.DrawRay(ray.origin, ray.direction * maxCheckDistance, Color.red);
+
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, maxCheckDistance, layerMask))
             {
                 if(hit.collider.gameObject != curInteractGameObject)
                 {
                     curInteractGameObject = hit.collider.gameObject;
+                    
                     curInteractable = hit.collider.GetComponent<IInteractable>();
+                    UIManager.Instance.ShowItemInformation(curInteractable.GetPromptText());
+                }
+                else
+                {
+                    UIManager.Instance.HideItemInformation();
                 }
             }
             else

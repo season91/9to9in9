@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +15,9 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
     [SerializeField] private UIWorkbenchPopup workbenchPopup;
     [SerializeField] private UIAnvilPopup anvilPopup;
     [SerializeField] private UIStateGroup stateGroup;
+
+    [SerializeField] private TextMeshProUGUI tmpInformation;
+    [SerializeField] private TextMeshProUGUI tmpDay;
     
     public GameObject GUIObject => gameObject;
 
@@ -28,6 +32,10 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
         anvilPopup = GetComponentInChildren<UIAnvilPopup>();
 
         stateGroup = GetComponentInChildren<UIStateGroup>();
+
+        tmpInformation = transform.Find("Tmp_Information").GetComponent<TextMeshProUGUI>();
+        tmpDay = transform.Find("Tmp_Day").GetComponent<TextMeshProUGUI>();
+
     }
 
     public void Initialization()
@@ -36,6 +44,9 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
         
         equipmentPopup.Initialization();
         smelterPopup.Initialization();
+        
+        tmpInformation = transform.Find("Tmp_Information").GetComponent<TextMeshProUGUI>();
+        tmpDay = transform.Find("Tmp_Day").GetComponent<TextMeshProUGUI>();
     }
 
     public void Open()
@@ -101,6 +112,18 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
         }
         
         inventoryPopup.Open();
+    }
+
+    public void ShowItemName(string information)
+    {
+        tmpInformation.text = information;
+        tmpInformation.enabled = true;
+    }
+    
+    public void HideItemName()
+    {
+        tmpInformation.text = "";
+        tmpInformation.enabled = false;
     }
 
     #region  TestCode
