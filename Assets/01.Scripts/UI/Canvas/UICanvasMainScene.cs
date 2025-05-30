@@ -14,6 +14,7 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
     [SerializeField] private UICampfirePopup campfirePopup;
     [SerializeField] private UIWorkbenchPopup workbenchPopup;
     [SerializeField] private UIAnvilPopup anvilPopup;
+    [SerializeField] private UIDialoguePopup dialoguePopuproup;
     [SerializeField] private UIStateGroup stateGroup;
 
     [SerializeField] private TextMeshProUGUI tmpInformation;
@@ -30,7 +31,7 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
         campfirePopup = GetComponentInChildren<UICampfirePopup>();
         workbenchPopup = GetComponentInChildren<UIWorkbenchPopup>();
         anvilPopup = GetComponentInChildren<UIAnvilPopup>();
-
+        dialoguePopuproup = GetComponentInChildren<UIDialoguePopup>();
         stateGroup = GetComponentInChildren<UIStateGroup>();
 
         tmpInformation = transform.Find("Tmp_Information").GetComponent<TextMeshProUGUI>();
@@ -48,6 +49,7 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
         campfirePopup.Initialization();
         workbenchPopup.Initialization();
         anvilPopup.Initialization();
+        dialoguePopuproup.Initialization();
         
         tmpInformation.gameObject.SetActive(false);
     }
@@ -130,6 +132,20 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
             tmpInformation.gameObject.SetActive(false);
         }
     }
+
+    public void FirstDialogue(string line)
+    {
+        dialoguePopuproup.Open();
+        dialoguePopuproup.FirstDialogue(line);
+    }
+        
+    
+    public void PlayTypingEffect(string line) => dialoguePopuproup.PlayTypingEffect(line);
+
+    public bool DialoguePopupActve() => dialoguePopuproup.gameObject.activeSelf;
+    public bool IsTyping() => dialoguePopuproup.IsTyping;
+    public void SkipTyping(string fullText) => dialoguePopuproup.SkipTyping(fullText);
+    public void HideDialogue() => dialoguePopuproup.HideDialogue();
     
     #region  TestCode
 #if  UNITY_EDITOR

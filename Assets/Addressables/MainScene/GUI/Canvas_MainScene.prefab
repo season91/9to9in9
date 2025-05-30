@@ -2600,6 +2600,7 @@ MonoBehaviour:
   campfirePopup: {fileID: 4401541322509148656}
   workbenchPopup: {fileID: 837653748148250086}
   anvilPopup: {fileID: 8184375915438465287}
+  dialoguePopuproup: {fileID: 1777562686715262250}
   stateGroup: {fileID: 3884651240724174145}
   tmpInformation: {fileID: 7485575907454987732}
   tmpDay: {fileID: 7265276641364737957}
@@ -2763,13 +2764,14 @@ GameObject:
   m_Component:
   - component: {fileID: 2363637819325622668}
   - component: {fileID: 3296705198872221707}
+  - component: {fileID: 1777562686715262250}
   m_Layer: 5
-  m_Name: Group_Dialogue
+  m_Name: Popup_Dialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2363637819325622668
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2803,6 +2805,20 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1777562686715262250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3421199242695150288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c59c36a450c43374bb3893f747f13c96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueCanvasGroup: {fileID: 3296705198872221707}
+  dialogueText: {fileID: 3585193450906965891}
 --- !u!1 &3519461180728103023
 GameObject:
   m_ObjectHideFlags: 0
