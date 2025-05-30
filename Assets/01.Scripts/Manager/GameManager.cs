@@ -46,9 +46,12 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("SpawnManager 인스턴스가 null입니다!");
             return;
         }
-        
-        Debug.Log("ResourceSpawn 시작!!");
-        // SpawnManager.Instance.GetObject(StringItemName.Tree);
+        SpawnManager.Instance.ResourceSpawn(StringAdrItemDataResource.Tree);
+        SpawnManager.Instance.ResourceSpawn(StringAdrItemDataResource.Tree);
+        SpawnManager.Instance.ResourceSpawn(StringAdrItemDataResource.Tree);
+        SpawnManager.Instance.ResourceSpawn(StringAdrItemDataResource.IronOre);
+        SpawnManager.Instance.ResourceSpawn(StringAdrItemDataResource.IronOre);
+        SpawnManager.Instance.ResourceSpawn(StringAdrItemDataResource.IronOre);
     }
 
 }

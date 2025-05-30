@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6902784672974945627}
   - component: {fileID: 2950880143534256559}
   - component: {fileID: 5956290186758431177}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: boots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,4 +96,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94642e54fb3541845b4029a9937daeef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: 271a65e809fb87145becb4851ce98bd1, type: 2}
+  itemData: {fileID: 11400000, guid: 385d8d2bf6b95a848b93c988452b0fdf, type: 2}

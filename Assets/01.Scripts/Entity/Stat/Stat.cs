@@ -22,6 +22,8 @@ public class Stat
 
     public bool IsEmpty => CurValue <= 0f;
 
+    private float bonusValue;
+
     public void Init(Stat baseStat)
     {
         maxValue = baseStat.maxValue;
@@ -29,12 +31,27 @@ public class Stat
         curValue = baseStat.curValue;
     }
 
-    
     public void Change(float amount)
     {
         CurValue += amount;
     }
     
+    public void ChangeBonus(float amount)
+    {
+        if (amount < 0)
+        {
+            Debug.LogError("bonusValue는 음수이면 안돼요!!!");
+            return;
+        }
+        
+        bonusValue = amount;
+        Set();
+    }
+
+    private void Set()
+    {
+        curValue += bonusValue;
+    }
     
     public float GetPercentage()
     {

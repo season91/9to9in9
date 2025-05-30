@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3631314499559867188}
   - component: {fileID: 2305160924943106457}
   - component: {fileID: 8608727008629281518}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: armor-chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,4 +96,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94642e54fb3541845b4029a9937daeef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: c0a112517e533fd49842321d5910f9a4, type: 2}
+  itemData: {fileID: 11400000, guid: 7028c7df38035974589e75898d0a40e1, type: 2}

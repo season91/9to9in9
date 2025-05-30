@@ -70,6 +70,8 @@ public static class StringAdrItemDataResource
     public const string Wood =  "WoodData";
     public const string Iron =  "IronData";
     public const string IronBar =  "IronBarData";
+    public const string Tree = "TreeData";
+    public const string IronOre = "IronOreData";
 }
 
 public static class StringAdrCraftRecipe
@@ -79,9 +81,10 @@ public static class StringAdrCraftRecipe
 
 public static class StringAdrSpawnManagerKey
 {
+    // 1차 자원
     public static readonly string[] PoolItem =
     {
-        StringAdrItemDataResource.Stone, StringAdrItemDataResource.Wood
+        StringAdrItemDataResource.Stone, StringAdrItemDataResource.Wood, StringAdrItemDataResource.Tree, StringAdrItemDataResource.Iron
     };
 
     public static readonly string[] PrefabItem =
@@ -94,7 +97,7 @@ public static class StringAdrSpawnManagerKey
         StringAdrItemDataEquipable.Hammer, StringAdrItemDataEquipable.Helmet, StringAdrItemDataEquipable.Shield,
         StringAdrItemDataEquipable.Sword, StringAdrItemDataEquipable.ToolAxe, StringAdrItemDataEquipable.ToolPickaxe,
         //Resource
-        StringAdrItemDataResource.Iron, StringAdrItemDataResource.IronBar,
+        StringAdrItemDataResource.IronBar, StringAdrItemDataResource.IronOre,
         //Build
         StringAdrItemDataBuild.Anvil, StringAdrItemDataBuild.Campfire, StringAdrItemDataBuild.MetalWall,
         StringAdrItemDataBuild.Smelter, StringAdrItemDataBuild.WoodenFloor, StringAdrItemDataBuild.WoodenWall,
@@ -105,34 +108,3 @@ public static class StringAdrSpawnManagerKey
 #endregion
 
 #endregion
-
-public static class StringItemName
-{
-    public const string Meat = "meat";
-    public const string Apple = "apple";
-    public const string MeatCooked = "meat-cooked";
-    public const string Orange = "orange";
-    public const string Pear = "pear";
-    public const string Mushroom = "mushroom";
-    public const string ToolAxe = "tool-axe";
-    public const string ToolPickaxe = "tool-pickaxe";
-    public const string Helmet = "helmet";
-    public const string ArmorChest = "armor-chest";
-    public const string ArmorLeg = "armor-leg";
-    public const string Boots = "boots";
-    public const string Shield = "shield";
-    public const string Sword = "sword";
-    public const string Hammer = "hammer";
-    public const string Stone = "stone";
-    public const string Wood = "wood";
-    public const string Iron = "iron";
-    public const string IronBar = "iron-bar";
-    public const string WoodenWall = "wooden-wall";
-    public const string WoodenFloor = "wooden-floor";
-    public const string MetalWall = "metal-wall";
-    public const string Workbench = "workbench";
-    public const string Campfire = "campfire";
-    public const string Smelter = "smelter";
-    public const string Anvil = "anvil";
-    public const string Tree = "tree";
-}

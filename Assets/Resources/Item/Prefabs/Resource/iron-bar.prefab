@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 1333182214624471857}
   - component: {fileID: 2918693023712197200}
   - component: {fileID: 5117852257001963185}
-  m_Layer: 0
+  - component: {fileID: 455512535095474817}
+  m_Layer: 10
   m_Name: iron-bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,4 +97,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94642e54fb3541845b4029a9937daeef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: d241a7346e38bde4f852759dc6b2ad86, type: 2}
+  itemData: {fileID: 11400000, guid: ac7f7179f8f3f4e419c3865730646938, type: 2}
+--- !u!135 &455512535095474817
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943781778520380789}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.29305544
+  m_Center: {x: -0.038936958, y: 0.08503847, z: 0.007412657}

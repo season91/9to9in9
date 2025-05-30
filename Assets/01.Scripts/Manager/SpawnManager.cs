@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 /// <summary>
 /// PoolManager를 Get. Pool을 활용해 Object 생성 처리 담당
@@ -17,18 +19,44 @@ public class
     private Dictionary<string, PoolManager> pools = new Dictionary<string, PoolManager>();
     private Dictionary<string, GameObject> prefabs = new Dictionary<string, GameObject>();
     
-    
+    // 자원, 몬스터 랜덤 생성을 정보
+    private Transform  spawnCenter;
+    private float spawnRange = 30f;
+
     public static SpawnManager Instance
     {
         get
         {
             if (instance == null)
             {
-                instance = new GameObject("SpawnManager").AddComponent<SpawnManager>();
+                instance = FindObjectOfType<SpawnManager>();
+                {
+                    if (instance == null)
+                    {
+                        GameObject obj = new GameObject("SpawnManager");
+                        instance = obj.AddComponent<SpawnManager>();
+                        DontDestroyOnLoad(obj);
+                    }
+                }
             }
             return instance;
         }
     }
+    
+    private void Awake()
+    {
+        //코드 생성으로도 가능하고, 배치해도 문제 없도록 - 싱글톤이 유지되도록
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+    
     //-------SpawnManager 수정 필요 : 오브젝트 호출 시 받아올 경로나 어드레서블 적용이 필요해 보임
 
     public void Init()
@@ -38,7 +66,14 @@ public class
             ItemData data = ResourceManager.Instance.GetResource<ItemData>(key);
             if (data != null)
             {
-                CreatePool(key,data.prefab);
+                if (!pools.ContainsKey(key))
+                {
+                    CreatePool(key, data.prefab);
+                }
+                else
+                {
+                    //TODO - 프리팹 재설정해야할 시 필요한 코드
+                }
             }
             else
             {
@@ -58,7 +93,10 @@ public class
                 Debug.Log($"{key} 프리팹 찾을 수 없음!");
             }
         }
+        
+        spawnCenter = FindObjectOfType<Player>().transform;
     }
+    
     private void CreatePool(string key, GameObject prefab)
     {
         GameObject poolParent = new GameObject($"{key}Pool");
@@ -113,4 +151,37 @@ public class
     // Item SpawnItem(enum-어떤아이템인지) 초기화와 생성을 여기서할건지? 호출주체가 할건지?
     // SpawnMonster
     // Spawn~~
+
+
+    public void ResourceSpawn(string key)
+    {
+        Debug.Log("ResourceSpawn 시작!!");
+        Vector3 spawnPos = GetRandomPositionOnNavMesh(spawnCenter.position, 20f);
+        GameObject obj = GetObject(key);
+        obj.transform.position = spawnPos;
+    }
+    
+    private Vector3 GetRandomPositionOnNavMesh(Vector3 center, float range)
+    {
+        for (int i = 0; i < 10; i++) // 최대 10번 시도
+        {
+            Vector3 randomPoint = center + Random.insideUnitSphere * range;
+            randomPoint.y = 0.0f; // y 바닥 고정 
+            
+            //  가깝게 생성 가능한 지형 찾기
+            if (NavMesh.SamplePosition(randomPoint, out NavMeshHit hit, 2.0f, NavMesh.AllAreas))
+            {
+                Debug.Log("SamplePosition 랜덤 생성 좌표 값 " + hit.position);
+                return hit.position;
+            }
+        }
+        Debug.LogWarning("NavMesh 위 유효한 랜덤 위치를 찾지 못했습니다.");
+        return center; // fallback
+    }
+    
+    //--------아이템 지정 위치에 생성------------
+    public void ItemSpawnInPosition(string key, Vector3 position)
+    {
+        GetObject(key).transform.position = position;
+    }
 }

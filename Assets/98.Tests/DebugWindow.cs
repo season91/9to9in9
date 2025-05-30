@@ -157,6 +157,11 @@ public class DebugWindow : EditorWindow
             UIManager.Instance.UpdateStatUI(StatType.Hunger);
             UIManager.Instance.UpdateStatUI(StatType.Stamina);
         }
+
+        if (GUILayout.Button("BackToStartScene"))
+        {
+            _= UIManager.Instance.OpenScene(SceneType.Start);
+        }
     }
     
     // OnGUI는 async를 못붙이는 함수여서 await 사용 불가능
