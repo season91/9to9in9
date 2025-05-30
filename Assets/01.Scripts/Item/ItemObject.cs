@@ -22,7 +22,7 @@ public class ItemObject : MonoBehaviour
 #if UNITY_EDITOR
             string path = $"Assets/Addressables/MainScene/Data/{type}/{addrName}";
             itemData = AssetDatabase.LoadAssetAtPath<ItemData>(path);
-            
+
             if (itemData == null)
             {
                 Debug.LogWarning($"{path} SO를 찾지 못했습니다.");
@@ -34,7 +34,7 @@ public class ItemObject : MonoBehaviour
             }
 #endif
         }
-        
+
         // 예외 처리
         if (!found)
         {
@@ -70,7 +70,7 @@ public class ItemObject : MonoBehaviour
                     if (!TryGetComponent<IInteractable>(out _))
                         gameObject.AddComponent<InteractableBehaviour>().Initialize(itemData);
                     break;
-                
+
                 case ItemFunction.Damageable:
                     if (!TryGetComponent<IDamagable>(out _))
                         gameObject.AddComponent<DamageableBehaviour>().Initialize(itemData as BuildItemData);
@@ -88,20 +88,20 @@ public class ItemObject : MonoBehaviour
     /// 퀵슬롯에서는 소비 / 건축 아이템만 사용
     /// </summary>
     /// <param name="itemData">ItemData</param>
-    private void UseItem(ItemData itemData)
+    private void UseQuickSlotItem(ItemData itemData)
     {
         switch (itemData.type)
         {
             case ItemType.Build:
                 BuildManager.Instance.EnterBuildMode(itemData as BuildItemData);
                 break;
-            
+
             case ItemType.Consumable:
                 UseConsumableItem(itemData as ConsumableItemData);
                 break;
         }
     }
-    
+
     /// <summary>
     /// 음식 먹기 
     /// </summary>
@@ -116,16 +116,15 @@ public class ItemObject : MonoBehaviour
                 case ConsumableType.Health:
                     CharacterManager.Player.statHandler.Modify(StatType.Health, value);
                     break;
-                
+
                 case ConsumableType.Hunger:
                     CharacterManager.Player.statHandler.Modify(StatType.Hunger, value);
                     break;
-                
+
                 case ConsumableType.Stamina:
                     CharacterManager.Player.statHandler.Modify(StatType.Stamina, value);
                     break;
             }
         }
     }
-    
 }
