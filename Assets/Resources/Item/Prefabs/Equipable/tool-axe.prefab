@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3921202278853693747}
   - component: {fileID: 964054547461851723}
   - component: {fileID: 2768262011610404551}
+  - component: {fileID: 3301816738289097554}
   m_Layer: 9
   m_Name: tool-axe
   m_TagString: Untagged
@@ -62,6 +63,27 @@ MonoBehaviour:
   attackRate: 0
   isAttacking: 0
   attackDistance: 0
+--- !u!95 &3301816738289097554
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2269037468637560863}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f2cf41e848dc514418dc391ff8bc777d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3233026203373557714
 GameObject:
   m_ObjectHideFlags: 0
