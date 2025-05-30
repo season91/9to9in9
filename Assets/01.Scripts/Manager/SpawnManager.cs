@@ -30,39 +30,34 @@ public class
         }
     }
     //-------SpawnManager 수정 필요 : 오브젝트 호출 시 받아올 경로나 어드레서블 적용이 필요해 보임
-    private void Awake()
-    {
-        Init();
-    }
 
     public void Init()
     {
-        //foreach (string key in StringItemName.oftenUseKeys)
-        //{
-        ItemData data = ResourceManager.Instance.GetResource<ItemData>(StringAdrItemDataResource.Wood);
-        if (data != null)
+        foreach (string key in StringAdrSpawnManagerKey.PoolItem)
         {
-            CreatePool(StringAdrItemDataResource.Wood,data.prefab);
+            ItemData data = ResourceManager.Instance.GetResource<ItemData>(key);
+            if (data != null)
+            {
+                CreatePool(key,data.prefab);
+            }
+            else
+            {
+                Debug.Log($"{key} 프리팹 찾을 수 없음!");
+            }
         }
-        else
-        {
-            Debug.Log($"{StringAdrItemDataResource.Wood} 프리팹 찾을 수 없음!");
-        }
-        //}
 
-        //foreach (string key in StringItemName.prefabKeys)
-        //{
-        data = ResourceManager.Instance.GetResource<ItemData>(StringAdrItemDataEquipable.ArmorChest);
-        if (data != null)
+        foreach (string key in StringAdrSpawnManagerKey.PrefabItem)
         {
-            prefabs[StringAdrItemDataEquipable.ArmorChest] = data.prefab;
+            ItemData data = ResourceManager.Instance.GetResource<ItemData>(key);
+            if (data != null)
+            {
+                prefabs[key] = data.prefab;
+            }
+            else
+            {
+                Debug.Log($"{key} 프리팹 찾을 수 없음!");
+            }
         }
-        else
-        {
-            Debug.Log($"{StringAdrItemDataEquipable.ArmorChest} 프리팹 찾을 수 없음!");
-        }
-        Debug.Log($"{prefabs[StringAdrItemDataEquipable.ArmorChest].name}");
-        //}
     }
     private void CreatePool(string key, GameObject prefab)
     {
