@@ -29,6 +29,15 @@ public class DayNightCycle : MonoBehaviour
 
     public bool isDay = true;
     public int dayCount = 0;
+    
+    // 기능 구현 후 리팩토링 필요
+    public bool isSpawnedResource = false;
+    public bool isSpawnedEnemy = false;
+    
+    // GameManager에서 델리게이트에 함수 등록해주는 로직 구현
+    public static event Action OnDayStarted;
+    public static event Action OnNightStarted;
+    
     private void Awake()
     {
         sun = transform.Find("Sun").GetComponent<Light>();
@@ -53,6 +62,8 @@ public class DayNightCycle : MonoBehaviour
         if (time < prevTime && !isDay)
         {
             ++dayCount;
+            isSpawnedResource = false;
+            isSpawnedEnemy = false;
             Debug.Log(dayCount);
         }
         
@@ -62,10 +73,20 @@ public class DayNightCycle : MonoBehaviour
         if (sun.gameObject.activeInHierarchy)
         {
             isDay = true;
+            if (!isSpawnedResource)
+            {
+                OnDayStarted?.Invoke();
+                isSpawnedResource = true;
+            }
         }
         else
         {
             isDay = false;
+            if (!isSpawnedEnemy)
+            {
+                OnNightStarted?.Invoke();
+                isSpawnedEnemy = true;
+            }
         }
         
         RenderSettings.ambientIntensity = lightingIntensityMultiplier.Evaluate(time);
