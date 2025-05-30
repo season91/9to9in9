@@ -28,8 +28,6 @@ public class RecipeLoader
                 return null;
             }
             
-            Debug.Log("json 내용 일부: " + jsonAsset.text.Substring(0, Mathf.Min(100, jsonAsset.text.Length)));
-    
             JObject recipeJson = JObject.Parse(jsonAsset.text);
             var parsed = ParseRecipeJson(recipeJson);
             Debug.Log($"총 제작소 종류: {parsed.Count}개 레시피 로드");
