@@ -39,7 +39,7 @@ public class Player : Entity, IDamagable
     public void TakeDamage(float damage)
     {
         CharacterManager.Player.statHandler.Modify(StatType.Health, -damage);
-        UIManager.Instance.UpdateStatUI(StatType.AttackPower);
+        UIManager.Instance.UpdateStatUI(StatType.Health);
     }
 
     public void Die()
