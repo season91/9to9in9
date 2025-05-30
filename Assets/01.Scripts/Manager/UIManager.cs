@@ -236,4 +236,12 @@ public class UIManager : MonoBehaviour
     {
         OnUpdateStatUI?.Invoke(type);
     }
+
+    public void ShowItemInformation(string information) => canvasMainScene.ShowItemName(information);
+
+    public void HideItemInformation()
+    {
+        if (canvasMainScene == null) return;
+        canvasMainScene.HideItemName();
+    }
 }
