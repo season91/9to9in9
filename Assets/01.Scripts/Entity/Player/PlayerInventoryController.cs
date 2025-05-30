@@ -55,7 +55,8 @@ public class PlayerInventoryController : MonoBehaviour
     private List<ItemSlot> inventoryItems;
     private List<ItemData> items;
     private List<EquipableItemData> equippedItems;
-
+    private List<ItemSlot> quickSlotItems;
+    
     //외부 읽기 전용 list 반환
     public IReadOnlyList<ItemData> Items => items;
 
