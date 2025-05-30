@@ -54,9 +54,8 @@ public class WeaponHandler : MonoBehaviour
     private void OnHit()
     {
         Ray ray = cam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
-        RaycastHit hit;
 
-        if (!Physics.Raycast(ray, out hit, attackDistance)) return;
+        if (!Physics.SphereCast(ray, 0.3f, out RaycastHit hit, attackDistance)) return;
 
         switch (itemData.equipType)
         {

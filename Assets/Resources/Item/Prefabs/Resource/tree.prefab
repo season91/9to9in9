@@ -115,7 +115,7 @@ MonoBehaviour:
   itemToGive: {fileID: 11400000, guid: dbe53775add311d4197a531a8400d4e4, type: 2}
   quantityPerHit: 1
   capacity: 5
-  rockEffect: {fileID: 7986078001925058380}
+  effect: {fileID: 7986078001925058380}
   rootResourceType: 1
 --- !u!65 &313606924946257104
 BoxCollider:
