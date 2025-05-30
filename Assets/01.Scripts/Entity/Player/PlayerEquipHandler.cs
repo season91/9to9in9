@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class PlayerEquip : MonoBehaviour
+public class PlayerEquipHandler : MonoBehaviour
 {
     [SerializeField] private GameObject curEquip;
     [SerializeField] private Transform equipParent;

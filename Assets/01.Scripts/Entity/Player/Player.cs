@@ -6,10 +6,11 @@ using UnityEngine;
 /// </summary>
 public class Player : Entity, IDamagable
 {
-    public PlayerController playerController { get; private set; }
+    public PlayerController controller { get; private set; }
     public PlayerInventoryController inventoryController { get; private set; }
+    public PlayerInteractionHandler interactionHandler { get; private set; }
     public StatHandler statHandler { get; private set; }
-    public PlayerEquip playerEquip { get; private set; }
+    public PlayerEquipHandler equipHandler { get; private set; }
     
     [SerializeField] private StatProfile statProfile;
     
@@ -17,17 +18,20 @@ public class Player : Entity, IDamagable
     {
         //getcomponent에서 null 반환 시 addcomponent할 것
         CharacterManager.Register(this);
-        playerController = GetComponent<PlayerController>();
+        controller = GetComponent<PlayerController>();
         inventoryController = GetComponent<PlayerInventoryController>();
         statHandler = GetComponent<StatHandler>();
-        playerEquip = GetComponent<PlayerEquip>();
+        interactionHandler = GetComponent<PlayerInteractionHandler>();
+        equipHandler = GetComponent<PlayerEquipHandler>();
         
         // null체크
-        if (playerController == null) Debug.LogError("PlayerController not found");
-        if (inventoryController == null) Debug.LogError("InventoryController not found");
+        if (controller == null) Debug.LogError("Player Controller not found");
+        if (inventoryController == null) Debug.LogError("Player InventoryController not found");
         if (statHandler == null) Debug.LogError("Player StatHandler not found");
-        if (statProfile == null) Debug.LogError("StatProfile not found");
-        if (playerEquip == null) Debug.LogError("PlayerEquip not found");
+        if (interactionHandler == null) Debug.LogError("Player InteractionHandler not found");
+        if (equipHandler == null) Debug.LogError("Player EquipHandler not found");
+        
+        if (statProfile == null) Debug.LogError("Player StatProfile not found");
     }
 
     private void Start()
@@ -38,7 +42,7 @@ public class Player : Entity, IDamagable
 
     public void TakeDamage(float damage)
     {
-        CharacterManager.Player.statHandler.Modify(StatType.Health, -damage);
+        statHandler.Modify(StatType.Health, -damage);
         UIManager.Instance.UpdateStatUI(StatType.Health);
     }
 

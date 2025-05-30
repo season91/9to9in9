@@ -224,10 +224,10 @@ public class PlayerInventoryController : MonoBehaviour
         
         // 오른손이면 장비 화면에 띄우기
         if (equipItem.equipSlot == EquipSlot.RightHand)
-            CharacterManager.Player.playerEquip.Equip(equipItem);
+            CharacterManager.Player.equipHandler.Equip(equipItem);
         
         // 스탯 업데이트
-        CharacterManager.Player.playerEquip.UpdateStat(equipItem, equipItem.power);
+        CharacterManager.Player.equipHandler.UpdateStat(equipItem, equipItem.power);
         UpdateInventory?.Invoke();
     }
     //
@@ -244,10 +244,10 @@ public class PlayerInventoryController : MonoBehaviour
             
             // 오른손이면 장비 화면에서 지우기
             if (equipItem.equipSlot == EquipSlot.RightHand)
-                CharacterManager.Player.playerEquip.UnEquip();
+                CharacterManager.Player.equipHandler.UnEquip();
             
             // 스탯 업데이트
-            CharacterManager.Player.playerEquip.UpdateStat(equipItem, 0);
+            CharacterManager.Player.equipHandler.UpdateStat(equipItem, 0);
             UpdateInventory?.Invoke();
             return true;
         }
