@@ -34,29 +34,5 @@ public class PlayerEquip : MonoBehaviour
     /// 타입에 따라 switch (공격 / 채집)
     /// </summary>
     /// <param name="item">EquipableItemData</param>
-    private void UseEquipableItem(EquipableItemData item)
-    {
-        switch (item.equipType)
-        {
-            case EquipType.Weapon:
-                UseWeapon();
-                break;
-            
-            case EquipType.GatheringTool:
-                UseGatheringTool();
-                break;
-        }
-    }
-
     
-    private void UseWeapon()
-    {
-        
-    }
-
-    
-    private void UseGatheringTool()
-    {
-        
-    }
 }
