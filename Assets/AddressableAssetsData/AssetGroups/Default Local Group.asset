@@ -23,10 +23,11 @@ MonoBehaviour:
     m_SerializedLabels:
     - MainScene
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6bece0b757081824e9b050490eef5e04
+  - m_GUID: b31417a82cbc6454f926ed635391520d
     m_Address: CanvasMainScene
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - MainScene
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4b717e521fc8470489240fb9687fcd2c
     m_Address: CanvasStartScene
