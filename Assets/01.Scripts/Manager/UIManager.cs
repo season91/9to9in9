@@ -86,17 +86,17 @@ public class UIManager : MonoBehaviour
             case SceneType.Main:
                 addresses = new[] { StringAdr.MainScene };
                 await ResourceManager.Instance.LoadSceneResourcesWithProgress(StringScene.MainScene, canvasLoading);
-                await LoadGUIWithProgress(addresses);
                 await LoadSceneWithProgress(StringScene.MainScene);
-                canvasMainScene = GetComponentInChildren<UICanvasMainScene>();
+                await LoadGUIWithProgress(addresses);
                 break;
             case SceneType.Option:
             default:
-                Debug.Log("Implementation in progress.");
+                MyDebug.Log("Implementation in progress.");
                 break;
         }
         
         InitManagers(type);
+        InitCanvas(type);
         canvasLoading.SetProgressBar(1f);
         canvasLoading.gameObject.SetActive(false);
         curSceneType = type;
@@ -146,7 +146,7 @@ public class UIManager : MonoBehaviour
             
                 if (gui == null)
                 {
-                    Debug.LogError($"IGUI not found on {address}");
+                    MyDebug.LogError($"IGUI not found on {address}");
                     return;
                 }
                 
@@ -173,6 +173,21 @@ public class UIManager : MonoBehaviour
         
         // 공통 (DDO)
         SoundManager.Instance.InitSfx();
+    }
+
+    void InitCanvas(SceneType sceneType)
+    {
+        switch (sceneType)
+        {
+            case SceneType.Start: 
+                break;
+            case SceneType.Main:
+                canvasMainScene = GetComponentInChildren<UICanvasMainScene>();
+                break;
+            case SceneType.Option:
+            default:
+                break;
+        }
     }
     
     // Scene 전환 시, 모든 UI 제거

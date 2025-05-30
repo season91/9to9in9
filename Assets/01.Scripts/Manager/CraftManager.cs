@@ -7,6 +7,15 @@ using UnityEngine;
 /// <summary>
 /// 아이템 제작 흐름 조율
 /// </summary>
+///
+
+
+public class CraftableItemInfo
+{
+    public ItemData itemData;
+    public float craftTime;
+}
+
 public class CraftManager : MonoBehaviour
 {
     private static CraftManager instance;
@@ -55,7 +64,7 @@ public class CraftManager : MonoBehaviour
         Debug.Log("레시피 로딩 완료 후 후속 로직 가능");
         
         // test
-        GetRecipeOfStationType(StationType.Anvil);
+        // GetRecipeOfStationType(StationType.Anvil);
     }
     
     private async Task ReloadRecipes()
@@ -69,15 +78,20 @@ public class CraftManager : MonoBehaviour
     /// Player 인벤토리에 있는 아이템 중 위 레시피 중 제작 가능 여부 판단해서 리턴
     /// key: 중분류 이름 ("Tool", "Armor", "Weapon", 그외 "Default")
     /// </summary>
-    public Dictionary<string, List<ItemData>> GetRecipeOfStationType(StationType stationType)
+    public Dictionary<string, List<CraftableItemInfo>> GetRecipeOfStationType(StationType stationType)
     {
+        if (parsedRecipes == null)
+        {
+            MyDebug.LogWarning("parsedRecipes is null, is not ReloadRecipes yet...................ㅠ");
+            return null;
+        }
         if (!parsedRecipes.ContainsKey(stationType))
         {
             Debug.LogWarning($"parsedRecipes에 {stationType} 데이터가 없음");
             return null;
         }
 
-        var itemDataByCategory = new Dictionary<string, List<ItemData>>();
+        var itemDataByCategory = new Dictionary<string, List<CraftableItemInfo>>();
         var categoryDict = parsedRecipes[stationType];
 
         foreach (var categoryPair in categoryDict)
@@ -86,7 +100,7 @@ public class CraftManager : MonoBehaviour
 
             if (!itemDataByCategory.ContainsKey(category))
             {
-                itemDataByCategory[category] = new List<ItemData>();
+                itemDataByCategory[category] = new List<CraftableItemInfo>();
             }
             foreach (var recipe in categoryPair.Value)
             {
@@ -99,7 +113,11 @@ public class CraftManager : MonoBehaviour
 
                 itemData.isCraftable = CanCraft(recipe);
 
-                itemDataByCategory[category].Add(itemData);
+                itemDataByCategory[category].Add(new CraftableItemInfo
+                {
+                    itemData = itemData,
+                    craftTime = recipe.craftTime
+                });
             }
         }
 

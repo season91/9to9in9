@@ -1,12 +1,19 @@
 using System.Collections.Generic;
 using System.Reflection;
 using System;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
-using UnityEngine.SceneManagement;
+
+public static class MyDebug
+{
+#if UNITY_EDITOR
+    public static void Log(string msg) => Debug.Log(msg);
+    public static void LogError(string msg) => Debug.LogError(msg);
+    public static void LogWarning(string msg) => Debug.LogWarning(msg);
+#endif
+}
 
 public class DebugWindow : EditorWindow  
 {
