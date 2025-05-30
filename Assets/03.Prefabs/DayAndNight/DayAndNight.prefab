@@ -54,9 +54,9 @@ MonoBehaviour:
   sun: {fileID: 0}
   sunColor:
     serializedVersion: 2
-    key0: {r: 1, g: 0.92778766, b: 0.51257855, a: 1}
-    key1: {r: 1, g: 1, b: 1, a: 1}
-    key2: {r: 1, g: 0.92941177, b: 0.5137255, a: 0}
+    key0: {r: 1, g: 0.7058824, b: 0.36078432, a: 1}
+    key1: {r: 1, g: 0.96477205, b: 0.7452829, a: 1}
+    key2: {r: 1, g: 0.7058824, b: 0.36078432, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
@@ -86,8 +86,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.25
-      value: 0
+      time: 0
+      value: 0.15
       inSlope: 0
       outSlope: 0
       tangentMode: 136
@@ -95,7 +95,7 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.5
+      time: 0.3
       value: 1
       inSlope: 0
       outSlope: 0
@@ -104,8 +104,17 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.75
-      value: 0
+      time: 0.7
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0.15
       inSlope: 0
       outSlope: 0
       tangentMode: 136
@@ -119,7 +128,7 @@ MonoBehaviour:
   moonColor:
     serializedVersion: 2
     key0: {r: 0.21568628, g: 0.23529412, b: 0.9882353, a: 1}
-    key1: {r: 0, g: 0.010227356, b: 0.36477977, a: 1}
+    key1: {r: 0, g: 0.027591778, b: 0.8553459, a: 1}
     key2: {r: 0.21568628, g: 0.23529412, b: 0.9882353, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -152,15 +161,15 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0.2
-      inSlope: -0.6666666
-      outSlope: -0.6666666
+      inSlope: -0.3333333
+      outSlope: -0.3333333
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 0.3
-      value: 0
+      value: 0.1
       inSlope: 0
       outSlope: 0
       tangentMode: 136
@@ -169,7 +178,7 @@ MonoBehaviour:
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 0.7
-      value: 0
+      value: 0.1
       inSlope: 0
       outSlope: 0
       tangentMode: 136
@@ -179,8 +188,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 0.2
-      inSlope: 0.6666666
-      outSlope: 0.6666666
+      inSlope: 0.3333333
+      outSlope: 0.3333333
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -273,6 +282,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   isDay: 1
+  dayCount: 0
 --- !u!1 &5557532708494147085
 GameObject:
   m_ObjectHideFlags: 0
