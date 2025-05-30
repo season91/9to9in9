@@ -136,7 +136,7 @@ MonoBehaviour:
   itemToGive: {fileID: 11400000, guid: 0172ea52bde541b4c93f7083edf515ca, type: 2}
   quantityPerHit: 1
   capacity: 5
-  rockEffect: {fileID: 1888557975634943988}
+  effect: {fileID: 1888557975634943988}
   rootResourceType: 0
 --- !u!1 &4546644625119256822
 GameObject:

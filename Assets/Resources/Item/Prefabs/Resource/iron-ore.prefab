@@ -133,10 +133,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bfe73b4e724ebe46839600a48de1f03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemToGive: {fileID: 11400000, guid: c455c2380453ada4c91f829d51669e96, type: 2}
+  itemToGive: {fileID: 11400000, guid: 534ccbb47f7260d4e9cb8cce8ddbaa5b, type: 2}
   quantityPerHit: 1
   capacity: 5
-  rockEffect: {fileID: 3313781541312112897}
+  effect: {fileID: 3313781541312112897}
   rootResourceType: 0
 --- !u!1 &2092901908120891902
 GameObject:
