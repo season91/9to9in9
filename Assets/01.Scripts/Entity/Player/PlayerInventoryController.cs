@@ -37,6 +37,12 @@ public class PlayerInventoryController : MonoBehaviour
             item = slot.item;
             Quantity = slot.Quantity;
         }
+        
+        public ItemSlot(ItemSlot slot, int quantity)
+        {
+            item = slot.item;
+            Quantity = quantity;
+        }
 
         public void InitSlot(ItemData item = null, int quantity = 0)
         {
@@ -296,36 +302,27 @@ public ItemData GetItem(int index)
     //------퀵슬롯 이동 함수
     public void MoveItemToQuickSlot(int itemIndex)
     {
-        if (quickSlotItems.Count >= quickSlotSize)
-        {
-            return;
-        }
+        bool addItemToQuickSlot = false;
 
-        if (quickSlotItems.Count == 0)
+        foreach (ItemSlot slot in quickSlotItems)
         {
-            quickSlotItems.Add(new ItemSlot(inventoryItems[itemIndex]));
-        }
-        else
-        {
-            foreach (ItemSlot slot in quickSlotItems)
+            if (inventoryItems[itemIndex].item == slot.item)
             {
-                if (inventoryItems[itemIndex].item == slot.item)
+                if (slot.CanStack())
                 {
-                    if (slot.CanStack())
-                    {
-                        ++slot.Quantity;
-                    }
-                    else
-                    {
-                        quickSlotItems.Add(new ItemSlot(inventoryItems[itemIndex]));
-                    }
-
-                    RemoveItem(itemIndex);
+                    ++slot.Quantity;
+                    addItemToQuickSlot = true;
                     break;
                 }
             }
         }
 
+        if (!addItemToQuickSlot)
+        {
+            quickSlotItems.Add(new ItemSlot(inventoryItems[itemIndex], 1));
+        }
+
+        RemoveItem(itemIndex);
         UpdateInventory?.Invoke();
     }
     
