@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 3810368448232707917}
   - component: {fileID: 6128912304546338783}
   - component: {fileID: 8751326131538508444}
-  m_Layer: 0
+  - component: {fileID: -6329053865839987283}
+  m_Layer: 10
   m_Name: stone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,3 +98,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 0172ea52bde541b4c93f7083edf515ca, type: 2}
+--- !u!135 &-6329053865839987283
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5738191059411122450}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.06758766
+  m_Center: {x: 0.01, y: 0.038317323, z: 0}

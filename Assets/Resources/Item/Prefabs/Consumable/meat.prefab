@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6766026086500591328}
   - component: {fileID: 2461118674825889405}
   - component: {fileID: 6377907686461464361}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: meat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
