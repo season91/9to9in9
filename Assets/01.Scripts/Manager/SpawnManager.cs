@@ -24,11 +24,34 @@ public class
         {
             if (instance == null)
             {
-                instance = new GameObject("SpawnManager").AddComponent<SpawnManager>();
+                instance = FindObjectOfType<SpawnManager>();
+                {
+                    if (instance == null)
+                    {
+                        GameObject obj = new GameObject("SpawnManager");
+                        instance = obj.AddComponent<SpawnManager>();
+                        DontDestroyOnLoad(obj);
+                    }
+                }
             }
             return instance;
         }
     }
+    
+    private void Awake()
+    {
+        //코드 생성으로도 가능하고, 배치해도 문제 없도록 - 싱글톤이 유지되도록
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+    
     //-------SpawnManager 수정 필요 : 오브젝트 호출 시 받아올 경로나 어드레서블 적용이 필요해 보임
 
     public void Init()
@@ -38,7 +61,14 @@ public class
             ItemData data = ResourceManager.Instance.GetResource<ItemData>(key);
             if (data != null)
             {
-                CreatePool(key,data.prefab);
+                if (!pools.ContainsKey(key))
+                {
+                    CreatePool(key, data.prefab);
+                }
+                else
+                {
+                    //TODO - 프리팹 재설정해야할 시 필요한 코드
+                }
             }
             else
             {

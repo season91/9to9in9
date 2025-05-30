@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour, IMoveable, IJumpable
         if (rigidBody.velocity.magnitude > 0.1f)
         {
             Debug.Log($"{rigidBody.velocity.magnitude}");
-            SoundManager.Instance.PlayStepSfx();
+            // SoundManager.Instance.PlayStepSfx();
         }
     }
 
