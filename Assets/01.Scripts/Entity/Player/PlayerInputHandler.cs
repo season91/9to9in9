@@ -1,4 +1,3 @@
-using System.Net.Http;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -101,18 +100,9 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void OnQuickSlotInput(InputAction.CallbackContext context)
     {
-        int index = GetPressedKeyValue();
-        if (index != -1)
-        {
-            Debug.Log("pressed key index :: "+index);
-            ItemData useItem = CharacterManager.Player.inventoryController.UseItemInQuickSlot(index);
-            if (useItem != null)
-            {
-                playerController.UseQuickSlotItem(useItem);
-            }
-        }
+        playerController.OnQuickSlot(GetPressedKeyValue());
     }
-
+    
     private int GetPressedKeyValue()
     {
         if (Keyboard.current.digit1Key.wasPressedThisFrame) return 0;

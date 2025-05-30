@@ -23,7 +23,7 @@ public class WeaponHandler : MonoBehaviour
         }
         
         camera = Camera.main;
-        if (animator == null) Debug.LogError("camera is null");
+        if (camera == null) Debug.LogError("camera is null");
         
         animator = GetComponent<Animator>();
         if (animator == null) Debug.LogError("animator is null");
@@ -58,10 +58,25 @@ public class WeaponHandler : MonoBehaviour
 
         if (!Physics.Raycast(ray, out hit, attackDistance)) return;
 
-        bool isGather = (itemData.equipType == EquipType.GatheringTool);
-        if (isGather && hit.collider.TryGetComponent(out ResourceHandler resourceHandler))
+        switch (itemData.equipType)
         {
-            resourceHandler.Gather(hit.point, hit.normal);
+            case EquipType.GatheringTool:
+                if (hit.collider.TryGetComponent(out ResourceHandler resourceHandler))
+                {
+                    resourceHandler.Gather(hit.point, hit.normal);
+                }
+                break;
+
+            case EquipType.Weapon:
+                if (hit.collider.TryGetComponent(out IDamagable damagable))
+                {
+                    if (hit.collider.CompareTag("Player")) return;
+                    
+                    float damage = CharacterManager.Player.statHandler.Get(StatType.AttackPower);
+                    damagable.TakeDamage(damage);
+                    Debug.Log($"공격 성공! 대상: {hit.collider.name}, 데미지: {damage}");
+                }
+                break;
         }
     }
 }

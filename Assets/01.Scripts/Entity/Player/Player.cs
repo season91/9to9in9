@@ -43,6 +43,7 @@ public class Player : Entity, IDamagable
     public void TakeDamage(float damage)
     {
         statHandler.Modify(StatType.Health, -damage);
+        SoundManager.Instance.PlayRandomSfx(SfxType.Hit);
         UIManager.Instance.UpdateStatUI(StatType.Health);
     }
 

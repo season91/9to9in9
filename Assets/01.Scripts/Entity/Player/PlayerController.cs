@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.InputSystem.Editor;
 
 /// <summary>
 /// [제어] 인풋시스템 바인딩하고 움직임 구현 (이동, 점프) 
@@ -141,6 +140,19 @@ public class PlayerController : MonoBehaviour, IMoveable, IJumpable
         canLook = !toggle;
     }
 
+    public void OnQuickSlot(int index)
+    {
+        if (index != -1)
+        {
+            Debug.Log("pressed key index :: "+index);
+            ItemData useItem = CharacterManager.Player.inventoryController.UseItemInQuickSlot(index);
+            if (useItem != null)
+            {
+                UseQuickSlotItem(useItem);
+            }
+        }
+    }
+    
     public void UseQuickSlotItem(ItemData itemData)
     {
         switch (itemData.type)
