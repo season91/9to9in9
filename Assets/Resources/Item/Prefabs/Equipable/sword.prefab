@@ -113,7 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRate: 0
   isAttacking: 0
-  attackDistance: 0
+  attackDistance: 1
 --- !u!95 &1028990817256257992
 Animator:
   serializedVersion: 5
