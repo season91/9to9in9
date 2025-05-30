@@ -1,10 +1,18 @@
 using UnityEngine;
 
+public enum RootResourceType
+{
+   Rock,
+   Tree
+}
+
 public class ResourceHandler : MonoBehaviour
 {
    [SerializeField] private ItemData itemToGive;
    [SerializeField] private int quantityPerHit;
    [SerializeField] private float capacity;
+   
+   [SerializeField] private RootResourceType rootResourceType;
    
    public void Gather(Vector3 hitPoint, Vector3 hitNormal)
    {
@@ -18,10 +26,23 @@ public class ResourceHandler : MonoBehaviour
          //Instantiate(itemToGive.prefab, hitPoint + Vector3.up, Quaternion.LookRotation(hitNormal, Vector3.up));
       }
 
-      if(capacity <= 0)
+      if (!(capacity <= 0)) return;
+      
+      Debug.Log($"{this.name} 파괴됨");
+      Destroy(gameObject);
+   }
+
+   public void SetSound()
+   {
+      switch (rootResourceType)
       {
-         Debug.Log($"{this.name} 파괴됨");
-         Destroy(gameObject);
+         case RootResourceType.Rock:
+            SoundManager.Instance.PlayRandomSfx(SfxType.Mining);
+            break;
+         
+         case RootResourceType.Tree:
+            SoundManager.Instance.PlayRandomSfx(SfxType.Logging);
+            break;
       }
    }
 }
