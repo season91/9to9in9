@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 1424241888306759292}
   - component: {fileID: 3398768021995101429}
   - component: {fileID: 4459700203926567783}
+  - component: {fileID: 7951819060141764379}
   m_Layer: 9
   m_Name: tool-pickaxe
   m_TagString: Untagged
@@ -145,3 +146,24 @@ MonoBehaviour:
   attackRate: 0
   isAttacking: 0
   attackDistance: 0
+--- !u!95 &7951819060141764379
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7119051631146859550}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f2cf41e848dc514418dc391ff8bc777d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
