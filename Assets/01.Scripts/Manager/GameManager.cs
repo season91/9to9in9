@@ -17,7 +17,8 @@ public class GameManager : MonoBehaviour
             return instance;
         }
     }
-    
+
+
     private void Awake()
     {
         if (instance == null)
@@ -32,16 +33,18 @@ public class GameManager : MonoBehaviour
         
     }
 
-    // test code
     public void InitMainScene()
     {
         Debug.Log("MainScene 초기화 시작");
-        ResourceSpawn();
+        // ResourceSpawn();
+
+        // test code - 내일 확인 위치바꿔도 됨
+        DayNightCycle.OnDayStarted += ResourceSpawn;
+        DayNightCycle.OnNightStarted += EnemySpawn;
     }
 
     public void ResourceSpawn()
     {
-        
         if (SpawnManager.Instance == null)
         {
             Debug.LogWarning("SpawnManager 인스턴스가 null입니다!");
