@@ -438,6 +438,18 @@ MonoBehaviour:
     m_SerializedLabels:
     - MainScene
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 727c2eb3fee83d346a74e0ff22c7de1d
+    m_Address: Zombie1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 208940de56cc08046acc80f911ef93b1
+    m_Address: Zombie2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b73095aefd561e74599d4c8f30d0bd2b, type: 2}
   m_SchemaSet:

@@ -93,6 +93,19 @@ public class
                 Debug.Log($"{key} 프리팹 찾을 수 없음!");
             }
         }
+
+        foreach (string key in StringAdrSpawnManagerKey.PrefabEnemy)
+        {
+            GameObject obj = ResourceManager.Instance.GetResource<GameObject>(key);
+            if (obj != null)
+            {
+                prefabs[key] = obj;
+            }
+            else
+            {
+                Debug.Log($"{key} 프리팹 찾을 수 없음!");
+            }
+        }
         
         spawnCenter = FindObjectOfType<Player>().transform;
     }
