@@ -244,4 +244,16 @@ public class UIManager : MonoBehaviour
         if (canvasMainScene == null) return;
         canvasMainScene.HideItemName();
     }
+
+    // 첫 대화
+    public void FirstDialogue(string line) => canvasMainScene.FirstDialogue(line);
+    
+    // 다음 대화
+    public void PlayTypingEffect(string line) => canvasMainScene.PlayTypingEffect(line);
+    
+    // 대화중인지
+    public bool DialoguePopupActive() => canvasMainScene.DialoguePopupActve();
+    public bool IsTyping() => canvasMainScene.IsTyping();
+    public void SkipTyping(string fullText) => canvasMainScene.SkipTyping(fullText);
+    public void HideDialogue() => canvasMainScene.HideDialogue();
 }

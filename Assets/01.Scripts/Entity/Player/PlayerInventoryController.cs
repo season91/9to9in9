@@ -301,22 +301,31 @@ public ItemData GetItem(int index)
             return;
         }
 
-        foreach (ItemSlot slot in quickSlotItems)
+        if (quickSlotItems.Count == 0)
         {
-            if (inventoryItems[itemIndex].item == slot.item)
+            quickSlotItems.Add(new ItemSlot(inventoryItems[itemIndex]));
+        }
+        else
+        {
+            foreach (ItemSlot slot in quickSlotItems)
             {
-                if (slot.CanStack())
+                if (inventoryItems[itemIndex].item == slot.item)
                 {
-                    ++slot.Quantity;
+                    if (slot.CanStack())
+                    {
+                        ++slot.Quantity;
+                    }
+                    else
+                    {
+                        quickSlotItems.Add(new ItemSlot(inventoryItems[itemIndex]));
+                    }
+
+                    RemoveItem(itemIndex);
+                    break;
                 }
-                else
-                {
-                    quickSlotItems.Add(new ItemSlot(inventoryItems[itemIndex]));
-                } 
-                RemoveItem(itemIndex);
-                break;
             }
         }
+
         UpdateInventory?.Invoke();
     }
     

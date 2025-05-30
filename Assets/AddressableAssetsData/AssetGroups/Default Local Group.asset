@@ -23,10 +23,11 @@ MonoBehaviour:
     m_SerializedLabels:
     - MainScene
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6bece0b757081824e9b050490eef5e04
+  - m_GUID: b31417a82cbc6454f926ed635391520d
     m_Address: CanvasMainScene
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - MainScene
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4b717e521fc8470489240fb9687fcd2c
     m_Address: CanvasStartScene
@@ -434,6 +435,18 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 169659929858dd24386d3b7e4e3249ba
     m_Address: RockData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 727c2eb3fee83d346a74e0ff22c7de1d
+    m_Address: Zombie1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 208940de56cc08046acc80f911ef93b1
+    m_Address: Zombie2
     m_ReadOnly: 0
     m_SerializedLabels:
     - MainScene

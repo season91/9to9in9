@@ -1,15 +1,15 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class UIInventoryPopup : MonoBehaviour, IGUI
 {
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private List<GUIItemSlotInventory> inventorySlots;
     [SerializeField] private TextMeshProUGUI tmpTitle;
+
+    [SerializeField] private UIQuickSlotPopup quickSlotPopup;
 
     private int curInventoryCount;
     
@@ -22,6 +22,7 @@ public class UIInventoryPopup : MonoBehaviour, IGUI
         canvasGroup = GetComponent<CanvasGroup>();
         inventorySlots = transform.Find("Layout_PlayerItems")?.GetComponentsInChildren<GUIItemSlotInventory>().ToList();
         tmpTitle = transform.Find("Tmp_InventoryTitle")?.GetComponent<TextMeshProUGUI>();
+        quickSlotPopup = GetComponentInChildren<UIQuickSlotPopup>();
     }
     
     public void Initialization()
@@ -38,6 +39,7 @@ public class UIInventoryPopup : MonoBehaviour, IGUI
             inventorySlots[i].Initialization();
             inventorySlots[i].SetClickEvent(OnItemSlotSelected, index);
         }
+        quickSlotPopup.Initialization();
     }
 
     public void Open()
@@ -95,7 +97,7 @@ public class UIInventoryPopup : MonoBehaviour, IGUI
         {
             if (i < inventoryCount)
             {
-                int pcs = CharacterManager.Player.inventoryController.GetPcs(i);
+                int pcs = inventoryCtrlr.GetPcs(i);
                 Sprite icon = inventoryCtrlr.GetIcon(i);
                 if(icon == null)
                     return;
@@ -128,16 +130,6 @@ public class UIInventoryPopup : MonoBehaviour, IGUI
     }
     
 #if UNITY_EDITOR
-    public void TestOpen()
-    {
-        if (canvasGroup.alpha >= 0.5)
-        {
-            Close();
-        }
-        else
-        {
-            Open();
-        }
-    }
+    public float CanvasAlpha() => canvasGroup.alpha;
 #endif
 }
