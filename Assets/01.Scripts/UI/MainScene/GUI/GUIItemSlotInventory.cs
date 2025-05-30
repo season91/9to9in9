@@ -2,8 +2,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class GUIItemSlotInventory : GUIItemSlotBase
+public class GUIItemSlotInventory : GUIItemSlotBase, IPointerClickHandler
 {
     [SerializeField] private TextMeshProUGUI tmpPcs;
     [SerializeField] private Button btnSelect;
@@ -31,7 +32,7 @@ public class GUIItemSlotInventory : GUIItemSlotBase
 
     public void SetPcs(int pcs = 0)
     {
-        tmpPcs.text = pcs > 0 ? pcs.ToString() : string.Empty;
+        tmpPcs.text = pcs > 1 ? pcs.ToString() : string.Empty;
     }
 
     public override void Select()
@@ -43,5 +44,14 @@ public class GUIItemSlotInventory : GUIItemSlotBase
         index = slotIndex;
         btnSelect.onClick.RemoveAllListeners();
         btnSelect.onClick.AddListener(() => callback(index));
+    }
+    
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        // 우클릭
+        if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            CharacterManager.Player.inventoryController.MoveItemToQuickSlot(index);
+        }
     }
 }
