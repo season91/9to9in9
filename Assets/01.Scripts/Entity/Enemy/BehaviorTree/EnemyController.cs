@@ -37,13 +37,18 @@ public class EnemyController : Enemy, IAttackAble
     private float lastAttackTime;
     public float attackDistance;
     
+    [Header("AI")]
+    private float playerDistance;
+    private bool isWaitingToWander = false;
+    
     public float fieldOfView = 120f;
+    
+    [Header("Particle")]
+    [SerializeField] private ParticleSystem hitBlood;
     
     private Animator animator;
     private SkinnedMeshRenderer[] meshRenderers;
-
-    private float playerDistance;
-    private bool isWaitingToWander = false;
+    
 
     public ItemData[] itemdatas;
     private void Awake()
@@ -263,6 +268,8 @@ public class EnemyController : Enemy, IAttackAble
     public override void TakeDamage(float damage)
     {
         statHandler.Modify(StatType.Health, -damage);
+        SoundManager.Instance.PlayParticle(hitBlood);
+        
         if (statHandler.Get(StatType.Health) <= 0)
         {
             Die();

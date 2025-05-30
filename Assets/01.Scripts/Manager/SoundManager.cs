@@ -98,4 +98,11 @@ public class SoundManager : MonoBehaviour
         PlayRandomSfx(SfxType.Step);
     }
 
+    public void PlayParticle(ParticleSystem particle)
+    {
+        if (particle == null)  return;
+        
+        particle.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear); // 초기화
+        particle.Play();
+    }
 }
