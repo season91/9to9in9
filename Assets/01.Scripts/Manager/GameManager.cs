@@ -55,7 +55,10 @@ public class GameManager : MonoBehaviour
                 SpawnManager.Instance.ResourceSpawn(pair.Key);
             }
         }
+    }
 
+    public void EnemySpawn()
+    {
         foreach (var pair in StringSpawnDic.enemyResourceSpawnTable)
         {
             for (int i = 0; i < pair.Value; i++)
@@ -64,5 +67,5 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
+    
 }
