@@ -1,3 +1,5 @@
+using System.ComponentModel;
+using Unity.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -42,6 +44,8 @@ public class EnemyController : Enemy, IAttackAble
 
     private float playerDistance;
     private bool isWaitingToWander = false;
+    
+    [Unity.Collections.ReadOnly] public bool isAttacking = false;
     
     private void Awake()
     {
@@ -164,10 +168,12 @@ public class EnemyController : Enemy, IAttackAble
         agent.speed = walkSpeed;
         agent.isStopped = true;
         
-        if (!isWaitingToWander)
+        if (isWaitingToWander == false)
         {
+            Debug.Log(isWaitingToWander);
             isWaitingToWander = true;
-            Invoke(nameof(WanderToNewLocation), Random.Range(minWanderWaitTime, maxWanderWaitTime));
+             //           Invoke("WanderToNewLocation", Random.Range(minWanderWaitTime, maxWanderWaitTime));
+            Invoke("WanderToNewLocation", 10f);
         }
         return INode.State.RUN;
     }
@@ -203,7 +209,7 @@ public class EnemyController : Enemy, IAttackAble
             animator.speed = 1;
             animator.SetTrigger("Attack");
             
-            CharacterManager.Player.statHandler.Modify(StatType.Health, -attackPower);
+            CharacterManager.Player.TakeDamage(attackPower);
         }
     }
     
@@ -229,7 +235,14 @@ public class EnemyController : Enemy, IAttackAble
         agent.speed = walkSpeed;
         agent.isStopped = false;
         
-        agent.SetDestination(GetWanderLocation());
+        Debug.Log(agent.pathPending);
+
+        Vector3 targetPosition = GetWanderLocation();
+        
+        agent.SetDestination(CharacterManager.Player.transform.position);
+        Debug.Log(agent.hasPath);
+        Debug.Log(agent.remainingDistance);
+        Debug.Log("WanderToNewLocation");
     }
     
     Vector3 GetWanderLocation()
@@ -244,6 +257,7 @@ public class EnemyController : Enemy, IAttackAble
             if (i == 30) break;
         } while (Vector3.Distance(transform.position, hit.position) < detectDistance);
 
+        Debug.Log(hit.position);
         return hit.position;
     }
 

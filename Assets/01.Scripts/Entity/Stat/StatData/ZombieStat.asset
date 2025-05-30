@@ -18,17 +18,12 @@ MonoBehaviour:
       curValue: 100
       maxValue: 100
       passiveValue: 0
-  - statType: 2
-    stat:
-      curValue: 0.3
-      maxValue: 0
-      passiveValue: 0
-  - statType: 4
-    stat:
-      curValue: 15
-      maxValue: 0
-      passiveValue: 0
   - statType: 5
+    stat:
+      curValue: 2
+      maxValue: 0
+      passiveValue: 0
+  - statType: 6
     stat:
       curValue: 2
       maxValue: 0
