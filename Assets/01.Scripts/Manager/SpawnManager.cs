@@ -178,4 +178,10 @@ public class
         Debug.LogWarning("NavMesh 위 유효한 랜덤 위치를 찾지 못했습니다.");
         return center; // fallback
     }
+    
+    //--------아이템 지정 위치에 생성------------
+    public void ItemSpawnInPosition(string key, Vector3 position)
+    {
+        GetObject(key).transform.position = position;
+    }
 }
