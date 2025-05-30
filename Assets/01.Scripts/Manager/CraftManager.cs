@@ -149,20 +149,29 @@ public class CraftManager : MonoBehaviour
         ExecuteCraft(recipe);
     }
     
-    // 제작 실행만 하는 함수
-    // 어떤식으로 inventory에 정보를 전달할건지? 차감할 아이템과 추가할 아이템정보
-    // return 재료 배열과 결과물아이템... itemName or itemCode 일부정보만 넘겨주면 itemData에서 찾아서 처리
-    // 추가 구현 필요
+    /// <summary>
+    /// 레시피 정보 기준으로 재료 차감 및 아이템 추가
+    /// </summary>
     private void ExecuteCraft(SerializableRecipe recipe)
     {
-        // test code로 인벤토리 생기면 수정
         // 재료 차감 string, 수량 
         foreach (var ingredient in recipe.ingredients)
         {
-            // inventory[ingredient.itemCode] -= ingredient.amount;
+            playerInventory.RemoveItem(ingredient.itemName, ingredient.amount);
         }
+        
         // 새로운 결과 아이템 지급 처리 필요
-        // itemData만들어서 Add는해주구
+        // addressbale name 파싱
+        string adrName = StringUtils.KebabToPascal(recipe.resultItemName);
+        ItemData itemData = GetItemData(adrName);
+
+        if (itemData == null)
+        {
+            Debug.LogError($"[ExecuteCraft] 결과 아이템 데이터 정보가 없음 : {adrName}");
+            return;
+        }
+        
+        playerInventory.AddItem(itemData, recipe.resultAmount);
     }
 
     public ItemData GetItemData(string addressName)
@@ -197,9 +206,9 @@ public class CraftManager : MonoBehaviour
     }
 
     /// <summary>
-    /// itemName으로 레시피 단건 조회
+    /// itemName으로 레시피 단건 조회, 레시피 건수가 많아진다면 캐싱 리팩토링 고려
     /// </summary>
-    public SerializableRecipe  GetRecipe(string itemName)
+    public SerializableRecipe GetRecipe(string itemName)
     {
         foreach (var stationPair in parsedRecipes)
         {
