@@ -31,6 +31,12 @@ public class PlayerInventoryController : MonoBehaviour
             this.item = item;
             Quantity = quantity;
         }
+
+        public ItemSlot(ItemSlot slot)
+        {
+            item = slot.item;
+            Quantity = slot.Quantity;
+        }
         
         public void InitSlot(ItemData item = null,int quantity=0)
         {
@@ -43,17 +49,19 @@ public class PlayerInventoryController : MonoBehaviour
 
         public bool isItemExsit(string name) => this.item.itemName == name;
         public bool CanStack() => item.isStackable && !isMax;
-        public bool isSlotEmpty() => item == null;
+        public bool isSlotEmpty() => Quantity == 0;
     }
     
     private List<ItemSlot> inventoryItems;
     private List<ItemData> items;
     private List<EquipableItemData> equippedItems;
-
+    private List<ItemSlot> quickSlotItems;
+    
     //외부 읽기 전용 list 반환
     public IReadOnlyList<ItemData> Items => items;
 
     [SerializeField] private int inventorySize = 21;
+    [SerializeField] private int quickSlotSize = 7;
     
     public Action UpdateInventory;
     
@@ -62,6 +70,7 @@ public class PlayerInventoryController : MonoBehaviour
         inventoryItems = new List<ItemSlot>();
         items = new List<ItemData>();
         equippedItems = new List<EquipableItemData>();
+        quickSlotItems = new List<ItemSlot>();
     }
 
     void Init()
@@ -252,6 +261,46 @@ public class PlayerInventoryController : MonoBehaviour
             return true;
         }
         return false;
+    }
+    
+    
+    //------퀵슬롯 이동 함수
+    public void MoveItemToQuickSlot(int itemIndex)
+    {
+        if (quickSlotItems.Count >= quickSlotSize)
+        {
+            return;
+        }
+
+        foreach (ItemSlot slot in quickSlotItems)
+        {
+            if (inventoryItems[itemIndex].item == slot.item)
+            {
+                if (slot.CanStack())
+                {
+                    ++slot.Quantity;
+                }
+                else
+                {
+                    quickSlotItems.Add(new ItemSlot(inventoryItems[itemIndex]));
+                } 
+                RemoveItem(itemIndex);
+                break;
+            }
+        }
+        UpdateInventory?.Invoke();
+    }
+
+    public ItemData UseItemInQuickSlot(int quickSlotIndex)
+    {
+        if (quickSlotIndex >= quickSlotSize) return null;
+        ItemData temp = quickSlotItems[quickSlotIndex].item;
+        if (--quickSlotItems[quickSlotIndex].Quantity <= 0)
+        {
+            quickSlotItems.RemoveAt(quickSlotIndex);
+        }
+        UpdateInventory?.Invoke();
+        return temp;
     }
     
     //

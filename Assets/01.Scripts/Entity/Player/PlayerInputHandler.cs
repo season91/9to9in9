@@ -1,3 +1,4 @@
+using System.Net.Http;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -104,7 +105,11 @@ public class PlayerInputHandler : MonoBehaviour
         if (index != -1)
         {
             Debug.Log("pressed key index :: "+index);
-            //QuickSlotUse(index);
+            ItemData useItem = CharacterManager.Player.inventoryController.UseItemInQuickSlot(index);
+            if (useItem != null)
+            {
+                playerController.UseQuickSlotItem(useItem);
+            }
         }
     }
 

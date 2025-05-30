@@ -90,7 +90,7 @@ public class ItemObject : MonoBehaviour
     /// <param name="itemData">ItemData</param>
     private void UseQuickSlotItem(ItemData itemData)
     {
-        switch (itemData.type)
+        /*switch (itemData.type)
         {
             case ItemType.Build:
                 BuildManager.Instance.EnterBuildMode(itemData as BuildItemData);
@@ -99,7 +99,7 @@ public class ItemObject : MonoBehaviour
             case ItemType.Consumable:
                 UseConsumableItem(itemData as ConsumableItemData);
                 break;
-        }
+        }*/
     }
 
     /// <summary>
@@ -108,7 +108,7 @@ public class ItemObject : MonoBehaviour
     /// <param name="item">ConsumableItemData</param>
     private void UseConsumableItem(ConsumableItemData item)
     {
-        for (int i = 0; i < item.consumableTypes.Length; i++)
+        /*for (int i = 0; i < item.consumableTypes.Length; i++)
         {
             float value = item.amounts[i];
             switch (item.consumableTypes[i])
@@ -125,6 +125,6 @@ public class ItemObject : MonoBehaviour
                     CharacterManager.Player.statHandler.Modify(StatType.Stamina, value);
                     break;
             }
-        }
+        }*/
     }
 }

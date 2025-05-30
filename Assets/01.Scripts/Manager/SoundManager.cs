@@ -86,7 +86,7 @@ public class SoundManager : MonoBehaviour
             : list[Random.Range(0, list.Count)];
         
         sfxSource.PlayOneShot(clip);
-        Debug.Log($"playing {clip.name}");
+        // Debug.Log($"playing {clip.name}");
     }
 
     public void PlayStepSfx()
