@@ -137,6 +137,26 @@ public class DebugWindow : EditorWindow
         {
             CraftManager.Instance.GetRecipeOfStationType(StationType.Anvil);
         }
+
+        if (GUILayout.Button("AllStatUp"))
+        {
+            CharacterManager.Player.statHandler.Modify(StatType.Health, 10);
+            CharacterManager.Player.statHandler.Modify(StatType.Hunger, 10);
+            CharacterManager.Player.statHandler.Modify(StatType.Stamina,10);
+        }
+        if (GUILayout.Button("AllStatDown"))
+        {
+            CharacterManager.Player.statHandler.Modify(StatType.Health, -10);
+            CharacterManager.Player.statHandler.Modify(StatType.Hunger, -10);
+            CharacterManager.Player.statHandler.Modify(StatType.Stamina, -10);
+        }
+
+        if (GUILayout.Button("StatUITest"))
+        {
+            UIManager.Instance.UpdateStatUI(StatType.Health);
+            UIManager.Instance.UpdateStatUI(StatType.Hunger);
+            UIManager.Instance.UpdateStatUI(StatType.Stamina);
+        }
     }
     
     // OnGUI는 async를 못붙이는 함수여서 await 사용 불가능
@@ -162,6 +182,5 @@ public class DebugWindow : EditorWindow
         {
             Debug.LogError($"[Addressables] 불러오기 안됨 : {ex.Message}");
         }
-        
     }
 }
