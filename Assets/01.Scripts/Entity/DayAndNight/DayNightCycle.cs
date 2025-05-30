@@ -11,6 +11,7 @@ public class DayNightCycle : MonoBehaviour
     [SerializeField] private float startTime = 0.4f;
     [SerializeField] private float timeRate;
     [SerializeField] private Vector3 noon;
+    private float prevTime;
 
     [Header("Sun")]
     [SerializeField] private Light sun;
@@ -27,7 +28,7 @@ public class DayNightCycle : MonoBehaviour
     [SerializeField] private AnimationCurve reflectionIntensityMultiplier;
 
     public bool isDay = true;
-    
+    public int dayCount = 0;
     private void Awake()
     {
         sun = transform.Find("Sun").GetComponent<Light>();
@@ -41,12 +42,20 @@ public class DayNightCycle : MonoBehaviour
         timeRate = 1.0f / fullDayLength;
         time = startTime;
         noon = new Vector3(90f, 0f, 0f);
+        dayCount = 0;
     }
 
     private void Update()
     {
+        prevTime = time;
         time = (time + timeRate * Time.deltaTime) % 1.0f;
 
+        if (time < prevTime && !isDay)
+        {
+            ++dayCount;
+            Debug.Log(dayCount);
+        }
+        
         UpdateLighting(sun, sunColor, sunIntensity);
         UpdateLighting(moon, moonColor, moonIntensity);
 
