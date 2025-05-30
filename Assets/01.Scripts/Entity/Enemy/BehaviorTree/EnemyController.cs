@@ -268,7 +268,7 @@ public class EnemyController : Enemy, IAttackAble
     public override void TakeDamage(float damage)
     {
         statHandler.Modify(StatType.Health, -damage);
-        PlayHitEffect();
+        SoundManager.Instance.PlayParticle(hitBlood);
         
         if (statHandler.Get(StatType.Health) <= 0)
         {
@@ -293,13 +293,5 @@ public class EnemyController : Enemy, IAttackAble
         {
             agent.SetDestination(CharacterManager.Player.transform.position);
         }
-    }
-
-    private void PlayHitEffect()
-    {
-        if (hitBlood == null)  return;
-        
-        hitBlood.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear); // 초기화
-        hitBlood.Play();
     }
 }
