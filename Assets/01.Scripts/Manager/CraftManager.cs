@@ -19,7 +19,6 @@ public class CraftableItemInfo
 public class CraftManager : MonoBehaviour
 {
     private static CraftManager instance;
-
     public static CraftManager Instance
     {
         get
@@ -31,15 +30,14 @@ public class CraftManager : MonoBehaviour
         }
     }
     
-    // 레시피 공식 데이터 json 으로 선택한 이유
-    // 1. 복잡한 공식은 json 작성이 유지보수가 용이
-    // 2. 공식 수정 후 동적 재로드 가능 
     private Dictionary<StationType, Dictionary<string, List<SerializableRecipe>>> parsedRecipes;
+
+    private SerializableRecipe currentRecipe;
     
     private PlayerInventoryController playerInventory;
     
     private RecipeHandler recipeHandler;
-
+    
     private void Awake()
     {
         if (instance == null)
@@ -177,4 +175,47 @@ public class CraftManager : MonoBehaviour
 
         return null;
     }
+    
+    /// <summary>
+    /// 레시피 단건 정보로 isCratable 판단하는 함수
+    /// </summary>
+    public bool CanCraftByItemName(string itemName)
+    {
+        // 레시피 정보 조회 -> currentRecipe 에 적재
+        if (currentRecipe == null || currentRecipe.resultItemName != itemName)
+        {
+            currentRecipe = GetRecipe(itemName);
+            if (currentRecipe == null)
+            {
+                Debug.LogWarning($"[CanCraftCachedRecipe] 레시피 없음: {itemName}");
+                return false;
+            }
+        }
+        
+        // 적재된 레시피 정보로 제작 가능한지 확인
+        return CanCraft(currentRecipe);
+    }
+
+    /// <summary>
+    /// itemName으로 레시피 단건 조회
+    /// </summary>
+    public SerializableRecipe  GetRecipe(string itemName)
+    {
+        foreach (var stationPair in parsedRecipes)
+        {
+            foreach (var categoryPair in stationPair.Value)
+            {
+                foreach (var recipe in categoryPair.Value)
+                {
+                    if (recipe.resultItemName == itemName)
+                    {
+                        return recipe;
+                    }
+                }
+            }
+        }
+        
+        return null;
+    }
+    
 }
