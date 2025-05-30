@@ -319,7 +319,26 @@ public ItemData GetItem(int index)
         }
         UpdateInventory?.Invoke();
     }
+    
+    //퀵슬롯에서 인벤토리로
+    public void MoveItemFromQuickSlot(int itemIndex)
+    {
+        if (itemIndex >= quickSlotItems.Count)
+        {
+            return;
+        }
 
+        --quickSlotItems[itemIndex].Quantity;
+        AddItem(quickSlotItems[itemIndex].item);
+        if (quickSlotItems[itemIndex].isSlotEmpty())
+        {
+            quickSlotItems.RemoveAt(itemIndex);
+        }
+        
+        UpdateInventory?.Invoke();
+    }
+    
+    
     public ItemData UseItemInQuickSlot(int quickSlotIndex)
     {
         if (quickSlotIndex >= quickSlotItems.Count) return null;
