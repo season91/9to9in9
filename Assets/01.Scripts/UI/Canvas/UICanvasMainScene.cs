@@ -14,6 +14,7 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
     [SerializeField] private UICampfirePopup campfirePopup;
     [SerializeField] private UIWorkbenchPopup workbenchPopup;
     [SerializeField] private UIAnvilPopup anvilPopup;
+    [SerializeField] private UIDialoguePopup dialoguePopup;
     
     [SerializeField] private UIStateGroup stateGroup;
     [SerializeField] private UIQuickSlotPopup quickSlotPopup;
@@ -206,6 +207,8 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
         currentStation = StationType.Smelter;
         if (smelterPopup.CanvasAlpha() >= 0.5f)
         {
+            CloseStation();
+        }
         else
         {
             OpenStation(currentStation);
