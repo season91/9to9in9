@@ -420,7 +420,7 @@ PrefabInstance:
     - target: {fileID: 8366875327162467446, guid: 181a8b789f237d0458a4330f08a79cff, type: 3}
       propertyPath: stationItem
       value: 
-      objectReference: {fileID: 11400000, guid: 50c93b240921c8d47beb5a73bf5be6f8, type: 2}
+      objectReference: {fileID: 11400000, guid: c543904b35b37894786aa636b80ea1b2, type: 2}
     - target: {fileID: 9055340448914133929, guid: 181a8b789f237d0458a4330f08a79cff, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

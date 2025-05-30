@@ -8,7 +8,6 @@ public enum ItemType
     Equipable, // 장착이 가능한 
     Resource, // 단순 자원
     Build, // 건축
-    Station 
 }
 
 // 아이템 기능 명시
