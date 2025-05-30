@@ -14,7 +14,10 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
     [SerializeField] private UICampfirePopup campfirePopup;
     [SerializeField] private UIWorkbenchPopup workbenchPopup;
     [SerializeField] private UIAnvilPopup anvilPopup;
+    
     [SerializeField] private UIStateGroup stateGroup;
+    [SerializeField] private UIQuickSlotPopup quickSlotPopup;
+    
 
     [SerializeField] private TextMeshProUGUI tmpInformation;
     [SerializeField] private TextMeshProUGUI tmpDay;
@@ -32,10 +35,11 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
         anvilPopup = GetComponentInChildren<UIAnvilPopup>();
 
         stateGroup = GetComponentInChildren<UIStateGroup>();
-
+        quickSlotPopup = GetComponentInChildren<UIQuickSlotPopup>();
+        
         tmpInformation = transform.Find("Tmp_Information").GetComponent<TextMeshProUGUI>();
         tmpDay = transform.Find("Tmp_Day").GetComponent<TextMeshProUGUI>();
-
+        
     }
 
     public void Initialization()
@@ -49,7 +53,11 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
         workbenchPopup.Initialization();
         anvilPopup.Initialization();
         
+        quickSlotPopup.Initialization();
+        
         tmpInformation.gameObject.SetActive(false);
+
+        currentStation = StationType.Default;
     }
 
     public void Open()
@@ -90,6 +98,9 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
 
     public void OpenStation(StationType type)
     {
+        if(currentStation != StationType.Default)
+            CloseStation();
+        
         currentStation = type;
         switch (type) 
         {
@@ -114,6 +125,35 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
         }
         
         inventoryPopup.Open();
+        quickSlotPopup.Close();
+    }
+    
+    public void CloseStation()
+    {
+        switch (currentStation) 
+        {
+            case StationType.None:
+                equipmentPopup.Close();
+                break;
+            case StationType.Smelter:
+                smelterPopup.Close();
+                break;
+            case StationType.Campfire:
+                campfirePopup.Close();
+                break;
+            case StationType.Workbench:
+                workbenchPopup.Close();
+                break;
+            case StationType.Anvil:
+                anvilPopup.Close();
+                break;
+            default:
+                Debug.Log("Unknown Station Type");
+                break;
+        }
+        
+        inventoryPopup.Close();
+        quickSlotPopup.Open();
     }
 
     public void ShowItemName(string information)
@@ -136,22 +176,40 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
     public void TestOpenEquipmentPopup()
     {
         currentStation = StationType.None;
-        equipmentPopup.TestOpen();
-        inventoryPopup.TestOpen();
+        if (equipmentPopup.CanvasAlpha() >= 0.5f)
+        {
+            CloseStation();
+        }
+        else
+        {
+            OpenStation(currentStation);
+        }
     }
 
     public void TestOpenSmelterPopup()
     {
         currentStation = StationType.Smelter;
-        smelterPopup.TestOpen();
-        inventoryPopup.TestOpen();
+        if (smelterPopup.CanvasAlpha() >= 0.5f)
+        {
+            CloseStation();
+        }
+        else
+        {
+            OpenStation(currentStation);
+        }
     }
     
     public void TestOpenCampfirePopup()
     {
         currentStation = StationType.Campfire;
-        campfirePopup.TestOpen();
-        inventoryPopup.TestOpen();
+        if (campfirePopup.CanvasAlpha() >= 0.5f)
+        {
+            CloseStation();
+        }
+        else
+        {
+            OpenStation(currentStation);
+        }
     }
 #endif
 
