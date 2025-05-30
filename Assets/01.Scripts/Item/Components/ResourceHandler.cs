@@ -13,11 +13,14 @@ public class ResourceHandler : MonoBehaviour
          if (capacity <= 0) break;
 
          capacity -= 1;
-         Instantiate(itemToGive.prefab, hitPoint + Vector3.up, Quaternion.LookRotation(hitNormal, Vector3.up));
+         Debug.Log($"{this.name} 캐는 중 - 남은 체력 {capacity}");
+         //TODO: 아마 스폰매니저?
+         //Instantiate(itemToGive.prefab, hitPoint + Vector3.up, Quaternion.LookRotation(hitNormal, Vector3.up));
       }
 
       if(capacity <= 0)
       {
+         Debug.Log($"{this.name} 파괴됨");
          Destroy(gameObject);
       }
    }
