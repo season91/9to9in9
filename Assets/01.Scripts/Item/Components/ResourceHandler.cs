@@ -35,7 +35,7 @@ public class ResourceHandler : MonoBehaviour
       Destroy(gameObject);
    }
 
-   public void SetSound()
+   private void SetSound()
    {
       switch (rootResourceType)
       {
