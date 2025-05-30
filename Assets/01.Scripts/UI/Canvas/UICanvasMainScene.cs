@@ -13,6 +13,7 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
     [SerializeField] private UICampfirePopup campfirePopup;
     [SerializeField] private UIWorkbenchPopup workbenchPopup;
     [SerializeField] private UIAnvilPopup anvilPopup;
+    [SerializeField] private UIStateGroup stateGroup;
     
     public GameObject GUIObject => gameObject;
 
@@ -25,6 +26,8 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
         campfirePopup = GetComponentInChildren<UICampfirePopup>();
         workbenchPopup = GetComponentInChildren<UIWorkbenchPopup>();
         anvilPopup = GetComponentInChildren<UIAnvilPopup>();
+
+        stateGroup = GetComponentInChildren<UIStateGroup>();
     }
 
     public void Initialization()
@@ -101,7 +104,7 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
     }
 
     #region  TestCode
-    
+#if  UNITY_EDITOR
     public void TestOpenEquipmentPopup()
     {
         if (equipmentPopup.gameObject.activeSelf)
@@ -129,6 +132,7 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
         smelterPopup.Open();
         inventoryPopup.Open();
     }
-    
+#endif
+
     #endregion
 }

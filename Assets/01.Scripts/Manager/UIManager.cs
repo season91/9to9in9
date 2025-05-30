@@ -230,4 +230,10 @@ public class UIManager : MonoBehaviour
     public bool TrySlotClickWithStation(ItemData item) => canvasMainScene.TrySlotClickWithStation(item);
 
     public void OpenStation(StationType type) => canvasMainScene.OpenStation(type);
+
+    public event Action<StatType> OnUpdateStatUI;
+    public void UpdateStatUI(StatType type)
+    {
+        OnUpdateStatUI?.Invoke(type);
+    }
 }

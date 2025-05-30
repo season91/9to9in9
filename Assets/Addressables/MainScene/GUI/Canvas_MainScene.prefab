@@ -378,7 +378,7 @@ GameObject:
   - component: {fileID: 8576259363053279227}
   - component: {fileID: 8393911673025556841}
   m_Layer: 5
-  m_Name: Img_GuageBG_L
+  m_Name: Img_GaugeBG_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -901,7 +901,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3220003472690844217}
   m_Layer: 5
-  m_Name: GUI_State_Food
+  m_Name: GUI_State_Hunger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1458,6 +1458,7 @@ GameObject:
   - component: {fileID: 8606855877321280687}
   - component: {fileID: 574528680542580933}
   - component: {fileID: 542254453674876774}
+  - component: {fileID: 3884651240724174145}
   m_Layer: 5
   m_Name: Group_State
   m_TagString: Untagged
@@ -1551,6 +1552,22 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &3884651240724174145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2447301954295136770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 240694bace69c5b4dbbae6c799b2b1ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imgGaugeHealth: {fileID: 5855746857394275536}
+  imgGaugeStamina: {fileID: 5613240123959900325}
+  imgGaugeHunger: {fileID: 6885283791778085069}
+  maxGaugeWidth: 340.15
 --- !u!1 &2481477910677362932
 GameObject:
   m_ObjectHideFlags: 0
@@ -1563,7 +1580,7 @@ GameObject:
   - component: {fileID: 4391796900497282001}
   - component: {fileID: 7823987541749519473}
   m_Layer: 5
-  m_Name: Img_Guage
+  m_Name: Img_Gauge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1752,7 +1769,7 @@ GameObject:
   - component: {fileID: 1493591476944214220}
   - component: {fileID: 3169424685259941868}
   m_Layer: 5
-  m_Name: Img_Guage_L
+  m_Name: Img_Gauge_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1910,7 +1927,7 @@ GameObject:
   - component: {fileID: 3445145086843745869}
   - component: {fileID: 6624247723763643610}
   m_Layer: 5
-  m_Name: Img_GuageBG_R
+  m_Name: Img_GaugeBG_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2331,6 +2348,7 @@ MonoBehaviour:
   campfirePopup: {fileID: 0}
   workbenchPopup: {fileID: 0}
   anvilPopup: {fileID: 0}
+  stateGroup: {fileID: 3884651240724174145}
 --- !u!1 &3253812075279652248
 GameObject:
   m_ObjectHideFlags: 0
@@ -2418,7 +2436,7 @@ GameObject:
   - component: {fileID: 6156866910254571273}
   - component: {fileID: 4539535910115779468}
   m_Layer: 5
-  m_Name: Img_Guage_R
+  m_Name: Img_Gauge_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2788,7 +2806,7 @@ GameObject:
   - component: {fileID: 9091707622752855757}
   - component: {fileID: 1054927485089936477}
   m_Layer: 5
-  m_Name: Img_Guage_L
+  m_Name: Img_Gauge_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3110,7 +3128,7 @@ GameObject:
   - component: {fileID: 3644458953273955876}
   - component: {fileID: 7076402756217200009}
   m_Layer: 5
-  m_Name: Img_GuageBG_R
+  m_Name: Img_GaugeBG_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3394,7 +3412,7 @@ GameObject:
   - component: {fileID: 2628409905094240220}
   - component: {fileID: 7977715612166169961}
   m_Layer: 5
-  m_Name: Img_Guage_R
+  m_Name: Img_Gauge_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3681,7 +3699,7 @@ GameObject:
   - component: {fileID: 3899720500775801722}
   - component: {fileID: 478368186804003375}
   m_Layer: 5
-  m_Name: Img_Guage_R
+  m_Name: Img_Gauge_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3756,7 +3774,7 @@ GameObject:
   - component: {fileID: 1510781245645125791}
   - component: {fileID: 61381364708567781}
   m_Layer: 5
-  m_Name: Img_GuageBG
+  m_Name: Img_GaugeBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4007,7 +4025,7 @@ GameObject:
   - component: {fileID: 6613910949665438272}
   - component: {fileID: 5383926572246925162}
   m_Layer: 5
-  m_Name: Img_GuageBG_R
+  m_Name: Img_GaugeBG_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4117,7 +4135,7 @@ GameObject:
   - component: {fileID: 5211327680445485448}
   - component: {fileID: 607400487136060408}
   m_Layer: 5
-  m_Name: Img_GuageBG_L
+  m_Name: Img_GaugeBG_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4269,7 +4287,7 @@ GameObject:
   - component: {fileID: 6981969801809270574}
   - component: {fileID: 66162849685853444}
   m_Layer: 5
-  m_Name: Img_GuageBG_L
+  m_Name: Img_GaugeBG_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4405,7 +4423,7 @@ GameObject:
   - component: {fileID: 1288000420690504140}
   - component: {fileID: 5584397175469847382}
   m_Layer: 5
-  m_Name: Img_Guage
+  m_Name: Img_Gauge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4617,7 +4635,7 @@ GameObject:
   - component: {fileID: 5573216905412154392}
   - component: {fileID: 3187128803658225853}
   m_Layer: 5
-  m_Name: Img_GuageBG
+  m_Name: Img_GaugeBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4771,7 +4789,7 @@ GameObject:
   - component: {fileID: 955029996577027756}
   - component: {fileID: 5819422885622019634}
   m_Layer: 5
-  m_Name: Img_Guage_L
+  m_Name: Img_Gauge_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5085,7 +5103,7 @@ GameObject:
   - component: {fileID: 3931636215868038280}
   - component: {fileID: 4331063953443982529}
   m_Layer: 5
-  m_Name: Img_Guage
+  m_Name: Img_Gauge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5523,7 +5541,7 @@ GameObject:
   - component: {fileID: 5140161404872046939}
   - component: {fileID: 4633351292219855551}
   m_Layer: 5
-  m_Name: Img_GuageBG
+  m_Name: Img_GaugeBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
