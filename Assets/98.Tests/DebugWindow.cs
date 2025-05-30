@@ -162,6 +162,11 @@ public class DebugWindow : EditorWindow
         {
             _= UIManager.Instance.OpenScene(SceneType.Start);
         }
+        
+        if (GUILayout.Button("ResourceSpawn"))
+        {
+            GameManager.Instance.InitMainScene();
+        }
     }
     
     // OnGUI는 async를 못붙이는 함수여서 await 사용 불가능

@@ -72,6 +72,7 @@ public static class StringAdrItemDataResource
     public const string IronBar =  "IronBarData";
     public const string Tree = "TreeData";
     public const string IronOre = "IronOreData";
+    public const string Rock = "RockData";
 }
 
 public static class StringAdrCraftRecipe
@@ -84,7 +85,8 @@ public static class StringAdrSpawnManagerKey
     // 1차 자원
     public static readonly string[] PoolItem =
     {
-        StringAdrItemDataResource.Stone, StringAdrItemDataResource.Wood, StringAdrItemDataResource.Tree, StringAdrItemDataResource.Iron
+        StringAdrItemDataResource.Stone, StringAdrItemDataResource.Wood, StringAdrItemDataResource.Tree, StringAdrItemDataResource.Iron, 
+        StringAdrItemDataResource.Rock
     };
 
     public static readonly string[] PrefabItem =
@@ -108,3 +110,16 @@ public static class StringAdrSpawnManagerKey
 #endregion
 
 #endregion
+
+
+public static class StringSpawnDic
+{
+    
+    // 자원 종류와 개수 매핑
+    public static readonly Dictionary<string, int> resourceSpawnTable = new Dictionary<string, int>
+    {
+        { StringAdrItemDataResource.Tree, 5 },
+        { StringAdrItemDataResource.IronOre, 5 },
+        { StringAdrItemDataResource.Rock, 5 },
+    };
+}

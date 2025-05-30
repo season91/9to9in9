@@ -41,17 +41,20 @@ public class GameManager : MonoBehaviour
 
     public void ResourceSpawn()
     {
+        
         if (SpawnManager.Instance == null)
         {
             Debug.LogWarning("SpawnManager 인스턴스가 null입니다!");
             return;
         }
-        SpawnManager.Instance.ResourceSpawn(StringAdrItemDataResource.Tree);
-        SpawnManager.Instance.ResourceSpawn(StringAdrItemDataResource.Tree);
-        SpawnManager.Instance.ResourceSpawn(StringAdrItemDataResource.Tree);
-        SpawnManager.Instance.ResourceSpawn(StringAdrItemDataResource.IronOre);
-        SpawnManager.Instance.ResourceSpawn(StringAdrItemDataResource.IronOre);
-        SpawnManager.Instance.ResourceSpawn(StringAdrItemDataResource.IronOre);
+        
+        foreach (var pair in StringSpawnDic.resourceSpawnTable)
+        {
+            for (int i = 0; i < pair.Value; i++)
+            {
+                SpawnManager.Instance.ResourceSpawn(pair.Key);
+            }
+        }
     }
 
 }
