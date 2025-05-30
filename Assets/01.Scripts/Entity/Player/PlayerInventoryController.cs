@@ -220,6 +220,10 @@ public class PlayerInventoryController : MonoBehaviour
             equippedItems.Add(equipItem);
             AddItem(temp);
         }
+        
+        if (equipItem.equipSlot == EquipSlot.RightHand)
+            CharacterManager.Player.playerEquip.Equip(equipItem);
+        
         UpdateInventory?.Invoke();
     }
     //
@@ -233,6 +237,9 @@ public class PlayerInventoryController : MonoBehaviour
             if (equipItem.equipSlot != slotType) continue;
             AddItem(equipItem);
             equippedItems.Remove(equipItem);
+            
+            if (equipItem.equipSlot == EquipSlot.RightHand)
+                CharacterManager.Player.playerEquip.UnEquip();
             UpdateInventory?.Invoke();
             return true;
         }

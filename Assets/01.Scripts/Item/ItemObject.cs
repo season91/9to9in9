@@ -143,44 +143,4 @@ public class ItemObject : MonoBehaviour
             }
         }
     }
-
-    #region 오른손 무기 처리 로직 (이동 예정)
-
-    /// <summary>
-    /// 오른손에 든 거 사용하기
-    /// 타입에 따라 switch (공격 / 채집)
-    /// </summary>
-    /// <param name="item">EquipableItemData</param>
-    private void UseEquipableItem(EquipableItemData item)
-    {
-        switch (item.equipType)
-        {
-            case EquipType.Weapon:
-                // TODO: 휘두르기
-                break;
-            
-            case EquipType.GatheringTool:
-                // TODO: 채집하기
-                break;
-        }
-    }
-    
-    // curEquip, equipParent 선언해야됨
-    private void Equip(ItemData item)
-    {
-        UnEquip();
-        // curEquip = Instantiate(item.prefab, equipParent);
-        
-        Debug.Log($"[ItemObject-{name}] 장착됨 !");
-    }
-
-    private void UnEquip()
-    {
-        //Destroy(curEquip.gameObject);
-        //cureEquip = null
-        Debug.Log($"[ItemObject-{name}] 해제됨 !");
-    }
-
-    #endregion
-    
 }
