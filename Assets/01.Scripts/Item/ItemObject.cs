@@ -1,4 +1,5 @@
 using System;
+using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -15,41 +16,24 @@ public class ItemObject : MonoBehaviour
     private void Reset()
     {
         bool found = false;
-        
-        string itemKey = name; // 혹은 $"{itemType}/{name}" 형태로 키 구성도 가능
-
-        var handle = Addressables.LoadAssetAsync<ItemData>(itemKey);
-
-        try
+        foreach (ItemType type in Enum.GetValues(typeof(ItemType)))
         {
-            if (itemData != null)
+            string addrName = StringUtils.KebabToPascal(name) + "Data.asset";
+#if UNITY_EDITOR
+            string path = $"Assets/Addressables/MainScene/Data/{type}/{addrName}";
+            itemData = AssetDatabase.LoadAssetAtPath<ItemData>(path);
+            
+            if (itemData == null)
             {
-                Debug.Log($"[ItemObject] {itemKey} 로드 성공");
+                Debug.LogWarning($"{path} SO를 찾지 못했습니다.");
             }
             else
             {
-                Debug.LogWarning($"[ItemObject] {itemKey}에 해당하는 ItemData가 없습니다.");
+                found = true;
+                return;
             }
+#endif
         }
-        catch (System.Exception e)
-        {
-            Debug.LogError($"[ItemObject] {itemKey} 로드 실패: {e.Message}");
-        }
-        
-        // foreach (ItemType type in Enum.GetValues(typeof(ItemType)))
-        // {
-        //     string path = $"Item/Data/{type}";
-        //     var allItems = Resources.LoadAll<ItemData>(path);
-        //     foreach (var item in allItems)
-        //     {
-        //         if (item.name == name)
-        //         {
-        //             itemData = item;
-        //             found = true;
-        //             return;
-        //         }
-        //     }
-        // }
         
         // 예외 처리
         if (!found)
