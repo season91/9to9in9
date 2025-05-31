@@ -27,12 +27,21 @@ public class DayNightCycle : MonoBehaviour
     [SerializeField] private AnimationCurve lightingIntensityMultiplier;
     [SerializeField] private AnimationCurve reflectionIntensityMultiplier;
 
+    
+    [Header("Sky Box")]
+    [SerializeField] private Material daySkyBox;
+    [SerializeField] private Material nightSkyBox;
+    [SerializeField] private Material blendSkyBox;
+    
     public bool isDay = true;
     public int dayCount = 0;
     
     // 기능 구현 후 리팩토링 필요
     public bool isSpawnedResource = false;
     public bool isSpawnedEnemy = false;
+    
+    
+    [SerializeField] private float intensityChangeSpeed = 1f;
     
     // GameManager에서 델리게이트에 함수 등록해주는 로직 구현
     public static event Action OnDayStarted;
@@ -70,6 +79,28 @@ public class DayNightCycle : MonoBehaviour
         UpdateLighting(sun, sunColor, sunIntensity);
         UpdateLighting(moon, moonColor, moonIntensity);
 
+        bool dayTimeSkyBox = (time >= 0.35f && time <= 0.65f);
+        bool nightTimeSkyBox = (time < 0.15f || time > 0.85f);
+        Material targetSkyBox;
+
+        if (dayTimeSkyBox)
+        {
+            targetSkyBox = daySkyBox;
+        }else if (nightTimeSkyBox)
+        {
+            targetSkyBox = nightSkyBox;
+        }
+        else
+        {
+            targetSkyBox = blendSkyBox;
+        }
+        
+        if (RenderSettings.skybox != targetSkyBox)
+        {
+            RenderSettings.skybox = targetSkyBox;
+            DynamicGI.UpdateEnvironment();
+        }
+        
         if (sun.gameObject.activeInHierarchy)
         {
             isDay = true;
@@ -101,11 +132,24 @@ public class DayNightCycle : MonoBehaviour
         lightSource.transform.eulerAngles = noon * ((time - (lightSource == sun ? 0.25f : 0.75f)) * 4.0f);
         lightSource.color = colorGradiant.Evaluate(time);
         lightSource.intensity = intensity;
+        //lightSource.intensity = Math.Clamp(lightSource.intensity, intensity, Time.deltaTime);
 
         GameObject go = lightSource.gameObject;
         if (lightSource.intensity == 0 && go.activeInHierarchy)
             go.SetActive(false);
         else if (lightSource.intensity > 0 && !go.activeInHierarchy)
             go.SetActive(true);
+    }
+    
+    void SetDaySkyBox()
+    {
+        RenderSettings.skybox = daySkyBox;
+        DynamicGI.UpdateEnvironment(); 
+    }
+    
+    void SetNightSkyBox()
+    {
+        RenderSettings.skybox = nightSkyBox;
+        DynamicGI.UpdateEnvironment(); 
     }
 }
