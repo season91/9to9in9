@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f552026eabc5cf4dbd423ae7ca6a47d, type: 3}
   m_Name: IronData
   m_EditorClassIdentifier: 
-  itemCode: r3
+  itemCode: IronData
   itemName: iron
   displayName: "\uCCA0"
   description: "\uCCA0\uC774\uB2E4. \uAC00\uACF5\uD574\uBCF4\uC790."
@@ -21,5 +21,5 @@ MonoBehaviour:
   prefab: {fileID: 16416572269313672, guid: 1622abbb5c2d058419a74ed3d666acf4, type: 3}
   isStackable: 1
   maxStack: 12
-  functions: 00000000
+  functions: 01000000
   resourceType: 2

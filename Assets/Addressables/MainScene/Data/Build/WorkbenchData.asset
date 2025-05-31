@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d74587e00f6bde46bc32e5a1060ec6a, type: 3}
   m_Name: WorkbenchData
   m_EditorClassIdentifier: 
-  itemCode: b16
+  itemCode: WorkbenchData
   itemName: workbench
   displayName: "\uC81C\uC791\uB300"
   description: "\uB9CC\uB4E4\uC790"

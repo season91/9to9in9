@@ -113,7 +113,7 @@ MonoBehaviour:
     - MainScene
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7028c7df38035974589e75898d0a40e1
-    m_Address: Assets/Addressables/MainScene/Data/Equipable/ArmorChestData.asset
+    m_Address: ArmorChestData
     m_ReadOnly: 0
     m_SerializedLabels:
     - MainScene
@@ -251,7 +251,7 @@ MonoBehaviour:
     - MainScene
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4224458758b1c5b4a8947582fff28b43
-    m_Address: Assets/Addressables/MainScene/Data/Build/MetalWallNarrowData.asset
+    m_Address: MetalWallNarrowData
     m_ReadOnly: 0
     m_SerializedLabels:
     - MainScene

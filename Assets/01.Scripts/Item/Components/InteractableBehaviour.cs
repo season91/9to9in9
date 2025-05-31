@@ -21,7 +21,8 @@ public class InteractableBehaviour : MonoBehaviour, IInteractable,  IInitializab
 
     public void OnInteract()
     {
-        // Add Inventory
-        Destroy(gameObject);
+        Debug.Log("OnInteract! 아이템 넣고 오브젝트 비활성화 처리");
+        CharacterManager.Player.inventoryController.AddItem(data);
+        SpawnManager.Instance.ReleaseObject(data.itemCode, gameObject);
     }
 }

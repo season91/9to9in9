@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f552026eabc5cf4dbd423ae7ca6a47d, type: 3}
   m_Name: RockData
   m_EditorClassIdentifier: 
-  itemCode: r7
+  itemCode: RockData
   itemName: rock
   displayName: "\uD070 \uB3CC\uC774\uB2E4."
   description: "\uD070 \uB3CC\uC744 \uCE90\uBCF4\uC790"

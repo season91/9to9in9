@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d218a217209436442b604d821804a81b, type: 3}
   m_Name: BootsData
   m_EditorClassIdentifier: 
-  itemCode: e6
+  itemCode: BootsData
   itemName: boots
   displayName: "\uC2E0\uBC1C"
   description: "\uC2E0\uBC1C\uC774\uB2E4."

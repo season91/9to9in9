@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d218a217209436442b604d821804a81b, type: 3}
   m_Name: ShieldData
   m_EditorClassIdentifier: 
-  itemCode: e7
+  itemCode: ShieldData
   itemName: shield
   displayName: "\uBC29\uD328"
   description: "\uBC29\uD328\uB2E4."

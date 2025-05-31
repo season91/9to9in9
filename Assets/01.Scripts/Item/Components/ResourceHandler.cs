@@ -26,13 +26,14 @@ public class ResourceHandler : MonoBehaviour
          capacity -= 1;
          Debug.Log($"{this.name} 캐는 중 - 남은 체력 {capacity}");
          SoundManager.Instance.PlayParticle(effect);
-         SpawnManager.Instance.ItemSpawnInPosition(itemToGive.name, transform.position);
+         
       }
 
       if (!(capacity <= 0)) return;
       
-      Debug.Log($"{this.name} 파괴됨");
-      Destroy(gameObject);
+      SpawnManager.Instance.ItemSpawnInPosition(itemToGive.name, transform.position);
+
+      SpawnManager.Instance.ReleaseObject(itemToGive.itemCode, gameObject);
    }
 
    private void SetSound()

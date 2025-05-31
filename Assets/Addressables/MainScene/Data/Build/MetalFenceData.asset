@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d74587e00f6bde46bc32e5a1060ec6a, type: 3}
   m_Name: MetalFenceData
   m_EditorClassIdentifier: 
-  itemCode: b9
+  itemCode: MetalFenceData
   itemName: metal-fence
   displayName: "\uCCA0 \uC6B8\uD0C0\uB9AC"
   description: "\uC5EC\uC804\uD788 \uC81C\uAE30\uB2A5\uC744 \uBABB \uD560 \uAC83
