@@ -1,3 +1,4 @@
+using System.Collections;
 using System.ComponentModel;
 using Unity.Collections;
 using UnityEngine;
@@ -47,19 +48,20 @@ public class EnemyController : Enemy, IAttackAble
     [SerializeField] private ParticleSystem hitBlood;
     
     private Animator animator;
-    private SkinnedMeshRenderer[] meshRenderers;
+    private SkinnedMeshRenderer meshRenderer;
     
-
+    private bool isDead = false;
+    
     public ItemData[] itemdatas;
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        meshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
+        meshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
     
         if (agent == null) Debug.LogError("NavMeshAgent not found");
         if (animator == null) Debug.LogError("Animator not found");
-        if (meshRenderers == null) Debug.LogError("SkinnedMeshRenderer not found");
+        if (meshRenderer == null) Debug.LogError("SkinnedMeshRenderer not found");
     }
 
     void Start()
@@ -117,6 +119,8 @@ public class EnemyController : Enemy, IAttackAble
     // 업데이트 내에서는 루트 노드(행동 트리 전체)의 상태를 평가한다.
     void Update()
     {
+        if (isDead) return;
+        
         playerDistance = Vector3.Distance(transform.position, CharacterManager.Player.transform.position);
         animator.SetBool("IsMove", agent.velocity.magnitude > 0);
         
@@ -260,6 +264,8 @@ public class EnemyController : Enemy, IAttackAble
 
     public override void TakeDamage(float damage)
     {
+        if (isDead) return; 
+        
         statHandler.Modify(StatType.Health, -damage);
         SoundManager.Instance.PlayParticle(hitBlood);
         
@@ -271,11 +277,12 @@ public class EnemyController : Enemy, IAttackAble
 
     public override void Die()
     {
-        foreach (ItemData itemData in itemdatas)
-        {
-            SpawnManager.Instance.ItemSpawnInPosition(itemData.name, transform.position);
-        }
-        Destroy(gameObject);
+        if (isDead) return; 
+        isDead = true;
+        
+        agent.isStopped = true; // 움직임 멈춤
+        animator.SetBool("IsMove", false); // 이동 애니메이션 정지
+        StartCoroutine(DieCoroutine());
     }
 
     public override void Move()
@@ -287,4 +294,29 @@ public class EnemyController : Enemy, IAttackAble
             agent.SetDestination(CharacterManager.Player.transform.position);
         }
     }
+    
+    private IEnumerator DieCoroutine()
+    {
+        // 아이템 드랍
+        foreach (ItemData itemData in itemdatas)
+        {
+            SpawnManager.Instance.ItemSpawnInPosition(itemData.name, transform.position);
+        }
+        
+        animator.SetBool("IsDead", true);
+
+        // 메터리얼 색을 빨강으로 변경 (메터리얼 인스턴스화 필요)
+        if (meshRenderer != null && meshRenderer.material != null)
+        {
+            Material mat = meshRenderer.material;
+            mat.color = Color.red;
+        }
+
+        // 일정 시간 대기
+        yield return new WaitForSeconds(1f);
+
+        // 오브젝트 삭제
+        Destroy(gameObject);
+    }
+
 }
