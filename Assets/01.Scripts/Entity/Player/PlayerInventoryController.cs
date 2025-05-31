@@ -170,6 +170,11 @@ public class PlayerInventoryController : MonoBehaviour
             }
         }
     }
+    
+    public bool IsInventoryFull()
+    {
+        return items.Count == inventorySize;
+    }
 
     public int GetAllItemCount()
     {
