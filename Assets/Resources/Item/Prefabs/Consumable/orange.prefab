@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9055800953534305121}
   - component: {fileID: 8502090201506817073}
   - component: {fileID: 2145706990753601697}
+  - component: {fileID: 9086383216922720053}
   m_Layer: 10
   m_Name: orange
   m_TagString: Untagged
@@ -97,3 +98,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 1e731cb33cea8244983bff3afd6c86e8, type: 2}
+--- !u!135 &9086383216922720053
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3930081007767744977}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.084846
+  m_Center: {x: 0, y: 0.08359999, z: 0}
