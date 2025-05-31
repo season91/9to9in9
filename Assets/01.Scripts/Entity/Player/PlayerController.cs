@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour, IMoveable, IJumpable
     // [SerializeField] private float maxMoveSpeed = 20f;
     // [SerializeField] private float jumpPower = 7f;
 
-
     [Header("CameraLook")]
     [SerializeField] private float minXLook = -85f;
     [SerializeField] private float maxXLook = 85f;
@@ -31,6 +30,9 @@ public class PlayerController : MonoBehaviour, IMoveable, IJumpable
     private StatHandler statHandler;
     
     public Action inventoryAction;
+    
+    public GameObject jumpParticlePrefab;
+    private bool wasGrounded = true; // 착지 체크 용
 
     private void Awake()
     {
@@ -48,6 +50,17 @@ public class PlayerController : MonoBehaviour, IMoveable, IJumpable
         
         statHandler = CharacterManager.Player.statHandler;
         if (statHandler == null) Debug.LogError("StatHandler not found");
+    }
+
+    private void Update()
+    {
+        bool isGrounded = IsGrounded();
+        if (!wasGrounded && isGrounded)
+        {
+            Instantiate(jumpParticlePrefab, transform.position, Quaternion.identity);
+        }
+
+        wasGrounded = isGrounded; // 항상 마지막에 상태 갱신
     }
 
     private void FixedUpdate()
@@ -102,6 +115,7 @@ public class PlayerController : MonoBehaviour, IMoveable, IJumpable
         if (IsGrounded())
         {
             rigidBody.AddForce(Vector2.up * statHandler.Get(StatType.JumpPower), ForceMode.Impulse);
+            
         }
     }
     
