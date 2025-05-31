@@ -229,7 +229,7 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
     }
     
     public void TestOpenWorkbenchPopup()
-        {
+    {
             currentStation = StationType.Workbench;
             if (workbenchPopup.CanvasAlpha() >= 0.5f)
             {
@@ -239,7 +239,21 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
             {
                 OpenStation(currentStation);
             }
+    }
+    
+    public void TestOpenAnvilPopup()
+    {
+        currentStation = StationType.Anvil;
+        if (anvilPopup.CanvasAlpha() >= 0.5f)
+        {
+            CloseStation();
         }
+        else
+        {
+            OpenStation(currentStation);
+        }
+    }
+    
 #endif
 
     #endregion
