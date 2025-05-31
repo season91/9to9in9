@@ -882,7 +882,7 @@ MonoBehaviour:
   campfirePopup: {fileID: 831105742344178980}
   workbenchPopup: {fileID: 2400478591815056923}
   anvilPopup: {fileID: 8746946776797611649}
-  dialoguePopup: {fileID: 5640464078701612075}
+  dialoguePopup: {fileID: 3897773526753418831}
   stateGroup: {fileID: 5879546456522157756}
   quickSlotPopup: {fileID: 7148215516800681042}
   tmpInformation: {fileID: 4493073361362617635}
@@ -1219,7 +1219,7 @@ GameObject:
   m_Component:
   - component: {fileID: 430990300139542153}
   - component: {fileID: 1209992337427085636}
-  - component: {fileID: 5640464078701612075}
+  - component: {fileID: 3897773526753418831}
   m_Layer: 5
   m_Name: Popup_Dialogue
   m_TagString: Untagged
@@ -1259,7 +1259,7 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &5640464078701612075
+--- !u!114 &3897773526753418831
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
