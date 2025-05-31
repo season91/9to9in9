@@ -174,16 +174,14 @@ public class EnemyController : Enemy, IAttackAble
         
         if (isWaitingToWander == false)
         {
-            Debug.Log(isWaitingToWander);
             isWaitingToWander = true;
-             //           Invoke("WanderToNewLocation", Random.Range(minWanderWaitTime, maxWanderWaitTime));
-            Invoke("WanderToNewLocation", 10f);
+            Invoke("WanderToNewLocation", Random.Range(minWanderWaitTime, maxWanderWaitTime));
         }
         return INode.State.RUN;
     }
 
     public INode.State MoveToSelectedPlace()
-    {
+    { 
         return INode.State.RUN;
     }
 
@@ -191,6 +189,7 @@ public class EnemyController : Enemy, IAttackAble
     {
         agent.speed = walkSpeed;
         agent.isStopped = true;
+        
         return INode.State.SUCCESS;
     }
     
@@ -238,15 +237,10 @@ public class EnemyController : Enemy, IAttackAble
         isWaitingToWander = false;
         agent.speed = walkSpeed;
         agent.isStopped = false;
-        
-        Debug.Log(agent.pathPending);
 
         Vector3 targetPosition = GetWanderLocation();
         
-        agent.SetDestination(CharacterManager.Player.transform.position);
-        Debug.Log(agent.hasPath);
-        Debug.Log(agent.remainingDistance);
-        Debug.Log("WanderToNewLocation");
+        agent.SetDestination(targetPosition);
     }
     
     Vector3 GetWanderLocation()
@@ -260,8 +254,7 @@ public class EnemyController : Enemy, IAttackAble
             i++;
             if (i == 30) break;
         } while (Vector3.Distance(transform.position, hit.position) < detectDistance);
-
-        Debug.Log(hit.position);
+        
         return hit.position;
     }
 
