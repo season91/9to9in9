@@ -882,7 +882,7 @@ MonoBehaviour:
   campfirePopup: {fileID: 831105742344178980}
   workbenchPopup: {fileID: 2400478591815056923}
   anvilPopup: {fileID: 8746946776797611649}
-  dialoguePopup: {fileID: 6995675194070070195}
+  dialoguePopup: {fileID: 5640464078701612075}
   stateGroup: {fileID: 5879546456522157756}
   quickSlotPopup: {fileID: 7148215516800681042}
   tmpInformation: {fileID: 4493073361362617635}
@@ -1219,7 +1219,7 @@ GameObject:
   m_Component:
   - component: {fileID: 430990300139542153}
   - component: {fileID: 1209992337427085636}
-  - component: {fileID: 6995675194070070195}
+  - component: {fileID: 5640464078701612075}
   m_Layer: 5
   m_Name: Popup_Dialogue
   m_TagString: Untagged
@@ -1259,7 +1259,7 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &6995675194070070195
+--- !u!114 &5640464078701612075
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1272,7 +1272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueCanvasGroup: {fileID: 1209992337427085636}
-  dialogueText: {fileID: 3322690123304100099}
+  dialogueText: {fileID: 0}
 --- !u!1 &1152907597811917300
 GameObject:
   m_ObjectHideFlags: 0
@@ -7358,6 +7358,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GUI_Btn_CraftType (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 7795066635460179440, guid: c86724ad68fac6941a894299a3decc36, type: 3}
+      propertyPath: m_fontSize
+      value: 28
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7696,6 +7700,10 @@ PrefabInstance:
     - target: {fileID: 6906353363310561905, guid: c86724ad68fac6941a894299a3decc36, type: 3}
       propertyPath: m_Name
       value: GUI_Btn_CraftType (0)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795066635460179440, guid: c86724ad68fac6941a894299a3decc36, type: 3}
+      propertyPath: m_fontSize
+      value: 28
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8148,6 +8156,10 @@ PrefabInstance:
     - target: {fileID: 6906353363310561905, guid: c86724ad68fac6941a894299a3decc36, type: 3}
       propertyPath: m_Name
       value: GUI_Btn_CraftType (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795066635460179440, guid: c86724ad68fac6941a894299a3decc36, type: 3}
+      propertyPath: m_fontSize
+      value: 28
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8714,6 +8726,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GUI_Btn_CraftType (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 7795066635460179440, guid: c86724ad68fac6941a894299a3decc36, type: 3}
+      propertyPath: m_fontSize
+      value: 28
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8826,6 +8842,10 @@ PrefabInstance:
     - target: {fileID: 6906353363310561905, guid: c86724ad68fac6941a894299a3decc36, type: 3}
       propertyPath: m_Name
       value: GUI_Btn_CraftType (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795066635460179440, guid: c86724ad68fac6941a894299a3decc36, type: 3}
+      propertyPath: m_fontSize
+      value: 28
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9165,6 +9185,10 @@ PrefabInstance:
     - target: {fileID: 6906353363310561905, guid: c86724ad68fac6941a894299a3decc36, type: 3}
       propertyPath: m_Name
       value: GUI_Btn_CraftType (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795066635460179440, guid: c86724ad68fac6941a894299a3decc36, type: 3}
+      propertyPath: m_fontSize
+      value: 28
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9957,6 +9981,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GUI_Btn_CraftType (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7795066635460179440, guid: c86724ad68fac6941a894299a3decc36, type: 3}
+      propertyPath: m_fontSize
+      value: 28
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10748,6 +10776,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GUI_Btn_CraftType (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7795066635460179440, guid: c86724ad68fac6941a894299a3decc36, type: 3}
+      propertyPath: m_fontSize
+      value: 28
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11087,6 +11119,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GUI_Btn_CraftType (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 7795066635460179440, guid: c86724ad68fac6941a894299a3decc36, type: 3}
+      propertyPath: m_fontSize
+      value: 28
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11199,6 +11235,10 @@ PrefabInstance:
     - target: {fileID: 6906353363310561905, guid: c86724ad68fac6941a894299a3decc36, type: 3}
       propertyPath: m_Name
       value: GUI_Btn_CraftType (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795066635460179440, guid: c86724ad68fac6941a894299a3decc36, type: 3}
+      propertyPath: m_fontSize
+      value: 28
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14590,6 +14630,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GUI_Btn_CraftType (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 7795066635460179440, guid: c86724ad68fac6941a894299a3decc36, type: 3}
+      propertyPath: m_fontSize
+      value: 28
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14702,6 +14746,10 @@ PrefabInstance:
     - target: {fileID: 6906353363310561905, guid: c86724ad68fac6941a894299a3decc36, type: 3}
       propertyPath: m_Name
       value: GUI_Btn_CraftType (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795066635460179440, guid: c86724ad68fac6941a894299a3decc36, type: 3}
+      propertyPath: m_fontSize
+      value: 28
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16962,6 +17010,10 @@ PrefabInstance:
     - target: {fileID: 6906353363310561905, guid: c86724ad68fac6941a894299a3decc36, type: 3}
       propertyPath: m_Name
       value: GUI_Btn_CraftType (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795066635460179440, guid: c86724ad68fac6941a894299a3decc36, type: 3}
+      propertyPath: m_fontSize
+      value: 28
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -20002,6 +20054,10 @@ PrefabInstance:
     - target: {fileID: 6906353363310561905, guid: c86724ad68fac6941a894299a3decc36, type: 3}
       propertyPath: m_Name
       value: GUI_Btn_CraftType (0)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795066635460179440, guid: c86724ad68fac6941a894299a3decc36, type: 3}
+      propertyPath: m_fontSize
+      value: 28
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
