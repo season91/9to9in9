@@ -16,8 +16,11 @@ public class Player : Entity, IDamagable
     [SerializeField] private StatProfile statProfile;
     
     private float timer;
+    
+    // 플레이어 수치 참조용
     private float hungerPassive;
     private float staminaPassive;
+    private float healthPassive;
     
     private void Awake()
     {
@@ -28,9 +31,6 @@ public class Player : Entity, IDamagable
         statHandler = GetComponent<StatHandler>();
         interactionHandler = GetComponent<PlayerInteractionHandler>();
         equipHandler = GetComponent<PlayerEquipHandler>();
-
-        hungerPassive = CharacterManager.Player.statHandler.GetPassive(StatType.Hunger);
-        staminaPassive = CharacterManager.Player.statHandler.GetPassive(StatType.Stamina);
         
         // null체크
         if (controller == null) Debug.LogError("Player Controller not found");
@@ -40,33 +40,48 @@ public class Player : Entity, IDamagable
         if (equipHandler == null) Debug.LogError("Player EquipHandler not found");
         
         if (statProfile == null) Debug.LogError("Player StatProfile not found");
+        
+        hungerPassive = CharacterManager.Player.statHandler.GetPassive(StatType.Hunger);
+        staminaPassive = CharacterManager.Player.statHandler.GetPassive(StatType.Stamina);
+        healthPassive = CharacterManager.Player.statHandler.GetPassive(StatType.Health);
     }
 
     private void Start()
     {
         statHandler.Initialize(statProfile.ToDictionary());
         SpawnManager temp = SpawnManager.Instance;
+        
+        hungerPassive = CharacterManager.Player.statHandler.GetPassive(StatType.Hunger);
+        staminaPassive = CharacterManager.Player.statHandler.GetPassive(StatType.Stamina);
+        
     }
 
     private void Update()
     {
-        // 배고픔 수치 감소
         timer += Time.deltaTime;
 
-        if (!(timer >= 1f)) return;
-        
-        
+        if (timer < 1f) return;
+
         timer = 0f;
+        HandlePassiveStats();
+    }
+    
+    private void HandlePassiveStats()
+    {
+        // 배고픔 감소
         statHandler.Modify(StatType.Hunger, hungerPassive);
-        
-        bool empty = statHandler.IsEmpty(StatType.Hunger);
-        
-        // 스태미나 수치 증가
-        if (empty) return; // 배고픔 0이면 스태미나 리젠 X
-        statHandler.Modify(StatType.Stamina, staminaPassive);
-        
-        // 1초마다 호출되니까 괜찮을까요... 아니면 수정할게요...
         UIManager.Instance.UpdateStatUI(StatType.Hunger);
+
+        if (statHandler.IsEmpty(StatType.Hunger))
+        {
+            // 배고픔이 0이면 체력 감소
+            statHandler.Modify(StatType.Health, healthPassive);
+            UIManager.Instance.UpdateStatUI(StatType.Health);
+            return; // 스태미나 리젠 없음
+        }
+
+        // 스태미나 회복
+        statHandler.Modify(StatType.Stamina, staminaPassive);
         UIManager.Instance.UpdateStatUI(StatType.Stamina);
     }
     

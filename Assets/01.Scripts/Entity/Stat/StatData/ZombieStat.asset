@@ -15,21 +15,25 @@ MonoBehaviour:
   statEntries:
   - statType: 0
     stat:
-      curValue: 100
+      baseValue: 0
+      bonusValue: 0
       maxValue: 100
       passiveValue: 0
   - statType: 5
     stat:
-      curValue: 50
-      maxValue: 0
+      baseValue: 20
+      bonusValue: 0
+      maxValue: 40
       passiveValue: 0
   - statType: 6
     stat:
-      curValue: 2
+      baseValue: 2
+      bonusValue: 0
       maxValue: 0
       passiveValue: 0
   - statType: 3
     stat:
-      curValue: 0.1
+      baseValue: 1
+      bonusValue: 0
       maxValue: 0
       passiveValue: 0
