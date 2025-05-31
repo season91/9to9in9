@@ -51,7 +51,8 @@ public class PlayerInteractionHandler : MonoBehaviour
                 curInteractGameObject = null;
                 curInspectable = null;
                 curInteractable = null;
-                UIManager.Instance.HideItemInformation();
+                
+                if(UIManager.Instance != null) UIManager.Instance.HideItemInformation();
             }
         }
     }
