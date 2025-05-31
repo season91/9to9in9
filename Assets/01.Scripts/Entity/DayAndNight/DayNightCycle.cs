@@ -77,6 +77,7 @@ public class DayNightCycle : MonoBehaviour
             {
                 OnDayStarted?.Invoke();
                 isSpawnedResource = true;
+                isSpawnedEnemy = false;
             }
         }
         else
@@ -86,6 +87,7 @@ public class DayNightCycle : MonoBehaviour
             {
                 OnNightStarted?.Invoke();
                 isSpawnedEnemy = true;
+                isSpawnedResource = false;
             }
         }
         

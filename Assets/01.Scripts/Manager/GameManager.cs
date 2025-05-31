@@ -7,7 +7,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-
     public static GameManager Instance
     {
         get
@@ -27,20 +26,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
-    private void Start()
+    private void OnDestroy()
     {
-        
+        DayNightCycle.OnDayStarted -= ResourceSpawn;
+        DayNightCycle.OnNightStarted -= EnemySpawn;
     }
 
     public void InitMainScene()
     {
         Debug.Log("MainScene 초기화 시작");
         ResourceSpawn();
-
-        // test code - 내일 확인 위치바꿔도 됨
-        // DayNightCycle.OnDayStarted += ResourceSpawn;
-        // DayNightCycle.OnNightStarted += EnemySpawn;
+        
+        DayNightCycle.OnDayStarted += ResourceSpawn;
+        DayNightCycle.OnNightStarted += EnemySpawn;
     }
 
     public void ResourceSpawn()
@@ -58,6 +56,8 @@ public class GameManager : MonoBehaviour
                 SpawnManager.Instance.ResourceSpawn(pair.Key);
             }
         }
+        
+        Debug.Log("리소스 소환");
     }
 
     public void EnemySpawn()
@@ -69,6 +69,8 @@ public class GameManager : MonoBehaviour
                 SpawnManager.Instance.ResourceSpawn(pair.Key);
             }
         }
+        
+        Debug.Log("적 소환");
     }
     
 }
