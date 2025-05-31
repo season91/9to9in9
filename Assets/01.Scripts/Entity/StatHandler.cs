@@ -23,12 +23,22 @@ public class StatHandler: MonoBehaviour
 
     /// <summary>
     /// 지정한 스탯 타입의 현재 값을 반환
-    /// 해당 스탯이 없으면 0을 반환함 (ex. 공격력 없을 경우)
+    /// 해당 스탯이 없으면 0을 반환함
     /// </summary>
     /// <param name="type">스탯 타입</param>
     public float Get(StatType type)
     {
         return stats.TryGetValue(type, out var stat) ? stat.CurValue : 0f;
+    }
+
+    /// <summary>
+    /// 지정한 스탯 타입의 패시브 값을 반환
+    /// 해당 스탯이 없으면 0을 반환함
+    /// </summary>
+    /// <param name="type">스탯 타입</param>
+    public float GetPassive(StatType type)
+    {
+        return stats.TryGetValue(type, out var stat) ? stat.PassiveValue : 0f;
     }
 
     /// <summary>
@@ -62,8 +72,7 @@ public class StatHandler: MonoBehaviour
         if (stats.TryGetValue(type, out var stat))
             stat.ChangeBonus(amount);
     }
-
-
+    
     /// <summary>
     /// 지정한 스탯의 현재 값이 0 이하인지 확인
     /// </summary>
@@ -72,6 +81,7 @@ public class StatHandler: MonoBehaviour
     {
         return stats.TryGetValue(type, out var stat) && stat.IsEmpty;
     }
+        
 
     /// <summary>
     /// 지정한 스탯의 현재 비율 (0~1)을 반환

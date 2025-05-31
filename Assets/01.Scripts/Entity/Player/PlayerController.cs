@@ -176,14 +176,17 @@ public class PlayerController : MonoBehaviour, IMoveable, IJumpable
             {
                 case ConsumableType.Health:
                     CharacterManager.Player.statHandler.Modify(StatType.Health, value);
+                    UIManager.Instance.UpdateStatUI(StatType.Health);
                     break;
 
                 case ConsumableType.Hunger:
                     CharacterManager.Player.statHandler.Modify(StatType.Hunger, value);
+                    UIManager.Instance.UpdateStatUI(StatType.Hunger);
                     break;
 
                 case ConsumableType.Stamina:
                     CharacterManager.Player.statHandler.Modify(StatType.Stamina, value);
+                    UIManager.Instance.UpdateStatUI(StatType.Stamina);
                     break;
             }
         }
