@@ -6,11 +6,10 @@ public class UIEquipmentPopup : MonoBehaviour, IGUI
 {
     // 필요한 것
     // 보유 스탯, 스탯 이름
-    // 캐릭터 이미지 
-    // key enum value equip dictionary로 하자!
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private GUIItemSlotEquipment[] equipmentSlots;
     [SerializeField] private GUIItemSlotCraft craftSlot;
+    [SerializeField] private GUIStat[] stats;
     
     private SerializableRecipe workbenchRecipe;
     private ItemData workbenchData;
@@ -25,6 +24,7 @@ public class UIEquipmentPopup : MonoBehaviour, IGUI
         canvasGroup = GetComponent<CanvasGroup>();
         equipmentSlots = GetComponentsInChildren<GUIItemSlotEquipment>();
         craftSlot = GetComponentInChildren<GUIItemSlotCraft>();
+        stats = transform.Find("Layout_Stats")?.GetComponentsInChildren<GUIStat>();
     }
 
     public void Initialization()
@@ -42,6 +42,11 @@ public class UIEquipmentPopup : MonoBehaviour, IGUI
             equipmentSlots[slotIndex].SetType(slotType);
             equipmentSlotDict[slotType] = equipmentSlots[slotIndex++];
             // 나중에 실루엣도 해당 타입에 맞는 이미지들로 변경해주기
+        }
+
+        for (int i = 0; i < stats.Length; i++)
+        {
+            stats[i].Initialization();
         }
         
         workbenchData = ResourceManager.Instance.GetResource<ItemData>(StringAdrItemDataBuild.Workbench);
@@ -72,7 +77,8 @@ public class UIEquipmentPopup : MonoBehaviour, IGUI
         }
         
         workbenchRecipe = CraftManager.Instance.GetRecipe(workbenchData.itemName);
-
+        
+        UpdateStatUI();
         UpdateCraftSlotUI();
         
         canvasGroup.alpha = 1;
@@ -80,6 +86,17 @@ public class UIEquipmentPopup : MonoBehaviour, IGUI
         canvasGroup.blocksRaycasts = true;
     }
 
+    void UpdateStatUI()
+    {
+        var playerStatDict = CharacterManager.Player.statHandler.GetNameAndType();
+
+        int index = 0;
+        foreach (var stat in playerStatDict)
+        {
+            stats[index++].Show(stat.Key.ToString(), stat.Value.CurValue.ToString());
+        }
+    }
+    
     void UpdateCraftSlotUI()
     {
         isCraftable = CraftManager.Instance.CanCraftByItemName(workbenchData.itemName);
