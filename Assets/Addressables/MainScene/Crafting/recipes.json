@@ -8,7 +8,7 @@
                         "resultItemType": "Equipable",
                         "resultItemIcon": "tool-axe-icon",
                         "resultItemCode": "ToolAxeData",
-                        "resultItemName": "axe",
+                        "resultItemName": "tool-axe",
                         "resultAmount": 1,
                         "ingredients": [
                             {
@@ -28,7 +28,7 @@
                         "resultItemType": "Equipable",
                         "resultItemIcon": "tool-pickaxe-icon",
                         "resultItemCode": "ToolPickaxeData",
-                        "resultItemName": "pickaxe",
+                        "resultItemName": "tool-pickaxe",
                         "resultAmount": 1,
                         "ingredients": [
                             {

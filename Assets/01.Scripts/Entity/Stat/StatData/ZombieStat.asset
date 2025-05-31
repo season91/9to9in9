@@ -20,7 +20,7 @@ MonoBehaviour:
       passiveValue: 0
   - statType: 5
     stat:
-      curValue: 2
+      curValue: 50
       maxValue: 0
       passiveValue: 0
   - statType: 6
