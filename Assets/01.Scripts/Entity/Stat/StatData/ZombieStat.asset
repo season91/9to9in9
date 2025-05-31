@@ -28,3 +28,8 @@ MonoBehaviour:
       curValue: 2
       maxValue: 0
       passiveValue: 0
+  - statType: 3
+    stat:
+      curValue: 0.1
+      maxValue: 0
+      passiveValue: 0
