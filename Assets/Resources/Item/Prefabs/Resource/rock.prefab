@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 169659929858dd24386d3b7e4e3249ba, type: 2}
+  interactableParticleInstantiate: {fileID: 7822473327521237354, guid: 6191d268bb9fa2f4d94c4bbd390b3175, type: 3}
 --- !u!135 &4628146337649029084
 SphereCollider:
   m_ObjectHideFlags: 0

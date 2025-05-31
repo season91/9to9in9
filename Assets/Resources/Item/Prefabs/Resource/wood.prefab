@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: dbe53775add311d4197a531a8400d4e4, type: 2}
+  interactableParticlePrefab: {fileID: 7822473327521237354, guid: 6191d268bb9fa2f4d94c4bbd390b3175, type: 3}
 --- !u!65 &7419047201242361652
 BoxCollider:
   m_ObjectHideFlags: 0

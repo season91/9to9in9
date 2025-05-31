@@ -127,13 +127,15 @@ public static class StringAdrSpawnManagerKey
 
 public static class StringSpawnDic
 {
-    
     // 자원 종류와 개수 매핑
     public static readonly Dictionary<string, int> resourceSpawnTable = new Dictionary<string, int>
     {
         { StringAdrItemDataResource.Tree, 5 },
         { StringAdrItemDataResource.IronOre, 5 },
         { StringAdrItemDataResource.Rock, 5 },
+        { StringAdrItemDataResource.Stone, 10 },
+        { StringAdrItemDataResource.Iron, 10 },
+        { StringAdrItemDataResource.Wood, 10 }
     };
 
     public static readonly Dictionary<string, int> enemyResourceSpawnTable = new Dictionary<string, int>

@@ -12,7 +12,7 @@ using UnityEngine.AddressableAssets;
 public class ItemObject : MonoBehaviour
 {
     public ItemData itemData;
-
+    public GameObject interactableParticlePrefab;
     private void Reset()
     {
         bool found = false;
@@ -80,6 +80,24 @@ public class ItemObject : MonoBehaviour
                     Debug.LogWarning($"[ItemObject] Unknown function: {function}");
                     break;
             }
+        }
+
+    }
+    
+    private void OnEnable()
+    {
+        // 오브젝트 풀에서 다시 나올 때 파티클 붙이기
+        if (interactableParticlePrefab != null)
+        {
+            float yOffset = 0.5f; // 기본값
+
+            if (TryGetComponent<Collider>(out var col))
+            {
+                yOffset = col.bounds.extents.y + 0.1f;
+            }
+
+            Vector3 spawnPos = transform.position + new Vector3(0, yOffset, 0);
+            Instantiate(interactableParticlePrefab, spawnPos, Quaternion.identity, transform);
         }
     }
 }
