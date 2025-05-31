@@ -15,46 +15,55 @@ MonoBehaviour:
   statEntries:
   - statType: 0
     stat:
-      curValue: 100
+      baseValue: 100
+      bonusValue: 0
       maxValue: 100
-      passiveValue: 0
+      passiveValue: -2
   - statType: 1
     stat:
-      curValue: 100
+      baseValue: 100
+      bonusValue: 0
       maxValue: 100
       passiveValue: -2
   - statType: 2
     stat:
-      curValue: 100
+      baseValue: 100
+      bonusValue: 0
       maxValue: 100
       passiveValue: 5
   - statType: 3
     stat:
-      curValue: 1
+      baseValue: 2
+      bonusValue: 0
       maxValue: 5
       passiveValue: 0
   - statType: 4
     stat:
-      curValue: 3
+      baseValue: 3
+      bonusValue: 0
       maxValue: 5
       passiveValue: 0
   - statType: 5
     stat:
-      curValue: 10
+      baseValue: 20
+      bonusValue: 0
       maxValue: 30
       passiveValue: 0
   - statType: 6
     stat:
-      curValue: 3
+      baseValue: 3
+      bonusValue: 0
       maxValue: 5
       passiveValue: 0
   - statType: 7
     stat:
-      curValue: 0
+      baseValue: 0
+      bonusValue: 0
       maxValue: 80
       passiveValue: 0
   - statType: 8
     stat:
-      curValue: 0
+      baseValue: 0
+      bonusValue: 0
       maxValue: 50
       passiveValue: 0

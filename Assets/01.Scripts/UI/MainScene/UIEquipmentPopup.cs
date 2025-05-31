@@ -88,12 +88,12 @@ public class UIEquipmentPopup : MonoBehaviour, IGUI
 
     void UpdateStatUI()
     {
-        var playerStatDict = CharacterManager.Player.statHandler.GetNameAndType();
+        var playerStatDict = CharacterManager.Player.statHandler.GetStatValues();
 
         int index = 0;
         foreach (var stat in playerStatDict)
         {
-            stats[index++].Show(stat.Key.ToString(), stat.Value.CurValue.ToString());
+            stats[index++].Show(stat.Key, stat.Value.ToString("F0"));
         }
     }
     
