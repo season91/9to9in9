@@ -28,7 +28,7 @@ public class GUIItemSlotQuick : GUIItemSlotBase, IPointerClickHandler
         imgIcon.gameObject.SetActive(false);
     }
 
-    public override void Show(Sprite icon, int pcs = 0, ItemData itemData = null)
+    public override void Show(Sprite icon, int pcs = 0, ItemData data = null)
     {
         imgIcon.gameObject.SetActive(true);
         imgIcon.sprite = icon;

@@ -1,5 +1,7 @@
+using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class GUIItemSlotStation : GUIItemSlotBase
@@ -15,7 +17,7 @@ public class GUIItemSlotStation : GUIItemSlotBase
     
     public bool IsPlacePossible(Sprite icon)
     {
-        if(!imgIcon.sprite)
+        if(!imgIcon.enabled)
             return true;
         
         return imgIcon.sprite == icon;
@@ -32,8 +34,7 @@ public class GUIItemSlotStation : GUIItemSlotBase
 
     public override void Initialization()
     {
-        imgIcon.gameObject.SetActive(false);
-        imgIcon.sprite = null;
+        imgIcon.enabled = false;
         tmpPcs.text = string.Empty;
         itemData = null;
         
@@ -46,38 +47,25 @@ public class GUIItemSlotStation : GUIItemSlotBase
     /// </summary>
     /// <param name="icon">아이템 아이콘</param>
     /// <param name="pcs">아이템 개수 -1 or 1</param>
-    public override void Show(Sprite icon, int pcs, ItemData item)
+    public override void Show(Sprite icon, int pcs, ItemData data)
     {
-        imgIcon.gameObject.SetActive(true);
+        imgIcon.enabled = true;
         imgIcon.sprite = icon;
-
         SetPcs(pcs);
 
-        itemData = item;
+        itemData = data;
     }
 
     public override void Select()
     {
-        if (!int.TryParse(tmpPcs.text, out int pieces))
+        if (!imgIcon.enabled)
         {
             MyDebug.Log("This Slot is Empty");
             return;
         }
-
-        switch (pieces)
-        {
-            case <= 0:
-                MyDebug.Log("This Slot is Empty");
-                break;
-            case 1:
-                CharacterManager.Player.inventoryController.AddItem(itemData);
-                Initialization();
-                break;
-            default:
-                CharacterManager.Player.inventoryController.AddItem(itemData);
-                SetPcs(-1);
-                break;
-        }
+        
+        CharacterManager.Player.inventoryController.AddItem(itemData);
+        SetPcs(-1);
     }
 
     public void SetTitle(string title)
@@ -85,28 +73,26 @@ public class GUIItemSlotStation : GUIItemSlotBase
         tmpTitle.text = title;
     }
 
-    public void SetImageToSilhouette(bool isGetPossible)
-    {
-        // ItemSlot (Equip) 보면 실루엣 스프라이트 컬러 기준 있음
-        imgIcon.color = isGetPossible? Color.white : new Color(0, 0, 0, 0.509804f);
-    }
-    
     public void SetPcs(int pcs)
     {
+        // text가 1일때는 텍스트를 비움
+        
         if (!int.TryParse(tmpPcs.text, out int pieces))
         {
-            pieces = 0;
+            pieces = 1;
         }
-
-        pieces += pcs;
-
+        else
+        {
+            pieces += pcs;
+        }
+        
         if (pieces <= 0)
         {
             Initialization();
             return;
         }
-
-        tmpPcs.text = pieces.ToString().Trim();
+        
+        tmpPcs.text = pieces == 1 ? String.Empty : pieces.ToString().Trim();
     }
     
     public void DiscountPcsOfName(string itemName, int amount)
@@ -125,10 +111,19 @@ public class GUIItemSlotStation : GUIItemSlotBase
     
     public int GetPcs()
     {
+        if(!imgIcon.enabled)
+            return 0;
+            
         if (int.TryParse(tmpPcs.text, out int pcs))
         {
             return pcs;
         }
-        return 0;
+        return 1;
+    }
+    
+    public void SetClickEvent(UnityAction<ItemData, UnityAction> callback)
+    {
+        btnSelect.onClick.RemoveAllListeners();
+        btnSelect.onClick.AddListener(() => callback(ItemData, Select));
     }
 }
