@@ -55,6 +55,8 @@ public class EnemyController : Enemy, IAttackAble
     public ItemData[] itemdatas;
     private DayNightCycle dayNightCycle;
     
+    Coroutine tempCoroutine;
+    
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -282,6 +284,14 @@ public class EnemyController : Enemy, IAttackAble
         {
             Die();
         }
+        else
+        {
+            if (tempCoroutine != null)
+            {
+                StopCoroutine(tempCoroutine);
+            }
+            tempCoroutine = StartCoroutine(GotDamageCoroutine());
+        }
     }
 
     public override void Die()
@@ -291,7 +301,12 @@ public class EnemyController : Enemy, IAttackAble
         
         agent.isStopped = true; // 움직임 멈춤
         animator.SetBool("IsMove", false); // 이동 애니메이션 정지
-        StartCoroutine(DieCoroutine());
+        
+        if (tempCoroutine != null)
+        {
+            StopCoroutine(tempCoroutine);
+        }
+        tempCoroutine = StartCoroutine(DieCoroutine());
     }
 
     public override void Move()
@@ -326,6 +341,18 @@ public class EnemyController : Enemy, IAttackAble
 
         // 오브젝트 삭제
         Destroy(gameObject);
+    }
+
+    private IEnumerator GotDamageCoroutine()
+    {
+        if (meshRenderer != null && meshRenderer.material != null)
+        {
+            Material mat = meshRenderer.material;
+            mat.color = Color.red;
+            
+            yield return new WaitForSeconds(0.5f);
+            mat.color = Color.white;
+        }
     }
 
 }
