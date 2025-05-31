@@ -61,6 +61,7 @@ public class UIWorkbenchPopup : MonoBehaviour, IGUI
         {
             btnCraftTypes[index].Setting(infoKvp.Key);
             btnCraftTypes[index].SetClickEvent(SettingUIByClickType);
+            index++;
         }
         
         SettingUIByClickType(btnCraftTypes[0].GetCraftType());
@@ -88,6 +89,12 @@ public class UIWorkbenchPopup : MonoBehaviour, IGUI
         
         List<CraftableItemInfo> craftableInfoList = craftableItemInfos[type];
 
+        // All Slot Disable  
+        for (int i = 0; i < itemSlots.Length; i++)
+        {
+            itemSlots[i].Initialization();
+        }
+        
         for (int i = 0; i < craftableInfoList.Count; i++)
         {
             ItemData itemData = craftableInfoList[i].itemData;

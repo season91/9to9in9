@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -5,6 +6,7 @@ using UnityEngine.UI;
 public class GUIButtonCraftType : MonoBehaviour
 {
     [SerializeField] private Button btnCraftType;
+    [SerializeField] private TextMeshProUGUI tmpBtn;
     // [SerializeField] private EquipType craftType;
     private string craftType;
 
@@ -13,6 +15,7 @@ public class GUIButtonCraftType : MonoBehaviour
     void Reset()
     {
         btnCraftType = GetComponent<Button>();
+        tmpBtn = GetComponentInChildren<TextMeshProUGUI>();
     }
     
     public void Initialization()
@@ -25,6 +28,7 @@ public class GUIButtonCraftType : MonoBehaviour
         gameObject.SetActive(true);
         
         craftType = strCraftType;
+        tmpBtn.text = craftType;
     }
     
     public void SetClickEvent(UnityAction<string> callback)
