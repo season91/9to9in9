@@ -21,5 +21,5 @@ MonoBehaviour:
   prefab: {fileID: 6110585166862980947, guid: 1c5e00a0e6e1f3f4798d412277226037, type: 3}
   isStackable: 0
   maxStack: 0
-  functions: 0000000002000000
+  functions: 00000000
   resourceType: 0
