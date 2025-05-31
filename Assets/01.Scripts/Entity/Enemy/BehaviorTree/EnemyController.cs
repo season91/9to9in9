@@ -53,6 +53,8 @@ public class EnemyController : Enemy, IAttackAble
     private bool isDead = false;
     
     public ItemData[] itemdatas;
+    private DayNightCycle dayNightCycle;
+    
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -72,6 +74,8 @@ public class EnemyController : Enemy, IAttackAble
         statHandler.Initialize(statProfile.ToDictionary());
         if (statProfile == null) Debug.LogError("StatProfile not found");
 
+        dayNightCycle = GameObject.Find("DayAndNight").GetComponent<DayNightCycle>();
+        
         walkSpeed = statHandler.Get(StatType.MoveSpeed);
         
         // 공격 관련 노드 생성
@@ -119,6 +123,11 @@ public class EnemyController : Enemy, IAttackAble
     // 업데이트 내에서는 루트 노드(행동 트리 전체)의 상태를 평가한다.
     void Update()
     {
+        if (dayNightCycle.isDay)
+        {
+            Die();
+        }
+        
         if (isDead) return;
         
         playerDistance = Vector3.Distance(transform.position, CharacterManager.Player.transform.position);
