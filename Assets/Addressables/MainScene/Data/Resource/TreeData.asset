@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f552026eabc5cf4dbd423ae7ca6a47d, type: 3}
   m_Name: TreeData
   m_EditorClassIdentifier: 
-  itemCode: r5
+  itemCode: TreeData
   itemName: tree
   displayName: "\uB098\uBB34"
   description: "\uB098\uBB34\uB97C \uD328\uBCF4\uC790."

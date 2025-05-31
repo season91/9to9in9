@@ -20,7 +20,7 @@ public enum ItemFunction
 public abstract class ItemData : ScriptableObject
 {
     [Header("아이템에 들어갈 정보 Info")]
-    public string itemCode;
+    public string itemCode; // 아이템 코드이자 Addressable 주소이름
     public string itemName;
     public string displayName; // 아이템 이름
     public string description; // 아이템 설명

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f552026eabc5cf4dbd423ae7ca6a47d, type: 3}
   m_Name: IronOreData
   m_EditorClassIdentifier: 
-  itemCode: r6
+  itemCode: IronOreData
   itemName: iron-ore
   displayName: "\uCCA0\uAD11\uC11D"
   description: "\uCCA0\uAD11\uC11D\uC744 \uCE90\uBCF4\uC790."

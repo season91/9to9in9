@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AnvilData
   m_EditorClassIdentifier: 
   itemCode: b19
-  itemName: anvil
+  itemName: AnvilData
   displayName: "\uBAA8\uB8E8"
   description: "\uAC15\uD574\uC9C0\uC790"
   type: 3

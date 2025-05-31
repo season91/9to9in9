@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d218a217209436442b604d821804a81b, type: 3}
   m_Name: ArmorLegData
   m_EditorClassIdentifier: 
-  itemCode: e5
+  itemCode: ArmorLegData
   itemName: armor-leg
   displayName: "\uAC11\uC637-\uD558\uC758"
   description: "\uAC11\uC637\uC774\uB2E4."

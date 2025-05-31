@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d218a217209436442b604d821804a81b, type: 3}
   m_Name: HelmetData
   m_EditorClassIdentifier: 
-  itemCode: e3
+  itemCode: HelmetData
   itemName: helmet
   displayName: "\uD22C\uAD6C"
   description: "\uD22C\uAD6C\uC774\uB2E4."

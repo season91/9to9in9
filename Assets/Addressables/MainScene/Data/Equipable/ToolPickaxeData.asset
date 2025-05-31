@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d218a217209436442b604d821804a81b, type: 3}
   m_Name: ToolPickaxeData
   m_EditorClassIdentifier: 
-  itemCode: e2
+  itemCode: ToolPickaxeData
   itemName: tool-pickaxe
   displayName: "\uACE1\uAD2D\uC774"
   description: "\uACE1\uAD2D\uC774\uC774\uB2E4."
