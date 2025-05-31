@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f552026eabc5cf4dbd423ae7ca6a47d, type: 3}
   m_Name: WoodData
   m_EditorClassIdentifier: 
-  itemCode: r2
+  itemCode: WoodData
   itemName: wood
   displayName: "\uC7A5\uC791"
   description: "\uC7A5\uC791\uC774\uB2E4. \uAC00\uACF5\uD574\uBCF4\uC790."
@@ -21,5 +21,5 @@ MonoBehaviour:
   prefab: {fileID: 3138268646689521794, guid: 08e10084922ab35418bb39d7251002e6, type: 3}
   isStackable: 1
   maxStack: 12
-  functions: 00000000
+  functions: 01000000
   resourceType: 1

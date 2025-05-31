@@ -30,11 +30,11 @@ public class PlayerInputHandler : MonoBehaviour
         playerInputAsset["Look"].started += OnLookInput;
         playerInputAsset["Look"].canceled += OnLookInput;
 
-        playerInputAsset["Interact"].started += OnInteractInput;
+        playerInputAsset["Interact"].performed += OnInteractInput;
         
         playerInputAsset["Inventory"].started += OnInventoryInput;
         
-        playerInputAsset["Use"].started += OnUseInput;
+        playerInputAsset["Use"].performed += OnUseInput;
         
         playerInputAsset["Build"].started += OnBuildInput;
         
@@ -52,11 +52,11 @@ public class PlayerInputHandler : MonoBehaviour
         playerInputAsset["Look"].started -= OnLookInput;
         playerInputAsset["Look"].canceled -= OnLookInput;
 
-        playerInputAsset["Interact"].started -= OnInteractInput;
+        playerInputAsset["Interact"].performed -= OnInteractInput;
         
         playerInputAsset["Inventory"].started -= OnInventoryInput;
         
-        playerInputAsset["Use"].started -= OnUseInput;
+        playerInputAsset["Use"].performed -= OnUseInput;
         
         playerInputAsset["Build"].started -= OnBuildInput;
         

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d74587e00f6bde46bc32e5a1060ec6a, type: 3}
   m_Name: MetalWallScrewsHalfData
   m_EditorClassIdentifier: 
-  itemCode: b14
+  itemCode: MetalWallScrewsHalfData
   itemName: metal-wall-screws-half
   displayName: "\uAC15\uD654\uB41C \uB0AE\uC740 \uCCA0 \uBCBD"
   description: "\uC5C4\uD3D0\uD560 \uC218 \uC788\uB2E4"

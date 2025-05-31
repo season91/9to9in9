@@ -59,8 +59,6 @@ public class PlayerInteractionHandler : MonoBehaviour
     public void OnInteract()
     {
         if (curInteractable == null) return;
-        
-        Debug.Log("OnInteract : " + curInteractGameObject.name);
         curInteractable.OnInteract();
     }
 }

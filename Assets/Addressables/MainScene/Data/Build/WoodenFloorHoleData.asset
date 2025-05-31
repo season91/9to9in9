@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d74587e00f6bde46bc32e5a1060ec6a, type: 3}
   m_Name: WoodenFloorHoleData
   m_EditorClassIdentifier: 
-  itemCode: b3
+  itemCode: WoodenFloorHoleData
   itemName: wooden-floor-hole
   displayName: "\uB098\uBB34 \uBC14\uB2E5 \uC785\uAD6C"
   description: "\uC704\uC5D0\uC11C \uB0B4\uB824\uC62C \uC218 \uC788\uB2E4"

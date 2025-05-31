@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d218a217209436442b604d821804a81b, type: 3}
   m_Name: ArmorChestData
   m_EditorClassIdentifier: 
-  itemCode: e4
+  itemCode: ArmorChestData
   itemName: armor-chest
   displayName: "\uAC11\uC637-\uC0C1\uC758"
   description: "\uAC11\uC637\uC774\uB2E4."

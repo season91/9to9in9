@@ -2,12 +2,12 @@
     "recipes": [
         {
             "Anvil" : {
-                "Tool": [
+                "GatheringTool": [
                     {
                         "recipeCode": "rfe1",
                         "resultItemType": "Equipable",
                         "resultItemIcon": "tool-axe-icon",
-                        "resultItemCode": "e1",
+                        "resultItemCode": "ToolAxeData",
                         "resultItemName": "axe",
                         "resultAmount": 1,
                         "ingredients": [
@@ -21,14 +21,13 @@
                             }
                         ],
                         "craftTime": 5.0,
-                        "workstationEnumType": "Anvil",
-                        "addressableName" : "ToolAxeData"
+                        "workstationEnumType": "Anvil"
                     },
                     {
                         "recipeCode": "rfe2",
                         "resultItemType": "Equipable",
                         "resultItemIcon": "tool-pickaxe-icon",
-                        "resultItemCode": "e2",
+                        "resultItemCode": "ToolPickaxeData",
                         "resultItemName": "pickaxe",
                         "resultAmount": 1,
                         "ingredients": [
@@ -42,8 +41,7 @@
                             }
                         ],
                         "craftTime": 5.0,
-                        "workstationEnumType": "Anvil",
-                        "addressableName" : "ToolPickaxeData"
+                        "workstationEnumType": "Anvil"
                     }
                 ],
                 "Weapon": [
@@ -51,7 +49,7 @@
                         "recipeCode": "rfe8",
                         "resultItemType": "Equipable",
                         "resultItemIcon": "sword-icon",
-                        "resultItemCode": "e8",
+                        "resultItemCode": "SwordData",
                         "resultItemName": "sword",
                         "resultAmount": 1,
                         "ingredients": [
@@ -65,14 +63,13 @@
                             }
                         ],
                         "craftTime": 5.0,
-                        "workstationEnumType": "Anvil",
-                        "addressableName" : "SwordData"
+                        "workstationEnumType": "Anvil"
                     },
                     {
                         "recipeCode": "rfe9",
                         "resultItemType": "Equipable",
                         "resultItemIcon": "hammer-icon",
-                        "resultItemCode": "e9",
+                        "resultItemCode": "HammerData",
                         "resultItemName": "hammer",
                         "resultAmount": 1,
                         "ingredients": [
@@ -86,8 +83,7 @@
                             }
                         ],
                         "craftTime": 5.0,
-                        "workstationEnumType": "Anvil",
-                        "addressableName" : "HammerData"
+                        "workstationEnumType": "Anvil"
                     }
                 ],
                 "Armor": [
@@ -95,7 +91,7 @@
                         "recipeCode": "rfe3",
                         "resultItemType": "Equipable",
                         "resultItemIcon": "helmet-icon",
-                        "resultItemCode": "e3",
+                        "resultItemCode": "HelmetData",
                         "resultItemName": "helmet",
                         "resultAmount": 1,
                         "ingredients": [
@@ -109,14 +105,13 @@
                             }
                         ],
                         "craftTime": 5.0,
-                        "workstationEnumType": "Anvil",
-                        "addressableName" : "HelmetData"
+                        "workstationEnumType": "Anvil"
                     },
                     {
                         "recipeCode": "rfe4",
                         "resultItemType": "Equipable",
                         "resultItemIcon": "armor-chest-icon",
-                        "resultItemCode": "e4",
+                        "resultItemCode": "ArmorChestData",
                         "resultItemName": "armor-chest",
                         "resultAmount": 1,
                         "ingredients": [
@@ -130,14 +125,13 @@
                             }
                         ],
                         "craftTime": 5.0,
-                        "workstationEnumType": "Anvil",
-                        "addressableName" : "ArmorChestData"
+                        "workstationEnumType": "Anvil"
                     },
                     {
                         "recipeCode": "rfe5",
                         "resultItemType": "Equipable",
                         "resultItemIcon": "armor-leg-icon",
-                        "resultItemCode": "e5",
+                        "resultItemCode": "ArmorLegData",
                         "resultItemName": "armor-leg",
                         "resultAmount": 1,
                         "ingredients": [
@@ -151,14 +145,13 @@
                             }
                         ],
                         "craftTime": 5.0,
-                        "workstationEnumType": "Anvil",
-                        "addressableName" : "ArmorLegData"
+                        "workstationEnumType": "Anvil"
                     },
                     {
                         "recipeCode": "rfe6",
                         "resultItemType": "Equipable",
                         "resultItemIcon": "boots-icon",
-                        "resultItemCode": "e6",
+                        "resultItemCode": "BootsData",
                         "resultItemName": "boots",
                         "resultAmount": 1,
                         "ingredients": [
@@ -172,14 +165,13 @@
                             }
                         ],
                         "craftTime": 5.0,
-                        "workstationEnumType": "Anvil",
-                        "addressableName" : "BootsData"
+                        "workstationEnumType": "Anvil"
                     },
                     {
                         "recipeCode": "rfe7",
                         "resultItemType": "Equipable",
                         "resultItemIcon": "shield-icon",
-                        "resultItemCode": "e7",
+                        "resultItemCode": "ShieldData",
                         "resultItemName": "shield",
                         "resultAmount": 1,
                         "ingredients": [
@@ -193,8 +185,7 @@
                             }
                         ],
                         "craftTime": 5.0,
-                        "workstationEnumType": "Anvil",
-                        "addressableName" : "ShieldData"
+                        "workstationEnumType": "Anvil"
                     }
                 ]
             }
@@ -205,7 +196,7 @@
                     "recipeCode": "rfc1",
                     "resultItemType": "Consumable",
                     "resultItemIcon": "meat-cooked-icon",
-                    "resultItemCode": "c3",
+                    "resultItemCode": "MeatCookedData",
                     "resultItemName": "meat-cooked",
                     "resultAmount": 1,
                     "ingredients": [
@@ -219,8 +210,7 @@
                         }
                     ],
                     "craftTime": 5.0,
-                    "workstationEnumType": "Campfire",
-                    "addressableName" : "MeatCookedData"
+                    "workstationEnumType": "Campfire"
                 }
             ]
         },
@@ -230,7 +220,7 @@
                     "recipeCode": "rfb1",
                     "resultItemType": "Resource",
                     "resultItemIcon": "wooden-floor-old-icon",
-                    "resultItemCode": "b1",
+                    "resultItemCode": "WoodenFloorOldData",
                     "resultItemName" : "wooden-floor-old",
                     "resultAmount" : 1,
                     "ingredients" : [
@@ -240,14 +230,13 @@
                         }
                     ],
                     "craftTime" : 0.0,
-                    "workstationEnumType" : "Workbench",
-                    "addressableName" : "WoodenFloorOldData"
+                    "workstationEnumType" : "Workbench"
                 },
                 {
                     "recipeCode": "rfb2",
                     "resultItemType": "Resource",
                     "resultItemIcon": "wooden-floor-icon",
-                    "resultItemCode": "b2",
+                    "resultItemCode": "WoodenFloorData",
                     "resultItemName" : "wooden-floor",
                     "resultAmount" : 1,
                     "ingredients" : [
@@ -257,14 +246,13 @@
                         }
                     ],
                     "craftTime" : 0.0,
-                    "workstationEnumType" : "Workbench",
-                    "addressableName" : "WoodenFloorData"
+                    "workstationEnumType" : "Workbench"
                 },
                 {
                     "recipeCode": "rfb3",
                     "resultItemType": "Resource",
                     "resultItemIcon": "wooden-floor-hole-icon",
-                    "resultItemCode": "b3",
+                    "resultItemCode": "WoodenFloorHoleData",
                     "resultItemName" : "wooden-floor-hole",
                     "resultAmount" : 1,
                     "ingredients" : [
@@ -274,14 +262,13 @@
                         }
                     ],
                     "craftTime" : 0.0,
-                    "workstationEnumType" : "Workbench",
-                    "addressableName" : "WoodenFloorHoleData"
+                    "workstationEnumType" : "Workbench"
                 },
                 {
                     "recipeCode": "rfb4",
                     "resultItemType": "Resource",
                     "resultItemIcon": "wooden-fence-icon",
-                    "resultItemCode": "b4",
+                    "resultItemCode": "WoodenFenceData",
                     "resultItemName" : "wooden-fence",
                     "resultAmount" : 1,
                     "ingredients" : [
@@ -291,14 +278,13 @@
                         }
                     ],
                     "craftTime" : 0.0,
-                    "workstationEnumType" : "Workbench",
-                    "addressableName" : "WoodenFenceData"
+                    "workstationEnumType" : "Workbench"
                 },
                 {
                     "recipeCode": "rfb5",
                     "resultItemType": "Resource",
                     "resultItemIcon": "wooden-wall-icon",
-                    "resultItemCode": "b5",
+                    "resultItemCode": "WoodenWallData",
                     "resultItemName" : "wooden-wall",
                     "resultAmount" : 1,
                     "ingredients" : [
@@ -308,14 +294,13 @@
                         }
                     ],
                     "craftTime" : 0.0,
-                    "workstationEnumType" : "Workbench",
-                    "addressableName" : "WoodenWallData"
+                    "workstationEnumType" : "Workbench"
                 },
                 {
                     "recipeCode": "rfb6",
                     "resultItemType": "Resource",
                     "resultItemIcon": "wooden-door-icon",
-                    "resultItemCode": "b6",
+                    "resultItemCode": "WoodenDoorData",
                     "resultItemName" : "wooden-door",
                     "resultAmount" : 1,
                     "ingredients" : [
@@ -325,14 +310,13 @@
                         }
                     ],
                     "craftTime" : 0.0,
-                    "workstationEnumType" : "Workbench",
-                    "addressableName" : "WoodenDoorData"
+                    "workstationEnumType" : "Workbench"
                 },
                 {
                     "recipeCode": "rfb7",
                     "resultItemType": "Resource",
                     "resultItemIcon": "signpost-multi-icon",
-                    "resultItemCode": "b7",
+                    "resultItemCode": "SignpostMultiData",
                     "resultItemName" : "signpost-multi",
                     "resultAmount" : 1,
                     "ingredients" : [
@@ -342,14 +326,13 @@
                         }
                     ],
                     "craftTime" : 0.0,
-                    "workstationEnumType" : "Workbench",
-                    "addressableName" : "SignpostMultiData"
+                    "workstationEnumType" : "Workbench"
                 },
                 {
                     "recipeCode": "rfb8",
                     "resultItemType": "Resource",
                     "resultItemIcon": "signpost-single-icon",
-                    "resultItemCode": "b8",
+                    "resultItemCode": "SignpostSingleData",
                     "resultItemName" : "signpost-single",
                     "resultAmount" : 1,
                     "ingredients" : [
@@ -359,14 +342,13 @@
                         }
                     ],
                     "craftTime" : 0.0,
-                    "workstationEnumType" : "Workbench",
-                    "addressableName" : "SignpostSingleData"
+                    "workstationEnumType" : "Workbench"
                 },
                 {
                     "recipeCode": "rfb9",
                     "resultItemType": "Resource",
                     "resultItemIcon": "metal-fence-icon",
-                    "resultItemCode": "b9",
+                    "resultItemCode": "MetalFenceData",
                     "resultItemName" : "metal-fence",
                     "resultAmount" : 1,
                     "ingredients" : [
@@ -376,14 +358,13 @@
                         }
                     ],
                     "craftTime" : 0.0,
-                    "workstationEnumType" : "Workbench",
-                    "addressableName" : "MetalFenceData"
+                    "workstationEnumType" : "Workbench"
                 },
                 {
                     "recipeCode": "rfb10",
                     "resultItemType": "Resource",
                     "resultItemIcon": "metal-wall-icon",
-                    "resultItemCode": "b10",
+                    "resultItemCode": "MetalWallData",
                     "resultItemName" : "metal-wall",
                     "resultAmount" : 1,
                     "ingredients" : [
@@ -393,14 +374,13 @@
                         }
                     ],
                     "craftTime" : 0.0,
-                    "workstationEnumType" : "Workbench",
-                    "addressableName" : "MetalWallData"
+                    "workstationEnumType" : "Workbench"
                 },
                 {
                     "recipeCode": "rfb11",
                     "resultItemType": "Resource",
                     "resultItemIcon": "metal-wall-screws-icon",
-                    "resultItemCode": "b11",
+                    "resultItemCode": "MetalWallScrewsData",
                     "resultItemName" : "metal-wall-screws",
                     "resultAmount" : 1,
                     "ingredients" : [
@@ -410,14 +390,13 @@
                         }
                     ],
                     "craftTime" : 0.0,
-                    "workstationEnumType" : "Workbench",
-                    "addressableName" : "MetalWallScrewsData"
+                    "workstationEnumType" : "Workbench"
                 },
                 {
                     "recipeCode": "rfb12",
                     "resultItemType": "Resource",
                     "resultItemIcon": "metal-wall-narrow-icon",
-                    "resultItemCode": "b12",
+                    "resultItemCode": "MetalWallNarrowData",
                     "resultItemName" : "metal-wall-narrow",
                     "resultAmount" : 1,
                     "ingredients" : [
@@ -427,14 +406,13 @@
                         }
                     ],
                     "craftTime" : 0.0,
-                    "workstationEnumType" : "Workbench",
-                    "addressableName" : "MetalWallNarrowData"
+                    "workstationEnumType" : "Workbench"
                 },
                 {
                     "recipeCode": "rfb13",
                     "resultItemType": "Resource",
                     "resultItemIcon": "metal-wall-screws-narrow-icon",
-                    "resultItemCode": "b13",
+                    "resultItemCode": "MetalWallScrewsNarrowData",
                     "resultItemName" : "metal-wall-screws-narrow",
                     "resultAmount" : 1,
                     "ingredients" : [
@@ -444,14 +422,13 @@
                         }
                     ],
                     "craftTime" : 0.0,
-                    "workstationEnumType" : "Workbench",
-                    "addressableName" : "MetalWallScrewsNarrowData"
+                    "workstationEnumType" : "Workbench"
                 },
                 {
                     "recipeCode": "rfb14",
                     "resultItemType": "Resource",
                     "resultItemIcon": "metal-wall-screws-half-icon",
-                    "resultItemCode": "b14",
+                    "resultItemCode": "MetalWallScrewsHalfData",
                     "resultItemName" : "metal-wall-screws-half",
                     "resultAmount" : 1,
                     "ingredients" : [
@@ -461,14 +438,13 @@
                         }
                     ],
                     "craftTime" : 0.0,
-                    "workstationEnumType" : "Workbench",
-                    "addressableName" : "MetalWallScrewsHalfData"
+                    "workstationEnumType" : "Workbench"
                 },
                 {
                     "recipeCode": "rfb15",
                     "resultItemType": "Resource",
                     "resultItemIcon": "metal-door-icon",
-                    "resultItemCode": "b15",
+                    "resultItemCode": "MetalDoorData",
                     "resultItemName" : "metal-door",
                     "resultAmount" : 1,
                     "ingredients" : [
@@ -478,14 +454,13 @@
                         }
                     ],
                     "craftTime" : 0.0,
-                    "workstationEnumType" : "Workbench",
-                    "addressableName" : "MetalDoorData"
+                    "workstationEnumType" : "Workbench"
                 },
                 {
                     "recipeCode": "rfb17",
                     "resultItemType": "Resource",
                     "resultItemIcon": "campfire-icon",
-                    "resultItemCode": "b17",
+                    "resultItemCode": "CampfireData",
                     "resultItemName" : "campfire",
                     "resultAmount" : 1,
                     "ingredients" : [
@@ -499,14 +474,13 @@
                         }
                     ],
                     "craftTime" : 0.0,
-                    "workstationEnumType" : "Workbench",
-                    "addressableName" : "CampfireData"
+                    "workstationEnumType" : "Workbench"
                 },
                 {
                     "recipeCode": "rfb18",
                     "resultItemType": "Resource",
                     "resultItemIcon": "smelter-icon",
-                    "resultItemCode": "b18",
+                    "resultItemCode": "SmelterData",
                     "resultItemName" : "smelter",
                     "resultAmount" : 1,
                     "ingredients" : [
@@ -520,14 +494,13 @@
                         }
                     ],
                     "craftTime" : 0.0,
-                    "workstationEnumType" : "Workbench",
-                    "addressableName" : "SmelterData"
+                    "workstationEnumType" : "Workbench"
                 },
                 {
                     "recipeCode": "rfb19",
                     "resultItemType": "Resource",
                     "resultItemIcon": "anvil-icon",
-                    "resultItemCode": "b19",
+                    "resultItemCode": "AnvilData",
                     "resultItemName" : "anvil",
                     "resultAmount" : 1,
                     "ingredients" : [
@@ -541,8 +514,7 @@
                         }
                     ],
                     "craftTime" : 0.0,
-                    "workstationEnumType" : "Workbench",
-                    "addressableName" : "AnvilData"
+                    "workstationEnumType" : "Workbench"
                 }
             ]
         },
@@ -552,7 +524,7 @@
                     "recipeCode": "rfr1",
                     "resultItemType": "Resource",
                     "resultItemIcon": "iron-bar-icon",
-                    "resultItemCode": "r4",
+                    "resultItemCode": "IronBarData",
                     "resultItemName": "iron-bar",
                     "resultAmount": 1,
                     "ingredients": [
@@ -566,8 +538,7 @@
                         }
                     ],
                     "craftTime": 5.0,
-                    "workstationEnumType": "Smelter",
-                    "addressableName" : "IronBarData"
+                    "workstationEnumType": "Smelter"
                 }
             ]
         },
@@ -577,7 +548,7 @@
                     "recipeCode": "rfb16",
                     "resultItemType": "Resource",
                     "resultItemIcon": "workbench-icon",
-                    "resultItemCode": "b16",
+                    "resultItemCode": "WorkbenchData",
                     "resultItemName" : "workbench",
                     "resultAmount" : 1,
                     "ingredients" : [
@@ -587,8 +558,7 @@
                         }
                     ],
                     "craftTime" : 0.0,
-                    "workstationEnumType" : "Workbench",
-                    "addressableName" : "WorkbenchData"
+                    "workstationEnumType" : "Workbench"
                 }
             ]
         }

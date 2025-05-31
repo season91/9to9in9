@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d74587e00f6bde46bc32e5a1060ec6a, type: 3}
   m_Name: WoodenFloorData
   m_EditorClassIdentifier: 
-  itemCode: b2
+  itemCode: WoodenFloorData
   itemName: wooden-floor
   displayName: "\uB098\uBB34 \uBC14\uB2E5"
   description: "\uAC00\uBCBC\uC6B4 \uBC14\uB2E5"

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f552026eabc5cf4dbd423ae7ca6a47d, type: 3}
   m_Name: IronBarData
   m_EditorClassIdentifier: 
-  itemCode: r4
+  itemCode: IronBarData
   itemName: iron-bar
   displayName: "\uAC00\uACF5\uB41C \uCCA0"
   description: "\uAC00\uACF5\uB41C \uCCA0\uC774\uB2E4."
@@ -21,5 +21,5 @@ MonoBehaviour:
   prefab: {fileID: 1943781778520380789, guid: 771e4954ce068af45af527d85de530f6, type: 3}
   isStackable: 1
   maxStack: 12
-  functions: 00000000
+  functions: 01000000
   resourceType: 0
