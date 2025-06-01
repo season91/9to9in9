@@ -191,10 +191,13 @@ MonoBehaviour:
   groupHowTo: {fileID: 2128248593351173038}
   imgHowTo: {fileID: 3754668680147784637}
   spritesHowTo:
-  - {fileID: 21300000, guid: faf5e0e121ca7bb4bbc3edc016f545a2, type: 3}
-  - {fileID: 21300000, guid: 8de32cb5dfb707b45af6b96cc2274c52, type: 3}
-  - {fileID: 21300000, guid: efa4ddf124219fb42913248267969323, type: 3}
-  - {fileID: 21300000, guid: ddecedaac5327e348912a52d614d7499, type: 3}
+  - {fileID: 21300000, guid: 415abf7bd3fa864488ffe05a5997d406, type: 3}
+  - {fileID: 21300000, guid: ab7cb2d5f97b0fb4d955bfd50075a550, type: 3}
+  - {fileID: 21300000, guid: 0734d0bfb2d2135409adb2e0c7fd7d1e, type: 3}
+  - {fileID: 21300000, guid: 2746819115cf10143950f1a59b1bf476, type: 3}
+  - {fileID: 21300000, guid: f4f95fe39467f3c40bff974c448bccbb, type: 3}
+  - {fileID: 21300000, guid: 1eb1a6a4968054347a5c11fe163d9e37, type: 3}
+  - {fileID: 21300000, guid: ed062048e4ffd874e8b5b0e839934e75, type: 3}
 --- !u!1 &130248039639900321
 GameObject:
   m_ObjectHideFlags: 0
