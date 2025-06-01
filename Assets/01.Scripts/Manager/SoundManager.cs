@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
 using Random = UnityEngine.Random;
 
 public enum SfxType
@@ -30,9 +29,6 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioSource sfxSource;
     [SerializeField] private AudioSource bgmSource;
     
-    [Header("Audio Mixer")]
-    [SerializeField] private AudioMixer audioMixer;
-    
     [Header("Clips")]
     [SerializeField] private List<SfxClipGroup> sfxClipGroups = new();
     private Dictionary<SfxType, List<AudioClip>> sfxClipLists = new();
@@ -55,21 +51,16 @@ public class SoundManager : MonoBehaviour
         }
         else Destroy(gameObject);
     }
-
-    private void Start()
-    {
-        ApplyVolumeDefaults();
-    }
-
+    
     private void Update()
     {
         ApplyVolume();
-        
-        audioMixer.GetFloat("MasterVolume", out float m);
-        audioMixer.GetFloat("BGMVolume", out float b);
-        audioMixer.GetFloat("SFXVolume", out float s);
-        
-        Debug.Log($"[Mixer dB] Master: {m}, BGM: {b}, SFX: {s}");
+    }
+
+    private void ApplyVolume()
+    {
+        sfxSource.volume = masterVolume * sfxVolume;
+        bgmSource.volume = masterVolume * bgmVolume;
     }
 
     public void InitSfx()
@@ -110,8 +101,9 @@ public class SoundManager : MonoBehaviour
         AudioClip clip = (list.Count == 1)
             ? list[0]
             : list[Random.Range(0, list.Count)];
-
+        
         sfxSource.PlayOneShot(clip);
+        // Debug.Log($"playing {clip.name}");
     }
 
     public void PlayStepSfx()
@@ -131,44 +123,17 @@ public class SoundManager : MonoBehaviour
         particle.Play();
     }
     
-    private void ApplyVolumeDefaults()
+    public void PlayBgm(AudioClip bgmClip, bool loop = true)
     {
-        SetMasterVolume(1f);
-        SetBgmVolume(1f);
-        SetSfxVolume(1f);
+        if (bgmClip == null) return;
+
+        bgmSource.clip = bgmClip;
+        bgmSource.loop = loop;
+        bgmSource.Play();
     }
     
-    private void ApplyVolume()
+    public void StopBgm()
     {
-        float masterDb = Mathf.Log10(Mathf.Clamp(masterVolume, 0.0001f, 1f)) * 20f;
-        float bgmDb = Mathf.Log10(Mathf.Clamp(bgmVolume, 0.0001f, 1f)) * 20f;
-        float sfxDb = Mathf.Log10(Mathf.Clamp(sfxVolume, 0.0001f, 1f)) * 20f;
-
-        audioMixer.SetFloat("MasterVolume", masterDb);
-        audioMixer.SetFloat("BGMVolume", bgmDb);
-        audioMixer.SetFloat("SFXVolume", sfxDb);
+        bgmSource.Stop();
     }
-    
-    public void SetMasterVolume(float value)
-    {
-        SetVolume("MasterVolume", value);
-    }
-
-    public void SetBgmVolume(float value)
-    {
-        SetVolume("BGMVolume", value);
-    }
-
-    public void SetSfxVolume(float value)
-    {
-        SetVolume("SFXVolume", value);
-    }
-    
-    private void SetVolume(string exposedParam, float value)
-    {
-        float dB = Mathf.Log10(Mathf.Clamp(value, 0.0001f, 1f)) * 20f;
-        audioMixer.SetFloat(exposedParam, dB);
-    }
-
-    
 }
