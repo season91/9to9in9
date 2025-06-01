@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sfxSource: {fileID: 1985098339950404815}
-  bgmSource: {fileID: 0}
+  bgmSource: {fileID: 8605300222032196700}
   sfxClipGroups:
   - type: 0
     clipCount: 5
