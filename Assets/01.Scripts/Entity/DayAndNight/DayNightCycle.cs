@@ -72,8 +72,8 @@ public class DayNightCycle : MonoBehaviour
         {
             ++dayCount;
             isSpawnedResource = false;
-            isSpawnedEnemy = false;
-            Debug.Log(dayCount);
+            //isSpawnedEnemy = false;
+            //Debug.Log(dayCount);
         }
         
         UpdateLighting(sun, sunColor, sunIntensity);

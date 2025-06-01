@@ -29,6 +29,9 @@ public class PlayerInputHandler : MonoBehaviour
 
         playerInputAsset["Look"].started += OnLookInput;
         playerInputAsset["Look"].canceled += OnLookInput;
+        
+        playerInputAsset["Run"].started += OnRunStarted;
+        playerInputAsset["Run"].canceled += OnRunCanceled;
 
         playerInputAsset["Interact"].performed += OnInteractInput;
         
@@ -53,6 +56,9 @@ public class PlayerInputHandler : MonoBehaviour
         
         playerInputAsset["Look"].started -= OnLookInput;
         playerInputAsset["Look"].canceled -= OnLookInput;
+        
+        playerInputAsset["Run"].started -= OnRunStarted;
+        playerInputAsset["Run"].canceled -= OnRunCanceled;
 
         playerInputAsset["Interact"].performed -= OnInteractInput;
         
@@ -81,6 +87,16 @@ public class PlayerInputHandler : MonoBehaviour
     {
         playerController.Jumping();
     }
+    
+    private void OnRunStarted(InputAction.CallbackContext context)
+    {
+        playerController.StartRunning();
+    }
+
+    private void OnRunCanceled(InputAction.CallbackContext context)
+    {
+        playerController.StopRunning();
+    }
 
     private void OnInteractInput(InputAction.CallbackContext context)
     {
@@ -94,7 +110,14 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void OnInventoryInput(InputAction.CallbackContext context)
     {
+        if (UIManager.Instance.IsStationOpened())
+        {
+            UIManager.Instance.CloseStation();
+            playerController.ToggleCursor();
+            return;
+        }
         playerController.OnInventory();
+        UIManager.Instance.OpenStation(StationType.None); // Inventory 열기
     }
 
     private void OnBuildInput(InputAction.CallbackContext context)
@@ -109,7 +132,13 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void OnClosePopupInput(InputAction.CallbackContext context)
     {
-        UIManager.Instance.CloseStation();
+        if(UIManager.Instance.IsStationOpened())
+            UIManager.Instance.CloseStation();
+        else
+        {
+            UIManager.Instance.OnOffOption();
+            playerController.ToggleCursor();
+        }
     }
     
     private int GetPressedKeyValue()

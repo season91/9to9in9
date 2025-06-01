@@ -31,6 +31,7 @@ public class UIManager : MonoBehaviour
 
     // 고정 UI
     [SerializeField] UICanvasLoading canvasLoading;
+    [SerializeField] UICanvasOption canvasOption;
     
     // 재할당 필요 UI
     UICanvasMainScene canvasMainScene;
@@ -40,6 +41,7 @@ public class UIManager : MonoBehaviour
     private void Reset()
     {
         canvasLoading = GetComponentInChildren<UICanvasLoading>();
+        canvasOption = GetComponentInChildren<UICanvasOption>();
     }
 
     private void Awake()
@@ -59,6 +61,7 @@ public class UIManager : MonoBehaviour
         
         // 게임 최초 시작 시 Start씬의 UI를 등록해주기 위함 (초기화 단계)
         _ = OpenScene(SceneType.Start);
+        canvasOption.Initialization();
     }
     
     // 비동기 Open Scene
@@ -209,7 +212,13 @@ public class UIManager : MonoBehaviour
         activeGUIs.Clear();
     }
     
+    
+    // Option
+    public void OnOffOption() => canvasOption.Open();
+    
     // Main Scene
+    public bool IsStationOpened() => canvasMainScene.IsStationOpened();
+    
     public StationType CurrentStation() => canvasMainScene.currentStation;
 
     public bool TrySlotClickWithStation(ItemData item) => canvasMainScene.TrySlotClickWithStation(item);

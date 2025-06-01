@@ -18,11 +18,11 @@ public class
 
     private Dictionary<string, PoolManager> pools = new Dictionary<string, PoolManager>();
     private Dictionary<string, GameObject> prefabs = new Dictionary<string, GameObject>();
+    public List<GameObject> spawnedPrefabs = new List<GameObject>();
     
     // 자원, 몬스터 랜덤 생성을 정보
     private Transform  spawnCenter;
-    //private float spawnRange = 30f;
-
+    
     public static SpawnManager Instance
     {
         get
@@ -72,7 +72,7 @@ public class
                 }
                 else
                 {
-                    //TODO - 프리팹 재설정해야할 시 필요한 코드
+                    pools[key].Init();
                 }
             }
             else
@@ -106,8 +106,24 @@ public class
                 Debug.Log($"{key} 프리팹 찾을 수 없음!");
             }
         }
-        
-        spawnCenter = FindObjectOfType<Player>().transform;
+
+        if (spawnedPrefabs == null)
+        {
+            spawnedPrefabs = new List<GameObject>();
+        }
+        else if(spawnedPrefabs.Count > 0)
+        {
+            foreach (GameObject obj in spawnedPrefabs)
+            {
+                if (obj != null)
+                {
+                    Destroy(obj);
+                }
+            }
+            spawnedPrefabs.Clear();
+        }
+
+    spawnCenter = FindObjectOfType<Player>().transform;
     }
     
     private void CreatePool(string key, GameObject prefab)
@@ -133,7 +149,9 @@ public class
         }
         else if(prefabs.ContainsKey(key))
         {
-            return Instantiate(prefabs[key]);
+            GameObject obj = Instantiate(prefabs[key]);
+            spawnedPrefabs.Add(obj);
+            return obj;
         }
         
         Debug.Log("프리팹 없음!!! 심각한 버그!!");
@@ -150,7 +168,10 @@ public class
         }
         else
         {
-            Debug.Log($"SpawnManager.Prefabs에서 {key} 프리팹 찾을 수 없음!");
+            if (spawnedPrefabs.Contains(obj))
+            {
+                spawnedPrefabs.Remove(obj);
+            }
             Destroy(obj);
         }
     }

@@ -99,5 +99,11 @@ public class GameManager : MonoBehaviour
             spawnedFirefly.SetActive(false);
         }
     }
+
+    public void GameOver()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        UIManager.Instance.GameOver();
+    }
     
 }

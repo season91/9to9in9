@@ -9,11 +9,6 @@ public class PlayerController : MonoBehaviour, IMoveable, IJumpable
     [Header("Movement")]
     [SerializeField] private LayerMask groundLayerMask;
     private Vector2 curMoveInput;
-    
-    // [SerializeField] private float moveSpeed = 10f;
-    // [SerializeField] private float minMoveSpeed = 3f;
-    // [SerializeField] private float maxMoveSpeed = 20f;
-    // [SerializeField] private float jumpPower = 7f;
 
     [Header("CameraLook")]
     [SerializeField] private float minXLook = -85f;
@@ -25,6 +20,14 @@ public class PlayerController : MonoBehaviour, IMoveable, IJumpable
     private float camCurXRot;
     private Vector2 mouseDelta;
     private bool canLook = true;
+    
+    [Header("Run")]
+    [SerializeField] private float drainInterval = 0.2f;
+    
+    public bool isRunning;
+    private float staminaDrainRate;
+    private float runBonus;
+    private float drainTimer;
     
     private Rigidbody rigidBody;
     private StatHandler statHandler;
@@ -50,6 +53,10 @@ public class PlayerController : MonoBehaviour, IMoveable, IJumpable
         
         statHandler = CharacterManager.Player.statHandler;
         if (statHandler == null) Debug.LogError("StatHandler not found");
+        
+        // 스탯 가져오기
+        runBonus = CharacterManager.Player.statHandler.GetPassive(StatType.MoveSpeed);
+        staminaDrainRate = (CharacterManager.Player.statHandler.GetPassive(StatType.Stamina) + 2);
     }
 
     private void Update()
@@ -61,6 +68,23 @@ public class PlayerController : MonoBehaviour, IMoveable, IJumpable
         }
 
         wasGrounded = isGrounded; // 항상 마지막에 상태 갱신
+        
+        if (!isRunning) return;
+        
+        drainTimer += Time.deltaTime;
+        if (drainTimer >= drainInterval)
+        {
+            drainTimer = 0f;
+            CharacterManager.Player.statHandler.Modify(StatType.Stamina, -staminaDrainRate * drainInterval);
+
+            UIManager.Instance.UpdateStatUI(StatType.Stamina);
+
+            // 스태미나 0이면 자동으로 걷기로 전환
+            if (CharacterManager.Player.statHandler.IsEmpty(StatType.Stamina))
+            {
+                StopRunning();
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -147,7 +171,7 @@ public class PlayerController : MonoBehaviour, IMoveable, IJumpable
         ToggleCursor();
     }
     
-    void ToggleCursor()
+    public void ToggleCursor()
     {
         bool toggle = Cursor.lockState == CursorLockMode.Locked;
         Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
@@ -204,5 +228,17 @@ public class PlayerController : MonoBehaviour, IMoveable, IJumpable
                     break;
             }
         }
+    }
+    
+    public void StartRunning()
+    {
+        isRunning = true;
+        CharacterManager.Player.statHandler.Modify(StatType.MoveSpeed, runBonus);
+    }
+
+    public void StopRunning()
+    {
+        isRunning = false;
+        CharacterManager.Player.statHandler.Modify(StatType.MoveSpeed, -runBonus);
     }
 }
