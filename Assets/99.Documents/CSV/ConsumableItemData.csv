@@ -1,5 +1,5 @@
 ﻿code,name,displayName,description,type,icon,prefab,function,isStackable,maxStack,consumableType,amounts
-MeatData,meat,고기,소를 잡아 얻은 고기이다. 불에 가공해보자.,Consumable,meat-icon,meat,Interactable,TRUE,12,Health|Hunger,15|10
+MeatData,meat,고기,고기이다. 불에 가공해보자.,Consumable,meat-icon,meat,Interactable,TRUE,12,Health|Hunger,15|10
 AppleData,apple,사과,사과이다.,Consumable,apple-icon,apple,Interactable,TRUE,12,Health,5
 MeatCookedData,meat-cooked,요리된 고기,요리가 된 맛있는 고기 음식 이다.,Consumable,meat-cooked-icon,meat-cooked,Interactable,TRUE,12,Health|Hunger,60|40
 OrangeData,orange,오렌지,오렌지이다,Consumable,orange-icon,orange,Interactable,TRUE,12,Stamina,30

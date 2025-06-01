@@ -15,8 +15,7 @@ MonoBehaviour:
   itemCode: MeatData
   itemName: meat
   displayName: "\uACE0\uAE30"
-  description: "\uC18C\uB97C \uC7A1\uC544 \uC5BB\uC740 \uACE0\uAE30\uC774\uB2E4.
-    \uBD88\uC5D0 \uAC00\uACF5\uD574\uBCF4\uC790."
+  description: "\uACE0\uAE30\uC774\uB2E4. \uBD88\uC5D0 \uAC00\uACF5\uD574\uBCF4\uC790."
   type: 0
   icon: {fileID: 21300000, guid: 616790708d21e0545bb83a4695b3c0d2, type: 3}
   prefab: {fileID: 3006929802225859455, guid: 50e2715f58895e240a288dd9cd592da4, type: 3}
