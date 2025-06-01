@@ -340,7 +340,7 @@ public class EnemyController : Enemy, IAttackAble
         yield return new WaitForSeconds(1f);
 
         // 오브젝트 삭제
-        Destroy(gameObject);
+        SpawnManager.Instance.ReleaseObject(gameObject.name,gameObject);
     }
 
     private IEnumerator GotDamageCoroutine()
