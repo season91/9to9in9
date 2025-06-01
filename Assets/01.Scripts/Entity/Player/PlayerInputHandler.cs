@@ -29,6 +29,9 @@ public class PlayerInputHandler : MonoBehaviour
 
         playerInputAsset["Look"].started += OnLookInput;
         playerInputAsset["Look"].canceled += OnLookInput;
+        
+        playerInputAsset["Run"].started += OnRunStarted;
+        playerInputAsset["Run"].canceled += OnRunCanceled;
 
         playerInputAsset["Interact"].performed += OnInteractInput;
         
@@ -53,6 +56,9 @@ public class PlayerInputHandler : MonoBehaviour
         
         playerInputAsset["Look"].started -= OnLookInput;
         playerInputAsset["Look"].canceled -= OnLookInput;
+        
+        playerInputAsset["Run"].started -= OnRunStarted;
+        playerInputAsset["Run"].canceled -= OnRunCanceled;
 
         playerInputAsset["Interact"].performed -= OnInteractInput;
         
@@ -80,6 +86,16 @@ public class PlayerInputHandler : MonoBehaviour
     private void OnJumpInput(InputAction.CallbackContext context)
     {
         playerController.Jumping();
+    }
+    
+    private void OnRunStarted(InputAction.CallbackContext context)
+    {
+        playerController.StartRunning();
+    }
+
+    private void OnRunCanceled(InputAction.CallbackContext context)
+    {
+        playerController.StopRunning();
     }
 
     private void OnInteractInput(InputAction.CallbackContext context)
