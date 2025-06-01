@@ -103,10 +103,10 @@ public class CraftManager : MonoBehaviour
             }
             foreach (var recipe in categoryPair.Value)
             {
-                var itemData = GetItemData(recipe.addressableName);
+                var itemData = GetItemData(recipe.resultItemCode);
                 if (itemData == null)
                 {
-                    Debug.LogWarning($"[GetRecipeOfStationType] itemData 없음: {recipe.addressableName}");
+                    Debug.LogWarning($"[GetRecipeOfStationType] itemData 없음: {recipe.resultItemCode}");
                     continue;
                 }
 
@@ -164,13 +164,11 @@ public class CraftManager : MonoBehaviour
         }
         
         // 새로운 결과 아이템 지급 처리 필요
-        // addressbale name 파싱
-        string adrName = StringUtils.KebabToPascal(recipe.addressableName);
-        ItemData itemData = GetItemData(adrName);
+        ItemData itemData = GetItemData(recipe.resultItemCode);
 
         if (itemData == null)
         {
-            Debug.LogError($"[ExecuteCraft] 결과 아이템 데이터 정보가 없음 : {adrName}");
+            Debug.LogError($"[ExecuteCraft] 결과 아이템 데이터 정보가 없음 : {recipe.resultItemCode}");
             return;
         }
         

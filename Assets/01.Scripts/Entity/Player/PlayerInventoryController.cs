@@ -25,7 +25,7 @@ public class PlayerInventoryController : MonoBehaviour
             item = null;
             Quantity = 0;
         }
-        
+
         public ItemSlot(ItemData item, int quantity = 1)
         {
             this.item = item;
@@ -38,33 +38,40 @@ public class PlayerInventoryController : MonoBehaviour
             Quantity = slot.Quantity;
         }
         
-        public void InitSlot(ItemData item = null,int quantity=0)
+        public ItemSlot(ItemSlot slot, int quantity)
+        {
+            item = slot.item;
+            Quantity = quantity;
+        }
+
+        public void InitSlot(ItemData item = null, int quantity = 0)
         {
             this.item = item;
             this.Quantity = quantity;
         }
+
         public bool isMax => Quantity >= item.maxStack;
-    
+
         public bool isItemExsit(ItemData item) => this.item == item;
 
         public bool isItemExsit(string name) => this.item.itemName == name;
         public bool CanStack() => item.isStackable && !isMax;
         public bool isSlotEmpty() => Quantity == 0;
     }
-    
+
     private List<ItemSlot> inventoryItems;
     private List<ItemData> items;
     private List<EquipableItemData> equippedItems;
     private List<ItemSlot> quickSlotItems;
-    
+
     //외부 읽기 전용 list 반환
     public IReadOnlyList<ItemData> Items => items;
 
     [SerializeField] private int inventorySize = 21;
     [SerializeField] private int quickSlotSize = 7;
-    
+
     public Action UpdateInventory;
-    
+
     private void Awake()
     {
         inventoryItems = new List<ItemSlot>();
@@ -81,13 +88,6 @@ public class PlayerInventoryController : MonoBehaviour
 
     public void AddItem(ItemData item, int quantity = 1)
     {
-        if (items.Count == inventorySize)
-        {
-            #if UNITY_EDITOR
-            Debug.LogWarning("인벤토리 최대 칸 수 넘어감!!");
-                #endif
-            return;
-        }
         for (int i = 0; i < items.Count; ++i)
         {
             if (inventoryItems[i].isItemExsit(item) && inventoryItems[i].CanStack())
@@ -97,20 +97,29 @@ public class PlayerInventoryController : MonoBehaviour
                 return;
             }
         }
+
+        if (items.Count == inventorySize)
+        {
+#if UNITY_EDITOR
+            Debug.LogWarning("인벤토리 최대 칸 수 넘어감!!");
+#endif
+            return;
+        }
+
         items.Add(item);
         inventoryItems.Add(new ItemSlot(item, quantity));
         UpdateInventory?.Invoke();
     }
-    
-    
+
+
     //UI에서 아이템 사용 혹은 제거 시 불러올 메서드
     public void RemoveItem(int index)
     {
         if (index >= inventoryItems.Count) return;
-        if(items[index].isStackable)
+        if (items[index].isStackable)
         {
-            if ((--inventoryItems[index].Quantity) <= 0) 
-            { 
+            if ((--inventoryItems[index].Quantity) <= 0)
+            {
                 items.RemoveAt(index);
                 inventoryItems.RemoveAt(index);
             }
@@ -127,10 +136,10 @@ public class PlayerInventoryController : MonoBehaviour
     //재료 아이템 소모 시 호출할 메서드
     public void RemoveItem(string name, int quantity = 1)
     {
-        for (int i = inventoryItems.Count - 1; i >= 0 && quantity > 0 ; --i)
+        for (int i = inventoryItems.Count - 1; i >= 0 && quantity > 0; --i)
         {
             if (!inventoryItems[i].isItemExsit(name)) continue;
-            
+
             if (inventoryItems[i].Quantity > quantity)
             {
                 inventoryItems[i].Quantity -= quantity;
@@ -143,9 +152,10 @@ public class PlayerInventoryController : MonoBehaviour
                 items.RemoveAt(i);
             }
         }
+
         UpdateInventory?.Invoke();
     }
-    
+
     //단일 아이템 제거의 경우 호출
     public void RemoveItem(ItemData item)
     {
@@ -161,11 +171,16 @@ public class PlayerInventoryController : MonoBehaviour
         }
     }
     
+    public bool IsInventoryFull()
+    {
+        return items.Count == inventorySize;
+    }
+
     public int GetAllItemCount()
     {
         return items.Count;
     }
-    
+
     /*public List<EquipableItemData> GetAllEquippedItems()
     {
         return equippedItems;
@@ -177,21 +192,25 @@ public class PlayerInventoryController : MonoBehaviour
         {
             if (item.equipSlot == slot) return item.icon;
         }
+
         return null;
     }
-    
+
     public Sprite GetIcon(int index)
     {
-        if (items[index] != null)
+        if (index < items.Count)
         {
-            return items[index].icon;
+            if (items[index] != null)
+            {
+                return items[index].icon;
+            }
         }
         return null;
     }
 
     public int GetPcs(int index)
     {
-        if(index > inventoryItems.Count) return -1;
+        if (index >= inventoryItems.Count) return -1;
         return inventoryItems[index].Quantity;
     }
 
@@ -205,11 +224,28 @@ public class PlayerInventoryController : MonoBehaviour
                 totalQuantity += slot.Quantity;
             }
         }
+
         return totalQuantity;
     }
 
+    public int GetQuickCount()
+    {
+        return quickSlotItems.Count;
+    }
     
-    public ItemData GetItem(int index)
+    public Sprite GetQuickIcon(int index)
+    {
+        if(index >= quickSlotItems.Count) return null;
+        return quickSlotItems[index].item.icon;
+    }
+
+    public int GetQuickPcs(int index)
+    {
+        if (index >= quickSlotItems.Count) return -1;
+        return quickSlotItems[index].Quantity;
+    }
+
+public ItemData GetItem(int index)
     {
         if(index >= inventoryItems.Count) {return null;}
         return items[index];
@@ -245,21 +281,25 @@ public class PlayerInventoryController : MonoBehaviour
 
     public bool UnEquipItem(EquipSlot slotType)
     {
-        foreach (EquipableItemData equipItem in equippedItems)
+        if (inventoryItems.Count < inventorySize)
         {
-            if (equipItem.equipSlot != slotType) continue;
-            AddItem(equipItem);
-            equippedItems.Remove(equipItem);
-            
-            // 오른손이면 장비 화면에서 지우기
-            if (equipItem.equipSlot == EquipSlot.RightHand)
-                CharacterManager.Player.equipHandler.UnEquip();
-            
-            // 스탯 업데이트
-            CharacterManager.Player.equipHandler.UpdateStat(equipItem, 0);
-            UpdateInventory?.Invoke();
-            return true;
+            foreach (EquipableItemData equipItem in equippedItems)
+            {
+                if (equipItem.equipSlot != slotType) continue;
+                AddItem(equipItem);
+                equippedItems.Remove(equipItem);
+
+                // 오른손이면 장비 화면에서 지우기
+                if (equipItem.equipSlot == EquipSlot.RightHand)
+                    CharacterManager.Player.equipHandler.UnEquip();
+
+                // 스탯 업데이트
+                CharacterManager.Player.equipHandler.UpdateStat(equipItem, 0);
+                UpdateInventory?.Invoke();
+                return true;
+            }
         }
+
         return false;
     }
     
@@ -267,10 +307,11 @@ public class PlayerInventoryController : MonoBehaviour
     //------퀵슬롯 이동 함수
     public void MoveItemToQuickSlot(int itemIndex)
     {
-        if (quickSlotItems.Count >= quickSlotSize)
+        if (itemIndex < 0 || itemIndex >= inventoryItems.Count)
         {
             return;
         }
+        bool addItemToQuickSlot = false;
 
         foreach (ItemSlot slot in quickSlotItems)
         {
@@ -279,21 +320,43 @@ public class PlayerInventoryController : MonoBehaviour
                 if (slot.CanStack())
                 {
                     ++slot.Quantity;
+                    addItemToQuickSlot = true;
+                    break;
                 }
-                else
-                {
-                    quickSlotItems.Add(new ItemSlot(inventoryItems[itemIndex]));
-                } 
-                RemoveItem(itemIndex);
-                break;
             }
         }
+
+        if (!addItemToQuickSlot)
+        {
+            quickSlotItems.Add(new ItemSlot(inventoryItems[itemIndex], 1));
+        }
+
+        RemoveItem(itemIndex);
         UpdateInventory?.Invoke();
     }
+    
+    //퀵슬롯에서 인벤토리로
+    public void MoveItemFromQuickSlot(int itemIndex)
+    {
+        if (itemIndex < 0 || itemIndex >= quickSlotItems.Count)
+        {
+            return;
+        }
 
+        --quickSlotItems[itemIndex].Quantity;
+        AddItem(quickSlotItems[itemIndex].item);
+        if (quickSlotItems[itemIndex].isSlotEmpty())
+        {
+            quickSlotItems.RemoveAt(itemIndex);
+        }
+        
+        UpdateInventory?.Invoke();
+    }
+    
+    
     public ItemData UseItemInQuickSlot(int quickSlotIndex)
     {
-        if (quickSlotIndex >= quickSlotSize) return null;
+        if (quickSlotIndex >= quickSlotItems.Count) return null;
         ItemData temp = quickSlotItems[quickSlotIndex].item;
         if (--quickSlotItems[quickSlotIndex].Quantity <= 0)
         {

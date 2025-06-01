@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f552026eabc5cf4dbd423ae7ca6a47d, type: 3}
   m_Name: IronOreData
   m_EditorClassIdentifier: 
-  itemCode: r6
+  itemCode: IronOreData
   itemName: iron-ore
   displayName: "\uCCA0\uAD11\uC11D"
   description: "\uCCA0\uAD11\uC11D\uC744 \uCE90\uBCF4\uC790."
@@ -21,5 +21,5 @@ MonoBehaviour:
   prefab: {fileID: 510619728292910355, guid: 39685d20050bedb48b4a7c2864ec7039, type: 3}
   isStackable: 0
   maxStack: 0
-  functions: 0000000002000000
+  functions: 00000000
   resourceType: 0

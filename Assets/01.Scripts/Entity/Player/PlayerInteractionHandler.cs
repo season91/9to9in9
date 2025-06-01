@@ -14,11 +14,11 @@ public class PlayerInteractionHandler : MonoBehaviour
     private IInteractable curInteractable;
     private IInspectable curInspectable;
     
-    private Camera camera;
+    private Camera cam;
 
     private void Awake()
     {
-        camera = Camera.main;
+        cam = Camera.main;
     }
 
     private void Update()
@@ -27,7 +27,7 @@ public class PlayerInteractionHandler : MonoBehaviour
         {
             lastCheckTime = Time.time;
 
-            Ray ray = camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
+            Ray ray = cam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
             Debug.DrawRay(ray.origin, ray.direction * maxCheckDistance, Color.red);
 
             RaycastHit hit;
@@ -51,7 +51,8 @@ public class PlayerInteractionHandler : MonoBehaviour
                 curInteractGameObject = null;
                 curInspectable = null;
                 curInteractable = null;
-                UIManager.Instance.HideItemInformation();
+                
+                if(UIManager.Instance != null) UIManager.Instance.HideItemInformation();
             }
         }
     }
@@ -59,8 +60,6 @@ public class PlayerInteractionHandler : MonoBehaviour
     public void OnInteract()
     {
         if (curInteractable == null) return;
-        
-        Debug.Log("OnInteract : " + curInteractGameObject.name);
         curInteractable.OnInteract();
     }
 }

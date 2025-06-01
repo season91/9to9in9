@@ -620,6 +620,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8735523077752241932}
   - component: {fileID: 6372633102165934609}
+  - component: {fileID: 8966357418075010706}
+  - component: {fileID: 8334652607233398561}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -635,7 +637,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2586322123159068829}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.8522647, z: -0, w: -0.52311087}
+  m_LocalRotation: {x: 0, y: 0.85226613, z: -0, w: -0.5231085}
   m_LocalPosition: {x: 3.867, y: 0.171, z: 1.643}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
@@ -665,6 +667,43 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8966357418075010706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2586322123159068829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65e64366d8a75d0488753488ac6ae690, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - "\uC548\uB155\uC548\uB155\uD558\uC138\uC694"
+  - "\uBC30\uACE0\uBC30\uACE0\uD30C\uC694"
+  - "\uCE58\uD0A8\uCE58\uD0A8\uC0AC\uC918\uC601"
+--- !u!65 &8334652607233398561
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2586322123159068829}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.906798, y: 4.4152756, z: 5.550219}
+  m_Center: {x: 0.11460499, y: 1.7076372, z: 0.6722392}
 --- !u!1 &2722763827577465431
 GameObject:
   m_ObjectHideFlags: 0

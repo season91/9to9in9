@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 0172ea52bde541b4c93f7083edf515ca, type: 2}
+  interactableParticlePrefab: {fileID: 7822473327521237354, guid: 6191d268bb9fa2f4d94c4bbd390b3175, type: 3}
 --- !u!135 &-4874600793234732451
 SphereCollider:
   m_ObjectHideFlags: 0

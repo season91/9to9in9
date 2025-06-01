@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d74587e00f6bde46bc32e5a1060ec6a, type: 3}
   m_Name: MetalWallNarrowData
   m_EditorClassIdentifier: 
-  itemCode: b12
+  itemCode: MetalWallNarrowData
   itemName: metal-wall-narrow
   displayName: "\uCCA0 \uBC18 \uBCBD"
   description: "\uC881\uC740 \uBCBD\uC774\uB2E4"

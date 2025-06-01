@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d218a217209436442b604d821804a81b, type: 3}
   m_Name: HammerData
   m_EditorClassIdentifier: 
-  itemCode: e9
+  itemCode: HammerData
   itemName: hammer
   displayName: "\uB9DD\uCE58"
   description: "\uBB34\uAE30 \uB9DD\uCE58\uC774\uB2E4"

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 171314572812951944}
   - component: {fileID: 3430120477384753514}
   - component: {fileID: 587029258620939757}
-  - component: {fileID: 7677863366540291479}
+  - component: {fileID: -6761834307809213144}
   m_Layer: 10
   m_Name: iron
   m_TagString: Untagged
@@ -98,6 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 534ccbb47f7260d4e9cb8cce8ddbaa5b, type: 2}
+  interactableParticlePrefab: {fileID: 7822473327521237354, guid: 6191d268bb9fa2f4d94c4bbd390b3175, type: 3}
+--- !u!135 &-6761834307809213144
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,5 +118,5 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.23768866
-  m_Center: {x: 0.02240916, y: 0.12324929, z: 0.013673753}
+  m_Radius: 0.29305544
+  m_Center: {x: -0.038936958, y: 0.08503847, z: 0.007412657}

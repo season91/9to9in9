@@ -2,10 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using UnityEngine;
 
 public class UISmelterPopup : MonoBehaviour, IGUI
 {
+    [SerializeField] private RectTransform rectTransf;
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private GUIItemSlotStation fuelSlot;
     [SerializeField] private GUIItemSlotStation metalSlot;
@@ -23,6 +25,7 @@ public class UISmelterPopup : MonoBehaviour, IGUI
 
     private void Reset()
     {
+        rectTransf = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         fuelSlot = transform.Find("GUI_ItemSlot (Fuel)").GetComponent<GUIItemSlotStation>();
         metalSlot = transform.Find("GUI_ItemSlot (Metal)").GetComponent<GUIItemSlotStation>();
@@ -60,7 +63,9 @@ public class UISmelterPopup : MonoBehaviour, IGUI
         
         rectTrGauge.gameObject.SetActive(false);
 
-        Close();
+        canvasGroup.alpha = 0f;
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
     }
     
     public void Open()
@@ -73,14 +78,16 @@ public class UISmelterPopup : MonoBehaviour, IGUI
             craftableItemInfos = CraftManager.Instance.GetRecipeOfStationType(StationType.Smelter)["Default"];
         }
         
-        canvasGroup.alpha = 1;
+        canvasGroup.DOFade(1, 0.2f);
+        rectTransf.DOAnchorPosY(0, 0.3f);
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
     }
     
     public void Close()
     {
-        canvasGroup.alpha = 0;
+        canvasGroup.DOFade(0, 0.2f);
+        rectTransf.DOAnchorPosY(300, 0.3f);
         canvasGroup.interactable = false;
         canvasGroup.blocksRaycasts = false;
     }
@@ -142,7 +149,12 @@ public class UISmelterPopup : MonoBehaviour, IGUI
             {
                 // 제작 가능한 아이템만 필터링
                 var craftables = craftableItemInfos
-                    .Where(itemInfo => CraftManager.Instance.CanCraftByItemName(itemInfo.itemData.itemName))
+                    .Where(itemInfo =>
+                    {
+                        var recipe = CraftManager.Instance.GetRecipe(itemInfo.itemData.itemName);
+                        GUIItemSlotStation[] stationSlots = new []{ fuelSlot, metalSlot};
+                        return CraftManager.Instance.CanCraftFromSlots(stationSlots, recipe.ingredients);
+                    })
                     .ToList();
 
                 if (craftables.Count == 0)
@@ -170,9 +182,6 @@ public class UISmelterPopup : MonoBehaviour, IGUI
                         {
                             slotStationDict[ResourceType.None].Show(itemInfo.itemData.icon, 1, itemInfo.itemData);
                             
-                            // 나중에 레시피의 개수에 따라서도 제거 되게 해야됨..
-                            // inventory에 없으면 안 됨
-                            // ResourceType curResourceType = resourceItem.resourceType;
                             foreach (var slotKvp in slotStationDict)
                             {
                                 if (slotKvp.Key == ResourceType.None)
@@ -227,16 +236,6 @@ public class UISmelterPopup : MonoBehaviour, IGUI
     }
     
 #if UNITY_EDITOR
-    public void TestOpen()
-    {
-        if (canvasGroup.alpha >= 0.5)
-        {
-            Close();
-        }
-        else
-        {
-            Open();
-        }
-    }
+    public float CanvasAlpha() => canvasGroup.alpha;
 #endif
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f552026eabc5cf4dbd423ae7ca6a47d, type: 3}
   m_Name: RockData
   m_EditorClassIdentifier: 
-  itemCode: r7
+  itemCode: RockData
   itemName: rock
   displayName: "\uD070 \uB3CC\uC774\uB2E4."
   description: "\uD070 \uB3CC\uC744 \uCE90\uBCF4\uC790"
@@ -21,5 +21,5 @@ MonoBehaviour:
   prefab: {fileID: 1808710365591807142, guid: 17fe0416041654f47aed6e810a3e45d5, type: 3}
   isStackable: 0
   maxStack: 0
-  functions: 0000000002000000
+  functions: 00000000
   resourceType: 0

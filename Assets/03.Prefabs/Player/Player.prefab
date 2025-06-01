@@ -263,7 +263,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.1
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -446,6 +446,7 @@ MonoBehaviour:
   minXLook: -85
   maxXLook: 85
   lookSensitivity: 0.1
+  jumpParticlePrefab: {fileID: 5259208797135495749, guid: 175e601f64bc3f240b10d46c45795385, type: 3}
 --- !u!114 &2477055300786949186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -471,6 +472,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventorySize: 21
+  quickSlotSize: 7
 --- !u!114 &9063724705040258679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -483,6 +485,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed1ee45caf9d1c6458bd1d76dbf36f97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseValue: 0
+  bonusValue: 0
 --- !u!114 &4012999912684438307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -511,10 +515,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkRate: 0.05
   lastCheckTime: 0
-  maxCheckDistance: 5
+  maxCheckDistance: 1
   layerMask:
     serializedVersion: 2
     m_Bits: 1664
+  curInteractGameObject: {fileID: 0}
 --- !u!1001 &8897262790687600707
 PrefabInstance:
   m_ObjectHideFlags: 0

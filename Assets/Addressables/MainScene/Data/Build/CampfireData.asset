@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d74587e00f6bde46bc32e5a1060ec6a, type: 3}
   m_Name: CampfireData
   m_EditorClassIdentifier: 
-  itemCode: b17
+  itemCode: CampfireData
   itemName: campfire
   displayName: "\uBAA8\uB2E5\uBD88"
   description: "\uBA39\uC790"

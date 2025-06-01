@@ -10,7 +10,7 @@ public class WeaponHandler : MonoBehaviour
     private EquipableItemData itemData;
     
     private Animator animator;
-    private Camera camera;
+    private Camera cam;
 
     private void Awake()
     {
@@ -22,8 +22,8 @@ public class WeaponHandler : MonoBehaviour
             Debug.LogWarning("itemData가 EquipableItemData가 아닌가봐요");
         }
         
-        camera = Camera.main;
-        if (animator == null) Debug.LogError("camera is null");
+        cam = Camera.main;
+        if (cam == null) Debug.LogError("camera is null");
         
         animator = GetComponent<Animator>();
         if (animator == null) Debug.LogError("animator is null");
@@ -53,15 +53,29 @@ public class WeaponHandler : MonoBehaviour
 
     private void OnHit()
     {
-        Ray ray = camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
-        RaycastHit hit;
+        Ray ray = cam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+        Debug.DrawRay(ray.origin, ray.direction, Color.red);
+        if (!Physics.SphereCast(ray, 0.3f, out RaycastHit hit, attackDistance)) return;
 
-        if (!Physics.Raycast(ray, out hit, attackDistance)) return;
-
-        bool isGather = (itemData.equipType == EquipType.GatheringTool);
-        if (isGather && hit.collider.TryGetComponent(out ResourceHandler resourceHandler))
+        switch (itemData.equipType)
         {
-            resourceHandler.Gather(hit.point, hit.normal);
+            case EquipType.GatheringTool:
+                if (hit.collider.TryGetComponent(out ResourceHandler resourceHandler))
+                {
+                    resourceHandler.Gather(hit.point, hit.normal);
+                }
+                break;
+
+            case EquipType.Weapon:
+                if (hit.collider.TryGetComponent(out IDamagable damagable))
+                {
+                    if (hit.collider.CompareTag("Player")) return;
+                    
+                    float damage = CharacterManager.Player.statHandler.Get(StatType.AttackPower);
+                    damagable.TakeDamage(damage);
+                    Debug.Log($"공격 성공! 대상: {hit.collider.name}, 데미지: {damage}");
+                }
+                break;
         }
     }
 }

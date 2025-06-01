@@ -1,15 +1,17 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class UIInventoryPopup : MonoBehaviour, IGUI
 {
+    [SerializeField] private RectTransform rectTransf;
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private List<GUIItemSlotInventory> inventorySlots;
     [SerializeField] private TextMeshProUGUI tmpTitle;
+
+    [SerializeField] private UIQuickSlotPopup quickSlotPopup;
 
     private int curInventoryCount;
     
@@ -19,14 +21,19 @@ public class UIInventoryPopup : MonoBehaviour, IGUI
 
     void Reset()
     {
+        rectTransf = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         inventorySlots = transform.Find("Layout_PlayerItems")?.GetComponentsInChildren<GUIItemSlotInventory>().ToList();
         tmpTitle = transform.Find("Tmp_InventoryTitle")?.GetComponent<TextMeshProUGUI>();
+        quickSlotPopup = GetComponentInChildren<UIQuickSlotPopup>();
     }
     
     public void Initialization()
     {
-        Close();
+        canvasGroup.alpha = 0f;
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
+        
         InitializationInventoryGUI();
     }
 
@@ -38,6 +45,8 @@ public class UIInventoryPopup : MonoBehaviour, IGUI
             inventorySlots[i].Initialization();
             inventorySlots[i].SetClickEvent(OnItemSlotSelected, index);
         }
+        quickSlotPopup.Initialization();
+        quickSlotPopup.SettingInventoryQuickUI();
     }
 
     public void Open()
@@ -68,14 +77,16 @@ public class UIInventoryPopup : MonoBehaviour, IGUI
         
         SettingInventoryUI();
         
-        canvasGroup.alpha = 1;
+        canvasGroup.DOFade(1, 0.2f);
+        rectTransf.DOAnchorPosY(0, 0.3f);
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
     }
     
     public void Close()
     {
-        canvasGroup.alpha = 0;
+        canvasGroup.DOFade(0, 0.2f);
+        rectTransf.DOAnchorPosY(-300, 0.3f);
         canvasGroup.interactable = false;
         canvasGroup.blocksRaycasts = false;
     }
@@ -95,7 +106,7 @@ public class UIInventoryPopup : MonoBehaviour, IGUI
         {
             if (i < inventoryCount)
             {
-                int pcs = CharacterManager.Player.inventoryController.GetPcs(i);
+                int pcs = inventoryCtrlr.GetPcs(i);
                 Sprite icon = inventoryCtrlr.GetIcon(i);
                 if(icon == null)
                     return;
@@ -128,16 +139,6 @@ public class UIInventoryPopup : MonoBehaviour, IGUI
     }
     
 #if UNITY_EDITOR
-    public void TestOpen()
-    {
-        if (canvasGroup.alpha >= 0.5)
-        {
-            Close();
-        }
-        else
-        {
-            Open();
-        }
-    }
+    public float CanvasAlpha() => canvasGroup.alpha;
 #endif
 }

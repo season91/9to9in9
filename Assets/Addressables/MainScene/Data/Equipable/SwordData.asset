@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d218a217209436442b604d821804a81b, type: 3}
   m_Name: SwordData
   m_EditorClassIdentifier: 
-  itemCode: e8
+  itemCode: SwordData
   itemName: sword
   displayName: "\uAC80"
   description: "\uBB34\uAE30 \uAC80\uC774\uB2E4."

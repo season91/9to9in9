@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d74587e00f6bde46bc32e5a1060ec6a, type: 3}
   m_Name: SmelterData
   m_EditorClassIdentifier: 
-  itemCode: b18
+  itemCode: SmelterData
   itemName: smelter
   displayName: "\uC81C\uB828\uB300"
   description: "\uAD7D\uC790"

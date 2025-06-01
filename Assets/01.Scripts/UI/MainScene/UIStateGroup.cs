@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class UIStateGroup : MonoBehaviour
 {
@@ -7,7 +8,7 @@ public class UIStateGroup : MonoBehaviour
     [SerializeField] private RectTransform imgGaugeStamina;
     [SerializeField] private RectTransform imgGaugeHunger;
     [SerializeField] private float maxGaugeWidth;
-
+    
     Dictionary<StatType, RectTransform> gaugeStatType = new Dictionary<StatType, RectTransform>();
     
     private void Reset()
@@ -46,6 +47,20 @@ public class UIStateGroup : MonoBehaviour
 
     void SetSizeGauge(RectTransform rectTr, float statRatio)
     {
-        rectTr.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, statRatio * maxGaugeWidth);
+        if(!rectTr)
+            return;
+        
+        if (statRatio > 0)
+        {
+            if(statRatio * maxGaugeWidth < rectTr.sizeDelta.x)
+                rectTr.DOShakePosition(0.2f, 10, 20);
+            if(!rectTr.transform.gameObject.activeSelf)
+                rectTr.gameObject.SetActive(true);
+            rectTr.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, statRatio * maxGaugeWidth);
+        }
+        else
+        {
+            rectTr.gameObject.SetActive(false);
+        }
     }
 }

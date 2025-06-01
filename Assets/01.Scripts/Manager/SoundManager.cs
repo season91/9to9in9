@@ -27,6 +27,7 @@ public class SoundManager : MonoBehaviour
     
     [Header("Source")]
     [SerializeField] private AudioSource sfxSource;
+    [SerializeField] private AudioSource bgmSource;
     
     [Header("Clips")]
     [SerializeField] private List<SfxClipGroup> sfxClipGroups = new();
@@ -36,6 +37,11 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private float stepInterval;
     private float stepTimer;
     
+    [Header("Volume")]
+    [Range(0f, 1f)] public float masterVolume = 1f;
+    [Range(0f, 1f)] public float sfxVolume = 1f;
+    [Range(0f, 1f)] public float bgmVolume = 1f;
+    
     private void Awake()
     {
         if (Instance == null)
@@ -44,6 +50,17 @@ public class SoundManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         else Destroy(gameObject);
+    }
+    
+    private void Update()
+    {
+        ApplyVolume();
+    }
+
+    private void ApplyVolume()
+    {
+        sfxSource.volume = masterVolume * sfxVolume;
+        bgmSource.volume = masterVolume * bgmVolume;
     }
 
     public void InitSfx()
@@ -98,4 +115,25 @@ public class SoundManager : MonoBehaviour
         PlayRandomSfx(SfxType.Step);
     }
 
+    public void PlayParticle(ParticleSystem particle)
+    {
+        if (particle == null)  return;
+        
+        particle.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear); // 초기화
+        particle.Play();
+    }
+    
+    public void PlayBgm(AudioClip bgmClip, bool loop = true)
+    {
+        if (bgmClip == null) return;
+
+        bgmSource.clip = bgmClip;
+        bgmSource.loop = loop;
+        bgmSource.Play();
+    }
+    
+    public void StopBgm()
+    {
+        bgmSource.Stop();
+    }
 }

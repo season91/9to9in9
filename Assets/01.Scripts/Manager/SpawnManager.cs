@@ -21,7 +21,7 @@ public class
     
     // 자원, 몬스터 랜덤 생성을 정보
     private Transform  spawnCenter;
-    private float spawnRange = 30f;
+    //private float spawnRange = 30f;
 
     public static SpawnManager Instance
     {
@@ -93,6 +93,19 @@ public class
                 Debug.Log($"{key} 프리팹 찾을 수 없음!");
             }
         }
+
+        foreach (string key in StringAdrSpawnManagerKey.PrefabEnemy)
+        {
+            GameObject obj = ResourceManager.Instance.GetResource<GameObject>(key);
+            if (obj != null)
+            {
+                prefabs[key] = obj;
+            }
+            else
+            {
+                Debug.Log($"{key} 프리팹 찾을 수 없음!");
+            }
+        }
         
         spawnCenter = FindObjectOfType<Player>().transform;
     }
@@ -125,7 +138,7 @@ public class
         
         Debug.Log("프리팹 없음!!! 심각한 버그!!");
         throw new Exception();
-        return null;
+        //return null;
     }
 
     // object pool 대상 비활성화
@@ -155,6 +168,8 @@ public class
 
     public void ResourceSpawn(string key)
     {
+        if(!spawnCenter)
+            return;
         Vector3 spawnPos = GetRandomPositionOnNavMesh(spawnCenter.position, 20f);
         GameObject obj = GetObject(key);
         obj.transform.position = spawnPos;

@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.InputSystem.Editor;
 
 /// <summary>
 /// [제어] 인풋시스템 바인딩하고 움직임 구현 (이동, 점프) 
@@ -15,7 +14,6 @@ public class PlayerController : MonoBehaviour, IMoveable, IJumpable
     // [SerializeField] private float minMoveSpeed = 3f;
     // [SerializeField] private float maxMoveSpeed = 20f;
     // [SerializeField] private float jumpPower = 7f;
-
 
     [Header("CameraLook")]
     [SerializeField] private float minXLook = -85f;
@@ -32,6 +30,9 @@ public class PlayerController : MonoBehaviour, IMoveable, IJumpable
     private StatHandler statHandler;
     
     public Action inventoryAction;
+    
+    public GameObject jumpParticlePrefab;
+    private bool wasGrounded = true; // 착지 체크 용
 
     private void Awake()
     {
@@ -49,6 +50,17 @@ public class PlayerController : MonoBehaviour, IMoveable, IJumpable
         
         statHandler = CharacterManager.Player.statHandler;
         if (statHandler == null) Debug.LogError("StatHandler not found");
+    }
+
+    private void Update()
+    {
+        bool isGrounded = IsGrounded();
+        if (!wasGrounded && isGrounded)
+        {
+            Instantiate(jumpParticlePrefab, transform.position, Quaternion.identity);
+        }
+
+        wasGrounded = isGrounded; // 항상 마지막에 상태 갱신
     }
 
     private void FixedUpdate()
@@ -85,7 +97,7 @@ public class PlayerController : MonoBehaviour, IMoveable, IJumpable
         if (rigidBody.velocity.magnitude > 0.1f)
         {
             // Debug.Log($"{rigidBody.velocity.magnitude}");
-            // // SoundManager.Instance.PlayStepSfx();
+            SoundManager.Instance.PlayStepSfx();
         }
     }
 
@@ -103,6 +115,7 @@ public class PlayerController : MonoBehaviour, IMoveable, IJumpable
         if (IsGrounded())
         {
             rigidBody.AddForce(Vector2.up * statHandler.Get(StatType.JumpPower), ForceMode.Impulse);
+            
         }
     }
     
@@ -141,6 +154,19 @@ public class PlayerController : MonoBehaviour, IMoveable, IJumpable
         canLook = !toggle;
     }
 
+    public void OnQuickSlot(int index)
+    {
+        if (index != -1)
+        {
+            Debug.Log("pressed key index :: "+index);
+            ItemData useItem = CharacterManager.Player.inventoryController.UseItemInQuickSlot(index);
+            if (useItem != null)
+            {
+                UseQuickSlotItem(useItem);
+            }
+        }
+    }
+    
     public void UseQuickSlotItem(ItemData itemData)
     {
         switch (itemData.type)
@@ -164,14 +190,17 @@ public class PlayerController : MonoBehaviour, IMoveable, IJumpable
             {
                 case ConsumableType.Health:
                     CharacterManager.Player.statHandler.Modify(StatType.Health, value);
+                    UIManager.Instance.UpdateStatUI(StatType.Health);
                     break;
 
                 case ConsumableType.Hunger:
                     CharacterManager.Player.statHandler.Modify(StatType.Hunger, value);
+                    UIManager.Instance.UpdateStatUI(StatType.Hunger);
                     break;
 
                 case ConsumableType.Stamina:
                     CharacterManager.Player.statHandler.Modify(StatType.Stamina, value);
+                    UIManager.Instance.UpdateStatUI(StatType.Stamina);
                     break;
             }
         }

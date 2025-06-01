@@ -47,16 +47,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 0
-  fullDayLength: 30
+  fullDayLength: 120
   startTime: 0.4
   timeRate: 0
   noon: {x: 0, y: 0, z: 0}
   sun: {fileID: 0}
   sunColor:
     serializedVersion: 2
-    key0: {r: 1, g: 0.92778766, b: 0.51257855, a: 1}
-    key1: {r: 1, g: 1, b: 1, a: 1}
-    key2: {r: 1, g: 0.92941177, b: 0.5137255, a: 0}
+    key0: {r: 1, g: 0.7058824, b: 0.36078432, a: 1}
+    key1: {r: 1, g: 0.96477205, b: 0.7452829, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
@@ -86,7 +86,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.25
+      time: 0.15
       value: 0
       inSlope: 0
       outSlope: 0
@@ -104,7 +104,7 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.75
+      time: 0.85
       value: 0
       inSlope: 0
       outSlope: 0
@@ -119,7 +119,7 @@ MonoBehaviour:
   moonColor:
     serializedVersion: 2
     key0: {r: 0.21568628, g: 0.23529412, b: 0.9882353, a: 1}
-    key1: {r: 0, g: 0.010227356, b: 0.36477977, a: 1}
+    key1: {r: 0.10258682, g: 0.12615187, b: 0.836478, a: 1}
     key2: {r: 0.21568628, g: 0.23529412, b: 0.9882353, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -272,7 +272,14 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  daySkyBox: {fileID: 2100000, guid: 2bd8959f5fbd3644aa33af1a155fc147, type: 2}
+  nightSkyBox: {fileID: 2100000, guid: cc421da483ed06c49933077a621bff25, type: 2}
+  blendSkyBox: {fileID: 2100000, guid: 1cf6f4c6e6e0518419839d3f5448dd99, type: 2}
   isDay: 1
+  dayCount: 0
+  isSpawnedResource: 0
+  isSpawnedEnemy: 0
+  intensityChangeSpeed: 3
 --- !u!1 &5557532708494147085
 GameObject:
   m_ObjectHideFlags: 0

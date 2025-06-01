@@ -15,6 +15,7 @@ public enum StationType
     Smelter, // 제련대
     Anvil, // 모루
     None, // 상호작용 불가
+    Default
 }
 
 public class BuildItemData : ItemData

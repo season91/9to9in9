@@ -15,13 +15,20 @@ public class InteractableBehaviour : MonoBehaviour, IInteractable,  IInitializab
     
     public string GetPromptText()
     {
-        string promptText =  $"\n{data.displayName}\n{data.description}";
+        string promptText =  $"[E] \n{data.displayName}\n{data.description}";
         return promptText;
     }
 
     public void OnInteract()
     {
-        // Add Inventory
-        Destroy(gameObject);
+        if (data is BuildItemData buildData)
+        {
+            UIManager.Instance.OpenStation(buildData.stationType);
+        }
+        else
+        {
+            CharacterManager.Player.inventoryController.AddItem(data);
+            SpawnManager.Instance.ReleaseObject(data.itemCode, gameObject);
+        }
     }
 }

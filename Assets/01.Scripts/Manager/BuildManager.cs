@@ -68,6 +68,7 @@ public class BuildManager : MonoBehaviour
             PlaceBuildItem(targetPos);
         }
             
+        // 인풋시스템 등록으로 리팩토링 필요
         // [R] 회전
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -76,11 +77,11 @@ public class BuildManager : MonoBehaviour
         }
 
         // [ESC] 설치 취소
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Debug.Log("build canceled");
-            CancelBuild();
-        }
+        // if (Input.GetKeyDown(KeyCode.Escape))
+        // {
+        //     Debug.Log("build canceled");
+        //     CancelBuild();
+        // }
     }
 
     #endregion

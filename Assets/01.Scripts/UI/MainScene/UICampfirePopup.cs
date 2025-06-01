@@ -2,10 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using UnityEngine;
 
 public class UICampfirePopup : MonoBehaviour, IGUI
 {
+    [SerializeField] private RectTransform rectTransf;
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private GUIItemSlotStation[] materialSlots;
     [SerializeField] private GUIItemSlotStation resultSlot;
@@ -21,6 +23,7 @@ public class UICampfirePopup : MonoBehaviour, IGUI
 
     private void Reset()
     {
+        rectTransf = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         materialSlots = transform.Find("Layout_ItemSlots")?.GetComponentsInChildren<GUIItemSlotStation>();
         resultSlot = transform.Find("GUI_ItemSlot (Result)")?.GetComponent<GUIItemSlotStation>();
@@ -30,7 +33,9 @@ public class UICampfirePopup : MonoBehaviour, IGUI
 
     public void Initialization()
     {
-        Close();
+        canvasGroup.alpha = 0f;
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
         
         for (int i = 0; i < materialSlots.Length; i++)
         {
@@ -54,14 +59,16 @@ public class UICampfirePopup : MonoBehaviour, IGUI
             craftableItemInfos = CraftManager.Instance.GetRecipeOfStationType(StationType.Campfire)["Default"]; // static class에 넣으셈 나중에
         }
         
-        canvasGroup.alpha = 1;
+        canvasGroup.DOFade(1, 0.2f);
+        rectTransf.DOAnchorPosY(0, 0.3f);
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
     }
 
     public void Close()
     {
-        canvasGroup.alpha = 0;
+        canvasGroup.DOFade(0, 0.2f);
+        rectTransf.DOAnchorPosY(300, 0.3f);
         canvasGroup.interactable = false;
         canvasGroup.blocksRaycasts = false;
     }
@@ -231,16 +238,6 @@ public class UICampfirePopup : MonoBehaviour, IGUI
     }
     
 #if UNITY_EDITOR
-    public void TestOpen()
-    {
-        if (canvasGroup.alpha >= 0.5)
-        {
-            Close();
-        }
-        else
-        {
-            Open();
-        }
-    }
+    public float CanvasAlpha() => canvasGroup.alpha;
 #endif
 }

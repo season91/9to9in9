@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d74587e00f6bde46bc32e5a1060ec6a, type: 3}
   m_Name: MetalDoorData
   m_EditorClassIdentifier: 
-  itemCode: b15
+  itemCode: MetalDoorData
   itemName: metal-door
   displayName: "\uCCA0 \uBB38"
   description: "\uC5EC\uC804\uD788 \uBAA8\uB450\uC5D0\uAC8C \uC5F4\uB824\uC788\uB2E4"

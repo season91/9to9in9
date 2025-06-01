@@ -1,4 +1,3 @@
-using System.Net.Http;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -31,15 +30,17 @@ public class PlayerInputHandler : MonoBehaviour
         playerInputAsset["Look"].started += OnLookInput;
         playerInputAsset["Look"].canceled += OnLookInput;
 
-        playerInputAsset["Interact"].started += OnInteractInput;
+        playerInputAsset["Interact"].performed += OnInteractInput;
         
         playerInputAsset["Inventory"].started += OnInventoryInput;
         
-        playerInputAsset["Use"].started += OnUseInput;
+        playerInputAsset["Use"].performed += OnUseInput;
         
         playerInputAsset["Build"].started += OnBuildInput;
         
         playerInputAsset["QuickSlot"].started += OnQuickSlotInput;
+        
+        playerInputAsset["Close"].performed += OnClosePopupInput;
     }
 
     private void OnDisable()
@@ -53,15 +54,17 @@ public class PlayerInputHandler : MonoBehaviour
         playerInputAsset["Look"].started -= OnLookInput;
         playerInputAsset["Look"].canceled -= OnLookInput;
 
-        playerInputAsset["Interact"].started -= OnInteractInput;
+        playerInputAsset["Interact"].performed -= OnInteractInput;
         
         playerInputAsset["Inventory"].started -= OnInventoryInput;
         
-        playerInputAsset["Use"].started -= OnUseInput;
+        playerInputAsset["Use"].performed -= OnUseInput;
         
         playerInputAsset["Build"].started -= OnBuildInput;
         
         playerInputAsset["QuickSlot"].started -= OnQuickSlotInput;
+        
+        playerInputAsset["Close"].performed -= OnClosePopupInput;
     }
 
     private void OnMoveInput(InputAction.CallbackContext context)
@@ -101,18 +104,14 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void OnQuickSlotInput(InputAction.CallbackContext context)
     {
-        int index = GetPressedKeyValue();
-        if (index != -1)
-        {
-            Debug.Log("pressed key index :: "+index);
-            ItemData useItem = CharacterManager.Player.inventoryController.UseItemInQuickSlot(index);
-            if (useItem != null)
-            {
-                playerController.UseQuickSlotItem(useItem);
-            }
-        }
+        playerController.OnQuickSlot(GetPressedKeyValue());
     }
 
+    private void OnClosePopupInput(InputAction.CallbackContext context)
+    {
+        UIManager.Instance.CloseStation();
+    }
+    
     private int GetPressedKeyValue()
     {
         if (Keyboard.current.digit1Key.wasPressedThisFrame) return 0;

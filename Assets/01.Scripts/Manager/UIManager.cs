@@ -49,10 +49,12 @@ public class UIManager : MonoBehaviour
             instance = this;
 
             DontDestroyOnLoad(this.gameObject);
+            transform.position = new Vector3(100,0,0);
         }
         else
         {
             Destroy(this.gameObject);
+            return;
         }
         
         // 게임 최초 시작 시 Start씬의 UI를 등록해주기 위함 (초기화 단계)
@@ -81,6 +83,8 @@ public class UIManager : MonoBehaviour
             case SceneType.Start: 
                 addresses = new[]{ StringAdr.StartScene };
                 await ResourceManager.Instance.LoadSceneResourcesWithProgress(StringScene.StartScene, canvasLoading);
+                if(curSceneType != SceneType.None)
+                    await LoadSceneWithProgress(StringScene.StartScene);
                 await LoadGUIWithProgress(addresses);
                 break;
             case SceneType.Main:
@@ -205,31 +209,14 @@ public class UIManager : MonoBehaviour
         activeGUIs.Clear();
     }
     
-    // Test
-    // public void Awake()
-    // {
-    //     Addressables.InstantiateAsync(StringAddressable.Environment, transform)
-    //         .Completed += OnPopupLoaded;
-    // }
-    
-    // private void OnPopupLoaded(AsyncOperationHandle<GameObject> handle)
-    // {
-    //     if (handle.Status == AsyncOperationStatus.Succeeded)
-    //     {
-    //         Debug.Log("Popup loaded");
-    //     }
-    //     else
-    //     {
-    //         Debug.LogError("Failed to load popup");
-    //     }
-    // }
-    
     // Main Scene
     public StationType CurrentStation() => canvasMainScene.currentStation;
 
     public bool TrySlotClickWithStation(ItemData item) => canvasMainScene.TrySlotClickWithStation(item);
 
     public void OpenStation(StationType type) => canvasMainScene.OpenStation(type);
+    
+    public void CloseStation() => canvasMainScene.CloseStation();
 
     public event Action<StatType> OnUpdateStatUI;
     public void UpdateStatUI(StatType type)
@@ -243,5 +230,28 @@ public class UIManager : MonoBehaviour
     {
         if (canvasMainScene == null) return;
         canvasMainScene.HideItemName();
+    }
+
+    // 첫 대화
+    public void FirstDialogue(string line) => canvasMainScene.FirstDialogue(line);
+    
+    // 다음 대화
+    public void PlayTypingEffect(string line) => canvasMainScene.PlayTypingEffect(line);
+    
+    // 대화중인지
+    public bool DialoguePopupActive() => canvasMainScene.DialoguePopupActve();
+    public bool IsTyping() => canvasMainScene.IsTyping();
+    public void SkipTyping(string fullText) => canvasMainScene.SkipTyping(fullText);
+    public void HideDialogue() => canvasMainScene.HideDialogue();
+
+    // Damage Indicator
+    public void PlayDamageEffect(float duration) => canvasMainScene.PlayDamageEffect(duration); // 플레이어 피격 효과
+
+    public void GameOver() // 플레이어 사망 시
+    {
+        // 게임 멈춤
+        Time.timeScale = 0;
+        
+        StartCoroutine(canvasMainScene.GameOverFlow());
     }
 }
