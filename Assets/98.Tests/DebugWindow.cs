@@ -129,6 +129,11 @@ public class DebugWindow : EditorWindow
         {
             UIManager.Instance.OnOffOption();
         }
+        
+        if (GUILayout.Button("Play Animation Start Logo"))
+        {
+            UIManager.Instance.PlayGameStartLogo();
+        }
     }
     
     // OnGUI는 async를 못붙이는 함수여서 await 사용 불가능

@@ -1,6 +1,8 @@
 using System.Collections;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UICanvasMainScene : MonoBehaviour, IGUI
 {
@@ -22,6 +24,8 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
 
     [SerializeField] private TextMeshProUGUI tmpInformation;
     [SerializeField] private TextMeshProUGUI tmpDay;
+
+    [SerializeField] private Image imgLogo; 
     
     private bool isStationOpened;
 
@@ -48,6 +52,8 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
         
         tmpInformation = transform.Find("Tmp_Information").GetComponent<TextMeshProUGUI>();
         tmpDay = transform.Find("Tmp_Day").GetComponent<TextMeshProUGUI>();
+        
+        imgLogo = transform.Find("Img_Logo").GetComponent<Image>();
     }
 
     public void Initialization()
@@ -69,6 +75,8 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
 
         currentStation = StationType.Default;
         isStationOpened = false;
+
+        imgLogo.gameObject.SetActive(false);
     }
 
     public void Open()
@@ -215,6 +223,24 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
         yield return StartCoroutine(damageIndicator.DieScreenAnim());
 
         StartCoroutine(endingPopup.EndingCreditAnim());
+    }
+
+    public IEnumerator GameStartLogo()
+    {
+        imgLogo.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 650);
+        imgLogo.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 650);
+        imgLogo.color = Color.white;
+        imgLogo.gameObject.SetActive(true);
+        yield return null;
+        
+        imgLogo.rectTransform.DOSizeDelta(new Vector2(800, 800), 0.1f);
+        yield return new WaitForSeconds(0.05f);
+        imgLogo.rectTransform.DOSizeDelta(new Vector2(700, 700), 0.15f);
+        yield return new WaitForSeconds(0.5f);
+        imgLogo.rectTransform.DOSizeDelta(new Vector2(1200, 1200), 0.3f);
+        imgLogo.DOFade(0, 0.3f);
+        yield return new WaitForSeconds(0.3f);
+        imgLogo.gameObject.SetActive(false);
     }
     
     
