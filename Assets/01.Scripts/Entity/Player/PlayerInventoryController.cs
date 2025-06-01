@@ -307,6 +307,10 @@ public ItemData GetItem(int index)
     //------퀵슬롯 이동 함수
     public void MoveItemToQuickSlot(int itemIndex)
     {
+        if (itemIndex < 0 || itemIndex >= inventoryItems.Count)
+        {
+            return;
+        }
         bool addItemToQuickSlot = false;
 
         foreach (ItemSlot slot in quickSlotItems)
@@ -334,7 +338,7 @@ public ItemData GetItem(int index)
     //퀵슬롯에서 인벤토리로
     public void MoveItemFromQuickSlot(int itemIndex)
     {
-        if (itemIndex >= quickSlotItems.Count)
+        if (itemIndex < 0 || itemIndex >= quickSlotItems.Count)
         {
             return;
         }
