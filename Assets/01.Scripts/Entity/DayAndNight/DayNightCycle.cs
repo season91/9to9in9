@@ -41,7 +41,7 @@ public class DayNightCycle : MonoBehaviour
     public bool isSpawnedEnemy = false;
     
     
-    [SerializeField] private float intensityChangeSpeed = 1f;
+    //[SerializeField] private float intensityChangeSpeed = 1f;
     
     // GameManager에서 델리게이트에 함수 등록해주는 로직 구현
     public static event Action OnDayStarted;

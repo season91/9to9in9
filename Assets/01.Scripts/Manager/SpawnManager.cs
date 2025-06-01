@@ -21,7 +21,7 @@ public class
     
     // 자원, 몬스터 랜덤 생성을 정보
     private Transform  spawnCenter;
-    private float spawnRange = 30f;
+    //private float spawnRange = 30f;
 
     public static SpawnManager Instance
     {
@@ -138,7 +138,7 @@ public class
         
         Debug.Log("프리팹 없음!!! 심각한 버그!!");
         throw new Exception();
-        return null;
+        //return null;
     }
 
     // object pool 대상 비활성화
