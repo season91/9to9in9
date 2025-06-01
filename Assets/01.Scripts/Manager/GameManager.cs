@@ -102,6 +102,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        Cursor.lockState = CursorLockMode.None;
         UIManager.Instance.GameOver();
     }
     
