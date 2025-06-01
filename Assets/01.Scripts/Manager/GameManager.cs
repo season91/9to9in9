@@ -99,5 +99,10 @@ public class GameManager : MonoBehaviour
             spawnedFirefly.SetActive(false);
         }
     }
+
+    public void GameOver()
+    {
+        UIManager.Instance.GameOver();
+    }
     
 }

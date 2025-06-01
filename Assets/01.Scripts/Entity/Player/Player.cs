@@ -22,6 +22,8 @@ public class Player : Entity, IDamagable
     private float staminaPassive;
     private float healthPassive;
     
+    private bool isPlayerDead;
+    
     private void Awake()
     {
         //getcomponent에서 null 반환 시 addcomponent할 것
@@ -53,15 +55,20 @@ public class Player : Entity, IDamagable
         
         hungerPassive = CharacterManager.Player.statHandler.GetPassive(StatType.Hunger);
         staminaPassive = CharacterManager.Player.statHandler.GetPassive(StatType.Stamina);
-        
+        isPlayerDead = false;
     }
 
     private void Update()
     {
+        if (isPlayerDead) return;
         timer += Time.deltaTime;
 
         if (timer < 1f) return;
-
+        if (statHandler.Get(StatType.Health) <= 0f)
+        {
+            isPlayerDead = true;
+            Die();
+        }
         timer = 0f;
         HandlePassiveStats();
     }
@@ -92,11 +99,13 @@ public class Player : Entity, IDamagable
     {
         statHandler.Modify(StatType.Health, -damage);
         SoundManager.Instance.PlayRandomSfx(SfxType.Hit);
+        UIManager.Instance.PlayDamageEffect(0.5f);
         UIManager.Instance.UpdateStatUI(StatType.Health);
     }
     
     public void Die()
     {
-        Debug.Log("플레이어 사망!");
+        GameManager.Instance.GameOver();
+        //Debug.Log("플레이어 사망!");
     }
 }
