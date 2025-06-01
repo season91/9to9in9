@@ -1,9 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class UIAnvilPopup : MonoBehaviour, IGUI
 {
+    [SerializeField] private RectTransform rectTransf;
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private GUIButtonCraftType[] btnCraftTypes;
     [SerializeField] private GUIItemSlotCraft[] itemSlots;
@@ -15,6 +16,7 @@ public class UIAnvilPopup : MonoBehaviour, IGUI
 
     void Reset()
     {
+        rectTransf = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         btnCraftTypes = transform.Find("Group_Buttons")?.GetComponentsInChildren<GUIButtonCraftType>();
         itemSlots = transform.Find("Group_Recipes")?.GetComponentsInChildren<GUIItemSlotCraft>();
@@ -54,15 +56,17 @@ public class UIAnvilPopup : MonoBehaviour, IGUI
         
         SettingUIByClickType(btnCraftTypes[0].GetCraftType());
         curCraftType = btnCraftTypes[0].GetCraftType();
-        
-        canvasGroup.alpha = 1;
+
+        canvasGroup.DOFade(1, 0.2f);
+        rectTransf.DOAnchorPosY(0, 0.3f);
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
     }
     
     public void Close()
     {
-        canvasGroup.alpha = 0;
+        canvasGroup.DOFade(0, 0.2f);
+        rectTransf.DOAnchorPosY(300, 0.3f);
         canvasGroup.interactable = false;
         canvasGroup.blocksRaycasts = false;
     }

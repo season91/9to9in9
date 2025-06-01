@@ -1,7 +1,9 @@
 using UnityEngine;
+using DG.Tweening;
 
 public class UIQuickSlotPopup : MonoBehaviour, IGUI
 {
+    [SerializeField] private RectTransform rectTransf;
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] GUIItemSlotQuick[] quickSlots;
     
@@ -10,6 +12,7 @@ public class UIQuickSlotPopup : MonoBehaviour, IGUI
     
     private void Reset()
     {
+        rectTransf = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         quickSlots = GetComponentsInChildren<GUIItemSlotQuick>();
     }
@@ -22,6 +25,11 @@ public class UIQuickSlotPopup : MonoBehaviour, IGUI
         Open();
     }
 
+    public void SettingInventoryQuickUI()
+    {
+        rectTransf = null;
+    }
+
     public void Open()
     {
         inventoryCtrlr = CharacterManager.Player.inventoryController;
@@ -31,6 +39,11 @@ public class UIQuickSlotPopup : MonoBehaviour, IGUI
         
         SettingSlotsUI();
         
+        if (rectTransf != null)
+        {
+            canvasGroup.DOFade(1, 0.2f);
+            rectTransf.DOAnchorPosX(10, 0.3f);
+        } 
         canvasGroup.alpha = 1;
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
@@ -38,7 +51,8 @@ public class UIQuickSlotPopup : MonoBehaviour, IGUI
     
     public void Close()
     {
-        canvasGroup.alpha = 0;
+        canvasGroup.DOFade(0, 0.2f);
+        rectTransf.DOAnchorPosX(-450, 0.3f);
         canvasGroup.interactable = false;
         canvasGroup.blocksRaycasts = false;
     }

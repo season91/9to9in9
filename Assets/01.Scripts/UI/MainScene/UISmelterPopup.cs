@@ -2,10 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using UnityEngine;
 
 public class UISmelterPopup : MonoBehaviour, IGUI
 {
+    [SerializeField] private RectTransform rectTransf;
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private GUIItemSlotStation fuelSlot;
     [SerializeField] private GUIItemSlotStation metalSlot;
@@ -23,6 +25,7 @@ public class UISmelterPopup : MonoBehaviour, IGUI
 
     private void Reset()
     {
+        rectTransf = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         fuelSlot = transform.Find("GUI_ItemSlot (Fuel)").GetComponent<GUIItemSlotStation>();
         metalSlot = transform.Find("GUI_ItemSlot (Metal)").GetComponent<GUIItemSlotStation>();
@@ -73,14 +76,16 @@ public class UISmelterPopup : MonoBehaviour, IGUI
             craftableItemInfos = CraftManager.Instance.GetRecipeOfStationType(StationType.Smelter)["Default"];
         }
         
-        canvasGroup.alpha = 1;
+        canvasGroup.DOFade(1, 0.2f);
+        rectTransf.DOAnchorPosY(0, 0.3f);
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
     }
     
     public void Close()
     {
-        canvasGroup.alpha = 0;
+        canvasGroup.DOFade(0, 0.2f);
+        rectTransf.DOAnchorPosY(300, 0.3f);
         canvasGroup.interactable = false;
         canvasGroup.blocksRaycasts = false;
     }

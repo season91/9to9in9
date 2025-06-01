@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class UIEquipmentPopup : MonoBehaviour, IGUI
 {
     // 필요한 것
     // 보유 스탯, 스탯 이름
+    [SerializeField] private RectTransform rectTransf;
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private GUIItemSlotEquipment[] equipmentSlots;
     [SerializeField] private GUIItemSlotCraft craftSlot;
@@ -21,6 +23,7 @@ public class UIEquipmentPopup : MonoBehaviour, IGUI
     
     void Reset()
     {
+        rectTransf = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         equipmentSlots = GetComponentsInChildren<GUIItemSlotEquipment>();
         craftSlot = GetComponentInChildren<GUIItemSlotCraft>();
@@ -81,9 +84,18 @@ public class UIEquipmentPopup : MonoBehaviour, IGUI
         UpdateStatUI();
         UpdateCraftSlotUI();
         
-        canvasGroup.alpha = 1;
+        canvasGroup.DOFade(1, 0.2f);
+        rectTransf.DOAnchorPosY(0, 0.3f);
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
+    }
+
+    public void Close()
+    {
+        canvasGroup.DOFade(0, 0.2f);
+        rectTransf.DOAnchorPosY(300, 0.3f);
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
     }
 
     void UpdateStatUI()
@@ -103,13 +115,6 @@ public class UIEquipmentPopup : MonoBehaviour, IGUI
         craftSlot.SetImageToSilhouette(isCraftable);
     }
     
-    public void Close()
-    {
-        canvasGroup.alpha = 0;
-        canvasGroup.interactable = false;
-        canvasGroup.blocksRaycasts = false;
-    }
-
     public bool TryPlaceItem(ItemData item)
     {
         EquipableItemData equipableItem = item as EquipableItemData;
