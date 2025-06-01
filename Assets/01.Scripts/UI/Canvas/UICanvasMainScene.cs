@@ -23,6 +23,10 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
     [SerializeField] private TextMeshProUGUI tmpInformation;
     [SerializeField] private TextMeshProUGUI tmpDay;
     
+    private bool isStationOpened;
+
+    public bool IsStationOpened() => isStationOpened;
+    
     public GameObject GUIObject => gameObject;
 
     private void Reset()
@@ -64,6 +68,7 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
         tmpInformation.gameObject.SetActive(false);
 
         currentStation = StationType.Default;
+        isStationOpened = false;
     }
 
     public void Open()
@@ -101,9 +106,15 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
                 return false;
         }
     }
-
+    
     public void OpenStation(StationType type)
     {
+        if (currentStation == type)
+        {
+            MyDebug.Log($"this {currentStation} station is opened already! ");
+            return;
+        }
+        
         if(currentStation != StationType.Default)
             CloseStation();
         
@@ -132,6 +143,7 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
         
         inventoryPopup.Open();
         quickSlotPopup.Close();
+        isStationOpened = true;
     }
     
     public void CloseStation()
@@ -160,6 +172,7 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
         
         inventoryPopup.Close();
         quickSlotPopup.Open();
+        isStationOpened = false;
     }
 
     public void ShowItemName(string information)

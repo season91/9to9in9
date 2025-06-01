@@ -217,6 +217,8 @@ public class UIManager : MonoBehaviour
     public void OnOffOption() => canvasOption.Open();
     
     // Main Scene
+    public bool IsStationOpened() => canvasMainScene.IsStationOpened();
+    
     public StationType CurrentStation() => canvasMainScene.currentStation;
 
     public bool TrySlotClickWithStation(ItemData item) => canvasMainScene.TrySlotClickWithStation(item);
