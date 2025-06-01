@@ -311,7 +311,7 @@ public ItemData GetItem(int index)
         {
             return;
         }
-        bool addItemToQuickSlot = false;
+        bool moveItemToQuickSlot = true;
 
         foreach (ItemSlot slot in quickSlotItems)
         {
@@ -320,13 +320,18 @@ public ItemData GetItem(int index)
                 if (slot.CanStack())
                 {
                     ++slot.Quantity;
-                    addItemToQuickSlot = true;
+                    moveItemToQuickSlot = false;
                     break;
                 }
             }
         }
 
-        if (!addItemToQuickSlot)
+        if (quickSlotItems.Count >= quickSlotSize)
+        {
+            moveItemToQuickSlot = false;
+        }
+        
+        if (moveItemToQuickSlot)
         {
             quickSlotItems.Add(new ItemSlot(inventoryItems[itemIndex], 1));
         }
