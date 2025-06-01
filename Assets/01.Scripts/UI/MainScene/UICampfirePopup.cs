@@ -33,7 +33,9 @@ public class UICampfirePopup : MonoBehaviour, IGUI
 
     public void Initialization()
     {
-        Close();
+        canvasGroup.alpha = 0f;
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
         
         for (int i = 0; i < materialSlots.Length; i++)
         {

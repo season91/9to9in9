@@ -62,8 +62,10 @@ public class UIEquipmentPopup : MonoBehaviour, IGUI
         // 비용이 너무 큼 ㅠ 그냥 팝업 껐다 키슈 ㅠ
         // CharacterManager.Player.inventoryController.UpdateInventory -= UpdateCraftSlotUI;
         // CharacterManager.Player.inventoryController.UpdateInventory += UpdateCraftSlotUI;
-        
-        Close();
+
+        canvasGroup.alpha = 0f;
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
     }
 
     public void Open()
