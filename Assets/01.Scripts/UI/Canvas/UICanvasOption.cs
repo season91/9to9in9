@@ -23,8 +23,6 @@ public class UICanvasOption : MonoBehaviour, IGUI
     [SerializeField] private Image imgHowTo;
     [SerializeField] private Sprite[] spritesHowTo; // inspector에서 직접 연결해야 됨 넣을 sprite
 
-    private List<Sprite> listHowtos;
-
     public GameObject GUIObject { get; }
 
     private void Reset()
@@ -58,12 +56,6 @@ public class UICanvasOption : MonoBehaviour, IGUI
 
         groupAudio.SetActive(false);
         groupHowTo.SetActive(false);
-        
-        listHowtos = new List<Sprite>();
-        for (int i = 0; i < spritesHowTo.Length; i++)
-        {
-            listHowtos.Add(spritesHowTo[i]);
-        }
         
         Close();
     }
@@ -132,13 +124,13 @@ public class UICanvasOption : MonoBehaviour, IGUI
     
     private void UpdateHowToGUI()
     {
-        imgHowTo.sprite = listHowtos[index];
+        imgHowTo.sprite = spritesHowTo[index];
     }
     
     // 나중에 인스펙터 바인딩이 아니라 코드 바인딩으로 변경
     public void NextButton()
     {
-        if(index >= listHowtos.Count - 1) 
+        if(index >= spritesHowTo.Length - 1) 
             index = 0;
         else
             index++;
@@ -149,7 +141,7 @@ public class UICanvasOption : MonoBehaviour, IGUI
     public void PrevButton()
     {
         if(index <= 0) 
-            index = listHowtos.Count - 1;
+            index = spritesHowTo.Length - 1;
         else
             index--;
         

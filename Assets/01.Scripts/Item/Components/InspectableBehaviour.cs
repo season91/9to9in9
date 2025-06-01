@@ -15,7 +15,7 @@ public class InspectableBehaviour : MonoBehaviour, IInspectable,  IInitializable
     
     public string GetPromptText()
     {
-        string promptText =  $"\n{data.displayName}\n{data.description}";
+        string promptText =  $"\n<size=50>{data.displayName}</size>\n<size=36>{data.description}</size>";
         return promptText;
     }
 }
