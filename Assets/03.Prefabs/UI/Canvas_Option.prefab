@@ -1124,7 +1124,7 @@ MonoBehaviour:
       - m_Target: {fileID: 8504585231740408790}
         m_TargetAssemblyTypeName: UICanvasOption, Assembly-CSharp
         m_MethodName: SetBgmValue
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2587,7 +2587,7 @@ MonoBehaviour:
       - m_Target: {fileID: 8504585231740408790}
         m_TargetAssemblyTypeName: UICanvasOption, Assembly-CSharp
         m_MethodName: SetMasterValue
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2844,7 +2844,7 @@ MonoBehaviour:
       - m_Target: {fileID: 8504585231740408790}
         m_TargetAssemblyTypeName: UICanvasOption, Assembly-CSharp
         m_MethodName: SetSfxValue
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

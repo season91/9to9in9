@@ -34,9 +34,9 @@ MonoBehaviour:
   - statType: 3
     stat:
       baseValue: 2
-      bonusValue: 1
+      bonusValue: 0
       maxValue: 5
-      passiveValue: 0
+      passiveValue: 1
   - statType: 4
     stat:
       baseValue: 3

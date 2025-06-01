@@ -115,17 +115,17 @@ public class UICanvasOption : MonoBehaviour, IGUI
     }
 
     // 나중에 인스펙터 바인딩이 아니라 코드 바인딩으로 변경
-    public void SetMasterValue()
+    public void SetMasterValue(float value)
     {
-        SoundManager.Instance.masterVolume = sliderMaster.value;
+        SoundManager.Instance.SetMasterVolume(value);
     }
-    public void SetBgmValue()
+    public void SetBgmValue(float value)
     {
-        SoundManager.Instance.bgmVolume = sliderBgm.value;
+        SoundManager.Instance.SetBgmVolume(value);
     }
-    public void SetSfxValue()
+    public void SetSfxValue(float value)
     {
-        SoundManager.Instance.sfxVolume = sliderSfx.value;
+        SoundManager.Instance.SetSfxVolume(value);
     }
 
     private int index;
