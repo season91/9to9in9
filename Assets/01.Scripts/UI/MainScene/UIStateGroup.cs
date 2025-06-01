@@ -46,6 +46,15 @@ public class UIStateGroup : MonoBehaviour
 
     void SetSizeGauge(RectTransform rectTr, float statRatio)
     {
-        rectTr.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, statRatio * maxGaugeWidth);
+        if (statRatio > 0)
+        {
+            if(!rectTr.transform.gameObject.activeSelf)
+                rectTr.gameObject.SetActive(true);
+            rectTr.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, statRatio * maxGaugeWidth);
+        }
+        else
+        {
+            rectTr.gameObject.SetActive(false);
+        }
     }
 }
