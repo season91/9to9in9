@@ -430,6 +430,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1039142524387628476, guid: 6d2527dc6e0a6a94eb6247bfa2954690, type: 3}
+      propertyPath: bgmSource
+      value: 
+      objectReference: {fileID: 1713716295268539030}
     - target: {fileID: 5986823351275481131, guid: 6d2527dc6e0a6a94eb6247bfa2954690, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.09321448
@@ -479,6 +483,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d2527dc6e0a6a94eb6247bfa2954690, type: 3}
+--- !u!82 &1713716295268539030 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1985098339950404815, guid: 6d2527dc6e0a6a94eb6247bfa2954690, type: 3}
+  m_PrefabInstance: {fileID: 1713716295268539027}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2246523403821644946
 Transform:
   m_ObjectHideFlags: 0
