@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,9 @@ using UnityEngine.UI;
 // 리팩토링 필요!!!
 public class UICanvasOption : MonoBehaviour, IGUI
 {
+    [SerializeField] private RectTransform rectTransf;
+    [SerializeField] CanvasGroup canvasGroup;
+    
     [Header("Buttons")] 
     [SerializeField] private GUIButtonCraftType[] btnTypes;
 
@@ -21,12 +25,16 @@ public class UICanvasOption : MonoBehaviour, IGUI
     [Header("HowTo")] 
     [SerializeField] private GameObject groupHowTo;
     [SerializeField] private Image imgHowTo;
+    [SerializeField] private Image imgHowToPop;
     [SerializeField] private Sprite[] spritesHowTo; // inspector에서 직접 연결해야 됨 넣을 sprite
 
     public GameObject GUIObject { get; }
 
     private void Reset()
     {
+        rectTransf = transform.Find("Group_Option")?.GetComponent<RectTransform>();
+        canvasGroup = GetComponent<CanvasGroup>();
+        
         btnTypes = transform.GetComponentsInChildren<GUIButtonCraftType>();
         
         Transform audioRootTr = transform.Find("Group_Option/Group_Audio").GetComponent<Transform>();
@@ -38,6 +46,7 @@ public class UICanvasOption : MonoBehaviour, IGUI
         Transform howToRootTr = transform.Find("Group_Option/Group_HowTo").GetComponent<Transform>();
         groupHowTo = howToRootTr.gameObject;
         imgHowTo = howToRootTr.Find("Img_Mask/Img_HowTo (1920*1080)")?.GetComponent<Image>();
+        imgHowToPop = howToRootTr.Find("Img_HowToPop")?.GetComponent<Image>();
     }
 
     public void Initialization()
@@ -56,27 +65,37 @@ public class UICanvasOption : MonoBehaviour, IGUI
 
         groupAudio.SetActive(false);
         groupHowTo.SetActive(false);
-        
-        Close();
+
+        rectTransf.localScale = Vector3.zero;
+        canvasGroup.alpha = 0f;
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
     }
 
     public void Open()
     {
         // Esc 누를 때, 호출 하기.
-        if (gameObject.activeSelf)
+        if (canvasGroup.alpha >= 0.5f)
         {
             Close();
         }
         else
         {
-            gameObject.SetActive(true);
             SettingGUIByType("Audio");
+            
+            canvasGroup.DOFade(1, 0.2f);
+            rectTransf.DOScale(1, 0.5f).SetEase(Ease.OutBack);
+            canvasGroup.interactable = true;
+            canvasGroup.blocksRaycasts = true;
         }
     }
 
     public void Close()
     {
-        gameObject.SetActive(false);
+        canvasGroup.DOFade(0, 0.2f);
+        rectTransf.DOScale(0, 0.1f);
+        canvasGroup.interactable = true;
+        canvasGroup.blocksRaycasts = true;
     }
 
     void SettingGUIByType(string type)
@@ -93,6 +112,7 @@ public class UICanvasOption : MonoBehaviour, IGUI
                 groupHowTo.SetActive(true);
                 index = 0;
                 UpdateHowToGUI();
+                imgHowToPop.enabled = false;
                 break;
             default:
                 break;
@@ -146,5 +166,19 @@ public class UICanvasOption : MonoBehaviour, IGUI
             index--;
         
         UpdateHowToGUI();
+    }
+
+    public void PopHowToImage()
+    {
+        if (!imgHowToPop.enabled)
+        {
+            imgHowToPop.enabled = true;
+            imgHowToPop.sprite = spritesHowTo[index];
+        }
+        else
+        {
+            imgHowToPop.enabled = false;
+        }
+            
     }
 }

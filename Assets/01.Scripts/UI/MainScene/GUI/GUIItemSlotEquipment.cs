@@ -25,6 +25,11 @@ public class GUIItemSlotEquipment : GUIItemSlotBase
         btnSelect.onClick.AddListener(Select);
     }
 
+    public void SetSilhouette(Sprite icon)
+    {
+        imgSilhouette.sprite = icon;
+    }
+
     public override void Show(Sprite icon, int pcs = 0, ItemData data = null)
     {
         imgSilhouette.gameObject.SetActive(false);

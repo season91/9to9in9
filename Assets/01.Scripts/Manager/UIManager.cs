@@ -192,6 +192,7 @@ public class UIManager : MonoBehaviour
                 break;
             case SceneType.Main:
                 canvasMainScene = GetComponentInChildren<UICanvasMainScene>();
+                PlayGameStartLogo();
                 break;
             case SceneType.Option:
             default:
@@ -219,6 +220,8 @@ public class UIManager : MonoBehaviour
     public void OnOffOption() => canvasOption.Open();
     
     // Main Scene
+    public void PlayGameStartLogo() => StartCoroutine(canvasMainScene.GameStartLogo());
+    
     public bool IsStationOpened() => canvasMainScene.IsStationOpened();
     
     public StationType CurrentStation() => canvasMainScene.currentStation;
