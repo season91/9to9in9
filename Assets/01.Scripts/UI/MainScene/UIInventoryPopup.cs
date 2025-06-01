@@ -46,7 +46,6 @@ public class UIInventoryPopup : MonoBehaviour, IGUI
             inventorySlots[i].SetClickEvent(OnItemSlotSelected, index);
         }
         quickSlotPopup.Initialization();
-        quickSlotPopup.SettingInventoryQuickUI();
     }
 
     public void Open()

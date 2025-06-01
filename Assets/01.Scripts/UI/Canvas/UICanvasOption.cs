@@ -70,23 +70,26 @@ public class UICanvasOption : MonoBehaviour, IGUI
         canvasGroup.alpha = 0f;
         canvasGroup.interactable = false;
         canvasGroup.blocksRaycasts = false;
+        gameObject.SetActive(false);
     }
 
     public void Open()
     {
         // Esc 누를 때, 호출 하기.
-        if (canvasGroup.alpha >= 0.5f)
+        if (gameObject.activeSelf)
         {
             Close();
         }
         else
         {
-            SettingGUIByType("Audio");
+            gameObject.SetActive(true);
             
+            SettingGUIByType("Audio");
             canvasGroup.DOFade(1, 0.2f);
             rectTransf.DOScale(1, 0.5f).SetEase(Ease.OutBack);
             canvasGroup.interactable = true;
             canvasGroup.blocksRaycasts = true;
+            
         }
     }
 
@@ -96,6 +99,8 @@ public class UICanvasOption : MonoBehaviour, IGUI
         rectTransf.DOScale(0, 0.1f);
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
+        
+        gameObject.SetActive(false);
     }
 
     void SettingGUIByType(string type)
