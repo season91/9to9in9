@@ -252,6 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 087aac098a1c825448f84756ae06da0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireflyPrefab: {fileID: 2630743632744226727, guid: 6e28ab5c7554d174ca397b916e334042, type: 3}
 --- !u!114 &882358080
 MonoBehaviour:
   m_ObjectHideFlags: 0

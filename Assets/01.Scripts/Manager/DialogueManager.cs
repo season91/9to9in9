@@ -35,12 +35,6 @@ public class DialogueManager : MonoBehaviour
          }
      }
  
-     private void ShowDialogue()
-     {
-         // 첫멘트? FirstDialogue
-         string dd = dialogueLines[0];
-     }
- 
      private void NextLine()
      {
          currentLine++;

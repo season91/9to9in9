@@ -1274,7 +1274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueCanvasGroup: {fileID: 1209992337427085636}
-  dialogueText: {fileID: 0}
+  dialogueText: {fileID: 3322690123304100099}
 --- !u!1 &1152907597811917300
 GameObject:
   m_ObjectHideFlags: 0
