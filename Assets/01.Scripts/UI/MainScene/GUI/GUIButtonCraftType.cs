@@ -10,7 +10,7 @@ public class GUIButtonCraftType : MonoBehaviour
     // [SerializeField] private EquipType craftType;
     private string craftType;
 
-    public bool IsSameType(string strCraftType) => craftType == strCraftType;
+    // public bool IsSameType(string strCraftType) => craftType == strCraftType;
     
     void Reset()
     {

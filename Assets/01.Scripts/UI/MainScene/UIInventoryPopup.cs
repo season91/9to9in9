@@ -65,7 +65,11 @@ public class UIInventoryPopup : MonoBehaviour, IGUI
                 tmpTitle.text = "Smelter";
                 break;
             case StationType.Workbench:
+                tmpTitle.text = "Workbench";
+                break;
             case StationType.Anvil:
+                tmpTitle.text = "Anvil";
+                break;
             default:
                 break;
         }

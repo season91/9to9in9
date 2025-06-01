@@ -124,6 +124,11 @@ public class DebugWindow : EditorWindow
         {
             UIManager.Instance.PlayDamageEffect(0.5f);
         }
+        
+        if (GUILayout.Button("OpenOption"))
+        {
+            UIManager.Instance.OnOffOption();
+        }
     }
     
     // OnGUI는 async를 못붙이는 함수여서 await 사용 불가능
