@@ -17,12 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 77dc01f124a3d6a43a76394c6d89ab51
   m_SerializeEntries:
-  - m_GUID: 2c60574521c8c5d45a4dc31c1286100b
-    m_Address: Environment
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - MainScene
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b31417a82cbc6454f926ed635391520d
     m_Address: CanvasMainScene
     m_ReadOnly: 0
