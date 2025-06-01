@@ -39,6 +39,8 @@ public class PlayerInputHandler : MonoBehaviour
         playerInputAsset["Build"].started += OnBuildInput;
         
         playerInputAsset["QuickSlot"].started += OnQuickSlotInput;
+        
+        playerInputAsset["Close"].performed += OnClosePopupInput;
     }
 
     private void OnDisable()
@@ -61,6 +63,8 @@ public class PlayerInputHandler : MonoBehaviour
         playerInputAsset["Build"].started -= OnBuildInput;
         
         playerInputAsset["QuickSlot"].started -= OnQuickSlotInput;
+        
+        playerInputAsset["Close"].performed -= OnClosePopupInput;
     }
 
     private void OnMoveInput(InputAction.CallbackContext context)
@@ -101,6 +105,11 @@ public class PlayerInputHandler : MonoBehaviour
     private void OnQuickSlotInput(InputAction.CallbackContext context)
     {
         playerController.OnQuickSlot(GetPressedKeyValue());
+    }
+
+    private void OnClosePopupInput(InputAction.CallbackContext context)
+    {
+        UIManager.Instance.CloseStation();
     }
     
     private int GetPressedKeyValue()
