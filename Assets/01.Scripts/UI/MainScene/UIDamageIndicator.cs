@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -10,19 +8,23 @@ public class UIDamageIndicator : MonoBehaviour, IGUI
 {
     [SerializeField] private CanvasGroup canvasGroup; // 알파 조절을 위한 CanvasGroup
     [SerializeField] private Image damagedImage;
+    [SerializeField] private TextMeshProUGUI tmpDie;
     
     public GameObject GUIObject => gameObject;
 
-    private Coroutine coroutine;
-    [SerializeField] private float damageRate = 1f;
+    // [SerializeField] private float damageRate = 1f;
     
     void Reset()
     {
         canvasGroup = GetComponent<CanvasGroup>();
+        damagedImage = GetComponent<Image>();
+        tmpDie = GetComponentInChildren<TextMeshProUGUI>();
     }
     
     public void Initialization()
     {
+        damagedImage.color = new Color(171 / 255f, 0, 0, 150 / 255f);
+        tmpDie.gameObject.SetActive(false);
         Close();
     }
 
@@ -40,19 +42,27 @@ public class UIDamageIndicator : MonoBehaviour, IGUI
         canvasGroup.blocksRaycasts = false;
     }
 
-    public void DamageIndicate()
+    // 플레이어 피격
+    public void PlayDamageEffect(float duration)
     {
-        if (coroutine != null)
-        {
-            StopCoroutine(coroutine);
-        }
-
-        coroutine = StartCoroutine(DamageEffect());
+        Open();
+        canvasGroup.DOFade(0f, duration);
     }
 
-    IEnumerator DamageEffect()
+
+    // 플레이어 사망
+    public IEnumerator DieScreenAnim()
     {
-        canvasGroup.DOFade(1f, 0.5f).SetEase(Ease.OutQuad);
-        yield return null;
+        tmpDie.alpha = 0;
+        damagedImage.color = Color.black;
+        
+        canvasGroup.DOFade(1f, 1f).SetUpdate(true);
+        
+        yield return new WaitForSecondsRealtime(0.5f);
+        tmpDie.DOFade(1f, 0.5f).SetUpdate(true);
+        
+        yield return new WaitForSecondsRealtime(1f);
+        canvasGroup.interactable = true;
+        canvasGroup.blocksRaycasts = true;
     }
 }

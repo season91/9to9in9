@@ -30,7 +30,10 @@ public class UIInventoryPopup : MonoBehaviour, IGUI
     
     public void Initialization()
     {
-        Close();
+        canvasGroup.alpha = 0f;
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
+        
         InitializationInventoryGUI();
     }
 

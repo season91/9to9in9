@@ -37,7 +37,9 @@ public class UIAnvilPopup : MonoBehaviour, IGUI
             itemSlots[i].Initialization();
         }
         
-        Close();
+        canvasGroup.alpha = 0f;
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
     }
 
     public void Open()

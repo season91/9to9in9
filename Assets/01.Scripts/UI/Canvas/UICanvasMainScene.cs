@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -16,7 +17,8 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
     
     [SerializeField] private UIStateGroup stateGroup;
     [SerializeField] private UIQuickSlotPopup quickSlotPopup;
-    
+    [SerializeField] private UIDamageIndicator damageIndicator;
+    [SerializeField] private UIEndingPopup endingPopup;
 
     [SerializeField] private TextMeshProUGUI tmpInformation;
     [SerializeField] private TextMeshProUGUI tmpDay;
@@ -37,6 +39,8 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
 
         stateGroup = GetComponentInChildren<UIStateGroup>();
         quickSlotPopup = GetComponentInChildren<UIQuickSlotPopup>();
+        damageIndicator = GetComponentInChildren<UIDamageIndicator>();
+        endingPopup = GetComponentInChildren<UIEndingPopup>();
         
         tmpInformation = transform.Find("Tmp_Information").GetComponent<TextMeshProUGUI>();
         tmpDay = transform.Find("Tmp_Day").GetComponent<TextMeshProUGUI>();
@@ -54,6 +58,8 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
         
         dialoguePopup.Initialization();
         quickSlotPopup.Initialization();
+        damageIndicator.Initialization();
+        endingPopup.Initialization();
         
         tmpInformation.gameObject.SetActive(false);
 
@@ -182,6 +188,16 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
     public bool IsTyping() => dialoguePopup.IsTyping;
     public void SkipTyping(string fullText) => dialoguePopup.SkipTyping(fullText);
     public void HideDialogue() => dialoguePopup.HideDialogue();
+    
+    
+    public void PlayDamageEffect(float duration) => damageIndicator.PlayDamageEffect(duration);
+
+    public IEnumerator GameOverFlow()
+    {
+        yield return StartCoroutine(damageIndicator.DieScreenAnim());
+
+        StartCoroutine(endingPopup.EndingCreditAnim());
+    }
     
     
     #region  TestCode

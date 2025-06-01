@@ -168,6 +168,8 @@ public class
 
     public void ResourceSpawn(string key)
     {
+        if(!spawnCenter)
+            return;
         Vector3 spawnPos = GetRandomPositionOnNavMesh(spawnCenter.position, 20f);
         GameObject obj = GetObject(key);
         obj.transform.position = spawnPos;

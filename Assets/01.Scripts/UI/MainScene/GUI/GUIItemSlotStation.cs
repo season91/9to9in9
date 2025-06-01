@@ -49,9 +49,9 @@ public class GUIItemSlotStation : GUIItemSlotBase
     /// <param name="pcs">아이템 개수 -1 or 1</param>
     public override void Show(Sprite icon, int pcs, ItemData data)
     {
+        SetPcs(pcs);
         imgIcon.enabled = true;
         imgIcon.sprite = icon;
-        SetPcs(pcs);
 
         itemData = data;
     }
@@ -76,15 +76,12 @@ public class GUIItemSlotStation : GUIItemSlotBase
     public void SetPcs(int pcs)
     {
         // text가 1일때는 텍스트를 비움
-        
         if (!int.TryParse(tmpPcs.text, out int pieces))
         {
-            pieces = 1;
+            pieces = imgIcon.enabled ? 1 : 0;
         }
-        else
-        {
-            pieces += pcs;
-        }
+        
+        pieces += pcs;
         
         if (pieces <= 0)
         {

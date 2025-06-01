@@ -29,11 +29,11 @@ MonoBehaviour:
     stat:
       baseValue: 2
       bonusValue: 0
-      maxValue: 0
+      maxValue: 2
       passiveValue: 0
   - statType: 3
     stat:
       baseValue: 1
       bonusValue: 0
-      maxValue: 0
+      maxValue: 2
       passiveValue: 0
