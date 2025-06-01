@@ -63,7 +63,9 @@ public class UISmelterPopup : MonoBehaviour, IGUI
         
         rectTrGauge.gameObject.SetActive(false);
 
-        Close();
+        canvasGroup.alpha = 0f;
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
     }
     
     public void Open()
