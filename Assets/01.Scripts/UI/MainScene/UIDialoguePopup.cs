@@ -14,9 +14,6 @@ public class UIDialoguePopup : MonoBehaviour, IGUI
     public bool IsTyping { get; private set; }
     
     // 두투윈 관련 변수
-    private int currentLine = 0;
-    private bool isPlayerInRange = false;
-    private bool isTyping = false;
     private Tween typingTween;
     
     void Reset()
@@ -46,7 +43,6 @@ public class UIDialoguePopup : MonoBehaviour, IGUI
     public void FirstDialogue(string line)
     {
         dialogueText.text = "";
-        currentLine = 0;
         dialogueCanvasGroup.DOFade(1f, 0.5f).OnComplete(() =>
         {
             dialogueCanvasGroup.interactable = true;
@@ -58,7 +54,7 @@ public class UIDialoguePopup : MonoBehaviour, IGUI
     // 대화 중
     public void PlayTypingEffect(string line)
     {
-        isTyping = true;
+        IsTyping = true;
         dialogueText.text = line;
         dialogueText.maxVisibleCharacters = 0;
 
@@ -69,7 +65,7 @@ public class UIDialoguePopup : MonoBehaviour, IGUI
             0.05f * line.Length
         ).OnComplete(() =>
         {
-            isTyping = false;
+            IsTyping = false;
         });
     }
     
