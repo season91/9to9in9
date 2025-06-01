@@ -721,6 +721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3ad84ada290ff24eb09f0b368610ce6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rectTransf: {fileID: 4683732421553531221}
   canvasGroup: {fileID: 535272632290943104}
   quickSlots:
   - {fileID: 4775649227793108275}
@@ -980,6 +981,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4205b98767304004fafa8fae4e6dd6d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rectTransf: {fileID: 2800347290270093710}
   canvasGroup: {fileID: 7674132803396533691}
   fuelSlot: {fileID: 3403289017886996267}
   metalSlot: {fileID: 443717166547980744}
@@ -3987,6 +3989,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcde6cae42709254d889c37d221f53d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rectTransf: {fileID: 6841400581262146163}
   canvasGroup: {fileID: 7468008663137097062}
   equipmentSlots:
   - {fileID: 2414325381627781995}
@@ -4708,6 +4711,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99d23081a29758a47b266ab2d54dfa0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rectTransf: {fileID: 1638743412060903322}
   canvasGroup: {fileID: 7013922855184550542}
   btnCraftTypes:
   - {fileID: 3318966240278846208}
@@ -4977,6 +4981,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08abaf647f4859a46952f34a9ab43f9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rectTransf: {fileID: 2472373678291714651}
   canvasGroup: {fileID: 8514945864796995773}
   inventorySlots:
   - {fileID: 6180233372401963162}
@@ -5630,6 +5635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 718ffc1dca193424681e0c8e367c1a79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rectTransf: {fileID: 5422441030758785538}
   canvasGroup: {fileID: 6507986834305541458}
   materialSlots:
   - {fileID: 851491022231860218}
@@ -6449,6 +6455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02d93302d06de8640b7064510184eda0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rectTransf: {fileID: 3977875962367968350}
   canvasGroup: {fileID: 2374199637043257319}
   btnCraftTypes:
   - {fileID: 6242881982139481678}
@@ -6819,6 +6826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3ad84ada290ff24eb09f0b368610ce6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rectTransf: {fileID: 1912440648851098759}
   canvasGroup: {fileID: 4061798802338877053}
   quickSlots:
   - {fileID: 2665495441904377340}

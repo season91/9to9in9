@@ -178,7 +178,6 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
     }
         
     public void PlayTypingEffect(string line) => dialoguePopup.PlayTypingEffect(line);
-
     public bool DialoguePopupActve() => dialoguePopup.gameObject.activeSelf;
     public bool IsTyping() => dialoguePopup.IsTyping;
     public void SkipTyping(string fullText) => dialoguePopup.SkipTyping(fullText);

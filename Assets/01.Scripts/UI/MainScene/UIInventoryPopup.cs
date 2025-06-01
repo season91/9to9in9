@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 
 public class UIInventoryPopup : MonoBehaviour, IGUI
 {
+    [SerializeField] private RectTransform rectTransf;
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private List<GUIItemSlotInventory> inventorySlots;
     [SerializeField] private TextMeshProUGUI tmpTitle;
@@ -19,6 +21,7 @@ public class UIInventoryPopup : MonoBehaviour, IGUI
 
     void Reset()
     {
+        rectTransf = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         inventorySlots = transform.Find("Layout_PlayerItems")?.GetComponentsInChildren<GUIItemSlotInventory>().ToList();
         tmpTitle = transform.Find("Tmp_InventoryTitle")?.GetComponent<TextMeshProUGUI>();
@@ -40,6 +43,7 @@ public class UIInventoryPopup : MonoBehaviour, IGUI
             inventorySlots[i].SetClickEvent(OnItemSlotSelected, index);
         }
         quickSlotPopup.Initialization();
+        quickSlotPopup.SettingInventoryQuickUI();
     }
 
     public void Open()
@@ -70,14 +74,16 @@ public class UIInventoryPopup : MonoBehaviour, IGUI
         
         SettingInventoryUI();
         
-        canvasGroup.alpha = 1;
+        canvasGroup.DOFade(1, 0.2f);
+        rectTransf.DOAnchorPosY(0, 0.3f);
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
     }
     
     public void Close()
     {
-        canvasGroup.alpha = 0;
+        canvasGroup.DOFade(0, 0.2f);
+        rectTransf.DOAnchorPosY(-300, 0.3f);
         canvasGroup.interactable = false;
         canvasGroup.blocksRaycasts = false;
     }

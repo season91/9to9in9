@@ -1,7 +1,6 @@
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UIElements;
 
 public class UIWorkbenchPopup : MonoBehaviour, IGUI
 {
@@ -14,7 +13,7 @@ public class UIWorkbenchPopup : MonoBehaviour, IGUI
     // sprite 
     // int형으로 index를
     // 모루 (type, 어떤 타입(장비,도구), index)
-    
+    [SerializeField] private RectTransform rectTransf;
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private GUIButtonCraftType[] btnCraftTypes;
     [SerializeField] private GUIItemSlotCraft[] itemSlots;
@@ -27,6 +26,7 @@ public class UIWorkbenchPopup : MonoBehaviour, IGUI
 
     void Reset()
     {
+        rectTransf = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         btnCraftTypes = transform.Find("Group_Buttons")?.GetComponentsInChildren<GUIButtonCraftType>();
         itemSlots = transform.Find("Group_Recipes")?.GetComponentsInChildren<GUIItemSlotCraft>();
@@ -67,14 +67,16 @@ public class UIWorkbenchPopup : MonoBehaviour, IGUI
         SettingUIByClickType(btnCraftTypes[0].GetCraftType());
         curCraftType = btnCraftTypes[0].GetCraftType();
         
-        canvasGroup.alpha = 1;
+        canvasGroup.DOFade(1, 0.2f);
+        rectTransf.DOAnchorPosY(0, 0.3f);
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
     }
     
     public void Close()
     {
-        canvasGroup.alpha = 0;
+        canvasGroup.DOFade(0, 0.2f);
+        rectTransf.DOAnchorPosY(300, 0.3f);
         canvasGroup.interactable = false;
         canvasGroup.blocksRaycasts = false;
     }
