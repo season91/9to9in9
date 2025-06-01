@@ -76,6 +76,7 @@ public class UIManager : MonoBehaviour
         
         // Loading 준비
         canvasLoading.Initialization();
+        canvasLoading.Open();
         canvasLoading.SetProgressTitle(LoadType.Scene);
         
         // Addressable 불러 올 프리팹 주소 저장할 곳
@@ -89,6 +90,7 @@ public class UIManager : MonoBehaviour
                 if(curSceneType != SceneType.None)
                     await LoadSceneWithProgress(StringScene.StartScene);
                 await LoadGUIWithProgress(addresses);
+                Cursor.lockState = CursorLockMode.None;
                 break;
             case SceneType.Main:
                 addresses = new[] { StringAdr.MainScene };
@@ -105,7 +107,7 @@ public class UIManager : MonoBehaviour
         InitManagers(type);
         InitCanvas(type);
         canvasLoading.SetProgressBar(1f);
-        canvasLoading.gameObject.SetActive(false);
+        canvasLoading.Close();
         curSceneType = type;
     }
 
@@ -190,6 +192,7 @@ public class UIManager : MonoBehaviour
                 break;
             case SceneType.Main:
                 canvasMainScene = GetComponentInChildren<UICanvasMainScene>();
+                PlayGameStartLogo();
                 break;
             case SceneType.Option:
             default:
@@ -217,6 +220,10 @@ public class UIManager : MonoBehaviour
     public void OnOffOption() => canvasOption.Open();
     
     // Main Scene
+    public void PlayGameStartLogo() => StartCoroutine(canvasMainScene.GameStartLogo());
+    
+    public bool IsStationOpened() => canvasMainScene.IsStationOpened();
+    
     public StationType CurrentStation() => canvasMainScene.currentStation;
 
     public bool TrySlotClickWithStation(ItemData item) => canvasMainScene.TrySlotClickWithStation(item);

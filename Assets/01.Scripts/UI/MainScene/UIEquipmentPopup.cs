@@ -41,6 +41,8 @@ public class UIEquipmentPopup : MonoBehaviour, IGUI
             {
                 Debug.LogError($"already contains {slotType} in equipment slot");
             }
+
+            equipmentSlots[slotIndex].SetSilhouette(GetSpriteByType(slotType));
             equipmentSlots[slotIndex].Initialization();
             equipmentSlots[slotIndex].SetType(slotType);
             equipmentSlotDict[slotType] = equipmentSlots[slotIndex++];
@@ -66,6 +68,40 @@ public class UIEquipmentPopup : MonoBehaviour, IGUI
         canvasGroup.alpha = 0f;
         canvasGroup.interactable = false;
         canvasGroup.blocksRaycasts = false;
+    }
+
+    Sprite GetSpriteByType(EquipSlot slotType)
+    {
+        string itemName;
+        
+        switch (slotType)
+        {
+            case EquipSlot.Head:
+                itemName = StringAdrItemDataEquipable.Helmet;
+                break;
+            case EquipSlot.Chest:
+                itemName = StringAdrItemDataEquipable.ArmorChest;
+                break;
+            case EquipSlot.Legs:
+                itemName = StringAdrItemDataEquipable.ArmorLeg;
+                break;
+            case EquipSlot.Feet:
+                itemName = StringAdrItemDataEquipable.Boots;
+                break;
+            case EquipSlot.LeftHand:
+                itemName = StringAdrItemDataEquipable.Shield;
+                break;
+            case EquipSlot.RightHand:
+                itemName = StringAdrItemDataEquipable.ToolAxe;
+                break;
+            default:
+                itemName = StringAdrItemDataEquipable.Sword;
+                break;
+        }
+        
+        Sprite icon = ResourceManager.Instance.GetResource<ItemData>(itemName).icon;
+        
+        return icon;
     }
 
     public void Open()

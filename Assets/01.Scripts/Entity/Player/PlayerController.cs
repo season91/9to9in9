@@ -168,10 +168,10 @@ public class PlayerController : MonoBehaviour, IMoveable, IJumpable
     public void OnInventory()
     {
         inventoryAction?.Invoke();
-        ToggleCursor();
+        // ToggleCursor();
     }
     
-    void ToggleCursor()
+    public void ToggleCursor()
     {
         bool toggle = Cursor.lockState == CursorLockMode.Locked;
         Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;

@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,14 +11,19 @@ public enum LoadType
     Resource
 }
 
-public class UICanvasLoading : MonoBehaviour
+public class UICanvasLoading : MonoBehaviour, IGUI
 {
     [SerializeField] private Image imgProgress;
     [SerializeField] private TextMeshProUGUI tmpLoadingTitle;
     [SerializeField] private TextMeshProUGUI tmpLoadingStatus;
     [SerializeField] private float maxProgressSize;
-    
-    public GameObject UIObject => gameObject;
+    [SerializeField] private Image imgLoading;
+    [SerializeField] private Sprite[] spriteLoadings; // 직접 참조
+
+    private Coroutine coroutine;
+    private IGUI iguiImplementation;
+
+    public GameObject GUIObject => gameObject;
 
     private void Reset()
     {
@@ -24,14 +31,26 @@ public class UICanvasLoading : MonoBehaviour
         tmpLoadingTitle = transform.Find("Tmp_ProgressTitle").GetComponent<TextMeshProUGUI>();
         tmpLoadingStatus = transform.Find("Tmp_ProgressStatus").GetComponent<TextMeshProUGUI>();
         maxProgressSize = imgProgress.rectTransform.sizeDelta.x;
+        imgLoading = transform.Find("Img_Loading").GetComponent<Image>();
     }
 
     public void Initialization()
     {
-        gameObject.SetActive(true);
         SetProgressBar(0);
         tmpLoadingTitle.text = string.Empty;
         tmpLoadingStatus.text = string.Empty;
+    }
+
+    public void Open()
+    {
+        gameObject.SetActive(true);
+        coroutine = StartCoroutine(UpdateLoadingImage());
+    }
+    
+    public void Close()
+    {
+        StopCoroutine(coroutine);
+        gameObject.SetActive(false);
     }
     
     public void SetProgressTitle(LoadType type)
@@ -68,6 +87,17 @@ public class UICanvasLoading : MonoBehaviour
         if (imgProgress != null)
         {
             imgProgress.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
+        }
+    }
+
+    IEnumerator UpdateLoadingImage()
+    {
+        while (gameObject.activeSelf)
+        {
+            int ranIndex = Random.Range(0, spriteLoadings.Length);
+            
+            imgLoading.sprite = spriteLoadings[ranIndex];
+            yield return new WaitForSeconds(2f);
         }
     }
 }

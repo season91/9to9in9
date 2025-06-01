@@ -25,11 +25,6 @@ public class UIQuickSlotPopup : MonoBehaviour, IGUI
         Open();
     }
 
-    public void SettingInventoryQuickUI()
-    {
-        rectTransf = null;
-    }
-
     public void Open()
     {
         inventoryCtrlr = CharacterManager.Player.inventoryController;
@@ -39,11 +34,9 @@ public class UIQuickSlotPopup : MonoBehaviour, IGUI
         
         SettingSlotsUI();
         
-        if (rectTransf != null)
-        {
-            canvasGroup.DOFade(1, 0.2f);
-            rectTransf.DOAnchorPosX(10, 0.3f);
-        } 
+        canvasGroup.DOFade(1, 0.2f);
+        rectTransf.DOAnchorPosX(0, 0.3f);
+        
         canvasGroup.alpha = 1;
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;

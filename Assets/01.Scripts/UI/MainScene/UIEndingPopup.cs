@@ -65,6 +65,8 @@ public class UIEndingPopup : MonoBehaviour, IGUI
 
         // 다시 실행
         Time.timeScale = 1;
+
+        DOTween.KillAll();
         _ = UIManager.Instance.OpenScene(SceneType.Start);
     }
 }
