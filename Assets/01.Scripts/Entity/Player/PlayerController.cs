@@ -168,7 +168,7 @@ public class PlayerController : MonoBehaviour, IMoveable, IJumpable
     public void OnInventory()
     {
         inventoryAction?.Invoke();
-        ToggleCursor();
+        // ToggleCursor();
     }
     
     public void ToggleCursor()

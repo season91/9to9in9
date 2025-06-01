@@ -115,6 +115,8 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
             return;
         }
         
+        CharacterManager.Player.controller.ToggleCursor();
+        
         if(currentStation != StationType.Default)
             CloseStation();
         
@@ -148,6 +150,8 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
     
     public void CloseStation()
     {
+        CharacterManager.Player.controller.ToggleCursor();
+        
         switch (currentStation) 
         {
             case StationType.None:
@@ -173,6 +177,7 @@ public class UICanvasMainScene : MonoBehaviour, IGUI
         inventoryPopup.Close();
         quickSlotPopup.Open();
         isStationOpened = false;
+        currentStation = StationType.Default;
     }
 
     public void ShowItemName(string information)
