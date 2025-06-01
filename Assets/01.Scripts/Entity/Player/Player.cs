@@ -81,8 +81,11 @@ public class Player : Entity, IDamagable
         }
 
         // 스태미나 회복
-        statHandler.Modify(StatType.Stamina, staminaPassive);
-        UIManager.Instance.UpdateStatUI(StatType.Stamina);
+        if (!controller.isRunning)
+        {
+            statHandler.Modify(StatType.Stamina, staminaPassive);
+            UIManager.Instance.UpdateStatUI(StatType.Stamina);
+        }
     }
     
     public void TakeDamage(float damage)
