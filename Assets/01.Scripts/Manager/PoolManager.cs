@@ -9,6 +9,7 @@ using UnityEngine.Pool;
 public class PoolManager
 {
     private ObjectPool<GameObject> pool;
+    private List<GameObject> spawnedObject = new List<GameObject>();
     
     private int defaultCapacity = 50;
     private int maxCapacity = 500;
@@ -38,12 +39,38 @@ public class PoolManager
         }
 }
 
-    public GameObject Get()
+    public void Init()
     {
-        return pool.Get();
+        if (spawnedObject == null)
+        {
+            spawnedObject = new List<GameObject>();
+        }
+
+        else if (spawnedObject.Count > 0)
+        {
+            foreach (GameObject obj in spawnedObject)
+            {
+                if (obj != null)
+                {
+                    obj.SetActive(false);
+                    pool.Release(obj);
+                }
+            }
+            spawnedObject.Clear();
+        }
     }
     
-    public void Release(GameObject obj){
+    public GameObject Get()
+    {
+        GameObject obj= pool.Get();
+        spawnedObject.Add(obj);
+        return obj;
+    }
+    
+    public void Release(GameObject obj)
+    {
+        spawnedObject.Remove(obj);
+        obj.SetActive(false);
         pool.Release(obj);
     }
 }
