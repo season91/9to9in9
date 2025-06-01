@@ -43,7 +43,6 @@ public class GameManager : MonoBehaviour
         DayNightCycle.OnDayStarted += ResourceSpawn;
         DayNightCycle.OnDayStarted += DespawnFirefly;
         
-        
         DayNightCycle.OnNightStarted += EnemySpawn;
         DayNightCycle.OnNightStarted += SpawnFirefly;
     }
@@ -83,14 +82,13 @@ public class GameManager : MonoBehaviour
     private void SpawnFirefly()
     {
         Vector3 fireflySpawnPosition = new Vector3(0, 2, 0);
-        
         if (spawnedFirefly == null)
         {
             spawnedFirefly = Instantiate(fireflyPrefab, fireflySpawnPosition, Quaternion.identity);
         }
         else
         {
-            fireflyPrefab.SetActive(true);
+            spawnedFirefly.SetActive(true);
         }
     }
 
