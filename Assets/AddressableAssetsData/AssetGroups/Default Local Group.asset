@@ -451,6 +451,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - MainScene
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d5d63734fe1ea495896492beff3e374f
+    m_Address: MainBGM
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - StartScene
+    - MainScene
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b73095aefd561e74599d4c8f30d0bd2b, type: 2}
   m_SchemaSet:
