@@ -22,7 +22,7 @@ MonoBehaviour:
   prefab: {fileID: 7767796280962587982, guid: 5e1cc90786e19fb47915056269c2244d, type: 3}
   isStackable: 1
   maxStack: 12
-  functions: 00000000
+  functions: 01000000
   consumableTypes: 0000000001000000
   amounts:
   - 60
