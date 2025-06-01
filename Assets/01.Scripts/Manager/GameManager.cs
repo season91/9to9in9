@@ -6,6 +6,9 @@ using UnityEngine;
 /// </summary>
 public class GameManager : MonoBehaviour
 {
+    
+    [SerializeField] private GameObject fireflyPrefab;
+    private GameObject spawnedFirefly;
     public static GameManager instance;
     public static GameManager Instance
     {
@@ -35,10 +38,14 @@ public class GameManager : MonoBehaviour
     public void InitMainScene()
     {
         Debug.Log("MainScene 초기화 시작");
-        ResourceSpawn();
+        ResourceSpawn(); // 처음만
         
         DayNightCycle.OnDayStarted += ResourceSpawn;
+        DayNightCycle.OnDayStarted += DespawnFirefly;
+        
+        
         DayNightCycle.OnNightStarted += EnemySpawn;
+        DayNightCycle.OnNightStarted += SpawnFirefly;
     }
 
     public void ResourceSpawn()
@@ -71,6 +78,28 @@ public class GameManager : MonoBehaviour
         }
         
         Debug.Log("적 소환");
+    }
+    
+    private void SpawnFirefly()
+    {
+        Vector3 fireflySpawnPosition = new Vector3(0, 2, 0);
+        
+        if (spawnedFirefly == null)
+        {
+            spawnedFirefly = Instantiate(fireflyPrefab, fireflySpawnPosition, Quaternion.identity);
+        }
+        else
+        {
+            fireflyPrefab.SetActive(true);
+        }
+    }
+
+    private void DespawnFirefly()
+    {
+        if (spawnedFirefly != null)
+        {
+            spawnedFirefly.SetActive(false);
+        }
     }
     
 }

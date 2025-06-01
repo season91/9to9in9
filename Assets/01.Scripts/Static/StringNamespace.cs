@@ -130,12 +130,12 @@ public static class StringSpawnDic
     // 자원 종류와 개수 매핑
     public static readonly Dictionary<string, int> resourceSpawnTable = new Dictionary<string, int>
     {
-        { StringAdrItemDataResource.Tree, 5 },
-        { StringAdrItemDataResource.IronOre, 5 },
-        { StringAdrItemDataResource.Rock, 5 },
-        { StringAdrItemDataResource.Stone, 10 },
-        { StringAdrItemDataResource.Iron, 10 },
-        { StringAdrItemDataResource.Wood, 10 }
+        { StringAdrItemDataResource.Tree, 2 },
+        { StringAdrItemDataResource.IronOre, 2 },
+        { StringAdrItemDataResource.Rock, 2 },
+        { StringAdrItemDataResource.Stone, 7 },
+        { StringAdrItemDataResource.Iron, 7 },
+        { StringAdrItemDataResource.Wood, 7 }
     };
 
     public static readonly Dictionary<string, int> enemyResourceSpawnTable = new Dictionary<string, int>
