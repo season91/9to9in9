@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 5050469975759756817}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.2, z: 0}
+  m_LocalPosition: {x: 0, y: 0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -362,6 +362,8 @@ MonoBehaviour:
   minXLook: -85
   maxXLook: 85
   lookSensitivity: 0.1
+  drainInterval: 0.2
+  isRunning: 0
   jumpParticlePrefab: {fileID: 5259208797135495749, guid: 175e601f64bc3f240b10d46c45795385, type: 3}
 --- !u!114 &2477055300786949186
 MonoBehaviour:

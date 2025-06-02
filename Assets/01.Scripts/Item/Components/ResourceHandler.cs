@@ -33,7 +33,8 @@ public class ResourceHandler : MonoBehaviour
       
       SpawnManager.Instance.ItemSpawnInPosition(itemToGive.name, transform.position);
 
-      SpawnManager.Instance.ReleaseObject(itemToGive.itemCode, gameObject);
+      string itemCode = gameObject.GetComponent<ItemObject>().itemData.itemCode;
+      SpawnManager.Instance.ReleaseObject(itemCode, gameObject);
    }
 
    private void SetSound()

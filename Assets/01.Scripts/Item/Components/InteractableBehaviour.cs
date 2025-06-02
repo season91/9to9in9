@@ -15,7 +15,7 @@ public class InteractableBehaviour : MonoBehaviour, IInteractable,  IInitializab
     
     public string GetPromptText()
     {
-        string promptText =  $"[E] \n{data.displayName}\n{data.description}";
+        string promptText =  $"<size=50><b><color=#87FF00>[E]</color></b> \n{data.displayName}</size>\n<size=36>{data.description}</size>";
         return promptText;
     }
 

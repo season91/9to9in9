@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,9 @@ using UnityEngine.UI;
 // 리팩토링 필요!!!
 public class UICanvasOption : MonoBehaviour, IGUI
 {
+    [SerializeField] private RectTransform rectTransf;
+    [SerializeField] CanvasGroup canvasGroup;
+    
     [Header("Buttons")] 
     [SerializeField] private GUIButtonCraftType[] btnTypes;
 
@@ -21,14 +25,16 @@ public class UICanvasOption : MonoBehaviour, IGUI
     [Header("HowTo")] 
     [SerializeField] private GameObject groupHowTo;
     [SerializeField] private Image imgHowTo;
+    [SerializeField] private Image imgHowToPop;
     [SerializeField] private Sprite[] spritesHowTo; // inspector에서 직접 연결해야 됨 넣을 sprite
-
-    private List<Sprite> listHowtos;
 
     public GameObject GUIObject { get; }
 
     private void Reset()
     {
+        rectTransf = transform.Find("Group_Option")?.GetComponent<RectTransform>();
+        canvasGroup = GetComponent<CanvasGroup>();
+        
         btnTypes = transform.GetComponentsInChildren<GUIButtonCraftType>();
         
         Transform audioRootTr = transform.Find("Group_Option/Group_Audio").GetComponent<Transform>();
@@ -40,6 +46,7 @@ public class UICanvasOption : MonoBehaviour, IGUI
         Transform howToRootTr = transform.Find("Group_Option/Group_HowTo").GetComponent<Transform>();
         groupHowTo = howToRootTr.gameObject;
         imgHowTo = howToRootTr.Find("Img_Mask/Img_HowTo (1920*1080)")?.GetComponent<Image>();
+        imgHowToPop = howToRootTr.Find("Img_HowToPop")?.GetComponent<Image>();
     }
 
     public void Initialization()
@@ -58,14 +65,12 @@ public class UICanvasOption : MonoBehaviour, IGUI
 
         groupAudio.SetActive(false);
         groupHowTo.SetActive(false);
-        
-        listHowtos = new List<Sprite>();
-        for (int i = 0; i < spritesHowTo.Length; i++)
-        {
-            listHowtos.Add(spritesHowTo[i]);
-        }
-        
-        Close();
+
+        rectTransf.localScale = Vector3.zero;
+        canvasGroup.alpha = 0f;
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
+        gameObject.SetActive(false);
     }
 
     public void Open()
@@ -78,12 +83,23 @@ public class UICanvasOption : MonoBehaviour, IGUI
         else
         {
             gameObject.SetActive(true);
+            
             SettingGUIByType("Audio");
+            canvasGroup.DOFade(1, 0.2f);
+            rectTransf.DOScale(1, 0.5f).SetEase(Ease.OutBack);
+            canvasGroup.interactable = true;
+            canvasGroup.blocksRaycasts = true;
+            
         }
     }
 
     public void Close()
     {
+        canvasGroup.DOFade(0, 0.2f);
+        rectTransf.DOScale(0, 0.1f);
+        canvasGroup.interactable = true;
+        canvasGroup.blocksRaycasts = true;
+        
         gameObject.SetActive(false);
     }
 
@@ -101,6 +117,7 @@ public class UICanvasOption : MonoBehaviour, IGUI
                 groupHowTo.SetActive(true);
                 index = 0;
                 UpdateHowToGUI();
+                imgHowToPop.enabled = false;
                 break;
             default:
                 break;
@@ -132,13 +149,13 @@ public class UICanvasOption : MonoBehaviour, IGUI
     
     private void UpdateHowToGUI()
     {
-        imgHowTo.sprite = listHowtos[index];
+        imgHowTo.sprite = spritesHowTo[index];
     }
     
     // 나중에 인스펙터 바인딩이 아니라 코드 바인딩으로 변경
     public void NextButton()
     {
-        if(index >= listHowtos.Count - 1) 
+        if(index >= spritesHowTo.Length - 1) 
             index = 0;
         else
             index++;
@@ -149,10 +166,24 @@ public class UICanvasOption : MonoBehaviour, IGUI
     public void PrevButton()
     {
         if(index <= 0) 
-            index = listHowtos.Count - 1;
+            index = spritesHowTo.Length - 1;
         else
             index--;
         
         UpdateHowToGUI();
+    }
+
+    public void PopHowToImage()
+    {
+        if (!imgHowToPop.enabled)
+        {
+            imgHowToPop.enabled = true;
+            imgHowToPop.sprite = spritesHowTo[index];
+        }
+        else
+        {
+            imgHowToPop.enabled = false;
+        }
+            
     }
 }

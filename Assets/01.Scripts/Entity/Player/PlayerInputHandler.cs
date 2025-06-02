@@ -110,12 +110,12 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void OnInventoryInput(InputAction.CallbackContext context)
     {
-        if (UIManager.Instance.IsStationOpened())
-        {
-            UIManager.Instance.CloseStation();
-            playerController.ToggleCursor();
-            return;
-        }
+        // if (UIManager.Instance.IsStationOpened())
+        // {
+        //     UIManager.Instance.CloseStation();
+        //     playerController.ToggleCursor();
+        //     return;
+        // }
         playerController.OnInventory();
         UIManager.Instance.OpenStation(StationType.None); // Inventory 열기
     }
