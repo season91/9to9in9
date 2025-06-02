@@ -16,7 +16,7 @@ public class PlayerEquipHandler : MonoBehaviour
     {
         UnEquip();
         curEquip = Instantiate(item.prefab, equipParent);
-        Debug.Log($"[ItemObject-{name}] 장착됨 !");
+       //Debug.Log($"[ItemObject-{name}] 장착됨 !");
     }
 
     
@@ -26,7 +26,7 @@ public class PlayerEquipHandler : MonoBehaviour
         
         Destroy(curEquip.gameObject);
         curEquip = null;
-        Debug.Log($"[ItemObject-{name}] 해제됨 !");
+        //Debug.Log($"[ItemObject-{name}] 해제됨 !");
     }
 
     
@@ -36,19 +36,19 @@ public class PlayerEquipHandler : MonoBehaviour
         {
             case EquipType.Armor:
                 CharacterManager.Player.statHandler.ModifyBonus(StatType.DefensePower, value);
-                UIManager.Instance.UpdateStatUI(StatType.DefensePower);
+                //UIManager.Instance.UpdateStatUI(StatType.DefensePower);
                 break;
             
             case EquipType.Weapon:
                 CharacterManager.Player.statHandler.ModifyBonus(StatType.AttackPower, value);
-                UIManager.Instance.UpdateStatUI(StatType.AttackPower);
+                //UIManager.Instance.UpdateStatUI(StatType.AttackPower);
                 break;
             
             case EquipType.GatheringTool:
                 break;
             
             default:
-                Debug.Log($"{item.equipType}: 타입이 잘못됐어요!!!");
+                Debug.LogError($"{item.equipType}: 타입이 잘못됐어요!!!");
                 break;
         }
     }

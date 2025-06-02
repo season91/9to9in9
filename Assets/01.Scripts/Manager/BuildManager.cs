@@ -64,7 +64,7 @@ public class BuildManager : MonoBehaviour
         // [RMB] 설치 확인
         if (Input.GetMouseButtonDown(1) && isValid)
         {
-            Debug.Log("RMB Clicked");
+            //Debug.Log("RMB Clicked");
             PlaceBuildItem(targetPos);
         }
             
@@ -72,7 +72,7 @@ public class BuildManager : MonoBehaviour
         // [R] 회전
         if (Input.GetKeyDown(KeyCode.R))
         {
-            Debug.Log("rotation clicked");
+            //Debug.Log("rotation clicked");
             currentPreview.transform.Rotate(Vector3.up, 45f);
         }
 
