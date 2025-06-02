@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
 
     public void InitMainScene()
     {
-        Debug.Log("MainScene 초기화 시작");
+        //Debug.Log("MainScene 초기화 시작");
         ResourceSpawn(); // 처음만
         
         DayNightCycle.OnDayStarted += ResourceSpawn;
@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
     {
         if (SpawnManager.Instance == null)
         {
-            Debug.LogWarning("SpawnManager 인스턴스가 null입니다!");
+            //Debug.LogWarning("SpawnManager 인스턴스가 null입니다!");
             return;
         }
         
@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
             }
         }
         
-        Debug.Log("리소스 소환");
+        //Debug.Log("리소스 소환");
     }
 
     public void EnemySpawn()
@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
             }
         }
         
-        Debug.Log("적 소환");
+        //Debug.Log("적 소환");
     }
     
     private void SpawnFirefly()
