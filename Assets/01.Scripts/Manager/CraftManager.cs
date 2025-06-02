@@ -60,7 +60,7 @@ public class CraftManager : MonoBehaviour
     {
         await ReloadRecipes(); // 완료될 때까지 기다려야함. awake는 안됨
 
-        Debug.Log("레시피 로딩 완료 후 후속 로직 가능");
+        //Debug.Log("레시피 로딩 완료 후 후속 로직 가능");
         
         // test
         // GetRecipeOfStationType(StationType.Anvil);
@@ -132,7 +132,7 @@ public class CraftManager : MonoBehaviour
     {
         if (!CanCraft(recipe))
         {
-            Debug.Log("재료 부족으로 제작 실패");
+            //Debug.Log("재료 부족으로 제작 실패");
             return false;
         }
 

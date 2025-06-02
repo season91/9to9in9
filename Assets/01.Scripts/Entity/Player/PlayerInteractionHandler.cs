@@ -41,7 +41,7 @@ public class PlayerInteractionHandler : MonoBehaviour
                     curInspectable = curInteractGameObject.GetComponent<IInspectable>();
                     if (curInspectable == null)
                     {
-                        Debug.Log("curInspectable 정보가 null!"); return;
+                        Debug.LogError("curInspectable 정보가 null!"); return;
                     }
                     UIManager.Instance.ShowItemInformation(curInspectable.GetPromptText());
                 }
