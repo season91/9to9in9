@@ -4,9 +4,6 @@ using UnityEngine;
 public class StatHandler: MonoBehaviour
 {
     private Dictionary<StatType, Stat> stats = new();
-    
-    [SerializeField] private float baseValue;
-    [SerializeField] private float bonusValue;
 
     /// <summary>
     /// 초기 스탯 데이터로부터 내부 스탯을 생성하여 초기화함!!

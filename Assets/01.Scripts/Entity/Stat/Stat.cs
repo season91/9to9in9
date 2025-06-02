@@ -9,7 +9,6 @@ public class Stat
     [SerializeField] private float passiveValue;
 
     public float CurValue => Mathf.Clamp(baseValue + bonusValue, 0f, maxValue);
-    public float MaxValue => maxValue;
     public float PassiveValue => passiveValue;
     public bool IsEmpty => CurValue <= 0f;
 

@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour, IMoveable, IJumpable
     
     public bool isRunning;
     private float staminaDrainRate;
-    private float runBonus;
+    private float runBonus = 1f;
     private float drainTimer;
     
     private Rigidbody rigidBody;
@@ -54,9 +54,7 @@ public class PlayerController : MonoBehaviour, IMoveable, IJumpable
         statHandler = CharacterManager.Player.statHandler;
         if (statHandler == null) Debug.LogError("StatHandler not found");
         
-        // 스탯 가져오기
-        runBonus = CharacterManager.Player.statHandler.GetPassive(StatType.MoveSpeed);
-        staminaDrainRate = (CharacterManager.Player.statHandler.GetPassive(StatType.Stamina) + 2);
+        staminaDrainRate = (CharacterManager.Player.statHandler.GetPassive(StatType.Stamina) + 2f);
     }
 
     private void Update()
@@ -233,12 +231,12 @@ public class PlayerController : MonoBehaviour, IMoveable, IJumpable
     public void StartRunning()
     {
         isRunning = true;
-        CharacterManager.Player.statHandler.Modify(StatType.MoveSpeed, runBonus);
+        CharacterManager.Player.statHandler.ModifyBonus(StatType.MoveSpeed, runBonus);
     }
 
     public void StopRunning()
     {
         isRunning = false;
-        CharacterManager.Player.statHandler.Modify(StatType.MoveSpeed, -runBonus);
+        CharacterManager.Player.statHandler.ModifyBonus(StatType.MoveSpeed, 0);
     }
 }
