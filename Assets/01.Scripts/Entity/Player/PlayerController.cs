@@ -180,7 +180,7 @@ public class PlayerController : MonoBehaviour, IMoveable, IJumpable
     {
         if (index != -1)
         {
-            Debug.Log("pressed key index :: "+index);
+            //Debug.Log("pressed key index :: "+index);
             ItemData useItem = CharacterManager.Player.inventoryController.UseItemInQuickSlot(index);
             if (useItem != null)
             {
