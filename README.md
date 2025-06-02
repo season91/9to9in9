@@ -1,4 +1,5 @@
 # 🎮 9to9in9
+<img width="1037" alt="image" src="https://github.com/user-attachments/assets/cffa1234-8984-4621-82e4-4f10bd0939e4" />
 
 9to9in9 3D 서바이벌 프로젝트는 기능별 모듈화를 기반으로 유지보수와 확장성을 고려해 구성된 Unity 게임 스크립트 구조입니다.
 
