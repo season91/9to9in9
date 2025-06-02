@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: d1d5c6a918bde3147b9456f6b75dcd7c, type: 2}
-  interactableParticleInstantiate: {fileID: 7822473327521237354, guid: 6191d268bb9fa2f4d94c4bbd390b3175, type: 3}
+  interactableParticlePrefab: {fileID: 0}
 --- !u!114 &6260973390931695403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,8 +137,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.25023594, y: 1.4109718, z: 0.23350571}
-  m_Center: {x: -0.008994514, y: 0.7054859, z: -0.0024808943}
+  m_Size: {x: 0.7326415, y: 1.4109718, z: 0.6913935}
+  m_Center: {x: 0.022939928, y: 0.7054859, z: 0.0020956495}
 --- !u!1 &7624204354017848925
 GameObject:
   m_ObjectHideFlags: 0

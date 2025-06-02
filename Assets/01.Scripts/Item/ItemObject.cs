@@ -18,7 +18,8 @@ public class ItemObject : MonoBehaviour
         bool found = false;
         foreach (ItemType type in Enum.GetValues(typeof(ItemType)))
         {
-            string addrName = StringUtils.KebabToPascal(name) + "Data.asset";
+            string addrName = name.KebabToPascal() + "Data.asset";
+            
 #if UNITY_EDITOR
             string path = $"Assets/Addressables/MainScene/Data/{type}/{addrName}";
             itemData = AssetDatabase.LoadAssetAtPath<ItemData>(path);

@@ -2,9 +2,13 @@ using System;
 using System.Linq;
 using UnityEngine;
 
-public static class StringUtils
+public static class StringExtensions
 {
-    public static string KebabToPascal(string kebab)
+    
+    /// <summary>
+    /// [확장메서드] tool-axe 인 경우 ToolAxe 로 변환
+    /// </summary>
+    public static string KebabToPascal(this string kebab)
     {
         if (string.IsNullOrEmpty(kebab))
             return string.Empty;
