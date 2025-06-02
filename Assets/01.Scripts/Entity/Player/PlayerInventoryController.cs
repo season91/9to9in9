@@ -358,27 +358,20 @@ public ItemData GetItem(int index)
         UpdateInventory?.Invoke();
     }
     
-    
     public ItemData UseItemInQuickSlot(int quickSlotIndex)
     {
         if (quickSlotIndex >= quickSlotItems.Count) return null;
         ItemData temp = quickSlotItems[quickSlotIndex].item;
         if (--quickSlotItems[quickSlotIndex].Quantity <= 0)
         {
+            if (temp is EquipableItemData equipItem)
+            {
+                EquipItem(equipItem);
+            }
             quickSlotItems.RemoveAt(quickSlotIndex);
         }
         UpdateInventory?.Invoke();
         return temp;
     }
-    
-    //
-    // 
-    //
-    
-    //list getallitem
-    //itemdata getitem(int index)
-    //Icon geticon(int index)
-    //int getpcs(int index)
-    //void additem(itemdata item)
-    //void removeitem(int index)    
+
 }
