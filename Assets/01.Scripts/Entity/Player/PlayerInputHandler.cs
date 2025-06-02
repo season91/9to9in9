@@ -30,7 +30,7 @@ public class PlayerInputHandler : MonoBehaviour
         playerInputAsset["Look"].started += OnLookInput;
         playerInputAsset["Look"].canceled += OnLookInput;
         
-        playerInputAsset["Run"].started += OnRunStarted;
+        playerInputAsset["Run"].performed += OnRunStarted;
         playerInputAsset["Run"].canceled += OnRunCanceled;
 
         playerInputAsset["Interact"].performed += OnInteractInput;
@@ -57,7 +57,7 @@ public class PlayerInputHandler : MonoBehaviour
         playerInputAsset["Look"].started -= OnLookInput;
         playerInputAsset["Look"].canceled -= OnLookInput;
         
-        playerInputAsset["Run"].started -= OnRunStarted;
+        playerInputAsset["Run"].performed -= OnRunStarted;
         playerInputAsset["Run"].canceled -= OnRunCanceled;
 
         playerInputAsset["Interact"].performed -= OnInteractInput;
