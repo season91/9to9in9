@@ -134,4 +134,7 @@
 - 조아영 - 아이템 및 제작 담당
 - 최영임 - UI 담당
 
+## 💿 시연영상
+
+https://www.youtube.com/watch?v=tiTJEwDb55s
 
